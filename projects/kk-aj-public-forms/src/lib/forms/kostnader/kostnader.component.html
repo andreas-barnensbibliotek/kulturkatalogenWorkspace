@@ -1,0 +1,60 @@
+ <!-- Ekonomi block START -->
+ <div class="col-12 col-lg-8">
+  <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
+    <div class="form-group mt-5">
+          <legend>Kostnader</legend>
+           <label for="arr_ekonomikostnad">Kostnad/Pris<a href="#" class="info" rel="arr_ekonomikostnad_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="arr_ekonomikostnad_infotext infotext">Ange kostnad/pris för arrangemanget i SEK. Endast siffror. För paketpris använd fältet ”Övrigt om kostnader”. Här kan du också ange ev entréavgifter, kostnad för guidning, museilektioner etc (ingår inte i arrangörsstödet).</div>
+              <input id="arr_ekonomikostnad" type="text" class="form-control" type="text" tabindex="1"/>
+              <small class="text-danger arr_ekonomikostnad_error">Vänligen fyll i kostnad/pris för arrangemanget i SEK. Endast siffror.</small><br />
+
+              <label for="arr_resor">Resor<a href="#" class="info" rel="arr_resor_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="arr_resor_infotext infotext">Här väljer du ålder, välj dom  en eller flera som passar ditt arrangemang.</div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="arr_resor" rel="28" value="Ingår" id="arr_resorja">
+                <label class="form-check-label" for="arr_resornej">Ingår</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="arr_resor" rel="28" value="Tillkommer" id="arr_resornej">
+                <label class="form-check-label" for="arr_resornej">Tillkommer</label>
+              </div><br />
+              <small class="text-danger kk_aj_search_arr_resor_error">Vänligen fyll i om resor ingår eller tillkommer</small>
+              <br />
+
+              <label for="arr_logi">Logi<a href="#" class="info" rel="arr_logi_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="arr_logi_infotext infotext">Här väljer du ålder, välj dom  en eller flera som passar ditt arrangemang.</div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="arr_logi" rel="28" value="Ingår" id="arr_logija">
+                <label class="form-check-label" for="arr_logija">Ingår</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="arr_logi" rel="28" value="Tillkommer" id="arr_resornej">
+                <label class="form-check-label" for="arr_resornej">Tillkommer</label>
+              </div><br />
+              <small class="text-danger kk_aj_search_arr_logi_error">Vänligen fyll i om logi ingår eller tillkommer</small>
+              <br />
+
+              <label for="arr_Traktamente">Traktamente<a href="#" class="info" rel="arr_Traktamente_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="arr_Traktamente_infotext infotext">Här väljer du ålder, välj dom  en eller flera som passar ditt arrangemang.</div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="arr_Traktamente" rel="24"  value="Ingår" id="arr_Traktamenteja">
+                <label class="form-check-label" for="arr_Traktamenteja">Ingår</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="arr_Traktamente" rel="24" value="Tillkommer" id="arr_Traktamentenej">
+                <label class="form-check-label" for="arr_Traktamentenej">Tillkommer</label>
+              </div><br />
+              <small class="text-danger kk_aj_search_arr_traktamente_error">Vänligen fyll i om traktamente ingår eller tillkommer</small>
+              <br />
+
+
+          <label for="arr_resorovrigt">Övrigt om kostnader (ej obligatorisk)<a href="#" class="info" rel="arr_resorovrigt_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="arr_resorovrigt_infotext infotext">Här kan du ange om det finns rabatter, paketpris eller om det tillkommer fler kostnader, t.ex. entréavgifter eller liknande.</div>
+              <textarea id="arr_resorovrigt" name="arr_resorovrigt" rel="30" maxlength="400" class="form-control"></textarea>
+
+          <label for="arr_overiganoter">Övriga noteringar (ej obligatorisk)<a href="#" class="info" rel="arr_overiganoter_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="arr_overiganoter_infotext infotext">Fyll i om det är något mer som arrangören behöver veta om/inför arrangemanget.</div>
+              <textarea id="arr_overiganoter" name="arr_overiganoter" rel="33" maxlength="400"class="form-control"></textarea>
+
+  </div>
+</div>

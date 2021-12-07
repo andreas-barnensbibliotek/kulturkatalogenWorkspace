@@ -1,0 +1,30 @@
+
+
+      <div class="col-md-6" >
+        <label for="formPresentationsbild">Presentationsbild<a href="#" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+        <div class="formPresentationsbild_infotext infotext">Här har du möjlighet att ladda upp en presentationsbild.</div>
+
+          <p>Välj bild att ladda upp</p>
+          <div class="form-group">
+            <div class="image-preview mb-3" *ngIf="previewUrl">
+              <img [src]="previewUrl" height="150" />
+            </div>
+                <input type="file" name="image" #imgfilevalue (change)="fileProgress($event)" /><button class="btn btn-primary"  (click)="onSubmit()">Ladda upp</button>
+            </div>
+            <div *ngIf="fileUploadProgress">
+                Laddar upp: {{ fileUploadProgress }}
+            </div>
+
+            <div class="mb-3" *ngIf="uploadedFilePath">
+                {{uploadedFilePath}}
+            </div>
+            <div class="form-group">
+              <label for="utovare_ort">Alternativtext <a href="" class="info" rel="arr_fotograf_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <input id="utovare_ort" class="form-control" type="text"  />
+              <small class="text-danger utovare_ort_text-danger">Vänligen fyll i Alternativtext</small><br/>
+
+              <label for="utovare_ort">Fotograf/Illustratör<a href="" class="info" rel="arr_fotograf_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <input id="utovare_ort" class="form-control" type="text"  />
+              <small class="text-danger utovare_ort_text-danger">Vänligen fyll i Fotograf/Illustratör</small><br/>
+            </div>
+      </div>

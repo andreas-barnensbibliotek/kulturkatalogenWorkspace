@@ -1,0 +1,112 @@
+<ng-container [formGroup]="arrangemangFrmGrp">
+<div class="col-12 col-lg-8">
+  <app-tidigare-arrangemang></app-tidigare-arrangemang>
+  <div class="form-group mt-5">
+    <fieldset>
+      <legend>Välj typ av arrangemang</legend>
+      <div class="cc-selector">
+        <input id="val_resmalsbesok" type="radio" name="arrangemangstyp" value="7" title="Resmål med resestöd" tooltip="test"/>
+        <label class="arr_val1-cc arr_val1" for="val_resmalsbesok"></label>
+        <input id="val_forestallningtune" type="radio" name="arrangemangstyp" value="1" />
+        <label class="arr_val2-cc arr_val2" for="val_forestallningtune"></label>
+        <input id="val_Skolbio" type="radio" name="arrangemangstyp" value="8" />
+        <label class="arr_val3-cc arr_val3" for="val_Skolbio"></label>
+        <input id="val_Utstallningturne" type="radio" name="arrangemangstyp" value="2" />
+        <label class="arr_val4-cc arr_val4" for="val_Utstallningturne"></label>
+        <input id="val_Kulturpedagogiskaprojekt" type="radio" name="arrangemangstyp" value="4" />
+        <label class="arr_val5-cc arr_val5" for="val_Kulturpedagogiskaprojekt"></label>
+      </div>
+    </fieldset>
+      <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small>
+  </div>
+
+  <div class="form-group mt-5">
+    <fieldset>
+      <legend>Välj huvudsaklig konstform</legend>
+      <div class="cc-selector">
+        <div class="col-12">
+        <input id="val_arkitektur" type="radio" name="konstformtyp" value="1" title="Arkitektur" tooltip="Arkitektur"/>
+        <label class="kf_val1-cc kf_val1" for="val_arkitektur"></label>
+        <input id="val_dans" type="radio" name="konstformtyp" value="2" />
+        <label class="kf_val2-cc kf_val2" for="val_dans"></label>
+        <input id="val_film" type="radio" name="konstformtyp" value="3" />
+        <label class="kf_val3-cc kf_val3" for="val_film"></label>
+        <input id="val_konst" type="radio" name="konstformtyp" value="4" />
+        <label class="kf_val4-cc kf_val4" for="val_konst"></label>
+        <input id="val_litteratur" type="radio" name="konstformtyp" value="5" />
+        <label class="kf_val5-cc kf_val5" for="val_litteratur"></label>
+      <!-- </div>
+      <div class="col-12"> -->
+        <input id="val_musik" type="radio" name="konstformtyp" value="6" title="Musik" tooltip="Musik"/>
+        <label class="kf_val6-cc kf_val6" for="val_musik"></label>
+        <input id="val_naturochkultruarv" type="radio" name="konstformtyp" value="7" />
+        <label class="kf_val7-cc kf_val7" for="val_naturochkultruarv"></label>
+        <input id="val_nycirkus" type="radio" name="konstformtyp" value="8" />
+        <label class="kf_val8-cc kf_val8" for="val_nycirkus"></label>
+        <input id="val_slojd" type="radio" name="konstformtyp" value="9" />
+        <label class="kf_val9-cc kf_val9" for="val_slojd"></label>
+        <input id="val_teater" type="radio" name="konstformtyp" value="10" />
+        <label class="kf_val10-cc kf_val10" for="val_teater"></label>
+      <!-- </div>
+      <div class="col-12"> -->
+        <input id="val_teknik" type="radio" name="konstformtyp" value="11" title="Teknik" tooltip="Teknik"/>
+        <label class="kf_val11-cc kf_val11" for="val_teknik"></label>
+        <input id="val_annascenkonst" type="radio" name="konstformtyp" value="12" />
+        <label class="kf_val12-cc kf_val12" for="val_annascenkonst"></label>
+      </div>
+      </div>
+    </fieldset>
+      <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small>
+  </div>
+</div>
+
+<div class="col-12 col-lg-8">
+  <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
+    <div class="form-group mt-5">
+      <fieldset>
+        <legend>Välj ytterligare konstform</legend>
+
+        <label for="formFler1KonstformId">Konstform<a href="#" class="info" rel="formFler1KonstformId_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="formFler1KonstformId_infotext infotext">Här har du möjlighet att lägga till en konstform om arrangemanget omfattar flera.</div>
+         <select id="formFler1KonstformId"  rel="32"  class="custom-select"  data-toggle="dropdown" >
+            <option value="0"></option>
+            <option value="1">Arkitektur</option>
+            <option value="2">Dans</option>
+            <option value="3">Film och media</option>
+            <option value="4">Konst, form och design</option>
+            <option value="5">Litteratur, berättande, skrivande</option>
+            <option value="6">Musik</option>
+            <option value="7">Natur- och kulturarv</option>
+            <option value="8">Nycirkus/cirkus</option>
+            <option value="9">Slöjd</option>
+            <option value="10">Teater</option>
+            <option value="11">Science Center</option>
+            <option value="12">Annan scenkonst</option>
+        </select>
+
+    </fieldset>
+    </div>
+    <div class="form-group mt-5">
+      <label for="formPresentationsbild">Presentation<a href="#" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <div class="formPresentationsbild_infotext infotext">Här skriver du presentationen till arrangemang.</div>
+      <editor formControlName="Innehall"
+        apiKey="mkbtm7xyn7zyldlws5nbrr8xcpf6i5c8spnv5g9lbhgnjhrk"
+        [init]="{
+          height: 200,
+          menubar: false,
+          plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+          ],
+          toolbar:
+            'undo redo | formatselect | bold italic '
+        }">
+      </editor>
+    </div>
+</div>
+
+<div class="form-group mt-5">
+ <app-imageupload-aj></app-imageupload-aj>
+</div>
+</ng-container>

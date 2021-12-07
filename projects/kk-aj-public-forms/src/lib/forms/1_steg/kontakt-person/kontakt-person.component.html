@@ -1,0 +1,35 @@
+<ng-container [formGroup]="kontaktFrmGrp">
+<div class="col-12 col-lg-8">
+  <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
+  <div class="form-group mt-5">
+    <div class="col-12">
+      <div class="form-group mt-5">
+        <fieldset class="kontaktuppgifterarrblock">
+
+          <legend>Kontaktperson för arrangemanget</legend>
+          <a href="#" class="right info kk_aj_sammakontaktpers label  pull-right" (click)="copykontaktData()" title="Kopiera ovanstående kontaktuppgifter"><i class="fa fa-clone" aria-hidden="true"></i> Kopiera ovanstående kontaktuppgifter</a><br />
+          <label for="arr_kontakt_fornamn">Förnamn<a href="#" class="info" rel="arr_kontakt_fornamn_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div class="arr_kontakt_fornamn_infotext infotext">Fyll i förnamn för aktör/utövare. Används vid kontakt med Kulturkatalogen Väst (visas på webben)</div>
+              <input id="arr_kontakt_fornamn" class="form-control is-invalid" type="text" formControlName="Kontaktfornamn" />
+              <small class="text-danger arr_kontakt_fornamn_text-danger">Vänligen fyll i kontaktpersonens förnamn</small><br />
+
+          <label for="arr_kontakt_efternamn">Efternamn<a href="#" class="info" rel="arr_kontakt_efternamn_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div class="arr_kontakt_efternamn_infotext infotext">Fyll i efternamn för aktör/utövare. Används vid kontakt med Kulturkatalogen Väst (visas på webben)</div>
+              <input id="arr_kontakt_efternamn" class="form-control is-invalid" type="text" formControlName="KontaktEfternamn" />
+              <small class="text-danger arr_kontakt_efternamn_text-danger">Vänligen fyll i kontaktpersonens efternamn</small><br />
+
+          <label for="arr_kontakt_telefonnr">Telefonnummer<a href="#" class="info" rel="arr_kontakt_telefonnr_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+              <div class="arr_kontakt_telefonnr_infotext infotext">Fyll i kontaktpersonens telefonnummer enligt exempel 0700111111 (visas på webben)</div>
+              <input id="arr_kontakt_telefonnr" class="form-control is-invalid" type="text" formControlName="KontaktTelefon" />
+              <small class="text-danger arr_kontakt_telefonnr_text-danger">Vänligen fyll i kontaktpersonens telefonnummer</small><br />
+
+          <label for="arr_kontakt_epost">E-postadress</label>
+              <input id="arr_kontakt_epost" class="form-control is-invalid" type="text" formControlName="KontaktEpost" />
+              <small class="text-danger arr_kontakt_epost_text-danger">Vänligen fyll i kontaktpersonens e-postadress</small><br />
+      </fieldset>
+    </div>
+
+    </div>
+  </div>
+</div>
+</ng-container>

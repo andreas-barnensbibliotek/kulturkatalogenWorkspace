@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Roboto&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import "~bootstrap/scss/bootstrap.scss";
+// @import "assets/scss/arrangemangsteps.scss";
+body{
+  font-family: Roboto;
+  margin: 0;
+  background-color: #5a5a5a;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+  color:#fff;
+}
+
+select {
+  -moz-appearance: none;
+  // background: rgba(0, 0, 0, 0) url("assets/img/selectArrowdown.png") no-repeat scroll 100% center / 20px 13px !important;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  padding: 6px 20px 6px 6px !important;
+  width: 100%;
+  }
+label{font-weight: bold;}
+small{
+  font-size:.8rem;
+  display: none;
+}
+.carousel-arrow{
+  width: 80px!important;
+  height: 80px!important;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 60px!important;
+  background-position: 50%;
+  border-radius: 20px!important;
+  position: absolute;
+  top: 27%!important;
+  margin-top: -40px!important;
+  z-index: 10;
+  /* cursor: pointer; */
+  box-shadow: 0 0 5px rgba(0,0,0,.15);
+  }
+
+  .carousel-arrow-next {
+    right: 120px!important;
+  }
+
+  .carousel-cells .carousel-cell img, .carousel-cells .carousel-cell video {
+    height: 55% !important;
+    object-fit: cover!important;
+}
+
+.carousel-arrow-prev.carousel-arrow-disabled{
+    display: none;
+}
+
+carousel{
+  .carousel-cell {
+    a{color:#fff;}
+
+    img:hover {
+      transition: 250ms all;
+      transform: scale(1.0);
+    }
+  }
+}
+
+.textwrapper{
+  position: absolute;
+  bottom:0rem;
+  left:0rem;
+  background-color: rgba(0,0,0,.0);
+  width: 100%;
+  padding-left:0rem;
+  font-size: normal;
+  height: 45%;
+  font-weight: 100;
+
+  h2{
+    padding-top: 1rem;
+    text-align: left;
+     font-size: 1.4rem;
+    // font-size: 1.5vw;
+
+  }
+  h3{
+    padding-top: 0;
+    text-align: left;
+     font-size: 1.1rem;
+    // font-size: 1.5vw;
+
+  }
+}
+
+.linkbox{
+  margin-top: 4rem;
+  a{color:#000;}
+}

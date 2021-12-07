@@ -1,0 +1,76 @@
+<div class="col-12 col-lg-8 mt-5 mb-2">
+
+  <div class="form-group " *ngIf="showExemple">
+    <legend>Lägg till ett smakprov från ditt arrangemang</legend>
+    <p>Här kan du ladda upp bild (annan än presentationsbilden), film- eller ljudklipp från föreställningen.</p><br />
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active " id="pills-FilmLjud-tab" data-bs-toggle="pill" data-bs-target="#pills-FilmLjud" type="button" role="tab" aria-controls="pills-FilmLjud" aria-selected="true">FilmLjud</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link " id="pills-Bild-tab" data-bs-toggle="pill" data-bs-target="#pills-Bild" type="button" role="tab" aria-controls="pills-Bild" aria-selected="false">Bild</button>
+      </li>
+
+    </ul>
+    <div class="tab-content mb-3" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-FilmLjud" role="tabpanel" aria-labelledby="pills-FilmLjud-tab">
+        <div class="row">
+          <div class="col-4">
+            <img src="../../../assets/img/missingmovie.jpg" class="img-fluid" alt="Film saknas"/>
+          </div>
+          <div class="col-8">
+
+            <label for="arr_ExempelfilmRubrik" class="form-label">Rubrik </label>
+            <input id="arr_ExempelfilmRubrik" type="text" class="form-control" maxlength="150"/>
+            <label for="arr_Exempelfilmbeskrivning" class="form-label">Beskrivning</label>
+            <textarea id="arr_Exempelfilmbeskrivning" class="form-control" maxlength="450"></textarea>
+          </div>
+            <div class="col-12">
+            <label for="arr_Exempelfilm"  class="form-label">Länk till Youtube/Vimeo <a href="#" class="info" rel="arr_Exempelfilm_info"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+            <div class="arr_Exempelfilm_infotext infotext">1. Öppna din video på youtube.com eller vimeo.com 2. Klicka på Dela/Share under videon. 3. Kopiera den länk du har där och klistra in den i detta fält. Länken ska se ut enligt följande exempel: https://youtu.be/AATlj6UwMzA eller https://vimeo.com/111111111 </div>
+            <input id="arr_Exempelfilm" type="text" maxlength="245" class="form-control"/>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button id="kk_aj_addfilmExempel" class="btn btn-secondary right kk_aj_exempelblock mt-1">Lägg till</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-Bild" role="tabpanel" aria-labelledby="pills-Bild-tab">
+        <div class="row">
+          <div class="col-4">
+            <img src="../../../assets/img/missingimage.jpg" class="img-fluid" alt="Bild saknas"/>
+
+            <label for="arr_Exempelbild" class="form-label">Länk/url till bild <a href="#" class="info" rel="arr_Exempelbild_info"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+            <div class="arr_Exempelbild_infotext infotext">1. Högerklicka på din bild på nätet. 2. Kopiera bildadressen (url). 3. Klistra in den här.</div>
+            <input id="arr_Exempelbild" type="text" class="form-control" maxlength="150"/>
+
+          </div>
+          <div class="col-8">
+            <label for="arr_ExempelfilmRubrik" class="form-label">Rubrik </label>
+            <input id="arr_ExempelfilmRubrik" type="text" class="form-control" maxlength="150"/>
+
+            <label for="arr_Exempelfilmbeskrivning" class="form-label">Beskrivning</label>
+            <textarea id="arr_Exempelfilmbeskrivning" class="form-control" maxlength="450"></textarea>
+
+            <label for="arr_ExempelUrl" class="form-label">Länk till exempelsida<a href="#" class="info" rel="lbl_ExempelUrl_info"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+            <div class="lbl_ExempelUrl_infotext infotext">Här kan du ange en länk till en sida där mer information finns.</div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon3">https://</span>
+              <input type="text" class="form-control" id="arr_ExempelUrl" aria-describedby="basic-addon3">
+            </div>
+
+          </div>
+          <div class="col-12">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button id="kk_aj_addfilmExempel" class="btn btn-secondary right kk_aj_exempelblock mt-1">Lägg till</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="visadoljshowExemple()">{{lblExemple}}</button>
+</div>
+
+

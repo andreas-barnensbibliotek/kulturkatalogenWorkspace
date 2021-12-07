@@ -3,5 +3,206 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "kkAjPublic": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/kk-aj-public",
+      "sourceRoot": "projects/kk-aj-public/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/kkAjPublic",
+            "index": "projects/kk-aj-public/src/index.html",
+            "main": "projects/kk-aj-public/src/main.ts",
+            "polyfills": "projects/kk-aj-public/src/polyfills.ts",
+            "tsConfig": "projects/kk-aj-public/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/kk-aj-public/src/favicon.ico",
+              "projects/kk-aj-public/src/assets"
+            ],
+            "styles": [
+              "projects/kk-aj-public/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/kk-aj-public/src/environments/environment.ts",
+                  "with": "projects/kk-aj-public/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "kkAjPublic:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "kkAjPublic:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "kkAjPublic:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/kk-aj-public/src/test.ts",
+            "polyfills": "projects/kk-aj-public/src/polyfills.ts",
+            "tsConfig": "projects/kk-aj-public/tsconfig.spec.json",
+            "karmaConfig": "projects/kk-aj-public/karma.conf.js",
+            "assets": [
+              "projects/kk-aj-public/src/favicon.ico",
+              "projects/kk-aj-public/src/assets"
+            ],
+            "styles": [
+              "projects/kk-aj-public/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/kk-aj-public/tsconfig.app.json",
+              "projects/kk-aj-public/tsconfig.spec.json",
+              "projects/kk-aj-public/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/kk-aj-public/e2e/protractor.conf.js",
+            "devServerTarget": "kkAjPublic:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "kkAjPublic:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "kkAjPublicForms": {
+      "projectType": "library",
+      "root": "projects/kk-aj-public-forms",
+      "sourceRoot": "projects/kk-aj-public-forms/src",
+      "prefix": "aj",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/kk-aj-public-forms/tsconfig.lib.json",
+            "project": "projects/kk-aj-public-forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/kk-aj-public-forms/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/kk-aj-public-forms/src/test.ts",
+            "tsConfig": "projects/kk-aj-public-forms/tsconfig.spec.json",
+            "karmaConfig": "projects/kk-aj-public-forms/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/kk-aj-public-forms/tsconfig.lib.json",
+              "projects/kk-aj-public-forms/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "AjApiServices": {
+      "projectType": "library",
+      "root": "projects/aj-api-services",
+      "sourceRoot": "projects/aj-api-services/src",
+      "prefix": "aj",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/aj-api-services/tsconfig.lib.json",
+            "project": "projects/aj-api-services/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/aj-api-services/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/aj-api-services/src/test.ts",
+            "tsConfig": "projects/aj-api-services/tsconfig.spec.json",
+            "karmaConfig": "projects/aj-api-services/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/aj-api-services/tsconfig.lib.json",
+              "projects/aj-api-services/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "kkAjPublic"
 }

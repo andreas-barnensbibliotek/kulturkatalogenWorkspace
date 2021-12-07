@@ -1,0 +1,61 @@
+﻿
+ .steps{
+    ul{
+      padding: 0px;
+        li{
+            text-align: center;
+            list-style: none;
+            margin:.5rem;
+            .number{
+                display: block;
+                border-radius: 50%;
+                // behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+                margin:auto;
+                width: 3em;
+                    height: 3em;
+                    padding: .9em;
+
+               background:#DDDDDD;
+                border:0;
+                color: #fff;
+                text-align: center;
+
+                font: 2.4em Arial, sans-serif !important;
+
+            }
+            &.active{
+                .number{
+                    background:#f77136;
+                }
+            }
+            &.active{
+              opacity: 1;
+                &.error{
+                    .number{
+                        background:red;
+                  }
+                }
+                &:hover{
+                    .number{
+                      opacity: .5;
+                    }
+                }
+            }
+
+                &.done{
+                         opacity: 1;
+                    .number{
+                        background:green;
+                    }
+                    &:hover{
+                       .number{
+                        opacity: 0.9;
+
+                        }
+                    }
+                }
+
+        }
+    }
+}
+

@@ -1,0 +1,107 @@
+
+  <!-- start container   -->
+<ng-container [formGroup]="BaseRootForm">
+    {{BaseRootForm.value | json}}
+    <div class="row">
+      <div class="col-12">
+        <div class="wizard-numbers steps ">
+          <ul class="d-flex ">
+            <li class="tab-title active first" role="presentation1" rel="1">
+              <a href="#addarrtab-1" (click)="ShowSteg(1)" role="tab" tabindex="0" aria-selected="true" aria-controls="addarrtab-1" class="kk_aj_tab" rel="1">
+                  <span class="number">1</span>Kontaktuppgifter
+              </a>
+            </li>
+            <li class="tab-title done disabled second" role="presentation2" rel="2">
+                  <a href="#addarrtab-2" (click)="ShowSteg(2)"  role="tab" tabindex="1" aria-selected="false" aria-controls="addarrtab-2" class="kk_aj_tab" rel="2" >
+                      <span class="number">2</span>Arrangemang
+                  </a>
+            </li>
+            <li class="tab-title disabled third" role="presentation3" rel="3" >
+                <a href="#addarrtab-3" (click)="ShowSteg(3)"  role="tab" tabindex="2" aria-selected="false" aria-controls="addarrtab-3" class="kk_aj_tab" rel="3" >
+                    <span class="number">3</span>Granska
+                </a>
+            </li>
+            <li class="tab-title disabled forth" role="presentation4" rel="4">
+                <a href="#addarrtab-4" (click)="ShowSteg(4)" role="tab" tabindex="3" aria-selected="false" aria-controls="addarrtab-4" class="kk_aj_tab" rel="4" >
+                    <span class="number">4</span>Skicka in
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Steg 1 block -->
+    <div class="row" *ngIf="_blockMdl.blnSteg1">
+      <div class="col-12 col-md-2">
+        <h2>Steg 1</h2>
+      </div>
+      <div class="col-12 col-md-10">
+        <div class="col-12 col-lg-8">
+          <h2>Kontaktuppgifter</h2>
+          <fieldset>
+            <legend>Välkommen att söka till Kulturkatalogen Väst!</legend>
+            <p>Kulturkatalogen Väst är en digital utbudskatalog med professionell konst och kultur, natur- och kulturarv för barn och unga i Västra Götaland.
+                Innan du börjar fylla i ansökan, se till att du har alla uppgifter och allt material tillgängligt så att ansökan blir komplett. Det går inte att spara och fortsätta vid ett senare tillfälle, så ha det här redo när du sätter igång:<br>
+                - Namn och adress<br>
+                - Fakta om lokal, kostnad etc<br>
+                - Bild/er, ev ljud och filmklipp<br>
+                - För utövare: Lista över din/er konstnärliga bakgrund och utbildning <br>
+            </p>
+          </fieldset>
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group" >
+            <input type="radio" (change)="valUtovare(1)" class="btn-check" value="1" name="btnradio" id="btnradio1"  checked >
+            <label class="btn btn-outline-primary" for="btnradio1" >Ny aktör/utövare</label>
+            <input type="radio" (change)="valUtovare(2)" class="btn-check" value="2" name="btnradio" id="btnradio2" >
+            <label class="btn btn-outline-primary" for="btnradio2" >Tidigare aktör/utövare</label>
+          </div>
+        </div>
+        <app-valj-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnValUtovare" (click)="gettidigare()"></app-valj-utovare>
+        <app-tidigare-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnTidigareUtovare" (click)="changeUtovareUppgifter()"></app-tidigare-utovare>
+        <app-ny-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnNyUtovare"></app-ny-utovare>
+        <app-kontakt-person formGroupName="Kontakt" *ngIf="_blockMdl.blnKontaktUpg" (click)="kopieraKontaktdata($event)"></app-kontakt-person>
+        <div class="row mt-5 mb-5">
+          <div class="col-12 col-lg-8" >
+            <a href="#addarrtab-2" role="tab" (click)="ShowSteg(2)"  class="btn btn-primary btn-lg active" rel="2" >Nästa steg - Arrangemang</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Steg 2 block  -->
+    <div class="row" *ngIf="_blockMdl.blnSteg2">
+      <div class="col-12 col-md-2">
+        <h2>Steg 2</h2>
+      </div>
+      <div class="col-12 col-md-10">
+        <div class="col-12 col-lg-8">
+          <h2>Arrangemang</h2>
+        </div>
+
+        <app-val-arrangemangs-typ formGroupName="Arrangemang"></app-val-arrangemangs-typ>
+        <hr/>
+        <app-fakta></app-fakta>
+        <hr/>
+        <app-lokal></app-lokal>
+        <hr/>
+        <app-deltagarepublik></app-deltagarepublik>
+        <hr/>
+        <app-kostnader></app-kostnader>
+        <hr/>
+        <app-smakprov></app-smakprov>
+        <hr/>
+        <app-bedomning-info></app-bedomning-info>
+
+        <div class="row mt-5 mb-5">
+          <div class="col-12 col-lg-8" >
+            <a href="#addarrtab-2" role="tab" (click)="ShowSteg(1)"  class="btn btn-primary btn-md active float-start" rel="2" >Föregående steg - Kontaktuppgifter</a>
+            <a href="#addarrtab-2" role="tab"(click)="ShowSteg(3)"  class="btn btn-primary btn-md active float-end" rel="2" >Nästa steg - Arrangemang</a>
+          </div>
+        </div>
+
+    </div>
+  <!-- end container   -->
+
+    </div>
+
+</ng-container>

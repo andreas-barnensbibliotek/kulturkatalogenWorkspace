@@ -8,6 +8,20 @@
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "aj-api-services": [
+        "dist/aj-api-services/aj-api-services",
+        "dist/aj-api-services"
+      ],
+      "crud-services": [
+        "dist/crud-services/crud-services",
+        "dist/crud-services"
+      ],
+      "kk-aj-public-forms": [
+        "dist/kk-aj-public-forms/kk-aj-public-forms",
+        "dist/kk-aj-public-forms"
+      ]
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
