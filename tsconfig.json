@@ -4,9 +4,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "strict": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "aj-api-services": [
@@ -16,6 +16,10 @@
       "crud-services": [
         "dist/crud-services/crud-services",
         "dist/crud-services"
+      ],
+      "kk-aj-adv-search": [
+        "dist/kk-aj-adv-search/kk-aj-adv-search",
+        "dist/kk-aj-adv-search"
       ],
       "kk-aj-public-forms": [
         "dist/kk-aj-public-forms/kk-aj-public-forms",

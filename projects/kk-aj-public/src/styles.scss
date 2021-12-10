@@ -3,6 +3,9 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import "~bootstrap/scss/bootstrap.scss";
 // @import "assets/scss/arrangemangsteps.scss";
+html, body {
+  min-height: 100%;
+}
 body{
   font-family: Roboto;
   margin: 0;
@@ -94,4 +97,9 @@ carousel{
 .linkbox{
   margin-top: 4rem;
   a{color:#000;}
+}
+
+.cc-banner.cc-bottom {
+
+  z-index: 99999!important;
 }

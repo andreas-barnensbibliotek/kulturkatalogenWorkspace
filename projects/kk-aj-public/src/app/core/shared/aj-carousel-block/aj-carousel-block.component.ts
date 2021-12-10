@@ -34,8 +34,4 @@ export class AjCarouselBlockComponent implements OnInit {
 
     });
   }
-
-
-
-
 }

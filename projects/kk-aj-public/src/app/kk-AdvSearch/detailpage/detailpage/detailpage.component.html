@@ -1,0 +1,93 @@
+<!-- CONTENTPANE START ################################################################################################ -->
+<div class="row detailblock">
+  <div class="small-12 columns"></div>
+  <div class="small-12 columns">
+    <!-- Artikel START -->
+    <div class="artikelwrapper level1">
+      <div class="row gobackblock">
+        <div class="small-12 columns text-right">
+          <a routerLink="" class="gobackLink2" (click)="goBack()">
+             Tillbaka
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-8 columns artmaincontent">
+          <div class="granska_rubrik_border" >
+            <h1 class="granska_rubrik">
+              {{ detailpage[0]?.ansokningtitle }}
+            </h1>
+            <h2 class="granska_Utovare_Organisation">
+              {{ detailpage[0]?.ansokningutovare }}
+            </h2>
+          </div>
+
+          <div
+            class="field field-name-field-artikelbild field-type-image
+            field-label-hidden field-wrapper" *ngIf="detailpage[0]?.ansokningMediaImage.MediaUrl">
+            <img
+              class="granska_pressentationsbild"
+              [src]="'https://www.kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/'
+              + detailpage[0]?.ansokningMediaImage.MediaUrl"
+              alt="Ett magiskt arktiskt äventyr om klimatförändringen punkt"
+              />
+
+            <div class="row">
+              <div class="medium-12 columns arrmainfoto">
+                <span>Foto: </span>
+                {{ detailpage[0]?.ansokningMediaImage.MediaFoto }}
+              </div>
+            </div>
+          </div>
+          <h2 class="granska_underrubrik" *ngIf="detailpage[0]?.ansokningsubtitle">
+            {{ detailpage[0]?.ansokningsubtitle }}
+          </h2>
+          <div class="body field" *ngIf="detailpage[0]?.ansokningContent">
+            <div
+              class="granska_innehall"
+              [innerHTML]="detailpage[0]?.ansokningContent | unescape">
+              <span class="spinner-border spinner-border-lg" role="status"></span>
+            </div>
+          </div>
+
+          <app-mediaexempel *ngIf="detailpage[0]?.ansokningMedialist !=''" [MediaExempelblock]="detailpage[0]?.ansokningMedialist"></app-mediaexempel>
+
+        </div>
+        <div class="medium-4 columns">
+          <div class="granskaFaktaMainblock">
+            <!-- item loop START -->
+            <app-fakta [faktablock]="detailpage[0]?.ansokningFaktalist"></app-fakta>
+            <!-- item loop STOP -->
+          </div>
+          <app-kontakt [Kontaktblock]="detailpage[0]?.ansokningUtovardata"></app-kontakt>
+          <div class="artsidecontainer granska_Dela">
+            <h3>Dela</h3>
+            <div id="share-buttons">
+              <!-- Email -->
+              <a
+                id="shareMail"
+                href="mailto:?Subject=Delat%20fr%C3%A5n%20Kulturkatalogen%20V%C3%A4st%20-%20{{ detailpage[0]?.ansokningtitle }}%20
+                https://www.kulturkatalogenvast.org/Kulturkatalogen/ArrangemangDetail/id/{{ detailpage[0]?.ansokningid }}">
+                <img
+                  src="https://simplesharebuttons.com/images/somacro/email.png"
+                  alt="Email"
+                  />
+              </a>
+
+              <!-- Print -->
+              <a href="javascript:;" onclick="window.print()">
+                <img
+                  src="https://simplesharebuttons.com/images/somacro/print.png"
+                  alt="Print"
+                  />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ARtikel END -->
+  </div>
+</div>
+
+<!-- <a href="#0" class="scroll-top"><i class="fi-arrow-up"></i></a> -->

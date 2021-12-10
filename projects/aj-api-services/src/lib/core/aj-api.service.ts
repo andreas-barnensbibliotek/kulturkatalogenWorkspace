@@ -1,3 +1,4 @@
+import { IpostSearch } from './interface/ipost-search';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -35,6 +36,12 @@ export class AjApiService {
     );
   }
 
+  doKatPost(url:string, postobj:IpostSearch){
+    return this.http.post(url,JSON.stringify(postobj),this._httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
   doPostFile(url:string, postobj:FormData){
     return this.http.post(url, postobj)
     .pipe(

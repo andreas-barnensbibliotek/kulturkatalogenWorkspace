@@ -28,9 +28,13 @@
               "projects/kk-aj-public/src/assets"
             ],
             "styles": [
+              "./node_modules/cookieconsent/build/cookieconsent.min.css",
               "projects/kk-aj-public/src/styles.scss"
+
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
           },
           "configurations": {
             "production": {

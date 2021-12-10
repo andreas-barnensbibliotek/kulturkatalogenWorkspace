@@ -5,8 +5,8 @@ import {Injectable } from "@angular/core";
 export class Global {
   private _liveserver:string = "https://katalog.frontdata.se"; // Timmele.se
   private _devLocalCore:string = "https://localhost:44372";
-  private _devserver:string = "https://katalog.frontdata.se/wpAdmin";
-  private _localdevserver:string = "http://localhost:81/takstolsfabrikenWP";
+  private _SandboxAPI:string = "https://sandboxapicore.kulturkatalogenvast.org";
+  private _localdevserver:string = "http://localhost:60485";
   private _wpApi:string = "/wp-json/wp/v2/";
   private _wpApiPost:string = "/wp-json/";
 

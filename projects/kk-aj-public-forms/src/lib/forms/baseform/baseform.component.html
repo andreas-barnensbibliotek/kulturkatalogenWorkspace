@@ -7,22 +7,22 @@
         <div class="wizard-numbers steps ">
           <ul class="d-flex ">
             <li class="tab-title active first" role="presentation1" rel="1">
-              <a href="#addarrtab-1" (click)="ShowSteg(1)" role="tab" tabindex="0" aria-selected="true" aria-controls="addarrtab-1" class="kk_aj_tab" rel="1">
+              <a (click)="ShowSteg(1)" role="tab" tabindex="0" aria-selected="true" aria-controls="addarrtab-1" class="kk_aj_tab" rel="1">
                   <span class="number">1</span>Kontaktuppgifter
               </a>
             </li>
             <li class="tab-title done disabled second" role="presentation2" rel="2">
-                  <a href="#addarrtab-2" (click)="ShowSteg(2)"  role="tab" tabindex="1" aria-selected="false" aria-controls="addarrtab-2" class="kk_aj_tab" rel="2" >
+                  <a (click)="ShowSteg(2)"  role="tab" tabindex="1" aria-selected="false" aria-controls="addarrtab-2" class="kk_aj_tab" rel="2" >
                       <span class="number">2</span>Arrangemang
                   </a>
             </li>
             <li class="tab-title disabled third" role="presentation3" rel="3" >
-                <a href="#addarrtab-3" (click)="ShowSteg(3)"  role="tab" tabindex="2" aria-selected="false" aria-controls="addarrtab-3" class="kk_aj_tab" rel="3" >
+                <a (click)="ShowSteg(3)"  role="tab" tabindex="2" aria-selected="false" aria-controls="addarrtab-3" class="kk_aj_tab" rel="3" >
                     <span class="number">3</span>Granska
                 </a>
             </li>
             <li class="tab-title disabled forth" role="presentation4" rel="4">
-                <a href="#addarrtab-4" (click)="ShowSteg(4)" role="tab" tabindex="3" aria-selected="false" aria-controls="addarrtab-4" class="kk_aj_tab" rel="4" >
+                <a (click)="ShowSteg(4)" role="tab" tabindex="3" aria-selected="false" aria-controls="addarrtab-4" class="kk_aj_tab" rel="4" >
                     <span class="number">4</span>Skicka in
                 </a>
             </li>
@@ -94,8 +94,8 @@
 
         <div class="row mt-5 mb-5">
           <div class="col-12 col-lg-8" >
-            <a href="#addarrtab-2" role="tab" (click)="ShowSteg(1)"  class="btn btn-primary btn-md active float-start" rel="2" >Föregående steg - Kontaktuppgifter</a>
-            <a href="#addarrtab-2" role="tab"(click)="ShowSteg(3)"  class="btn btn-primary btn-md active float-end" rel="2" >Nästa steg - Arrangemang</a>
+            <a role="tab" (click)="ShowSteg(1)"  class="btn btn-primary btn-md active float-start" rel="2" >Föregående steg - Kontaktuppgifter</a>
+            <a role="tab"(click)="ShowSteg(3)"  class="btn btn-primary btn-md active float-end" rel="2" >Nästa steg - Arrangemang</a>
           </div>
         </div>
 

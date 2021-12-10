@@ -14,23 +14,11 @@ export class KkStartComponent implements OnInit {
   mainPageData?:any=[];
 
 
-  constructor(private ajApi :AjApiServicesService, private _router:Router, private glb:App_Global,  private titleService: Title ) { }
+  constructor(private glb:App_Global,  private titleService: Title ) { }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.glb.HeadTitleMapper("Start"));
 
   }
 
-
-  getMaindata(searchform:FormData){
-
-    // this.ajApi.searchArrangemang(searchform).subscribe(Response => {
-    //   if((Object.keys(Response).length ===0)){
-    //     this._router.navigateByUrl("/404");
-    //   }
-    //   this.mainPageData = Response;
-    //           // this.SpinnerLoader = false;
-
-    // });
-  }
 }
