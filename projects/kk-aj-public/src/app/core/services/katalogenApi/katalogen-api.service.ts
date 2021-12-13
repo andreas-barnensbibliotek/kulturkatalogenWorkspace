@@ -1,6 +1,6 @@
+import { App_Global } from './../../global/app_global';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
-import { Global } from '../../models/global';
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { IpostSearch } from '../../interface/ipost-search';
@@ -15,7 +15,7 @@ export class KatalogenApiService extends ApiServiceService  {
     // Global event handler ------
   }
 
-  constructor(Http:HttpClient, private _glb:Global) {
+  constructor(Http:HttpClient, private _glb:App_Global) {
     super("",Http);
   }
 

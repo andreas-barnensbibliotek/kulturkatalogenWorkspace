@@ -1,12 +1,11 @@
+import { App_Global } from './../../../core/global/app_global';
 import { clsAdvFilter } from './../../../core/models/clsAdvFilter';
 import { KatalogenApiService } from './../../../core/services/katalogenApi/katalogen-api.service';
-import { LocationStrategy } from '@angular/common';
-import { Global } from './../../../core/models/global';
+
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 // import { faEllipsisV} from '@fortawesome/free-solid-svg-icons';
 import { IpostSearch } from './../../../core/interface/ipost-search';
 import { clsPostData } from './../../../core/models/clsPostData';
-import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -41,7 +40,7 @@ export class MainpageComponent implements OnInit {
 
   constructor(
     private wpApi:KatalogenApiService,
-    private glb:Global,
+    private glb:App_Global,
     private cd:ChangeDetectorRef,
     ) {
 

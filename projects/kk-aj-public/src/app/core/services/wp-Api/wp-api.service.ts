@@ -1,5 +1,5 @@
+import { App_Global } from './../../global/app_global';
 import { Subject } from 'rxjs';
-import { Global } from '../../models/global';
 import { HttpClient } from '@angular/common/http';
 
 import { ApiServiceService } from '../api-service.service';
@@ -15,7 +15,7 @@ export class WpApiService extends ApiServiceService {
   //private server:string ="http://localhost:81/Angular_wp/wpAdmin/wp-json/wp/v2/";
   //private server:string ="http://dev.frontdata.se/lasfirman/wpAdmin/wp-json/wp/v2/";
 
-  constructor(Http:HttpClient, private _global:Global) {
+  constructor(Http:HttpClient, private _global:App_Global) {
     super("",Http);
   }
 

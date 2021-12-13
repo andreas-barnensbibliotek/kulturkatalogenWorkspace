@@ -1,6 +1,6 @@
 <button (click)="goBack()" >Back with NavigationService</button>
 <div class=" item" *ngFor="let itm of mainCaruselData.arrangemangslist">
-  <a routerLink="/Arrangemang/id/{{itm.arrID}}">
+  <a routerLink="Arrangemang/{{itm.arrID}}">
     <img style="max-height: 200px;"
     src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.imageUrl}}"
     alt="{{itm.rubrik}}">

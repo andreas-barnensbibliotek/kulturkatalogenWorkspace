@@ -23,7 +23,7 @@ export class DetailpageComponent implements OnInit {
   pagejson:any=[];
   detailpage:any=[];
   currpageSlug:any;
-  constructor(private wpApi:KatalogenApiService,private Aglb:App_Global, private glb:Global, private activatedRoute:ActivatedRoute,private router:Router,private location: Location,  private titleService: Title, private navBack:NavigationServiceService) {
+  constructor(private wpApi:KatalogenApiService,private glb:App_Global, private activatedRoute:ActivatedRoute,private router:Router,private location: Location,  private titleService: Title, private navBack:NavigationServiceService) {
 
   }
 
@@ -50,7 +50,7 @@ export class DetailpageComponent implements OnInit {
       this.pagejson = Response;
 
       this.detailpage = this.pagejson.kk_aj_admin.ansokningarlista.ansokningar;
-      this.titleService.setTitle(this.Aglb.HeadTitleMapper(this.detailpage[0].ansokningtitle));
+      this.titleService.setTitle(this.glb.HeadTitleMapper(this.detailpage[0].ansokningtitle));
     })
   }
 

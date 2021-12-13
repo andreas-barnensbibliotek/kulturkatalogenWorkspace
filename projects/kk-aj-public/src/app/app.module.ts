@@ -1,11 +1,11 @@
+import { FaktaComponent } from './../app/core/shared/arr-details/fakta/fakta.component';
 import { MainFooterComponent } from './core/shared/main-footer/main-footer.component';
 import { NavigationServiceService } from './core/services/NavigationService/navigation-service.service';
 
 import { categoryStyles } from './core/models/categoryStyles';
 import { Global } from './core/models/global';
-import { MediaexempelComponent } from './kk-AdvSearch/detailpage/mediaexempel/mediaexempel.component';
-import { KontaktComponent } from './kk-AdvSearch/detailpage/kontakt/kontakt.component';
-import { FaktaComponent } from './kk-AdvSearch/detailpage/fakta/fakta.component';
+import { MediaexempelComponent } from './../app/core/shared/arr-details/mediaexempel/mediaexempel.component';
+import { KontaktComponent } from './core/shared/arr-details/kontakt/kontakt.component';
 import { UnescapePipe } from './core/pipes/unescape.pipe';
 import { KatalogenMainComponent } from './kk-AdvSearch/katalogen-main/katalogen-main.component';
 import { ScrollToTopComponent } from './core/shared/scroll-to-top/scroll-to-top.component';
@@ -36,6 +36,9 @@ import { FormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { KkResultsComponent } from './kk-results/kk-results.component';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { ArrDetailsComponent } from './core/shared/arr-details/arr-details.component';
+import { KkResultDetailsComponent } from './kk-results/kk-result-details/kk-result-details.component';
+import { VideoFixPipe } from './core/pipes/video-fix.pipe';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -103,6 +106,9 @@ const cookieConfig:NgcCookieConsentConfig = {
     MediaexempelComponent,
     KkResultsComponent,
     MainFooterComponent,
+    ArrDetailsComponent,
+    KkResultDetailsComponent,
+    VideoFixPipe
   ],
   imports: [
     BrowserModule,

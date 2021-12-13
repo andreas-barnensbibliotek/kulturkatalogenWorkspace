@@ -1,12 +1,13 @@
 import { NavigationServiceService } from './../core/services/NavigationService/navigation-service.service'
 import { AjApiServicesService } from 'aj-api-services';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Scroll } from '@angular/router';
 import { App_Global } from './../core/global/app_global';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location, ViewportScroller } from '@angular/common';
 import { Global } from '../core/models/global';
 
 import { Title } from '@angular/platform-browser';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-kk-results',
@@ -14,10 +15,26 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./kk-results.component.scss']
 })
 export class KkResultsComponent implements OnInit {
-
+  scrollPosition!: any;
   mainCaruselData?:any = [];
 
-  constructor(private ajApi:AjApiServicesService, private agbl:App_Global, private ActivatedRoute:ActivatedRoute, private _router:Router, private location:Location,  private titleService: Title,  private navBack:NavigationServiceService) {
+  constructor(private ajApi:AjApiServicesService, private gbl:App_Global,private viewportScroller: ViewportScroller, private ActivatedRoute:ActivatedRoute, private _router:Router, private location:Location,  private titleService: Title,  private navBack:NavigationServiceService) {
+    // this._router.events.pipe(
+    //   filter(e => e instanceof Scroll)
+    // ).subscribe(e => {
+    //   if ((e as Scroll).position) {
+    //     this.scrollPosition = (e as Scroll).position;
+    //   } else {
+    //     this.scrollPosition = [0, 0];
+    //   }
+    // });
+   // window.scrollTo(500, 1000);
+// this.viewportScroller.scrollToPosition(this.scrollPosition);
+    console.log("position: " + this.scrollPosition)
+
+  }
+  ngAfterViewInit() {
+    console.log("position: " + this.scrollPosition)
 
   }
 
@@ -29,7 +46,8 @@ export class KkResultsComponent implements OnInit {
        this.getCaruselData(id)
       }
     });
-    this.titleService.setTitle(this.agbl.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
+    this.gbl.currentCategoryID = id;
+    this.titleService.setTitle(this.gbl.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
   }
 
   getCaruselData(CData:any){
