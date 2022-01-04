@@ -2,18 +2,18 @@
   <div class="col-12 col-lg-8">
   <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
     <div class="form-group mt-5">
-      <label for="kk_aj_search_utovareEpost">E-postadress<a href="#" class="info" rel="arr_kk_aj_search_utovareEpost_info" > <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="arr_kk_aj_search_utovareEpost_infotext infotext">Om du/ni varit med tidigare - ange e-postadress som aktör/utövare</div>
+      <label for="kk_aj_search_utovareEpost">E-postadress <a (click)="showHideinfo(1)" class="info" rel="arr_kk_aj_search_utovareEpost_info" > <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <div *ngIf="showinfo[1]" class="arr_kk_aj_search_utovareEpost_infotext infotext" >Om du/ni varit med tidigare - ange e-postadress som aktör/utövare</div>
       <input id="kk_aj_search_utovareEpost"  class="form-control" type="text" tabindex="6" formControlName="Epost"/>
       <small class="text-danger kk_aj_search_utovareEpost_text-danger">Vänligen fyll i en giltig e-postadress för aktör/utövare</small><br/>
 
-      <label for="utovare_aktor_grupp">Namn på aktör/utövare<a href="#" class="info" rel="arr_utovare_aktor_grupp_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="arr_utovare_aktor_grupp_infotext infotext">Fyll i namn på aktör/utövare som utför arrangemanget</div>
+      <label for="utovare_aktor_grupp">Namn på aktör/utövare <a (click)="showHideinfo(2)"class="info" rel="arr_utovare_aktor_grupp_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <div *ngIf="showinfo[2]" class="arr_utovare_aktor_grupp_infotext infotext" >Fyll i namn på aktör/utövare som utför arrangemanget</div>
       <input id="utovare_aktor_grupp" class="form-control" type="text" formControlName="Organisation"  />
       <small class="text-danger utovare_aktor_grupp_text-danger">Vänligen fyll i ett namn på aktör/utövare som utför arrangemanget</small>
 
-      <label for="utovare_orghemsida">Aktörens/gruppens hemsida <a href="#" class="info" rel="arr_utovare_orghemsida_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="arr_utovare_orghemsida_infotext infotext">Fyll i URL till arrangemangets eller aktörens/utövarens hemsida</div>
+      <label for="utovare_orghemsida">Aktörens/gruppens hemsida <a (click)="showHideinfo(3)" class="info" rel="arr_utovare_orghemsida_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <div *ngIf="showinfo[3]" class="arr_utovare_orghemsida_infotext infotext">Fyll i URL till arrangemangets eller aktörens/utövarens hemsida</div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon3">https://</span>
@@ -21,13 +21,13 @@
         <input id="utovare_orghemsida"  type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" formControlName="Weburl">
       </div>
 
-      <label for="utovare_adress">Adress<a href="#" class="info" rel="arr_adress_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="arr_adress_infotext infotext">Fyll i adress för aktör/utövare</div>
+      <label for="utovare_adress">Adress <a (click)="showHideinfo(4)" class="info" rel="arr_adress_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <div *ngIf="showinfo[4]" class="arr_adress_infotext infotext">Fyll i adress för aktör/utövare</div>
       <input id="utovare_adress" class="form-control" type="text"  formControlName="Adress" />
       <small class="text-danger utovare_adress_text-danger">Vänligen fyll i adress för aktör/utövare</small><br/>
 
-      <label for="utovare_postnummer">Postnummer<a href="#" class="info" rel="arr_postnummer_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="arr_postnummer_infotext infotext">Fyll i postnummer för aktör/utövare enligt exempel 142 42</div>
+      <label for="utovare_postnummer">Postnummer <a (click)="showHideinfo(5)" class="info" rel="arr_postnummer_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <div *ngIf="showinfo[5]" class="arr_postnummer_infotext infotext">Fyll i postnummer för aktör/utövare enligt exempel 142 42</div>
       <input id="utovare_postnummer" class="form-control" type="text" formControlName="Postnr" />
       <small class="text-danger utovare_postnummer_text-danger">Vänligen fyll i postnummer för aktör/utövare enligt exempel 142 42</small><br/>
 
@@ -42,18 +42,18 @@
 
       <fieldset class="utovareadressblock">
         <legend>Kontaktperson för aktör/utövare</legend>
-        <label for="utovare_fornamn">Förnamn<a href="#" class="info" rel="utovare_fornamn_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-          <div class="utovare_fornamn_infotext infotext">Fyll i förnamn för aktör/utövare. Används vid kontakt med Kulturkatalogen Väst (visas inte på webben)</div>
+        <label for="utovare_fornamn">Förnamn <a (click)="showHideinfo(6)" class="info" rel="utovare_fornamn_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div *ngIf="showinfo[6]" class="utovare_fornamn_infotext infotext">Fyll i förnamn för aktör/utövare. Används vid kontakt med Kulturkatalogen Väst (visas inte på webben)</div>
           <input id="utovare_fornamn" type="text"  class="form-control" type="text" formControlName="Fornamn"  />
           <small class="text-danger utovare_fornamn_text-danger">Vänligen fyll i Kontaktpersonens förnamn</small><br/>
 
-        <label for="utovare_efternamn">Efternamn<a href="#" class="info" rel="utovare_efternamn_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-          <div class="utovare_efternamn_infotext infotext">Fyll i efternamn för aktör/utövare. Används vid kontakt med Kulturkatalogen Väst (visas inte på webben)</div>
+        <label for="utovare_efternamn">Efternamn <a (click)="showHideinfo(7)" class="info" rel="utovare_efternamn_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div *ngIf="showinfo[7]" class="utovare_efternamn_infotext infotext">Fyll i efternamn för aktör/utövare. Används vid kontakt med Kulturkatalogen Väst (visas inte på webben)</div>
           <input id="utovare_efternamn"  class="form-control is-valid" type="text" formControlName="Efternamn" />
           <small class="text-muted text-danger utovare_efternamn_text-danger">Vänligen fyll i kontaktpersonens efternamn. Används vid kontakt med Kulturkatalogen Väst (visas inte på webben)</small><br/>
 
-        <label for="utovare_telefonnr">Telefonnummer<a href="#" class="info" rel="arr_telefonnr_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-          <div class="arr_telefonnr_infotext infotext">Fyll i kontaktpersonens telefonnummer enligt exempel 0700111111 (visas inte på webben)</div>
+        <label for="utovare_telefonnr">Telefonnummer <a (click)="showHideinfo(8)" class="info" rel="arr_telefonnr_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div *ngIf="showinfo[8]"class="arr_telefonnr_infotext infotext">Fyll i kontaktpersonens telefonnummer enligt exempel 0700111111 (visas inte på webben)</div>
           <input id="utovare_telefonnr"  class="form-control is-invalid" type="text" formControlName="Telefon"  />
           <small class="text-danger utovare_telefonnr_text-danger">Vänligen fyll i kontaktpersonens telefonnummer exempel 0700111111 (visas inte på webben)</small><br/>
 

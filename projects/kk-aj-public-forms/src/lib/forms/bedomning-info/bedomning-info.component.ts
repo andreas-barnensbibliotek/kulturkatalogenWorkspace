@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BedomningInfoComponent implements OnInit {
 
+  valdtab:string = "1";
   constructor() { }
 
   ngOnInit(): void {
+    this.valdtab= '1';
   }
 
+  showCvTabs(showtabId:string):void{
+    this.valdtab = showtabId;
+  }
 }

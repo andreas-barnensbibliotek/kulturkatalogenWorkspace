@@ -1,3 +1,4 @@
+import { FormFaktaModel } from './forms/MODELformGroup/FormFaktaModel';
 import { FormArrangemangModel } from './forms/MODELformGroup/FormArrangemangModel';
 import { FormVisaBlockHandlerModel } from './forms/MODELformGroup/FormVisaBlockHandlerModel';
 import { formKontaktModel } from './forms/MODELformGroup/formKontaktModel';
@@ -26,6 +27,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
+import { FormExempelModel } from './forms/MODELformGroup/FormExempelModel';
+import { BesoksmalComponent } from './forms/Arrangemangstyp/besoksmal/besoksmal.component';
+import { ForestallningComponent } from './forms/Arrangemangstyp/forestallning/forestallning.component';
+import { UtstallningComponent } from './forms/Arrangemangstyp/utstallning/utstallning.component';
+import { SkolbioComponent } from './forms/Arrangemangstyp/skolbio/skolbio.component';
+import { WorkshopComponent } from './forms/Arrangemangstyp/workshop/workshop.component';
+
 
 
 
@@ -47,6 +55,11 @@ import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
     BedomningInfoComponent,
     ValjUtovareComponent,
     TidigareArrangemangComponent,
+    BesoksmalComponent,
+    ForestallningComponent,
+    UtstallningComponent,
+    SkolbioComponent,
+    WorkshopComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +75,8 @@ import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
     formKontaktModel,
     FormVisaBlockHandlerModel,
     FormArrangemangModel,
+    FormExempelModel,
+    FormFaktaModel
   ],
   exports: [
     KkAjPublicFormsComponent

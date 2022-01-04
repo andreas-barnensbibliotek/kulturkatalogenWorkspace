@@ -1,7 +1,7 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormGroupDirective, } from '@angular/forms'
 import { FormBuilder } from '@angular/forms'
 
 @Component({
@@ -10,52 +10,62 @@ import { FormBuilder } from '@angular/forms'
   styleUrls: ['./imageupload-aj.component.scss']
 })
 export class ImageuploadAJComponent implements OnInit {
+  @Input() formGroupName!:string;
   @ViewChild('imgfilevalue')
   imgfilevalue!: ElementRef;
+  imageUploadFrmGrp!:FormGroup;
 
-
+  showinfo:Array<boolean> = new Array;
   contactForm:any;
   imgtest:any;
   fileData!: File;
-  previewUrl:any = "/assets/img/missingimage.jpg";
+  previewTempimg:string ="/assets/img/missingimage.jpg";
+  previewUrl:any = this.previewTempimg;
   fileUploadProgress: string = "";
   uploadedFilePath: string = "";
 
-  constructor(private http: HttpClient, private _fb: FormBuilder) {
-
-   }
+  constructor(private http: HttpClient, private rootformGroup: FormGroupDirective) {}
+  ngOnInit(): void {
+    this.imageUploadFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+  }
 
   fileProgress(fileInput: any) {
-        this.fileData = <File>fileInput.target.files[0];
-        console.log("size: "+ this.fileData.size);
-      if (this.fileData.size) {
-        if (this.fileData.size > 720 * 1024) {
-          alert("filen får inte vara större än 720kb!");
-          // this.errorMessage = `Image must not be larger than ${this.options.maxImageSize} MB`;
-          this.imgfilevalue.nativeElement.value = '';
-          return;
-        }
+    this.fileData = <File>fileInput.target.files[0];
+    if(!this.fileData){
+      this.previewUrl= this.previewTempimg;
+      return false;
+    }
+      console.log("size: "+ this.fileData?.size);
+    if (this.fileData.size) {
+      if (this.fileData.size > 720 * 1024) {
+        alert("filen får inte vara större än 720kb!");
+        // this.errorMessage = `Image must not be larger than ${this.options.maxImageSize} MB`;
+        this.imgfilevalue.nativeElement.value = '';
+        return;
       }
-        this.preview();
+    }
+    this.preview();
   }
 
   preview() {
-      // Show preview
-      var mimeType = this.fileData.type;
-      if (mimeType.match(/image\/*/) == null) {
-        return;
-      }
-
-
-      var reader = new FileReader();
-      reader.readAsDataURL(this.fileData);
-      reader.onload = (_event) => {
-        this.previewUrl = reader.result;
-      }
+    // Show preview
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData);
+    reader.onload = (_event) => {
+      this.previewUrl = reader.result;
+    }
   }
 
   onSubmit() {
     const formData = new FormData();
+    if(!this.fileData){
+      alert("Det är tomt");
+      return false;
+    }
     if (this.fileData.size) {
       if (this.fileData.size > 120 * 1024) {
         alert("sorry filen är för stor");
@@ -63,10 +73,11 @@ export class ImageuploadAJComponent implements OnInit {
       }
     }
     formData.append('files', this.fileData);
-
+    this.imageUploadFrmGrp.patchValue({MediaFilename: this.fileData?.name})
     this.fileUploadProgress = '0%';
 
-    this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
+    // this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
+      this.http.post('https://test.se/fileUpload', formData, {
       reportProgress: true,
       observe: 'events'
     })
@@ -80,11 +91,17 @@ export class ImageuploadAJComponent implements OnInit {
         console.log(events.body);
         alert('SUCCESS !!');
       }
-
     })
-}
+  }
 
-  ngOnInit(): void {
+  initshowhideVal(antalShowInfo:number):void{
+    for (let i:number = 0; i == antalShowInfo; i++) {
+      this.showinfo[i] = false;
+    }
+  }
+
+  showHideinfo(infoboxID:number){
+    this.showinfo[infoboxID] = !this.showinfo[infoboxID]
   }
 
 }

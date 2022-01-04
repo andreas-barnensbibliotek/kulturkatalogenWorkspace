@@ -12,6 +12,7 @@ export class TidigareUtovareComponent implements OnInit {
   @Output() ChangeUtovareInfo=new EventEmitter();
 
   tidigareUtovareFrmGrp!: FormGroup
+  showinfo:Array<boolean> = new Array;
   constructor(private rootformGroup: FormGroupDirective) { }
 
   ngOnInit(): void {
@@ -22,4 +23,14 @@ export class TidigareUtovareComponent implements OnInit {
     this.ChangeUtovareInfo.emit();
   }
 
+  initshowhideVal(antalShowInfo:number):void{
+    for (let i:number = 0; i == antalShowInfo; i++) {
+      this.showinfo[i] = false;
+    }
+  }
+
+  showHideinfo(infoboxID:number){
+    this.showinfo[infoboxID] = !this.showinfo[infoboxID]
+
+  }
 }

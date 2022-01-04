@@ -56,13 +56,13 @@
             <label class="btn btn-outline-primary" for="btnradio2" >Tidigare aktör/utövare</label>
           </div>
         </div>
-        <app-valj-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnValUtovare" (click)="gettidigare()"></app-valj-utovare>
+        <app-valj-utovare *ngIf="_blockMdl.blnValUtovare" (VisaUtovareData)="gettidigare()" ></app-valj-utovare>
         <app-tidigare-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnTidigareUtovare" (click)="changeUtovareUppgifter()"></app-tidigare-utovare>
         <app-ny-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnNyUtovare"></app-ny-utovare>
         <app-kontakt-person formGroupName="Kontakt" *ngIf="_blockMdl.blnKontaktUpg" (click)="kopieraKontaktdata($event)"></app-kontakt-person>
         <div class="row mt-5 mb-5">
           <div class="col-12 col-lg-8" >
-            <a href="#addarrtab-2" role="tab" (click)="ShowSteg(2)"  class="btn btn-primary btn-lg active" rel="2" >Nästa steg - Arrangemang</a>
+            <a role="tab" (click)="ShowSteg(2)"  class="btn btn-primary btn-lg active" rel="2" >Nästa steg - Arrangemang</a>
           </div>
         </div>
       </div>
@@ -79,18 +79,15 @@
         </div>
 
         <app-val-arrangemangs-typ formGroupName="Arrangemang"></app-val-arrangemangs-typ>
-        <hr/>
-        <app-fakta></app-fakta>
-        <hr/>
-        <app-lokal></app-lokal>
-        <hr/>
-        <app-deltagarepublik></app-deltagarepublik>
-        <hr/>
-        <app-kostnader></app-kostnader>
-        <hr/>
-        <app-smakprov></app-smakprov>
-        <hr/>
-        <app-bedomning-info></app-bedomning-info>
+        <div class="col-12 col-lg-8">
+          <hr/>
+        </div>
+
+        <aj-besoksmal *ngIf="showFaktaBlock(7)" formGroupName="Faktalist"></aj-besoksmal>
+        <aj-forestallning *ngIf="showFaktaBlock(1)" formGroupName="Faktalist"></aj-forestallning>
+        <aj-skolbio *ngIf="showFaktaBlock(8)" formGroupName="Faktalist"></aj-skolbio>
+        <aj-utstallning *ngIf="showFaktaBlock(2)" formGroupName="Faktalist"></aj-utstallning>
+        <aj-workshop *ngIf="showFaktaBlock(4)" formGroupName="Faktalist"></aj-workshop>
 
         <div class="row mt-5 mb-5">
           <div class="col-12 col-lg-8" >
@@ -101,7 +98,6 @@
 
     </div>
   <!-- end container   -->
-
-    </div>
+  </div>
 
 </ng-container>

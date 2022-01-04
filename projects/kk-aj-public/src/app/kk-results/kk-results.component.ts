@@ -47,6 +47,7 @@ export class KkResultsComponent implements OnInit {
       }
     });
     this.gbl.currentCategoryID = id;
+   
     this.titleService.setTitle(this.gbl.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
   }
 

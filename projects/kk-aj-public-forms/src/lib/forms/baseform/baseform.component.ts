@@ -1,3 +1,5 @@
+import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
+import { FormExempelModel } from './../MODELformGroup/FormExempelModel';
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
 import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHandlerModel';
 import { Component, OnInit } from '@angular/core';
@@ -21,6 +23,8 @@ export class BaseformComponent implements OnInit {
     private _kontaktMdl: formKontaktModel,
     private _arrMdl:FormArrangemangModel,
     public _blockMdl: FormVisaBlockHandlerModel,
+    public _faktaMdl: FormFaktaModel,
+    public _exempelMdl: FormExempelModel,
     public fb:FormBuilder
   ) { }
 
@@ -33,6 +37,8 @@ export class BaseformComponent implements OnInit {
       Utovarelist: this.fb.group(this._utovareMdl.genFG),
       Kontakt: this.fb.group(this._kontaktMdl.genFG),
       Arrangemang: this.fb.group(this._arrMdl.genFG),
+      Faktalist:this.fb.group([this._faktaMdl.genFG]),
+      Exempel:this.fb.group(this._exempelMdl.genFG)
     });
   }
 
@@ -42,6 +48,7 @@ export class BaseformComponent implements OnInit {
   }
 
   gettidigare(){
+    //hämta utövardatat från apit och patcha utövarlistan
     this.BaseRootForm.patchValue({Utovarelist:this._utovareMdl.getUtovareData()});
     this._blockMdl.showTidigareUtovare();
   }
@@ -76,7 +83,14 @@ export class BaseformComponent implements OnInit {
 
   ShowSteg(val:number){
     this._blockMdl.stegBlock(val)
+    return false;
   }
 
+  showFaktaBlock(arrtypid:number){
+    let visaFakta = this.BaseRootForm.get('Arrangemang')!.get('Arrangemangtyp')!.value;
+    if(arrtypid == visaFakta){
+      return true;
+    }
+  }
 
 }

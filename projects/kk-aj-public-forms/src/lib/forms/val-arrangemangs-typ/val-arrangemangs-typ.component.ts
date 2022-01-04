@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormArray, FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
 import { ImageUploaderOptions } from 'ngx-image-uploader-next';
 
 @Component({
@@ -23,6 +23,23 @@ export class ValArrangemangsTypComponent implements OnInit {
 
   ngOnInit(): void {
     this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+  }
+
+  onCheckboxChange(e:any, controlname:string) {
+    const checkArray: FormArray = this.arrangemangFrmGrp.get(controlname) as FormArray;
+
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
   }
 
 }

@@ -9,11 +9,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class KontaktPersonComponent implements OnInit {
   @Output() copydata = new EventEmitter()
   @Input() formGroupName!: string;
+  showinfo:Array<boolean> = new Array;
 
   kontaktFrmGrp!: FormGroup
   constructor(private rootformGroup: FormGroupDirective) { }
 
   ngOnInit(): void {
+    this.initshowhideVal(3);
     this.kontaktFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
@@ -21,5 +23,16 @@ export class KontaktPersonComponent implements OnInit {
   copykontaktData(){
     this.copydata.emit();
     return false;
+  }
+
+  initshowhideVal(antalShowInfo:number):void{
+    for (let i:number = 0; i == antalShowInfo; i++) {
+      this.showinfo[i] = false;
+    }
+  }
+
+  showHideinfo(infoboxID:number){
+    this.showinfo[infoboxID] = !this.showinfo[infoboxID]
+
   }
 }
