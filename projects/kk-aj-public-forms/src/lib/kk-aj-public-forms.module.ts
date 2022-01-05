@@ -33,6 +33,7 @@ import { ForestallningComponent } from './forms/Arrangemangstyp/forestallning/fo
 import { UtstallningComponent } from './forms/Arrangemangstyp/utstallning/utstallning.component';
 import { SkolbioComponent } from './forms/Arrangemangstyp/skolbio/skolbio.component';
 import { WorkshopComponent } from './forms/Arrangemangstyp/workshop/workshop.component';
+import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -60,6 +61,7 @@ import { WorkshopComponent } from './forms/Arrangemangstyp/workshop/workshop.com
     UtstallningComponent,
     SkolbioComponent,
     WorkshopComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -69,6 +71,8 @@ import { WorkshopComponent } from './forms/Arrangemangstyp/workshop/workshop.com
     HttpClientModule,
     ImageUploaderModule,
     NgxBootstrapSliderModule,
+    NgbModule,
+
   ],
   providers: [
     formUtovareModel,

@@ -2,7 +2,7 @@ import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
 import { FormExempelModel } from './../MODELformGroup/FormExempelModel';
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
 import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHandlerModel';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileQueueObject, ImageUploaderOptions } from 'ngx-image-uploader-next';
 import { formUtovareModel } from '../MODELformGroup/formUtovareModel';
@@ -25,7 +25,8 @@ export class BaseformComponent implements OnInit {
     public _blockMdl: FormVisaBlockHandlerModel,
     public _faktaMdl: FormFaktaModel,
     public _exempelMdl: FormExempelModel,
-    public fb:FormBuilder
+    public fb:FormBuilder,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +38,7 @@ export class BaseformComponent implements OnInit {
       Utovarelist: this.fb.group(this._utovareMdl.genFG),
       Kontakt: this.fb.group(this._kontaktMdl.genFG),
       Arrangemang: this.fb.group(this._arrMdl.genFG),
-      Faktalist:this.fb.group([this._faktaMdl.genFG]),
+      Faktalist:this.fb.group(this._faktaMdl.genFG),
       Exempel:this.fb.group(this._exempelMdl.genFG)
     });
   }
@@ -92,5 +93,7 @@ export class BaseformComponent implements OnInit {
       return true;
     }
   }
-
+  ngAfterContentChecked() {
+    this.ref.detectChanges();
+  }
 }

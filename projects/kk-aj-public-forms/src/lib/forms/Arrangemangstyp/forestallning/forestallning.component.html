@@ -1,1 +1,28 @@
-<p>forestallning works!</p>
+<ng-container [formGroup]="ForestallningFrmGrp">
+  <app-fakta formGroupName="Faktalist"></app-fakta>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-lokal></app-lokal>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-deltagarepublik ></app-deltagarepublik>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-kostnader ></app-kostnader>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-smakprov ></app-smakprov>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-bedomning-info ></app-bedomning-info>
+</ng-container>

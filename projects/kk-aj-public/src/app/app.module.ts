@@ -39,6 +39,7 @@ import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsen
 import { ArrDetailsComponent } from './core/shared/arr-details/arr-details.component';
 import { KkResultDetailsComponent } from './kk-results/kk-result-details/kk-result-details.component';
 import { VideoFixPipe } from './core/pipes/video-fix.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -122,6 +123,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     AutocompleteLibModule,
     FormsModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
+    NgbModule,
 
   ],
   providers: [

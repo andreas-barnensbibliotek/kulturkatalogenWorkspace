@@ -1,8 +1,10 @@
 <div class="col-12 col-lg-8 mt-5 mb-2">
-
-  <div class="form-group " *ngIf="showExemple">
+    <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
+  <div class="form-group mt-5">
     <legend>Lägg till ett smakprov från ditt arrangemang</legend>
-    <p>Här kan du ladda upp bild (annan än presentationsbilden), film- eller ljudklipp från föreställningen.</p><br />
+    <p>Här kan du ladda upp bild (annan än presentationsbilden), film- eller ljudklipp från föreställningen.</p>
+  </div>
+  <div class="form-group " *ngIf="showExemple">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link " [ngClass]="{'active': valExempeldtab == '1' }" (click)="showExempelTabs('1')" id="pills-FilmLjud-tab" data-bs-toggle="pill" data-bs-target="#pills-FilmLjud" type="button" role="tab" aria-controls="pills-FilmLjud" aria-selected="true">FilmLjud</button>
@@ -10,7 +12,6 @@
       <li class="nav-item" role="presentation">
         <button class="nav-link " [ngClass]="{'active': valExempeldtab == '2' }" (click)="showExempelTabs('2')"  id="pills-Bild-tab" data-bs-toggle="pill" data-bs-target="#pills-Bild" type="button" role="tab" aria-controls="pills-Bild" aria-selected="false">Bild</button>
       </li>
-
     </ul>
     <div class="tab-content mb-3" id="pills-tabContent">
       <div class="tab-pane fade " [ngClass]="{'show active': valExempeldtab == '1' }" id="pills-FilmLjud" role="tabpanel" aria-labelledby="pills-FilmLjud-tab">
@@ -62,7 +63,7 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary" (click)="visadoljshowExemple()">{{lblExemple}}</button>
+  <button type="button" class="btn btn-dark" (click)="visadoljshowExemple()">{{lblExemple}}</button>
 </div>
 
 

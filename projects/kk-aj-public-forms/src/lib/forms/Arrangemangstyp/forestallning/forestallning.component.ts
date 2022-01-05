@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'aj-forestallning',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forestallning.component.scss']
 })
 export class ForestallningComponent implements OnInit {
+  @Input() formGroupName!: string;
+  ForestallningFrmGrp!: FormGroup;
 
-  constructor() { }
+  constructor(private rootformGroup: FormGroupDirective) { }
 
   ngOnInit(): void {
+    this.ForestallningFrmGrp = this.rootformGroup.control
   }
 
 }

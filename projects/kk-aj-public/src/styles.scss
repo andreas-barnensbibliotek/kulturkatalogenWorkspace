@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Roboto&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-@import "~bootstrap/scss/bootstrap.scss";
+// @import "~bootstrap/scss/bootstrap.scss";
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
 // @import "assets/scss/arrangemangsteps.scss";
 html, body {
   min-height: 100%;
@@ -104,3 +107,4 @@ carousel{
   z-index: 99999!important;
 }
 // .infotext{display: none;}
+
