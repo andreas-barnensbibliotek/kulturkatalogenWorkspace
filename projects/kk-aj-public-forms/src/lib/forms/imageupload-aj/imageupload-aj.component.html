@@ -3,7 +3,7 @@
   <div class="col-md-6" >
     <label for="formPresentationsbild">Presentationsbild <a (click)="showHideinfo(1)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
     <div *ngIf="showinfo[1]" class="formPresentationsbild_infotext infotext">Här har du möjlighet att ladda upp en presentationsbild.</div>
-
+<hr>
       <p>Välj bild att ladda upp</p>
       <div class="form-group">
         <div class="image-preview mb-3" *ngIf="previewUrl">
@@ -19,7 +19,7 @@
         <div class="mb-3" *ngIf="uploadedFilePath">
             {{uploadedFilePath}}
         </div>
-        <div class="form-group">
+        <div *ngIf="tillGangligfalt" class="form-group">
           <label for="utovare_ort">Alternativtext <a (click)="showHideinfo(2)" class="info" rel="arr_fotograf_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[2]" class="arr_fotograf_infotext infotext" >Fyll i alternativtext</div>
           <input formControlName="MediaAlt" id="utovare_ort" class="form-control" type="text"  />
@@ -30,5 +30,6 @@
           <input formControlName="MediaFoto" id="media_foto" class="form-control" type="text"  />
           <small class="text-danger media_foto_text-danger">Vänligen fyll i Fotograf/Illustratör</small><br/>
         </div>
+        <hr>
   </div>
 </ng-container>

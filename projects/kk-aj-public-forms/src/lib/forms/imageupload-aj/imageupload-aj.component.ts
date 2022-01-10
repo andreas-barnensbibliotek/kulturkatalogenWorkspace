@@ -23,6 +23,7 @@ export class ImageuploadAJComponent implements OnInit {
   previewUrl:any = this.previewTempimg;
   fileUploadProgress: string = "";
   uploadedFilePath: string = "";
+  tillGangligfalt:boolean = false;
 
   constructor(private http: HttpClient, private rootformGroup: FormGroupDirective) {}
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class ImageuploadAJComponent implements OnInit {
     // Show preview
     var mimeType = this.fileData.type;
     if (mimeType.match(/image\/*/) == null) {
+      this.tillGangligfalt =false
       return;
     }
     var reader = new FileReader();
@@ -64,11 +66,13 @@ export class ImageuploadAJComponent implements OnInit {
     const formData = new FormData();
     if(!this.fileData){
       alert("Det är tomt");
+      this.tillGangligfalt = false;
       return false;
     }
     if (this.fileData.size) {
       if (this.fileData.size > 120 * 1024) {
         alert("sorry filen är för stor");
+        this.tillGangligfalt = false;
         return;
       }
     }
@@ -76,8 +80,8 @@ export class ImageuploadAJComponent implements OnInit {
     this.imageUploadFrmGrp.patchValue({MediaFilename: this.fileData?.name})
     this.fileUploadProgress = '0%';
 
-    // this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
-      this.http.post('https://test.se/fileUpload', formData, {
+     this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
+      // this.http.post('https://test.se/fileUpload', formData, {
       reportProgress: true,
       observe: 'events'
     })
@@ -89,10 +93,15 @@ export class ImageuploadAJComponent implements OnInit {
       } else if(events.type === HttpEventType.Response) {
         this.fileUploadProgress = '';
         console.log(events.body);
+        this.tillGangligfalt = true;
         alert('SUCCESS !!');
       }
     })
   }
+
+  // ShowTillgangligFalt(){
+  //   this.showinfo = !this.showinfo
+  // }
 
   initshowhideVal(antalShowInfo:number):void{
     for (let i:number = 0; i == antalShowInfo; i++) {

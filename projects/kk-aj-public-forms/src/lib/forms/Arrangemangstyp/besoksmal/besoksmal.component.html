@@ -3,9 +3,9 @@
     <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
     <div class="form-group mt-5">
       <legend>Deltagare/Publik</legend>
-      <label for="formPresentationsbild">Ålder <a href="#" class="info" rel="formPresentationsbild_info">
+      <label for="formPresentationsbild">Ålder <a (click)="showHideinfo(1)" class="info" rel="formPresentationsbild_info">
         <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="formPresentationsbild_infotext infotext">Här väljer du ålder, välj dom en eller flera som passar ditt
+      <div *ngIf="showinfo[1]" class="formPresentationsbild_infotext infotext">Här väljer du ålder, välj dom en eller flera som passar ditt
         arrangemang.</div><br />
       <div class="form-check form-check-inline">
         <input (change)="onCheckboxChange($event,'AlderFran')" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
@@ -32,35 +32,44 @@
     </div>
   </div>
 
-  <div class="col-12 col-lg-8">
+  <!-- <div class="col-12 col-lg-8">
     <hr/>
-  </div>
+  </div> -->
 
   <!-- Ekonomi block START -->
   <div class="col-12 col-lg-8">
-    <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
     <div class="form-group mt-5">
       <legend>Kostnader</legend>
-      <label for="arr_resorovrigt">Övrigt om kostnader (ej obligatorisk) <a href="#" class="info"
+      <label for="arr_resorovrigt">Övrigt om kostnader (ej obligatorisk) <a (click)="showHideinfo(2)" class="info"
           rel="arr_resorovrigt_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div  class="arr_resorovrigt_infotext infotext">Här kan du ange om det finns rabatter, paketpris eller om det
+      <div *ngIf="showinfo[2]" class="arr_resorovrigt_infotext infotext">Här kan du ange om det finns rabatter, paketpris eller om det
         tillkommer fler kostnader, t.ex. entréavgifter eller liknande.</div>
       <textarea formControlName="OvrigaKostnader" id="arr_resorovrigt" name="arr_resorovrigt" rel="30" maxlength="400" class="form-control"></textarea>
     </div>
-    <div class="form-group mt-3">
-      <label for="arr_overiganoter">Övriga noteringar (ej obligatorisk) <a href="#" class="info"
-          rel="arr_overiganoter_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="arr_overiganoter_infotext infotext">Fyll i om det är något mer som arrangören behöver veta om/inför
-        arrangemanget.</div>
-      <textarea formControlName="Ovrigt" id="arr_overiganoter" name="arr_overiganoter" rel="33" maxlength="400" class="form-control"></textarea>
+  </div>
+
+  <!-- <div class="col-12 col-lg-8 mt-5">
+    <hr/>
+  </div> -->
+
+  <div class="col-12 col-lg-8">
+    <div class="form-group mt-5">
+      <legend>Övrigt</legend>
+      <div class="form-group mt-3">
+        <label for="arr_overiganoter">Övriga noteringar (ej obligatorisk) <a (click)="showHideinfo(3)" class="info"
+            rel="arr_overiganoter_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+        <div *ngIf="showinfo[3]" class="arr_overiganoter_infotext infotext">Fyll i om det är något mer som arrangören behöver veta om/inför
+          arrangemanget.</div>
+        <textarea formControlName="Ovrigt" id="arr_overiganoter" name="arr_overiganoter" rel="33" maxlength="400" class="form-control"></textarea>
+      </div>
     </div>
   </div>
 
-  <div class="col-12 col-lg-8 mt-5">
+  <!-- <div class="col-12 col-lg-8 mt-5">
     <hr/>
-  </div>
+  </div> -->
 
-  <app-smakprov></app-smakprov>
+ <app-smakprov formGroupName="Exempel"></app-smakprov>
 
   <div class="col-12 col-lg-8 mt-5">
     <hr/>

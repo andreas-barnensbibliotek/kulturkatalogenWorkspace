@@ -7,17 +7,17 @@ export class FormExempelModel {
 
  public genFG:any  = {
 
-    MediaID: new FormControl(''),
-    MediaUrl: new FormControl(''),
-    MediaFilename: new FormControl(''),
-    MediaSize: new FormControl(''),
-    MediaAlt: new FormControl(''),
-    MediaFoto: new FormControl(''),
-    MediaTyp: new FormControl(''),
-    MediaVald: new FormControl(''),
-    mediaTitle:new FormControl(''),
-    mediaBeskrivning:new FormControl(''),
-    mediaLink: new FormControl(''),
+    MediaID: [''],
+    MediaUrl: [''],
+    MediaFilename: [''],
+    MediaSize: [''],
+    MediaAlt: [''],
+    MediaFoto: [''],
+    MediaTyp: ['2'],
+    MediaVald: [''],
+    mediaTitle:[''],
+    mediaBeskrivning:[''],
+    mediaLink: [''],
 
    }
 

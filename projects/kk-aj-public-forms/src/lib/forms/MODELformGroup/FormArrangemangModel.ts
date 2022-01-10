@@ -1,30 +1,31 @@
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 // import { LocalStorageHandler } from './localstorageHandler';
 import {Injectable } from "@angular/core";
 
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
 export class FormArrangemangModel {
+  constructor(private fb: FormBuilder) { }
 
- public genFG:any  = {
-    Rubrik: new FormControl(''),
-    UnderRubrik: new FormControl(''),
-    Innehall:new FormControl(''),
-    Arrangemangtyp: new FormControl(''),
-    Konstform: new FormArray([]),
-    Konstform2: new FormControl(''),
-    Konstform3: new FormControl(''),
-    MainImage: new FormGroup({
-      MediaID: new FormControl(''),
-      MediaUrl: new FormControl(''),
-      MediaFilename: new FormControl(''),
-      MediaSize: new FormControl(''),
-      MediaAlt: new FormControl(''),
-      MediaFoto: new FormControl(''),
-      MediaTyp: new FormControl(''),
-      MediaVald: new FormControl(''),
-      mediaTitle:new FormControl(''),
-      mediaBeskrivning:new FormControl(''),
-      mediaLink: new FormControl(''),
+  public genFG:any  = {
+    Rubrik: [''],
+    UnderRubrik: [''],
+    Innehall:[''],
+    Arrangemangtyp: [''],
+    Konstform: this.fb.array([]),
+    Konstform2: [''],
+    Konstform3: [''],
+    MainImage: this.fb.group({
+      MediaID: [''],
+      MediaUrl: [''],
+      MediaFilename: [''],
+      MediaSize: [''],
+      MediaAlt: [''],
+      MediaFoto: [''],
+      MediaTyp: [''],
+      MediaVald: [''],
+      mediaTitle:[''],
+      mediaBeskrivning:[''],
+      mediaLink: [''],
     })
    }
 

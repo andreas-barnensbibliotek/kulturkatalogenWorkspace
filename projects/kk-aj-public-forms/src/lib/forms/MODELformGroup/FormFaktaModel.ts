@@ -1,53 +1,59 @@
-import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import {Injectable } from "@angular/core";
+import { FormExempelModel } from './../MODELformGroup/FormExempelModel';
 
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
 export class FormFaktaModel {
+  constructor(public fb:FormBuilder,public _exempelMdl: FormExempelModel){
+
+  }
   public genFG:any  =
   {
-    AntalMedverkande: new FormControl(''),
-    Medverkande: new FormControl(''),
-    Period: new FormControl(''),
-    BokningsbarTom: new FormControl(''),
-    MaxPublik: new FormControl(''),
-    AlderFran: new FormArray([]),
-    AlderTill: new FormControl(''),
-    ForestallningarDag: new FormControl(''),
-    Byggtid: new FormControl(''),
-    Rivtid:new FormControl(''),
-    ScenBredd: new FormControl(''),
-    ScenDjup: new FormControl(''),
-    ScenTakHojd: new FormControl(''),
-    Ljust: new FormControl(''),
-    BarHjalp: new FormControl(''),
-    El: new FormControl(''),
-    OvrigaLokalkrav: new FormControl(''),
-    Konstnad: new FormControl(''),
-    KostnadAndraArr: new FormControl(''),
-    Resor:new FormControl(''),
-    Logi: new FormControl(''),
-    LogiOvrigt: new FormControl(''),
-    Traktamente: new FormControl(''),
-    Lararhandledning: new FormControl(''),
-    Speltid: new FormControl(''),
-    Morklaggning:new FormControl(''),
-    Ljud: new FormControl(''),
-    KostnadPaket: new FormControl(''),
-    OvrigaKostnader: new FormControl(''),
-    Ovrigt: new FormControl(''),
-    KostnadtredjeArr: new FormControl(''),
-    PremiarDatum: new FormControl(''),
-    MaxAntal: new FormControl(''),
-    Cv: new FormControl(''),
-    BidragStod: new FormControl(''),
-    BidragStodFran: new FormControl(''),
-    FSkatt: new FormControl(''),
-    Centrumbildning: new FormControl(''),
-    OvrigInfo:new FormControl(''),
-    UtstallningsPeriod: new FormControl(''),
-    PedagogisVerksamhet: new FormControl(''),
-    Marknadsforing: new FormControl(''),
-    Yta: new FormControl(''),
+    AntalMedverkande: [''],
+    Medverkande: [''],
+    Period: [''],
+    BokningsbarTom: [''],
+    MaxPublik: [''],
+    AlderFran: this.fb.array([]),
+    AlderTill: [''],
+    ForestallningarDag: [''],
+    Byggtid: [''],
+    Rivtid:[''],
+    ScenBredd: [''],
+    ScenDjup: [''],
+    ScenTakHojd: [''],
+    Ljust: [''],
+    BarHjalp: [''],
+    El: [''],
+    OvrigaLokalkrav: [''],
+    Konstnad: [''],
+    KostnadAndraArr: [''],
+    Resor:[''],
+    Logi: [''],
+    LogiOvrigt: [''],
+    Traktamente: [''],
+    Lararhandledning: [''],
+    Speltid: [''],
+    Morklaggning:[''],
+    Ljud: [''],
+    KostnadPaket: [''],
+    OvrigaKostnader: [''],
+    Ovrigt: [''],
+    KostnadtredjeArr: [''],
+    PremiarDatum: [''],
+    MaxAntal: [''],
+    Cv: [''],
+    BidragStod: [''],
+    BidragStodFran: [''],
+    FSkatt: [''],
+    Centrumbildning: [''],
+    OvrigInfo:[''],
+    UtstallningsPeriod: [''],
+    PedagogisVerksamhet: [''],
+    Marknadsforing: [''],
+    Yta: [''],
+    Exempel: this.fb.array([])
+    // Exempel:this.fb.group(this._exempelMdl.genFG)
   }
 
   // public genFG:any  =
@@ -101,8 +107,8 @@ export class FormFaktaModel {
   //   return new FormGroup({
   //     Faktaid: new FormControl(faktaid),
   //     FaktaTypID:new FormControl(Faktatyp),
-  //     Faktarubrik: new FormControl(''),
-  //     FaktaValue: new FormControl(''),
+  //     Faktarubrik: [''],
+  //     FaktaValue: [''],
   //     })
   //   }
 }

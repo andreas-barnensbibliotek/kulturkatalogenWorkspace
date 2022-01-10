@@ -6,19 +6,19 @@ import {Injectable } from "@angular/core";
 export class formUtovareModel {
 
  public genFG:any  = {
-    UtovarID: new FormControl(''),
-    Organisation: new FormControl(''),
-    Fornamn: new FormControl(''),
-    Efternamn: new FormControl(''),
-    Telefon: new FormControl(''),
-    Adress: new FormControl(''),
-    Postnr: new FormControl(''),
-    Ort: new FormControl(''),
-    Epost: new FormControl(''),
-    Kommun: new FormControl(''),
-    Weburl: new FormControl(''),
-    Bild: new FormControl(''),
-    Beskrivning: new FormControl(''),
+    UtovarID: [''],
+    Organisation: [''],
+    Fornamn: [''],
+    Efternamn: [''],
+    Telefon: [''],
+    Adress: [''],
+    Postnr: [''],
+    Ort: [''],
+    Epost: [''],
+    Kommun: [''],
+    Weburl: [''],
+    Bild: [''],
+    Beskrivning: [''],
    }
 
    getUtovareData(){

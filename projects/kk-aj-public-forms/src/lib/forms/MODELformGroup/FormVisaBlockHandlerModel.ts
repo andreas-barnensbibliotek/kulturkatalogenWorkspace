@@ -1,5 +1,4 @@
 import {Injectable } from "@angular/core";
-import { ɵangular_packages_platform_browser_platform_browser_k } from "@angular/platform-browser";
 
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
 export class FormVisaBlockHandlerModel {

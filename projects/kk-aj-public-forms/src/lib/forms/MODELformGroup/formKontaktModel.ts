@@ -6,11 +6,11 @@ import {Injectable } from "@angular/core";
 export class formKontaktModel {
 
  public genFG:any  = {
-    KontaktId: new FormControl(''),
-    Kontaktfornamn:new FormControl(''),
-    KontaktEfternamn: new FormControl(''),
-    KontaktTelefon: new FormControl(''),
-    KontaktEpost: new FormControl(''),
+    KontaktId: [''],
+    Kontaktfornamn:[''],
+    KontaktEfternamn: [''],
+    KontaktTelefon: [''],
+    KontaktEpost: [''],
    }
 
   // getUtovareData(){

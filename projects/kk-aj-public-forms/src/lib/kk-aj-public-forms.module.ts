@@ -34,6 +34,8 @@ import { UtstallningComponent } from './forms/Arrangemangstyp/utstallning/utstal
 import { SkolbioComponent } from './forms/Arrangemangstyp/skolbio/skolbio.component';
 import { WorkshopComponent } from './forms/Arrangemangstyp/workshop/workshop.component';
 import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListasmakprovComponent } from './forms/smakprov/listasmakprov/listasmakprov.component';
+import { SafeHtmlPipe } from './forms/pipes/safepipe';
 
 
 
@@ -61,6 +63,8 @@ import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UtstallningComponent,
     SkolbioComponent,
     WorkshopComponent,
+    ListasmakprovComponent,
+    SafeHtmlPipe
 
   ],
   imports: [
