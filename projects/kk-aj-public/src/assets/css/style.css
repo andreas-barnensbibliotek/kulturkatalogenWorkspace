@@ -402,11 +402,11 @@ section,
 }
 
 .gen-section-padding-2 {
-    padding: 90px 0px 60px 0px;
+    padding: 60px 0px 40px 0px;
 }
 
 .gen-section-padding-3 {
-    padding: 90px 0px 90px 0px;
+    padding: 60px 0px 40px 0px;
 }
 
 @media (max-width:767px) {
