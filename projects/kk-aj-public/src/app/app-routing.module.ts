@@ -1,3 +1,4 @@
+import { KkajStartComponent } from './kkaj-start/kkaj-start.component';
 import { MainpageComponent } from './kk-AdvSearch/mainpage/mainpage/mainpage.component';
 import { KkResultsComponent } from './kk-results/kk-results.component';
 import { DetailpageComponent } from './kk-AdvSearch/detailpage/detailpage/detailpage.component';
@@ -17,14 +18,14 @@ const routerOptions: ExtraOptions = {
 };
 const routes: Routes = [
 
-  { path: 'start',  component: KkStartComponent, },
+  { path: 'start',  component: KkajStartComponent, },
   { path: 'arrform',  component: MainArrFormComponent, },
   { path: 'advsearch',component: MainpageComponent, },
   { path: 'lista' ,
     children: [
       {path: ':id/Arrangemang/:arrid', component: KkResultDetailsComponent},
       {path: ':id', component: KkResultsComponent},
-      {path: '', component: KkStartComponent},
+      {path: '', component: KkajStartComponent},
     ]
   },
   { path: 'Arr/id/:id', component: DetailpageComponent },

@@ -1,0 +1,19 @@
+.regionlogo{
+  max-height: 36px!important;
+}
+.logotext {
+  font-size: 28px !important;
+}
+@media (max-width: 450px) {
+  .logotext {
+    font-size: 26px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .logotext {
+    font-size: 36px !important;
+  }
+  .regionlogo{
+    max-height: 45px!important;
+  }
+}

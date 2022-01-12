@@ -1,0 +1,81 @@
+
+
+<!-- owl-carousel Videos Section-1 Start -->
+<section class="gen-section-padding-2">
+  <div class="container">
+     <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6">
+           <h4 class="gen-heading-title">All Time Hits</h4>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+           <div class="gen-movie-action">
+              <div class="gen-btn-container text-right">
+                 <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                    <span class="text">More Videos</span>
+                 </a>
+              </div>
+           </div>
+        </div>
+     </div>
+     <div class="row mt-3">
+        <div class="col-12">
+           <div class="gen-style-2">
+
+              <carousel
+                [cellsToScroll]= "4"
+                [cellWidth] = "400"
+                [height]="360"
+                [arrowsOutside]="false"
+                [autoplay]= false
+                [autoplayInterval]= "1000"
+                [lightDOM]=true
+                [margin]="20"
+                objectfit= "cover"
+                [loop]="true">
+                <div class="carousel-cell item" *ngFor="let itm of mainCaruselData.arrangemangslist">
+                    <div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+                      <div class="gen-carousel-movies-style-2 movie-grid style-2">
+                        <div class="gen-movie-contain">
+                            <div class="gen-movie-img">
+                              <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.imageUrl}}" alt="{{itm.rubrik}}">
+
+                              <div class="gen-movie-add">
+                                  <div class="wpulike wpulike-heart">
+                                    <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+                                          type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+                                  </div>
+                              </div>
+                              <div class="gen-movie-action">
+                                  <!-- <a href="single-movie.html" class="gen-button">
+                                    <i class="fa fa-play"></i>
+                                  </a> -->
+                              </div>
+                            </div>
+                            <div class="gen-info-contain">
+                              <div class="gen-movie-info">
+                                <h3><a routerLink="/Arr/id/{{itm.arrID}}" >{{itm.rubrik}}</a></h3>
+                                {{itm.underrubrik}}
+                              </div>
+                              <div class="gen-movie-meta-holder">
+                                Utövare: {{itm.organisation}}<br>
+                                Ålder: {{itm.startyear}}-{{itm.stoppyear}}
+
+                              </div>
+
+
+
+
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- #post-## -->
+                </div>
+              </carousel>
+
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
+<!-- owl-carousel Videos Section-1 End -->

@@ -40,6 +40,10 @@ import { ArrDetailsComponent } from './core/shared/arr-details/arr-details.compo
 import { KkResultDetailsComponent } from './kk-results/kk-result-details/kk-result-details.component';
 import { VideoFixPipe } from './core/pipes/video-fix.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { KkajStartComponent } from './kkaj-start/kkaj-start.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainNavComponent } from './core/shared/main-nav/main-nav.component';
+import { KkajCaruselComponent } from './core/shared/kkaj-carusel/kkaj-carusel.component';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -109,7 +113,11 @@ const cookieConfig:NgcCookieConsentConfig = {
     MainFooterComponent,
     ArrDetailsComponent,
     KkResultDetailsComponent,
-    VideoFixPipe
+    VideoFixPipe,
+    KkajStartComponent,
+    MainNavComponent,
+    KkajCaruselComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -124,6 +132,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     FormsModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     NgbModule,
+    BrowserAnimationsModule
 
   ],
   providers: [

@@ -31,9 +31,9 @@
               "./node_modules/cookieconsent/build/cookieconsent.min.css",
               "./node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css",
               "projects/kk-aj-public/src/styles.scss"
-
             ],
             "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
               "./node_modules/cookieconsent/build/cookieconsent.min.js",
               "./node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"
             ]
