@@ -114,8 +114,93 @@ carousel{
 }
 .infotext{display: none;}
 
-.carousel-cells .carousel-cell img{
+.carousel-cells .carousel-cell img, .ajmax-row-height img{
 
   // width: 366px!important;
   height:226px!important; // använd bilder med 16:9 ratio (https://calculateaspectratio.com/)
+}
+
+.gen-info-contain{
+  h3{
+    line-height: 18px;
+    padding-bottom:.5rem;
+  }
+   p{
+    line-height: 22px;
+    font-size: 1.1rem;
+    margin:0;
+    padding:0;
+  }
+  .gen-movie-meta-holder{
+    p{
+      padding-top:.5rem;
+      font-size: .9rem;
+    }
+  }
+}
+.gen-movie-img, .gen-post-media{
+  background-color: #343a40;
+  border-radius:6px;
+   img{
+    border-radius: 6px;
+  }
+}
+
+// Sections bakgrundsfärger
+
+.aj-section-bg-color-dark{
+  background-color:#464e57;
+}
+.aj-section-bg-color-darker{
+  background-color:#343a40;
+}
+
+.aj-section-bgimg-color-darker{
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-color:#343a40;
+  background-image: url('/assets/images/kulturkatalog_flowers_small.png');
+}
+
+.gen-blog-post .gen-blog-contain {
+  background-color: #fff;
+  color:#000;
+  h1{
+    color:#000;
+    font-size: 3rem;
+  }
+  h2{
+    margin-top:2rem;
+    color:#222;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  h3{
+
+    color:#000;
+    font-size: 1.8rem;
+  }
+  .gen-post-meta{
+    ul{
+      margin-bottom: .5rem;
+      .gen-post-author{
+        font-size: 1.8rem;
+        font-weight: 300;
+      }
+    }
+  }
+  .granska_innehall{
+    margin-top: 4rem;
+    font-size: 1.2rem;
+  }
+  .arrExempellist{
+    list-style:none;
+    margin-left: 0;
+    padding-left: 0;
+
+    .card{ border:0px;}
+  }
+  .comment-reply-title{
+    margin-top:2rem;
+  }
 }

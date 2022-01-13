@@ -1,7 +1,7 @@
 
 
 <!-- owl-carousel Videos Section-1 Start -->
-<section class="gen-section-padding-2" style="background-position: right bottom; background-repeat: no-repeat; background-color:#464e57;">
+<!-- <section class="gen-section-padding-2 aj-section-bg-color-dark" >
   <div class="container">
      <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-6">
@@ -10,7 +10,7 @@
         <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
            <div class="gen-movie-action">
               <div class="gen-btn-container text-right">
-                 <a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+                 <a routerLink="/lista/3" class="gen-button gen-button-flat">
                     <span class="text">More Videos</span>
                  </a>
               </div>
@@ -19,7 +19,7 @@
      </div>
      <div class="row mt-3">
         <div class="col-12">
-           <div class="gen-style-2">
+           <div class="gen-style-2"> -->
 
               <carousel
                 [cellsToScroll]= "4"
@@ -54,12 +54,12 @@
                             <div class="gen-info-contain">
                               <div class="gen-movie-info">
                                 <h3><a routerLink="/Arr/id/{{itm.arrID}}" >{{itm.rubrik}}</a></h3>
-                                {{itm.underrubrik}}
+                                <p>{{itm.underrubrik}}</p>
                               </div>
                               <div class="gen-movie-meta-holder">
-                                Utövare: {{itm.organisation}}<br>
+                               <p>Utövare: {{itm.organisation}}<br>
                                 Ålder: {{itm.startyear}}-{{itm.stoppyear}}
-
+                                </p>
                               </div>
 
 
@@ -73,9 +73,9 @@
                 </div>
               </carousel>
 
-           </div>
+           <!-- </div>
         </div>
      </div>
   </div>
-</section>
+</section> -->
 <!-- owl-carousel Videos Section-1 End -->

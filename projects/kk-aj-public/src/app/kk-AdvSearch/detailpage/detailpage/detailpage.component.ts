@@ -3,10 +3,10 @@ import { App_Global } from './../../../core/global/app_global';
 import { Title } from '@angular/platform-browser';
 import { KatalogenApiService } from './../../../core/services/katalogenApi/katalogen-api.service';
 import { Global } from './../../../core/models/global';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faChevronLeft, faPrint, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, ParamMap, Router, UrlTree } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location, LocationStrategy } from '@angular/common';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -15,45 +15,27 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./detailpage.component.scss']
 })
 export class DetailpageComponent implements OnInit {
-  ico_fa_tumbsup = faThumbsUp;
-  ico_fa_print = faPrint;
-  ico_fa_chevron= faChevronLeft;
-  likes:number= 0;
-
-  pagejson:any=[];
-  detailpage:any=[];
-  currpageSlug:any;
-  constructor(private wpApi:KatalogenApiService,private glb:App_Global, private activatedRoute:ActivatedRoute,private router:Router,private location: Location,  private titleService: Title, private navBack:NavigationServiceService) {
+ @Input() detailid:any;
+  constructor( private glb:App_Global, private activatedRoute:ActivatedRoute, private _router:Router, private titleService: Title, private navBack:NavigationServiceService,private location: LocationStrategy) {
 
   }
 
   ngOnInit(): void {
-
+    console.log("detta");
     this.activatedRoute.paramMap.subscribe(prams =>{
-      this.glb.currentAnsokningid = prams.get('id');
-      if(this.glb.currentAnsokningid){
-        this.loadPageData(this.glb.currentAnsokningid);
+      this.glb.currentAnsokningid = prams.get('arrid');
+      this.glb.currentCategoryID = prams.get('id');
+      if (this.glb.currentAnsokningid){
+        this.detailid= this.glb.currentAnsokningid;
+      }else{
+         this.detailid= this.glb.currentCategoryID;
       }
+
+
     });
-    // this.detailpage= this.glb.getTextBySkrivid(this.glb.currentAnsokningid);
+    this.titleService.setTitle(this.glb.HeadTitleMapper("Arrangemang " + this.detailid ));
     // console.log(this.detailpage);
   }
-
-  // ngAfterViewChecked() {
-  //   window.scrollTo(0, 0);
-  // }
-
-  loadPageData(arrid:string){
-
-    this.wpApi.getByArrId(arrid).subscribe(Response => {
-
-      this.pagejson = Response;
-
-      this.detailpage = this.pagejson.kk_aj_admin.ansokningarlista.ansokningar;
-      this.titleService.setTitle(this.glb.HeadTitleMapper(this.detailpage[0].ansokningtitle));
-    })
-  }
-
 
   goBack(): void {
      this.navBack.back();

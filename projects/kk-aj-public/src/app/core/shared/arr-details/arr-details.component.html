@@ -1,96 +1,127 @@
 
-    <!-- Artikel START -->
-    <div class="artikelwrapper level1">
-      <div class="row gobackblock">
-        <div class="small-12 columns text-right">
 
-        </div>
-      </div>
-      <div class="row">
-        <div class="medium-8 columns artmaincontent">
-          <div class="granska_rubrik_border" >
-            <h1 class="granska_rubrik">
-              {{ detailpage[0]?.ansokningtitle }}
-            </h1>
-            <h2 class="granska_Utovare_Organisation">
-              {{ detailpage[0]?.ansokningutovare }}
-            </h2>
-          </div>
+   <!-- blog single -->
+   <section class="gen-section-padding-3 aj-section-bg-color-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="gen-blog-post">
+                    <div class="gen-post-media text-center">
+                      <img
+                      class="granska_pressentationsbild"
+                      [src]="'https://www.kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/'
+                      + detailpage[0]?.ansokningMediaImage.MediaUrl"
+                      alt="Ett magiskt arktiskt äventyr om klimatförändringen punkt" loading="lazy" />
+                    </div>
+                    <div class="gen-blog-contain">
+                        <div class="gen-post-meta">
+                            <ul>
+                                <li class="gen-post-author">
+                                  {{ detailpage[0]?.ansokningutovare }}
+                                </li>
+                            </ul>
+                        </div>
+                        <h1>
+                          {{ detailpage[0]?.ansokningtitle }}
+                        </h1>
 
-          <div
-            class="field field-name-field-artikelbild field-type-image
-            field-label-hidden field-wrapper" *ngIf="detailpage[0]?.ansokningMediaImage.MediaUrl">
-            <img
-              class="granska_pressentationsbild"
-              [src]="'https://www.kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/'
-              + detailpage[0]?.ansokningMediaImage.MediaUrl"
-              alt="Ett magiskt arktiskt äventyr om klimatförändringen punkt"
-              />
+                        <h2 class="granska_underrubrik" *ngIf="detailpage[0]?.ansokningsubtitle">
+                          {{ detailpage[0]?.ansokningsubtitle }}
+                        </h2>
+                        <div class="granska_innehall col-11" [innerHTML]="detailpage[0]?.ansokningContent | unescape">
+                          <span class="spinner-border spinner-border-lg" role="status"></span>
+                      </div>
+                      <div class="row mb-4" *ngIf="detailpage[0]?.ansokningMedialist != ''">
+                          <div class="col-8 ">
+                            <h3 class="comment-reply-title">SMAKPROV FRÅN FÖRESTÄLLNINGEN </h3>
+                              <ul class="arrExempellist pt-2">
+                                <!-- item loop START -->
 
-            <div class="row">
-              <div class="medium-12 columns arrmainfoto">
-                <span>Foto: </span>
-                {{ detailpage[0]?.ansokningMediaImage.MediaFoto }}
-              </div>
+                                <li *ngFor="let item of detailpage[0]?.ansokningMedialist">
+                                  <app-mediaexempel [MediaExempelblock]="item"></app-mediaexempel>
+
+                                </li>
+                                <!-- item loop STOP -->
+                              </ul>
+
+                          </div>
+                          <div class="col-2">
+
+                          </div>
+                      </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
-          <h2 class="granska_underrubrik" *ngIf="detailpage[0]?.ansokningsubtitle">
-            {{ detailpage[0]?.ansokningsubtitle }}
-          </h2>
-          <div class="body field" *ngIf="detailpage[0]?.ansokningContent">
-            <div
-              class="granska_innehall"
-              [innerHTML]="detailpage[0]?.ansokningContent | unescape">
-              <span class="spinner-border spinner-border-lg" role="status"></span>
+            <div class="col-lg-3 col-md-12 mt-4 mt-lg-0">
+                <div class="widget widget_search">
+                    <form role="search" method="get" class="search-form" action="#">
+                        <label>
+                            <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                        </label>
+                        <button type="submit" class="search-submit"></button>
+                    </form>
+                </div>
+                <div class="widget widget_recent_entries">
+                    <h2 class="widget-title">Recent Posts</h2>
+                    <ul>
+                        <li>
+                            <a href="#">Stream like a pro with (free) live encoding software</a>
+                        </li>
+                        <li>
+                            <a href="#">What it takes to live stream a global event</a>
+                        </li>
+                        <li>
+                            <a href="#">Top streaming equipment based on your budget</a>
+                        </li>
+                        <li>
+                            <a href="#">How to record your live streams</a>
+                        </li>
+                        <li>
+                            <a href="#">Continue Watching Video on Demand</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget widget_recent_comments">
+                    <h2 class="widget-title">Recent Comments</h2>
+                    <ul id="recentcomments">
+                        <li class="recentcomments"><span class="comment-author-link"><a href="#"
+                                    rel="external nofollow ugc" class="url pl-0">admin</a></span> on <a href="#"
+                                class="pl-0">Love In 21st</a></li>
+                        <li class="recentcomments"><span class="comment-author-link"><a href="#"
+                                    rel="external nofollow ugc" class="url pl-0">admin</a></span> on <a href="#"
+                                class="pl-0">My Generation</a></li>
+                        <li class="recentcomments"><span class="comment-author-link">nilofer</span> on <a href="#"
+                                class="pl-0">the giant ship</a></li>
+                        <li class="recentcomments"><span class="comment-author-link">imran</span> on <a href="#"
+                                class="pl-0">Gnome Alone</a></li>
+                        <li class="recentcomments"><span class="comment-author-link">imran</span> on <a href="#"
+                                class="pl-0">Kimozy-The Dragon</a></li>
+                    </ul>
+                </div>
+                <div class="widget widget_archive">
+                    <h2 class="widget-title">Archives</h2>
+                    <ul>
+                        <li><a href="#">January 2021</a></li>
+                    </ul>
+                </div>
+                <div class="widget widget_categories">
+                    <h2 class="widget-title">Categories</h2>
+                    <ul>
+                        <li class="cat-item cat-item-1"><a href="#">Uncategorized</a></li>
+                    </ul>
+                </div>
+                <div class="widget widget_meta">
+                    <h2 class="widget-title">Meta</h2>
+                    <ul>
+                        <li><a href="#">Log in</a></li>
+                        <li><a href="#">Entries feed</a></li>
+                        <li><a href="#">Comments feed</a></li>
+                        <li><a href="#">WordPress.org</a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div *ngIf="detailpage[0]?.ansokningMedialist !=''" class="arrexempelblock granska_exempel">
-            <h3 class="arrExempellistHeader">
-              SMAKPROV FRÅN FÖRESTÄLLNINGEN
-            </h3>
-            <hr class="linje" />
-
-            <ul class="arrExempellist">
-              <!-- item loop START -->
-
-              <li *ngFor="let item of detailpage[0]?.ansokningMedialist">
-                <app-mediaexempel [MediaExempelblock]="item"></app-mediaexempel>
-
-              </li>
-              <!-- item loop STOP -->
-            </ul>
-          </div>
         </div>
-        <div class="medium-4 columns">
-          <div class="granskaFaktaMainblock">
-            <!-- item loop START -->
-            <app-fakta [faktablock]="detailpage[0]?.ansokningFaktalist"></app-fakta>
-            <!-- item loop STOP -->
-          </div>
-          <app-kontakt [Kontaktblock]="detailpage[0]?.ansokningUtovardata"></app-kontakt>
-          <div class="artsidecontainer granska_Dela">
-            <h3>Dela</h3>
-            <div id="share-buttons">
-              <!-- Email -->
-              <a
-                id="shareMail"
-                href="mailto:?Subject=Delat%20fr%C3%A5n%20Kulturkatalogen%20V%C3%A4st%20-%20{{ detailpage[0]?.ansokningtitle }}%20
-                https://www.kulturkatalogenvast.org/Kulturkatalogen/ArrangemangDetail/id/{{ detailpage[0]?.ansokningid }}">
-                <img
-                  src="https://simplesharebuttons.com/images/somacro/email.png"
-                  alt="Email"
-                  />
-              </a>
-
-              <!-- Print -->
-              <a href="javascript:;" onclick="window.print()">
-                <img
-                  src="https://simplesharebuttons.com/images/somacro/print.png"
-                  alt="Print"
-                  />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+</section>
+<!-- blog single -->
