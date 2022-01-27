@@ -1,0 +1,27 @@
+.widget{
+  padding: 20px;
+  background-color: #343a40;
+}
+.widget_recent_comments{
+font-size: 1.1rem;
+  div{
+    align-self: flex-start;
+
+  }
+  .faktrub{
+  @media (min-width: 1200px) {
+    align-self: flex-start;
+    }
+
+  }
+  .fakttext{
+  font-weight: 200;
+  @media (min-width: 1200px) {
+    text-align: right;
+    }
+  // color: var(--primary-color);
+  }
+  .ovrigttext{
+  text-align: left !important;
+  }
+}

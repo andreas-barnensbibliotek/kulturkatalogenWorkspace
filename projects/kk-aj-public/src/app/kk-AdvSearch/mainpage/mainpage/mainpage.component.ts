@@ -1,3 +1,5 @@
+import { FormArray, FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { LocationStrategy } from '@angular/common';
 import { App_Global } from './../../../core/global/app_global';
 import { clsAdvFilter } from './../../../core/models/clsAdvFilter';
 import { KatalogenApiService } from './../../../core/services/katalogenApi/katalogen-api.service';
@@ -14,6 +16,8 @@ import { clsPostData } from './../../../core/models/clsPostData';
   styleUrls: ['./mainpage.component.scss']
 })
 export class MainpageComponent implements OnInit {
+
+  public advSearchForm!: FormGroup;
 
   p:number=1;
   mainPageData:any=[];
@@ -38,10 +42,14 @@ export class MainpageComponent implements OnInit {
   postdata:IpostSearch = new clsPostData;
   debug:any="test"
 
+  searchdrpTitle:string="Alla arrangemangstyper";
+
   constructor(
     private wpApi:KatalogenApiService,
     private glb:App_Global,
     private cd:ChangeDetectorRef,
+    private location: LocationStrategy,
+    private fb: FormBuilder
     ) {
 
       this.showPageMax= glb.showPageMax;
@@ -266,5 +274,34 @@ export class MainpageComponent implements OnInit {
     this.glb.showspinner= val;
     this.ShowSpinner= this.glb.showspinner;
 
+  }
+  goBack(): void {
+    // this._router.navigateByUrl('/lista/' + this.glb.currentCategoryID);
+    //  this.navBack.back();
+  this.location.back();
+  }
+
+  drpChange(value:string){
+    this.searchdrpTitle= value;
+  }
+
+
+  onCheckboxChange(e:any, controlname:string) {
+    let checkArray = this.advSearchForm.get(controlname)?.value;
+
+    if (e.target.checked) {
+      checkArray = true;
+      // checkArray.push(new FormControl(e.target.value));
+    } else {
+      checkArray = false;
+      // let i: number = 0;
+      // checkArray.controls.forEach((item: any) => {
+      //   if (item.value == e.target.value) {
+      //     checkArray.removeAt(i);
+      //     return;
+      //   }
+      //   i++;
+      // });
+    }
   }
 }

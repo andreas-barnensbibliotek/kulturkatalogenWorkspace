@@ -1,48 +1,122 @@
-<div class="artsidecontainer granska_Fakta_mainblock">
+<!-- <div class="artsidecontainer granska_Fakta_mainblock">
   <h3>Fakta</h3>
-  <div class="row" *ngFor="let item of fakta" >
+  <div class="row" *ngFor="let item of fakta">
     <div class="small-12 medium-6 columns faktalabel">
-      {{item.Faktarubrik}}
+      {{ item.Faktarubrik }}
     </div>
-    <div class="small-12 medium-6 columns">{{item.FaktaValue}}</div>
+    <div class="small-12 medium-6 columns">{{ item.FaktaValue }}</div>
   </div>
+</div> -->
+
+<div class="widget widget_recent_comments" *ngIf="fakta=== undefined || fakta.length > 0">
+  <h2 class="widget-title">Fakta</h2>
+  <div class="row align-items-center g-0 fs--1" *ngFor="let item of fakta">
+    <div class="col-12 col-xl-6 pt-2 align-top faktrub">
+      {{ item.Faktarubrik }}:
+    </div>
+    <div class="col-12 col-xl-6 pt-2 align-top fakttext">
+      <span class="pl-0">{{ item.FaktaValue }}</span>
+    </div>
+  </div>
+
 </div>
 
-<div class="artsidecontainer granska_Publik_mainblock">
+<!-- <div class="artsidecontainer granska_Publik_mainblock">
   <h3>Publik</h3>
-  <div class="row" *ngFor="let item of publik" >
+  <div class="row" *ngFor="let item of publik">
     <div class="small-12 medium-6 columns faktalabel">
-      {{item.Faktarubrik}}
+      {{ item.Faktarubrik }}
     </div>
-    <div class="small-12 medium-6 columns">{{item.FaktaValue}}</div>
+    <div class="small-12 medium-6 columns">{{ item.FaktaValue }}</div>
+  </div>
+</div> -->
+
+<div class="widget widget_recent_comments" *ngIf="publik=== undefined || publik.length > 0">
+  <h2 class="widget-title">Publik</h2>
+  <div class="row align-items-center g-0 fs--1" *ngFor="let item of publik">
+    <div class="col-12 col-xl-6 pt-2 align-top faktrub">
+      {{ item.Faktarubrik }}:
+    </div>
+    <div class="col-12 col-xl-6 pt-2 align-top fakttext">
+      <span class="pl-0">{{ item.FaktaValue }}</span>
+    </div>
   </div>
 </div>
 
-<div class="artsidecontainer granska_lokal_mainblock">
+<!-- <div class="artsidecontainer granska_lokal_mainblock">
   <h3>Lokal</h3>
-  <div class="row" *ngFor="let item of lokal" >
+  <div class="row" *ngFor="let item of lokal">
     <div class="small-12 medium-6 columns faktalabel">
-      {{item.Faktarubrik}}
+      {{ item.Faktarubrik }}
     </div>
-    <div class="small-12 medium-6 columns">{{item.FaktaValue}}</div>
+    <div class="small-12 medium-6 columns">{{ item.FaktaValue }}</div>
+  </div>
+</div> -->
+
+<div class="widget widget_recent_comments"  *ngIf=" lokal=== undefined || lokal.length > 0">
+  <h2 class="widget-title">Lokal</h2>
+  <div class="row align-items-center g-0 fs--1"  *ngFor="let item of lokal">
+    <div class="col-12 col-xl-6 pt-2 align-top faktrub">
+      {{ item.Faktarubrik }}:
+    </div>
+    <div class="col-12 col-xl-6 pt-2 align-top fakttext">
+      <span class="pl-0">{{ item.FaktaValue }}</span>
+    </div>
   </div>
 </div>
 
-<div class="artsidecontainer granska_Ekonomi_mainblock">
+<!-- <div class="artsidecontainer granska_Ekonomi_mainblock">
   <h3>Kostnad/Pris</h3>
-  <div class="row" *ngFor="let item of ekonomi" >
+  <div class="row" *ngFor="let item of ekonomi">
     <div class="small-12 medium-6 columns faktalabel">
-      {{item.Faktarubrik}}
+      {{ item.Faktarubrik }}
     </div>
-    <div class="small-12 columns" [ngClass]="{'medium-6': item.FaktaTypID!=30 }" >{{item.FaktaValue}}</div>
+    <div
+      class="small-12 columns"
+      [ngClass]="{ 'medium-6': item.FaktaTypID != 30 }"
+    >
+      {{ item.FaktaValue }}
+    </div>
+  </div>
+</div> -->
+
+<div class="widget widget_recent_comments" *ngIf=" ekonomi=== undefined || ekonomi.length > 0">
+  <h2 class="widget-title">Kostnad/Pris</h2>
+  <div class="row align-items-center g-0 fs--1"  *ngFor="let item of ekonomi">
+    <div class="col-12 col-xl-6 pt-2 align-top faktrub">
+      {{ item.Faktarubrik }}:
+    </div>
+    <div class="col-12 col-xl-6 pt-2 align-top fakttext" *ngIf="item.FaktaTypID != '30'">
+      <span class="pl-0">{{ item.FaktaValue }}</span>
+    </div>
+    <div class="col-12  pt-2 align-top fakttext ovrigttext" *ngIf="item.FaktaTypID == '30'">
+      <span class="pl-0">{{ item.FaktaValue }}</span>
+    </div>
   </div>
 </div>
-<div *ngIf="!ovrigt=== undefined || ovrigt.length > 0" class="artsidecontainer granska_Ovrigt_mainblock">
-	<h3>Övrigt</h3>
+
+<!-- <div
+  *ngIf="!ovrigt === undefined || ovrigt.length > 0"
+  class="artsidecontainer granska_Ovrigt_mainblock"
+>
+  <h3>Övrigt</h3>
   <div class="row" *ngFor="let item of ovrigt">
-    <div class="small-12 medium-6 columns faktalabel">{{item.Faktarubrik}}</div>
+    <div class="small-12 medium-6 columns faktalabel">
+      {{ item.Faktarubrik }}
+    </div>
     <div class="small-12 columns">
-      {{item.FaktaValue}}
+      {{ item.FaktaValue }}
     </div>
   </div>
+</div> -->
+
+<div class="widget widget_recent_comments" *ngIf="!ovrigt === undefined || ovrigt.length > 0">
+  <h2 class="widget-title">Övrigt</h2>
+  <div class="row align-items-center g-0 fs--1"  *ngFor="let item of ovrigt">
+
+    <div class="col-12  pt-2 align-top fakttext ovrigttext">
+      <span class="pl-0">{{ item.FaktaValue }}</span>
+    </div>
+  </div>
+
 </div>

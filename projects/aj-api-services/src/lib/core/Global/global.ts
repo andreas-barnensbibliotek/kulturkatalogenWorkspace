@@ -3,7 +3,7 @@ import {Injectable } from "@angular/core";
 
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
 export class Global {
-  private _liveserver:string = "https://katalog.frontdata.se"; // Timmele.se
+  private _liveserver:string = "https://sandbox.kulturkatalogenvast.org"; //
   private _devLocalCore:string = "https://localhost:44372";
   private _SandboxAPI:string = "https://sandboxapicore.kulturkatalogenvast.org";
   private _localdevserver:string = "http://localhost:60485";
@@ -15,8 +15,8 @@ export class Global {
   VisaGuideNav:boolean=false;
   currentversion:string="Version: 0.0.1 2021-12-01"
 
-  server:string = this._devLocalCore;// + this._wpApi;
-  postserver:string = this._devLocalCore + this._wpApiPost;
+  server:string = this._localdevserver;// + this._wpApi;
+  postserver:string = this._localdevserver + this._wpApiPost;
   devkey:string = "/devkey/alf/?type=json";
 
   constructor() {

@@ -5,7 +5,7 @@
         <div class="row gx-3">
           <div class="col-10">
             <h3>
-              Resultat
+
             </h3>
           </div>
           <div class="col-2 text-end">
@@ -23,6 +23,9 @@
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
+
+            <app-kk-no-result *ngIf="noresult(mainCaruselData)"></app-kk-no-result>
+
               <div class="row ajmax-row-height">
 
                 <!-- Item loop START-->

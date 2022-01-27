@@ -20,3 +20,28 @@
       }
     }
   }
+.aj-btn-group {
+  position: relative;
+  display: flex;
+  vertical-align: middle;
+}
+
+.chkkonstform{
+  input{
+    display: none;
+  }
+}
+.srhKonstformBlock{
+  text-align: center;
+}
+.btn-success{
+  color:#fff;
+  background-color: #7e9d8e;
+  border-color: #7e9d8e;
+  &:hover{
+    color:#fff;
+  background-color: #647c70;
+  border-color: #7e9d8e;
+  }
+}
+

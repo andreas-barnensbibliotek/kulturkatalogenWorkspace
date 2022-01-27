@@ -32,7 +32,7 @@ import { AjCarouselBlockComponent } from './core/shared/aj-carousel-block/aj-car
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { KkResultsComponent } from './kk-results/kk-results.component';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
@@ -44,6 +44,8 @@ import { KkajStartComponent } from './kkaj-start/kkaj-start.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './core/shared/main-nav/main-nav.component';
 import { KkajCaruselComponent } from './core/shared/kkaj-carusel/kkaj-carusel.component';
+import { KkNoResultComponent } from './kk-results/kk-no-result/kk-no-result.component';
+import { KkResultListComponent } from './kk-results/kk-result-list/kk-result-list.component';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -117,6 +119,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     KkajStartComponent,
     MainNavComponent,
     KkajCaruselComponent,
+    KkNoResultComponent,
+    KkResultListComponent,
 
   ],
   imports: [
@@ -132,7 +136,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     FormsModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
 
   ],
   providers: [

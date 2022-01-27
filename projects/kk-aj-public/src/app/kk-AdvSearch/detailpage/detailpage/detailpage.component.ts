@@ -38,7 +38,8 @@ export class DetailpageComponent implements OnInit {
   }
 
   goBack(): void {
-     this.navBack.back();
+    //  this.navBack.back();
+     this._router.navigateByUrl('/')
     // this.location.back();
   }
   // gotodetail(url:any){

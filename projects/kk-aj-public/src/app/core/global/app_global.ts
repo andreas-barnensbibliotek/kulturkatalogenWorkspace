@@ -16,7 +16,7 @@ export class App_Global {
   private _cmdApi:string = "/Api_v2";
 
   mainJsonKatalogItemList:any =[];
-  showPageMax:number= 10;
+  showPageMax:number= 24;
   pageSize!: number;
   showMoreBtn!:boolean;
 
