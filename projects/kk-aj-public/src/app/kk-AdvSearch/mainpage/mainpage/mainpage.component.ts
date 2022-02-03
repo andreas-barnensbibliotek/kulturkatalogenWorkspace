@@ -18,7 +18,7 @@ import { clsPostData } from './../../../core/models/clsPostData';
 export class MainpageComponent implements OnInit {
 
   public advSearchForm!: FormGroup;
-
+  DropdownMenu:boolean=false;
   p:number=1;
   mainPageData:any=[];
   mainCategoryname:any;
@@ -51,7 +51,7 @@ export class MainpageComponent implements OnInit {
     private location: LocationStrategy,
     private fb: FormBuilder
     ) {
-
+this.DropdownMenu = false;
       this.showPageMax= glb.showPageMax;
       // history.pushState(null, null, window.location.href);
       // // check if back or forward button is pressed.
@@ -62,13 +62,16 @@ export class MainpageComponent implements OnInit {
 
   ngOnInit(): void {
     // this.debug= this.activatedRoute.snapshot.queryParams
+
     this.spinnerhandler(true);
     this.getpagedata();
     // this.wpApi.currentPageDataHandler.subscribe(()=>{
     //   // handles global events
     // });
+    this.DropdownMenu = true;
     this.glb.mainJsonKatalogItemListHandler.subscribe(()=>{
       this.getpagedata();
+
     });
 
     // kolla vilken sida i pagern som användes senast och om den inte var från start gå till rätt sida
@@ -303,5 +306,10 @@ export class MainpageComponent implements OnInit {
       //   i++;
       // });
     }
+  }
+
+
+  tabort(){
+    this.DropdownMenu =false;
   }
 }

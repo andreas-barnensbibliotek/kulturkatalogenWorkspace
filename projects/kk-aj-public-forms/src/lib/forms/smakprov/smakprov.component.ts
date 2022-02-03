@@ -13,6 +13,7 @@ export class SmakprovComponent implements OnInit {
   // parentFrmGrp!:FormArray;
   exempelFrmGrp!:FormGroup;
   rootFrmGrp!:FormGroup;
+  FaktaFrmGrp!:FormGroup;
   videoUrl:any= [];
   // BesoksmalFrmGrp!:FormGroup;
   ExempelLista:any=[];
@@ -30,7 +31,7 @@ export class SmakprovComponent implements OnInit {
 
   ngOnInit(): void {
     this.rootFrmGrp =this.rootformGroup.control as FormGroup
-
+    this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
 
     // this.parentFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormArray;
     this.exempelFrmGrp = this.fb.group(this._ExempleMdl.genFG);
@@ -44,8 +45,8 @@ export class SmakprovComponent implements OnInit {
     this.showInfoText[2].info = false;
   }
 
-  get Exempel(){
-    return this.rootFrmGrp.get("Exempel") as FormArray;
+  get Exempel():FormArray{
+    return this.FaktaFrmGrp.get("Exempel") as FormArray;
   }
 
   visadoljshowExemple(){
@@ -81,13 +82,15 @@ export class SmakprovComponent implements OnInit {
   }
 
   addExempletoBaseForm(){
-
+// console.log(this.Exempel);
+// console.log(this.exempelFrmGrp.value);
     //this.exempelFrmGrp.get('MediaUrl')!.value.replace(/(^\w+:|^)\/\//, '');
     this.Exempel.push(this.exempelFrmGrp);
     this.VisaExempelRubrik = true;
     // this.parentFrmGrp.push(this.exempelFrmGrp);
     this.exempelFrmGrp = this.fb.group(this._ExempleMdl.genFG);
-    this.ExempelLista = this.rootFrmGrp.value;
+    this.ExempelLista = this.Exempel.value;
+    console.log(this.ExempelLista);
   }
 
   removeExempel(idx:number){

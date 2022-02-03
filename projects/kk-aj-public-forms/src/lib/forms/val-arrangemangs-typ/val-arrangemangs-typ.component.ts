@@ -42,4 +42,14 @@ export class ValArrangemangsTypComponent implements OnInit {
     }
   }
 
+  // visa el dölj infotexter i formuläret
+  showinfo:Array<boolean> = new Array;
+  initshowhideVal(antalShowInfo:number):void{
+    for (let i:number = 0; i == antalShowInfo; i++) {
+      this.showinfo[i] = false;
+    }
+  }
+  showHideinfo(infoboxID:number){
+    this.showinfo[infoboxID] = !this.showinfo[infoboxID]
+  }
 }

@@ -273,8 +273,10 @@ table th {
     text-align: center;
 }
 
-/*===== Input Textarea =====*/
-input,
+/*===== Input Textarea =====
+Bort kommenterad av andreas vill ha bootstrap5 orginal
+*/
+/* input,
 input.form-control {
     background: var(--black-color);
     border: 1px solid var(--black-color);
@@ -346,19 +348,17 @@ textarea:-ms-input-placeholder {
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
     color: var(--secondary-color);
-}
+} */
 
 /*===== Select =====*/
 select,
 select.form-control {
-    border: 1px solid var(--black-color);
-    color: var(--white-color);
-    background: var(--black-color);
+
     width: 100%;
-    float: left;
-    padding: 0 30px 0 30px;
-    height: 51px;
-    line-height: 48px;
+     /* float: left; */
+
+    height: 40px;
+    /*line-height: 48px;
     outline: none;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
@@ -375,7 +375,7 @@ select.form-control {
     background-image: url('data:image/svg+xml;utf8,<svg fill=\'%23999999\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/><path d=\'M0 0h24v24H0z\' fill=\'none\'/></svg>');
     background-repeat: no-repeat;
     background-position: right 16px bottom 50%;
-    background-size: 20px 20px;
+    background-size: 20px 20px; */
 }
 
 /*======= Library ========*/
@@ -2892,8 +2892,11 @@ header#gen-header.gen-header-style-1 .gen-bottom-header .navbar .navbar-nav li.a
         border: var(--primary-color);
         color: var(--white-color);
         border-radius: 0;
-    }
 
+    }
+    .navbar-expand-lg .navbar-toggler {
+      display: block;
+  }
     header#gen-header .gen-bottom-header .navbar .navbar-collapse {
         width: 100%;
         position: absolute;

@@ -4,6 +4,7 @@
 // @import "~bootstrap/scss/bootstrap.scss";
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+@import 'assets/css/froala_blocks.css';
 @import 'assets/css/style';
 @import 'assets/css/responsive';
 .gen-btn-container{
@@ -112,7 +113,7 @@ carousel{
 
   z-index: 99999!important;
 }
-.infotext{display: none;}
+// .infotext{display: none;}
 
 .carousel-cells .carousel-cell img, .ajmax-row-height img{
 
@@ -208,4 +209,28 @@ carousel{
 
 .autocomplete-container .suggestions-container {
   margin-top: 40px;
+}
+@media (max-width:1023px) {
+  .navbar-collapse:not(.show)  {
+    display: none!important;
+  }
+}
+.ng-autocomplete{
+  width: 100% !important;
+}
+
+.kk_aj_title {
+  font-size: 20px;
+  font-style: normal;
+  line-height: 28px;
+}
+
+.input-group .btn {
+  border: 0.125rem solid transparent;
+}
+.input-group-text {
+  line-height: 1.6;
+}
+.form-check-inline .form-check-input {
+  margin-top: 0.5rem;
 }

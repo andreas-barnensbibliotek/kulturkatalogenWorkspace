@@ -18,17 +18,17 @@
   <!-- Features section-->
     <div class="container my-5">
         <div class="row gx-3">
-          <div class="col-md-3 mb-5 mb-lg-0 ">
+          <div class="d-none d-md-block col-lg-1 col-xl-3 mb-5 mb-lg-0 ">
 
 
           </div>
-          <div class="col-md-6 mb-5 mb-lg-0 ">
-            <h3>Avancerad sök</h3>
+          <div class="col-12 col-lg-10 col-xl-6 mb-5 mb-lg-0 ">
+
             <div class="topblockContainer">
               <ng-container [formGroup]="advSearchForm">
-              <div ngbDropdown class="aj-btn-group">
+              <div ngbDropdown class="aj-btn-group" >
                 <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>{{searchdrpTitle}}</button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="DropdownMenu"  >
                   <button (click)="drpChange('Alla arrangemangstyper')" ngbDropdownItem>Alla arrangemangstyper</button>
                   <button (click)="drpChange('Besöksmål med resestöd')" ngbDropdownItem>Besöksmål med resestöd</button>
                   <button (click)="drpChange('Föreställning på turné')" ngbDropdownItem>Föreställning på turné</button>
@@ -125,7 +125,7 @@
               </ng-container>
             </div>
           </div>
-          <div class="col-md-3 mb-5 mb-lg-0 ">
+          <div class="d-none d-md-block col-lg-1 col-xl-3 mb-5 mb-lg-0 ">
           </div>
         </div>
     </div>
@@ -180,14 +180,12 @@
                         </div>
                         <div class="gen-info-contain">
                           <div class="gen-movie-info">
-                            <a routerLink="/Arr/id/{{item.ansokningid}}" >
-                              <h2 class="kk_aj_title">{{item.ansokningtitle}}</h2>
-                              <h3>{{item.ansokningsubtitle}}</h3>
-                            </a>
+                            <h3><a routerLink="/Arr/id/{{item.ansokningid}}" >{{item.ansokningtitle}}</a></h3>
+                                <p>{{item.ansokningsubtitle}}</p>
                           </div>
                           <div class="gen-movie-meta-holder">
                             <p>Utövare: {{item.ansokningutovare}}<br>
-                            Ålder: {{item.ansokningAgespan}}ÅR
+                            Ålder: {{item.ansokningAgespan}} ÅR
                             </p>
                           </div>
                         </div>
@@ -198,10 +196,11 @@
 
               </div>
           </div>
-          <div class="col-lg-12 col-md-12">
+          <div class="col-lg-12 col-md-12 text-center">
              <!-- START paginering nummer block -->
           <div class="row kk_aj_productPagerblock" *ngIf="showNoPostToShow || filterMetadata.count >0 ">
-            <div class="small-12 ">
+            <div class="small-12 gen-pagination">
+
               <pagination-controls
               previousLabel="Föregående"
               nextLabel="Nästa"
@@ -210,7 +209,7 @@
               screenReaderCurrentLabel="Du är på sida"
               (pageChange)="pageChanged($event)">
             </pagination-controls>
-            </div>
+           </div>
         </div>
         <!-- STOP paginering nummer block -->
             <!-- <div class="gen-pagination">

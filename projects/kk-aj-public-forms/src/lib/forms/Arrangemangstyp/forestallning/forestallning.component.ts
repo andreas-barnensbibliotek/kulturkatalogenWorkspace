@@ -16,4 +16,7 @@ export class ForestallningComponent implements OnInit {
     this.ForestallningFrmGrp = this.rootformGroup.control
   }
 
+ get ExempelFormGroup(){
+   return this.ForestallningFrmGrp.get("Exempel");
+ }
 }

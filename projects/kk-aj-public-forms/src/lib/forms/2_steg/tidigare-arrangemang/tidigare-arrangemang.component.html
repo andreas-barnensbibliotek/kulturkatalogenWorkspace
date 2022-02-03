@@ -1,9 +1,9 @@
 <div class="form-group">
   <legend>Hämta tidigare arrangemang</legend>
 
-  <label for="arr_getTidigareArrangemang">Tidigare arrangemang<a href="#" class="info" rel="arr_getTidigareArrangemang_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-  <div class="arr_getTidigareArrangemang_infotext infotext">Här har du möjlighet att hämta uppgifter om tidigare arrangemang. Klicka i rutan för att välja ett tidigare arrangemang.</div>
-  <select id="arr_getTidigareArrangemang" name="form_getTidigareArrangemang" class="custom-select" type="text" placeholder="Tidigare arrangemang">
+  <label for="arr_getTidigareArrangemang">Tidigare arrangemang <a (click)="showHideinfo(1)" class="info" rel="arr_getTidigareArrangemang_info" tabindex="-1"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+  <div *ngIf="showinfo[1]" class="arr_getTidigareArrangemang_infotext infotext">Här har du möjlighet att hämta uppgifter om tidigare arrangemang. Klicka i rutan för att välja ett tidigare arrangemang.</div>
+  <select id="arr_getTidigareArrangemang" name="form_getTidigareArrangemang" tabindex class="custom-select" type="text" placeholder="Tidigare arrangemang">
     <option value="1">1</option>
     <option value="2">2</option>
   </select>

@@ -22,7 +22,7 @@ export class FormFaktaModel {
     ScenBredd: [''],
     ScenDjup: [''],
     ScenTakHojd: [''],
-    Ljust: [''],
+    Ljus: [''],
     BarHjalp: [''],
     El: [''],
     OvrigaLokalkrav: [''],

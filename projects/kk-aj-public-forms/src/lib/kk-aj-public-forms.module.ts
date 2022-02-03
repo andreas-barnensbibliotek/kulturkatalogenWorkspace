@@ -36,6 +36,7 @@ import { WorkshopComponent } from './forms/Arrangemangstyp/workshop/workshop.com
 import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListasmakprovComponent } from './forms/smakprov/listasmakprov/listasmakprov.component';
 import { SafeHtmlPipe } from './forms/pipes/safepipe';
+import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 
 
 
@@ -76,6 +77,7 @@ import { SafeHtmlPipe } from './forms/pipes/safepipe';
     ImageUploaderModule,
     NgxBootstrapSliderModule,
     NgbModule,
+    NgxDynamicTabindexModule
 
   ],
   providers: [

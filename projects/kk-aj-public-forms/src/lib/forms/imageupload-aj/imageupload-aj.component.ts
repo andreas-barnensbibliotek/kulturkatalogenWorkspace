@@ -59,6 +59,9 @@ export class ImageuploadAJComponent implements OnInit {
     reader.readAsDataURL(this.fileData);
     reader.onload = (_event) => {
       this.previewUrl = reader.result;
+      this.tillGangligfalt = true;
+
+    this.imageUploadFrmGrp.patchValue({MediaFilename: this.fileData?.name})
     }
   }
 
@@ -78,25 +81,25 @@ export class ImageuploadAJComponent implements OnInit {
     }
     formData.append('files', this.fileData);
     this.imageUploadFrmGrp.patchValue({MediaFilename: this.fileData?.name})
-    this.fileUploadProgress = '0%';
+    // this.fileUploadProgress = '0%';
 
-     this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
-      // this.http.post('https://test.se/fileUpload', formData, {
-      reportProgress: true,
-      observe: 'events'
-    })
-    .subscribe(events => {
+    //  this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {
+    //   // this.http.post('https://test.se/fileUpload', formData, {
+    //   reportProgress: true,
+    //   observe: 'events'
+    // })
+    // .subscribe(events => {
 
-      if(events.type === HttpEventType.UploadProgress) {
-        this.fileUploadProgress = Math.round(events.loaded / events.total! * 100) + '%';
-        console.log(this.fileUploadProgress);
-      } else if(events.type === HttpEventType.Response) {
-        this.fileUploadProgress = '';
-        console.log(events.body);
-        this.tillGangligfalt = true;
-        alert('SUCCESS !!');
-      }
-    })
+    //   if(events.type === HttpEventType.UploadProgress) {
+    //     this.fileUploadProgress = Math.round(events.loaded / events.total! * 100) + '%';
+    //     console.log(this.fileUploadProgress);
+    //   } else if(events.type === HttpEventType.Response) {
+    //     this.fileUploadProgress = '';
+    //     console.log(events.body);
+    //     this.tillGangligfalt = true;
+    //     alert('SUCCESS !!');
+    //   }
+    // })
   }
 
   // ShowTillgangligFalt(){

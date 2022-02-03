@@ -1,21 +1,22 @@
 <ng-container [formGroup]="arrangemangFrmGrp">
 <div class="col-12 col-lg-8">
+  <div class="row">
   <app-tidigare-arrangemang></app-tidigare-arrangemang>
-  <div class="form-group mt-5">
+</div>
+  <div class="form-group mt-2">
     <fieldset>
       <legend>Välj typ av arrangemang</legend>
       <div class="cc-selector">
-        <input  type="radio" value="7" formControlName="Arrangemangtyp" id="val_resmalsbesok" title="Resmål med resestöd" tooltip="test"/>
+        <input  type="radio" value="7" formControlName="Arrangemangtyp" id="val_resmalsbesok" title="Resmål med resestöd" tooltip="test" tabindex/>
         <label class="arr_val1-cc arr_val1" for="val_resmalsbesok"></label>
-        <input  type="radio" value="1" formControlName="Arrangemangtyp" id="val_forestallningtune" />
+        <input  type="radio" value="1" formControlName="Arrangemangtyp" id="val_forestallningtune" tabindex/>
         <label class="arr_val2-cc arr_val2" for="val_forestallningtune"></label>
-        <input  type="radio" value="8" formControlName="Arrangemangtyp" id="val_Skolbio" />
+        <input  type="radio" value="8" formControlName="Arrangemangtyp" id="val_Skolbio" tabindex/>
         <label class="arr_val3-cc arr_val3" for="val_Skolbio"></label>
-        <input  type="radio" value="2" formControlName="Arrangemangtyp" id="val_Utstallningturne" />
+        <input  type="radio" value="2" formControlName="Arrangemangtyp" id="val_Utstallningturne" tabindex/>
         <label class="arr_val4-cc arr_val4" for="val_Utstallningturne"></label>
-        <input type="radio" value="4" formControlName="Arrangemangtyp" id="val_Kulturpedagogiskaprojekt" />
+        <input type="radio" value="4" formControlName="Arrangemangtyp" id="val_Kulturpedagogiskaprojekt" tabindex/>
         <label class="arr_val5-cc arr_val5" for="val_Kulturpedagogiskaprojekt"></label>
-
       </div>
     </fieldset>
       <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small>
@@ -26,34 +27,34 @@
       <legend>Välj huvudsaklig konstform</legend>
       <div class="cc-selector">
         <div class="col-12">
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="1" id="val_arkitektur" title="Arkitektur" tooltip="Arkitektur"/>
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="1" id="val_arkitektur" title="Arkitektur" tooltip="Arkitektur" tabindex/>
         <label class="kf_val1-cc kf_val1" for="val_arkitektur"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="2" id="val_dans" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="2" id="val_dans" tabindex />
         <label class="kf_val2-cc kf_val2" for="val_dans"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="3" id="val_film" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="3" id="val_film"  tabindex/>
         <label class="kf_val3-cc kf_val3" for="val_film"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="4" id="val_konst" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="4" id="val_konst" tabindex />
         <label class="kf_val4-cc kf_val4" for="val_konst"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="5" id="val_litteratur" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="5" id="val_litteratur" tabindex />
         <label class="kf_val5-cc kf_val5" for="val_litteratur"></label>
 
       <!-- </div>
       <div class="col-12"> -->
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="6" id="val_musik" title="Musik" tooltip="Musik"/>
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="6" id="val_musik" title="Musik" tooltip="Musik" tabindex/>
         <label class="kf_val6-cc kf_val6" for="val_musik"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="7" id="val_naturochkultruarv" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="7" id="val_naturochkultruarv" tabindex />
         <label class="kf_val7-cc kf_val7" for="val_naturochkultruarv"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="8" id="val_nycirkus" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="8" id="val_nycirkus" tabindex />
         <label class="kf_val8-cc kf_val8" for="val_nycirkus"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="9" id="val_slojd" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="9" id="val_slojd" tabindex />
         <label class="kf_val9-cc kf_val9" for="val_slojd"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="10" id="val_teater" />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="10" id="val_teater" tabindex />
         <label class="kf_val10-cc kf_val10" for="val_teater"></label>
       <!-- </div>
       <div class="col-12"> -->
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="11" id="val_teknik" title="Teknik" tooltip="Teknik"/>
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="11" id="val_teknik" title="Teknik" tooltip="Teknik" tabindex/>
         <label class="kf_val11-cc kf_val11" for="val_teknik"></label>
-        <input type="radio" (change)="onCheckboxChange($event,'Konstform')" value="12" id="val_annascenkonst" />
+        <input type="radio" (change)="onCheckboxChange($event,'Konstform')" value="12" id="val_annascenkonst" tabindex />
         <label class="kf_val12-cc kf_val12" for="val_annascenkonst"></label>
         <!-- Om val av radioknappar istället för checkboxar använd denna
           <input type="radio" formControlName="Konstform" value="12" id="val_annascenkonst" />
@@ -96,25 +97,25 @@
     <div class="form-group mt-5">
       <legend>Beskrivning</legend>
       <fieldset>
-        <label for="arr_beskr_rubrik">Rubrik <a  class="info" rel="arr_beskr_rubrik_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-          <div class="arr_beskr_rubrik_infotext infotext" >Fyll i Arrangemangets rubrik</div>
-          <input id="arr_beskr_rubrik" class="form-control" type="text" formControlName="Rubrik"  />
+        <label for="arr_beskr_rubrik">Rubrik <a  (click)="showHideinfo(1)" class="info" rel="arr_beskr_rubrik_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div *ngIf="showinfo[1]" class="arr_beskr_rubrik_infotext infotext" >Fyll i Arrangemangets rubrik</div>
+          <input id="arr_beskr_rubrik" class="form-control" type="text" formControlName="Rubrik"  tabindex />
           <small class="text-danger arr_beskr_rubrik_text-danger">Vänligen fyll i ett namn på aktör/utövare som utför arrangemanget</small>
       </fieldset>
     </div>
     <div class="form-group mt-3">
       <fieldset>
-        <label for="arr_beskr_underubrik">Underrubrik (ej obligatorisk) <a  class="info" rel="arr_beskr_underubrik_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-          <div class="arr_beskr_underubrik_infotext infotext" >Fyll i Arrangemangets rubrik</div>
-          <input id="arr_beskr_underubrik" class="form-control" type="text" formControlName="UnderRubrik"  />
+        <label for="arr_beskr_underubrik">Underrubrik (ej obligatorisk) <a (click)="showHideinfo(2)" class="info" rel="arr_beskr_underubrik_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div *ngIf="showinfo[2]" class="arr_beskr_underubrik_infotext infotext" >Fyll i Arrangemangets rubrik</div>
+          <input id="arr_beskr_underubrik" class="form-control" type="text" formControlName="UnderRubrik"  tabindex />
           <small class="text-danger arr_beskr_underubrik_text-danger">Vänligen fyll i ett namn på aktör/utövare som utför arrangemanget</small>
       </fieldset>
     </div>
 
     <div class="form-group mt-3">
-      <label for="formPresentationsbild">Presentation<a href="#" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-      <div class="formPresentationsbild_infotext infotext">Här skriver du presentationen till arrangemang.</div>
-      <editor formControlName="Innehall"
+      <label for="formPresentationsbild">Presentation<a  (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <div *ngIf="showinfo[3]" class="formPresentationsbild_infotext infotext">Här skriver du presentationen till arrangemang.</div>
+      <editor  tabindex formControlName="Innehall"
         apiKey="mkbtm7xyn7zyldlws5nbrr8xcpf6i5c8spnv5g9lbhgnjhrk"
         [init]="{
           height: 200,
@@ -126,7 +127,7 @@
           ],
           toolbar:
             'undo redo | formatselect | bold italic '
-        }">
+        } ">
       </editor>
     </div>
 </div>

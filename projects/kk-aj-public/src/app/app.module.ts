@@ -46,6 +46,7 @@ import { MainNavComponent } from './core/shared/main-nav/main-nav.component';
 import { KkajCaruselComponent } from './core/shared/kkaj-carusel/kkaj-carusel.component';
 import { KkNoResultComponent } from './kk-results/kk-no-result/kk-no-result.component';
 import { KkResultListComponent } from './kk-results/kk-result-list/kk-result-list.component';
+import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -69,7 +70,7 @@ const cookieConfig:NgcCookieConsentConfig = {
   elements:{
     messagelink: `
     <span id="cookieconsent:desc" class="cc-message">{{message}}<p>
-      <a aria-label="learn more about cookies" class="cc-link" href="{{cookiePolicyHref}}" target="_blank" rel="noreferrer">{{cookiePolicyLink}}</a>
+      <a aria-label="learn more about cookies" class="cc-link" href="{{cookiePolicyHref}}" tabindex="401" target="_blank" rel="noreferrer">{{cookiePolicyLink}}</a>
       </p></span>
     `,
   },
@@ -137,7 +138,8 @@ const cookieConfig:NgcCookieConsentConfig = {
     NgcCookieConsentModule.forRoot(cookieConfig),
     NgbModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDynamicTabindexModule
 
   ],
   providers: [
