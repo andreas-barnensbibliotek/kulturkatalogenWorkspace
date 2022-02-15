@@ -1,4 +1,4 @@
-import { FormArray, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 // import { LocalStorageHandler } from './localstorageHandler';
 import {Injectable } from "@angular/core";
 
@@ -11,7 +11,7 @@ export class FormArrangemangModel {
     UnderRubrik: [''],
     Innehall:[''],
     Arrangemangtyp: [''],
-    Konstform: this.fb.array([]),
+    Konstform: [''],
     Konstform2: [''],
     Konstform3: [''],
     MainImage: this.fb.group({
@@ -27,8 +27,29 @@ export class FormArrangemangModel {
       mediaBeskrivning:[''],
       mediaLink: [''],
     })
-   }
-
+  }
+  public genFGTmp:any  = {
+    Rubrik: ['',Validators.required],
+    UnderRubrik: [''],
+    Innehall:['',Validators.required],
+    Arrangemangtyp: ['',Validators.required],
+    Konstform: this.fb.array([],Validators.required),
+    Konstform2: [''],
+    Konstform3: [''],
+    MainImage: this.fb.group({
+      MediaID: [''],
+      MediaUrl: [''],
+      MediaFilename: [''],
+      MediaSize: [''],
+      MediaAlt: [''],
+      MediaFoto: [''],
+      MediaTyp: [''],
+      MediaVald: [''],
+      mediaTitle:[''],
+      mediaBeskrivning:[''],
+      mediaLink: [''],
+    },Validators.required)
+  }
 
 }
 

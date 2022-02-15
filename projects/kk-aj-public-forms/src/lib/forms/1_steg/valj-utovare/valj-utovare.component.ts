@@ -1,4 +1,5 @@
-import { FormGroup, FormControl, FormGroupDirective } from '@angular/forms';
+import { formUtovareModel } from './../../MODELformGroup/formUtovareModel';
+import { FormGroup, FormControl, FormGroupDirective, FormBuilder, Validators } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -7,35 +8,40 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./valj-utovare.component.scss']
 })
 export class ValjUtovareComponent implements OnInit {
-  // @Input() formGroupName!: string;
+
   @Output() VisaUtovareData = new EventEmitter()
 
   TidigareUtovareFormGrp!:FormGroup;
-
+  BaseRootForm?:FormGroup;
   showinfo:Array<boolean> = new Array;
 
-  constructor(private rootformGroup: FormGroupDirective ) { }
-
+  constructor(private rootformGroup: FormGroupDirective, private _fb: FormBuilder, private _utovareMdl: formUtovareModel ) { }
   ngOnInit(): void {
-    // this.TidigareUtovareFormGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+
+      this.InitTidigareUtovareFormGrp();
+
   }
 
-  // InitTidigareUtovareFormGrp():void{
-  //   this.TidigareUtovareFormGrp = new FormGroup(
-  //     {
-  //       kk_aj_search_utovareEpost : new FormControl(),
-  //       kk_aj_search_utovarePostnr : new FormControl()
-  //     }
-  //   )
-  // }
+  get Epost(){
+    return this.TidigareUtovareFormGrp.get("Epost");
+  }
+  get Postnr(){
+    return this.TidigareUtovareFormGrp.get("Postnr");
+  }
 
+  InitTidigareUtovareFormGrp():void{
+    this.TidigareUtovareFormGrp = this._fb.group(
+      {
+        Epost: ['',[Validators.required, Validators.email]],
+        Postnr: ['', Validators.required],
+      }
+    )
+  }
 
 
   getTidigareUtovarData(){
-
-
     //this.TidigareUtovareFormGrp.get("Kommun")?.setValue("testar");
-
+    this.rootformGroup.control.patchValue({Utovarelist:this._utovareMdl.getUtovareData()});
 
     this.VisaUtovareData.emit(1);
   }

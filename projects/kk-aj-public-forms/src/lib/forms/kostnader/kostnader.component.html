@@ -6,7 +6,7 @@
           <legend>Kostnader</legend>
            <label for="arr_ekonomikostnad">Kostnad/Pris <a (click)="showHideinfo(1)" class="info" rel="arr_ekonomikostnad_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
               <div *ngIf="showinfo[1]" class="arr_ekonomikostnad_infotext infotext">Ange kostnad/pris för arrangemanget i SEK. Endast siffror. För paketpris använd fältet ”Övrigt om kostnader”. Här kan du också ange ev entréavgifter, kostnad för guidning, museilektioner etc (ingår inte i arrangörsstödet).</div>
-              <input formControlName="Konstnad"  id="arr_ekonomikostnad" type="text" class="form-control" type="text" tabindex="1"/>
+              <input formControlName="Kostnad"  id="arr_ekonomikostnad" type="text" class="form-control" type="text" tabindex="1"/>
               <small class="text-danger arr_ekonomikostnad_error">Vänligen fyll i kostnad/pris för arrangemanget i SEK. Endast siffror.</small><br />
 
               <label for="arr_resor">Resor <a (click)="showHideinfo(2)" class="info" rel="arr_resor_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>

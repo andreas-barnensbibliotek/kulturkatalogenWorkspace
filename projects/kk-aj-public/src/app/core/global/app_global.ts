@@ -3,6 +3,7 @@ import { categoryStyles } from './../models/categoryStyles';
 import * as _ from 'lodash';
 import {Injectable } from "@angular/core";
 import { Subject } from 'rxjs';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
 export class App_Global {
@@ -197,4 +198,26 @@ export class App_Global {
   private capitalize(str:string)  {
     return str && str[0].toUpperCase() + str.slice(1);
   }
+
+  public conditionalValidator(predicate: BooleanFn, validator: ValidatorFn, errorNamespace?: string): ValidatorFn {
+    return (formControl => {
+      if (!formControl.parent) {
+        return null;
+      }
+      let error:any = null;
+      if (predicate()) {
+        error = validator(formControl);
+      }
+      if (errorNamespace && error) {
+        const customError: any = {};
+        customError[errorNamespace] = error;
+        error = customError
+      }
+      return error;
+    })
+  }
+
+}
+export interface BooleanFn {
+  (): boolean;
 }

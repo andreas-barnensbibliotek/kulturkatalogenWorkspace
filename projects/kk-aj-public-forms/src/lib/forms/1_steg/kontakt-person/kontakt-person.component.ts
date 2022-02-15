@@ -12,7 +12,21 @@ export class KontaktPersonComponent implements OnInit {
   showinfo:Array<boolean> = new Array;
 
   kontaktFrmGrp!: FormGroup
-  constructor(private rootformGroup: FormGroupDirective) { }
+  constructor(private rootformGroup: FormGroupDirective) {}
+
+  get Kontaktfornamn(){
+   return this.kontaktFrmGrp.get('Kontaktfornamn');
+  }
+  get KontaktEfternamn(){
+    return this.kontaktFrmGrp.get('KontaktEfternamn');
+  }
+  get KontaktTelefon(){
+    return this.kontaktFrmGrp.get('KontaktTelefon');
+  }
+  get KontaktEpost(){
+    return this.kontaktFrmGrp.get('KontaktEpost');
+  }
+
 
   ngOnInit(): void {
     this.initshowhideVal(3);
@@ -21,9 +35,27 @@ export class KontaktPersonComponent implements OnInit {
 
 
   copykontaktData(){
-    this.copydata.emit();
+    // this.copydata.emit();
+    this.kopieraKontaktdata();
     return false;
   }
+
+
+  kopieraKontaktdata(){
+    let obj = {
+        KontaktId:'',
+        Kontaktfornamn: this.rootformGroup.control.get('Utovarelist')!.get('Fornamn')!.value,
+        KontaktEfternamn: this.rootformGroup.control.get('Utovarelist')!.get('Efternamn')!.value,
+        KontaktTelefon: this.rootformGroup.control.get('Utovarelist')!.get('Telefon')!.value,
+        KontaktEpost: this.rootformGroup.control.get('Utovarelist')!.get('Epost')!.value,
+    }
+    this.Kontaktfornamn!.patchValue(obj.Kontaktfornamn);
+    this.KontaktEfternamn!.patchValue(obj.KontaktEfternamn);
+    this.KontaktTelefon!.patchValue(obj.KontaktTelefon);
+    this.KontaktEpost!.patchValue(obj.KontaktEpost);
+    this.rootformGroup.control.patchValue({Kontakt: obj});
+  }
+
 
   initshowhideVal(antalShowInfo:number):void{
     for (let i:number = 0; i == antalShowInfo; i++) {

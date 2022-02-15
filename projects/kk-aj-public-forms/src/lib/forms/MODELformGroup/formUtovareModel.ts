@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { LocalStorageHandler } from './localstorageHandler';
 import {Injectable } from "@angular/core";
 
@@ -7,15 +7,15 @@ export class formUtovareModel {
 
  public genFG:any  = {
     UtovarID: [''],
-    Organisation: [''],
-    Fornamn: [''],
-    Efternamn: [''],
+    Organisation: ['', Validators.required],
+    Fornamn: ['', Validators.required],
+    Efternamn: ['', Validators.required],
     Telefon: [''],
-    Adress: [''],
-    Postnr: [''],
-    Ort: [''],
-    Epost: [''],
-    Kommun: [''],
+    Adress: ['', Validators.required],
+    Postnr: ['', Validators.required],
+    Ort: ['', Validators.required],
+    Epost: ['', [Validators.required, Validators.email]],
+    Kommun: ['', Validators.required],
     Weburl: [''],
     Bild: [''],
     Beskrivning: [''],
@@ -24,7 +24,7 @@ export class formUtovareModel {
    getUtovareData(){
      return {
       UtovarID: '86',
-      Organisation: 'dev Kulturkatalogen',
+      Organisation: 'DEV Kulturkatalogen',
       Fornamn: 'Andreas',
       Efternamn: 'Josefsson',
       Telefon: '0708183215',

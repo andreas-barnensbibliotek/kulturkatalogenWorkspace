@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { LocalStorageHandler } from './localstorageHandler';
 import {Injectable } from "@angular/core";
 
@@ -7,10 +7,10 @@ export class formKontaktModel {
 
  public genFG:any  = {
     KontaktId: [''],
-    Kontaktfornamn:[''],
-    KontaktEfternamn: [''],
-    KontaktTelefon: [''],
-    KontaktEpost: [''],
+    Kontaktfornamn:['', Validators.required],
+    KontaktEfternamn: ['', Validators.required],
+    KontaktTelefon: ['', Validators.required],
+    KontaktEpost: ['', [Validators.required, Validators.email]],
    }
 
   // getUtovareData(){

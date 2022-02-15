@@ -1,5 +1,7 @@
+import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
+import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
+import { FormArray, FormGroup, FormGroupDirective, FormControl, FormBuilder } from '@angular/forms';
 import { ImageUploaderOptions } from 'ngx-image-uploader-next';
 
 @Component({
@@ -10,6 +12,8 @@ import { ImageUploaderOptions } from 'ngx-image-uploader-next';
 export class ValArrangemangsTypComponent implements OnInit {
   @Input() formGroupName!:string;
   arrangemangFrmGrp!:FormGroup;
+  tmpArrangemangFrmGrp!:FormGroup;
+
 
   options: ImageUploaderOptions = {
     thumbnailHeight: 150,
@@ -19,14 +23,52 @@ export class ValArrangemangsTypComponent implements OnInit {
     maxImageSize: 3
   };
 
-  constructor(private rootformGroup: FormGroupDirective) { }
+  constructor(private rootformGroup: FormGroupDirective, public fb:FormBuilder, private _arrMdl:FormArrangemangModel,private _faktaMdl:FormFaktaModel) { }
 
   ngOnInit(): void {
+    //  this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+     this.initArrangemangFromGroupdata();
+  }
+
+  initArrangemangFromGroupdata(){
+    this.tmpArrangemangFrmGrp = this.fb.group(this._arrMdl.genFGTmp);
+    this.tmpArrangemangFrmGrp.valueChanges.subscribe(x => {
+      // console.log('changed: ' + this.tmpArrangemangFrmGrp.valid)
+      if(this.tmpArrangemangFrmGrp.valid){
+        this.updateBaseForm();
+        // console.log(x)
+      }
+    })
+  }
+
+  get Rubrik(){
+    return this.tmpArrangemangFrmGrp.get('Rubrik');
+  }
+  get UnderRubrik(){
+    return this.tmpArrangemangFrmGrp.get('UnderRubrik');
+  }
+  get Innehall(){
+    return this.tmpArrangemangFrmGrp.get('Innehall');
+  }
+  get MainImage(){
+    return this.tmpArrangemangFrmGrp.get('MainImage');
+  }
+
+  updateBaseForm(){
     this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+    this.arrangemangFrmGrp.patchValue(this.tmpArrangemangFrmGrp.value);
+    // console.log('form value changed: ' + this.tmpArrangemangFrmGrp.valid)
+  }
+
+  rensaFaktalist(){
+    // this.rootformGroup.control.get('Faktalist')?.setValue(this._faktaMdl.genFGEmpty)
+    this.rootformGroup.control.removeControl("Faktalist");
+    this.rootformGroup.control.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
+    // this.tmpArrangemangFrmGrp?.setValue(this._faktaMdl.genFGEmpty)
   }
 
   onCheckboxChange(e:any, controlname:string) {
-    const checkArray: FormArray = this.arrangemangFrmGrp.get(controlname) as FormArray;
+    const checkArray: FormArray = this.tmpArrangemangFrmGrp.get(controlname) as FormArray;
 
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));

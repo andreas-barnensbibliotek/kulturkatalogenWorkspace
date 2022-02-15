@@ -1,17 +1,21 @@
-<ng-container >
+<ng-container [formGroup]="TidigareUtovareFormGrp">
 
   <div class="col-12 col-lg-8">
 
-    <div class="form-group mt-5">
-      <label for="kk_aj_search_utovareEpost">E-postadress <a  (click)="showHideinfo(1)" class="info" rel="arr_kk_aj_search_utovareEpost_info" > <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+    <div class="form-group mt-3">
+      <label for="kk_aj_search_utovareEpost" class="mt-2 mb-0">E-postadress <a  (click)="showHideinfo(1)" class="info" rel="arr_kk_aj_search_utovareEpost_info" > <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[1]" class="arr_kk_aj_search_utovareEpost_infotext infotext">Om du/ni varit med tidigare - ange e-postadress som aktör/utövare</div>
-      <input id="kk_aj_search_utovareEpost"  class="form-control" type="text" tabindex="6"/>
-      <small class="text-danger kk_aj_search_utovareEpost_text-danger">Vänligen fyll i en giltig e-postadress för aktör/utövare</small>
+      <input id="kk_aj_search_utovareEpost"  class="form-control" formControlName="Epost" type="text" tabindex="6"
+      [class.is-invalid]="Epost?.invalid && Epost?.touched" [class.is-valid]="Epost?.valid && Epost?.touched"/>
+      <small class="text-danger kk_aj_search_utovareEpost_text-danger"
+      *ngIf="Epost?.invalid && Epost?.touched">Vänligen fyll i en giltig e-postadress för aktör/utövare<br></small>
 
-      <label for="kk_aj_search_utovarePostnr">Ange postnummer <a (click)="showHideinfo(2)" class="info" rel="arr_kk_aj_search_utovarePostnr_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <label for="kk_aj_search_utovarePostnr" class="mt-2 mb-0">Ange postnummer <a (click)="showHideinfo(2)" class="info" rel="arr_kk_aj_search_utovarePostnr_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[2]" class="arr_kk_aj_search_utovarePostnr_infotext infotext">Ange postnummer för aktör/utövare/grupp enligt exempel 142 42</div>
-      <input id="kk_aj_search_utovarePostnr" type="text" class="form-control" tabindex="7"/>
-      <small class="text-danger kk_aj_search_utovarePostnr_text-danger">Vänligen fyll i ett giltigt postnummer för aktör/utövare/grupp</small><br>
+      <input id="kk_aj_search_utovarePostnr" type="text" class="form-control" formControlName="Postnr" tabindex="7"
+      [class.is-invalid]="Postnr?.invalid && Postnr?.touched" [class.is-valid]="Postnr?.valid && Postnr?.touched"/>
+      <small class="text-danger kk_aj_search_utovarePostnr_text-danger"
+      *ngIf="Postnr?.invalid && Postnr?.touched">Vänligen fyll i ett giltigt postnummer för aktör/utövare/grupp<br></small><br>
 
       <button id="ChangeUppgifterKontakt" (click)="getTidigareUtovarData()" class="btn btn-primary changeuppgifter">Hämta uppgifter</button>
     </div>

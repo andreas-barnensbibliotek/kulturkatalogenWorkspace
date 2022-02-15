@@ -100,8 +100,8 @@
     <legend >Smakprov / Exempel</legend>
   </div>
 
-  <div *ngFor="let itm of ExempelLista.Exempel; let idx = index;">
-   <div class="row p-3 bg-light text-dark mb-2">
+  <div *ngFor="let itm of ExempelLista; let idx = index;">
+   <div class="row p-3 bg-light text-dark mb-2 aj-exempel-preview">
     <div *ngIf="itm.MediaTyp == 1" class="col-md-4 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{itm.MediaUrl}}"></div>
 
     <div *ngIf="itm.MediaTyp == 2" class="col-md-4 mt-1">

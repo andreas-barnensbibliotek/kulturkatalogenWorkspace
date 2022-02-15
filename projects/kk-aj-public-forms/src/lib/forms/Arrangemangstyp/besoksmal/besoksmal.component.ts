@@ -9,15 +9,13 @@ export class BesoksmalComponent implements OnInit {
   @Input() formGroupName!: string;
   BesoksmalFrmGrp!: FormGroup;
   showinfo:Array<boolean> = new Array;
+  SmakprovFrmGrp!: FormGroup;
 
   constructor(private rootformGroup: FormGroupDirective) {}
 
   ngOnInit(): void {
     this.BesoksmalFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
-  }
-
-  get Exempel(){
-    return this.BesoksmalFrmGrp.get("Exempel") as FormArray;
+    this.SmakprovFrmGrp= this.rootformGroup.control;
   }
 
   onCheckboxChange(e:any, controlname:string) {

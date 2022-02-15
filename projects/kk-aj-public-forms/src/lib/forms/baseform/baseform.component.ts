@@ -1,11 +1,13 @@
+
 import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
 import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHandlerModel';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 import { FileQueueObject, ImageUploaderOptions } from 'ngx-image-uploader-next';
 import { formUtovareModel } from '../MODELformGroup/formUtovareModel';
 import { formKontaktModel } from '../MODELformGroup/formKontaktModel';
+import { KontaktFormValidator } from '../../shared/KontaktFormGroup-Validator';
 
 @Component({
   selector: 'app-baseform',
@@ -24,7 +26,7 @@ export class BaseformComponent implements OnInit {
     public _blockMdl: FormVisaBlockHandlerModel,
     public _faktaMdl: FormFaktaModel,
     public fb:FormBuilder,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +36,11 @@ export class BaseformComponent implements OnInit {
   initFromGroupdata(){
     this.BaseRootForm = this.fb.group({
       Utovarelist: this.fb.group(this._utovareMdl.genFG),
-      Kontakt: this.fb.group(this._kontaktMdl.genFG),
+      Kontakt: this.fb.group(this._kontaktMdl.genFG, {validator: KontaktFormValidator}),
       Arrangemang: this.fb.group(this._arrMdl.genFG),
       Faktalist:this.fb.group(this._faktaMdl.genFG)
     });
+    console.log("detta2:" + this.BaseRootForm.get('Kontakt')!.valid );
   }
 
   onUpload(file: FileQueueObject) {
@@ -47,20 +50,10 @@ export class BaseformComponent implements OnInit {
 
   gettidigare(){
     //hämta utövardatat från apit och patcha utövarlistan
-    this.BaseRootForm.patchValue({Utovarelist:this._utovareMdl.getUtovareData()});
+    // this.BaseRootForm.patchValue({Utovarelist:this._utovareMdl.getUtovareData()});
     this._blockMdl.showTidigareUtovare();
   }
 
-  kopieraKontaktdata(val:any){
-    let obj = {
-        KontaktId:'',
-        Kontaktfornamn: this.BaseRootForm.get('Utovarelist')!.get('Fornamn')!.value,
-        KontaktEfternamn: this.BaseRootForm.get('Utovarelist')!.get('Efternamn')!.value,
-        KontaktTelefon: this.BaseRootForm.get('Utovarelist')!.get('Telefon')!.value,
-        KontaktEpost: this.BaseRootForm.get('Utovarelist')!.get('Efternamn')!.value,
-    }
-    this.BaseRootForm.patchValue({Kontakt: obj});
-  }
 
   valUtovare(val:number){
     if(val==1){
@@ -86,11 +79,32 @@ export class BaseformComponent implements OnInit {
 
   showFaktaBlock(arrtypid:number){
     let visaFakta = this.BaseRootForm.get('Arrangemang')!.get('Arrangemangtyp')!.value;
+
+
+
     if(arrtypid == visaFakta){
+      // this.BaseRootForm.removeControl('Faktalist');
+      // switch ( arrtypid ) {
+      //   case 1:
+      //     this.BaseRootForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
+      //       break;
+      //   case 7:
+      //     this.BaseRootForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGBesoksmal));
+      //       break;
+      //   default:
+      //     this.BaseRootForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
+      //      break;
+      // }
+
       return true;
     }
   }
+
+
   ngAfterContentChecked() {
     this.ref.detectChanges();
   }
+  ngAfterViewInit() {
+
+}
 }

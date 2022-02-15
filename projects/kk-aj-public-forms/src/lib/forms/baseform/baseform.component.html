@@ -8,23 +8,23 @@
           <ul class="d-flex ">
             <li class="tab-title active first" role="presentation1" rel="1" >
               <a (click)="ShowSteg(1)" role="tab" tabindex="6" aria-selected="true" aria-controls="addarrtab-1" class="kk_aj_tab" rel="1">
-                  <span class="number">1</span>Kontaktuppgifter
+                <span class="number">1</span>Kontaktuppgifter
               </a>
             </li>
             <li class="tab-title done disabled second" role="presentation2" rel="2">
-                  <a (click)="ShowSteg(2)"  role="tab" tabindex="7" aria-selected="false" aria-controls="addarrtab-2" class="kk_aj_tab" rel="2" >
-                      <span class="number">2</span>Arrangemang
-                  </a>
+              <a (click)="ShowSteg(2)"  role="tab" tabindex="7" aria-selected="false" aria-controls="addarrtab-2" class="kk_aj_tab" rel="2" >
+                <span class="number">2</span>Arrangemang
+              </a>
             </li>
             <li class="tab-title disabled third" role="presentation3" rel="3" >
-                <a (click)="ShowSteg(3)"  role="tab" tabindex="8" aria-selected="false" aria-controls="addarrtab-3" class="kk_aj_tab" rel="3" >
-                    <span class="number">3</span>Granska
-                </a>
+              <a (click)="ShowSteg(3)"  role="tab" tabindex="8" aria-selected="false" aria-controls="addarrtab-3" class="kk_aj_tab" rel="3" >
+                <span class="number">3</span>Granska
+              </a>
             </li>
             <li class="tab-title disabled forth" role="presentation4" rel="4">
-                <a (click)="ShowSteg(4)" role="tab" tabindex="9" aria-selected="false" aria-controls="addarrtab-4" class="kk_aj_tab" rel="4" >
-                    <span class="number">4</span>Skicka in
-                </a>
+              <a (click)="ShowSteg(4)" role="tab" tabindex="9" aria-selected="false" aria-controls="addarrtab-4" class="kk_aj_tab" rel="4" >
+                <span class="number">4</span>Skicka in
+              </a>
             </li>
           </ul>
         </div>
@@ -59,10 +59,10 @@
         <app-valj-utovare *ngIf="_blockMdl.blnValUtovare" (VisaUtovareData)="gettidigare()" ></app-valj-utovare>
         <app-tidigare-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnTidigareUtovare" (click)="changeUtovareUppgifter()"></app-tidigare-utovare>
         <app-ny-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnNyUtovare"></app-ny-utovare>
-        <app-kontakt-person formGroupName="Kontakt" *ngIf="_blockMdl.blnKontaktUpg" (click)="kopieraKontaktdata($event)"></app-kontakt-person>
+        <app-kontakt-person formGroupName="Kontakt" *ngIf="_blockMdl.blnKontaktUpg" ></app-kontakt-person>
         <div class="row mt-5 mb-5">
           <div class="col-12 col-lg-8" >
-            <a role="tab" (click)="ShowSteg(2)"  class="btn btn-primary btn-lg active" rel="2" >Nästa steg - Arrangemang</a>
+            <button   role="tab" (click)="ShowSteg(2)"  class="btn btn-primary btn-lg active" rel="2" >Nästa steg - Arrangemang</button>
           </div>
         </div>
       </div>
@@ -91,14 +91,11 @@
         </div>
         <div class="row mt-5 mb-5">
           <div class="col-12 col-lg-8" >
-
-              <a role="tab" (click)="ShowSteg(1)"  class="btn btn-success btn-md active float-start" rel="2" tabindex="0" >Föregående steg - Kontaktuppgifter</a>
-              <a role="tab"(click)="ShowSteg(3)"  class="btn btn-primary btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Arrangemang</a>
+              <button role="tab" [disabled]="BaseRootForm.invalid" (click)="ShowSteg(1)"  class="btn btn-success btn-md active float-start" rel="2" tabindex="0" >Föregående steg - Kontaktuppgifter</button>
+              <button role="tab"  [disabled]="BaseRootForm.invalid" (click)="ShowSteg(3)"  class="btn btn-primary btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Arrangemang</button>
             </div>
           </div>
         </div>
-
-
   <!-- end container   -->
   </div>
 
