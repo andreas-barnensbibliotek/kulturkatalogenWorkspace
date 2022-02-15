@@ -1,3 +1,11 @@
+
+Version 3 = formuläret uppdelat i flera små formgroups för validering. uppdaterar det stora.
+problem: svårt att hämta ett arrangemang och uppdatera alla olika formgrupper
+
+version 3.1 = använder en form modell för alla formulärstyper. använder disabel controls för att undanta från validering när fält inte 
+ska ingå i specifikt arrangemang
+
+
 # KulturkatalogenWorkspace
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
