@@ -58,10 +58,19 @@ export class FormFaktaModel {
 
   public genFGBesoksmal:any  =
   {
-    AlderFran: this.fb.array([]),
-    OvrigaKostnader: [''],
-    Ovrigt: [''],
+    AlderFran: this.fb.array([],Validators.required),
+    OvrigaKostnader: ['', Validators.required],
+    Ovrigt: null,
     Exempel: this.fb.array([])
+    // Exempel:this.fb.group(this._exempelMdl.genFG)
+  }
+
+  public tmpgenFGBesoksmal:any  =
+  {
+    AlderFran:  ["3","4"],
+    OvrigaKostnader: 'test',
+    Ovrigt: 'test2',
+    Exempel: null
     // Exempel:this.fb.group(this._exempelMdl.genFG)
   }
 
@@ -125,6 +134,58 @@ export class FormFaktaModel {
     Exempel:"" // this.fb.array([])
     // Exempel:this.fb.group(this._exempelMdl.genFG)
   }
+
+  public genFGDummy:any  =
+  {
+    AntalMedverkande:"23",
+    Medverkande:"2",
+    Period:"2022-03-03",
+    BokningsbarTom:"2022-03-03",
+    MaxPublik:"10",
+    AlderFran:  ["3","4"],
+    AlderTill:"",
+    ForestallningarDag:"2",
+    Byggtid:"10",
+    Rivtid:"12",
+    ScenBredd:"2",
+    ScenDjup:"4",
+    ScenTakHojd:"3",
+    Ljus:"ja",
+    BarHjalp:"nej",
+    El: null,
+    OvrigaLokalkrav: null,
+    Kostnad: null,
+    KostnadAndraArr: null,
+    Resor:null,
+    Logi: null,
+    LogiOvrigt: null,
+    Traktamente: null,
+    Lararhandledning: null,
+    Speltid: null,
+    Morklaggning:null,
+    Ljud: null,
+    KostnadPaket: null,
+    OvrigaKostnader: 'test',
+    Ovrigt: 'test2',
+    KostnadtredjeArr: null,
+    PremiarDatum: null,
+    MaxAntal: null,
+    Cv: null,
+    BidragStod: null,
+    BidragStodFran: null,
+    FSkatt: null,
+    Centrumbildning: null,
+    OvrigInfo:null,
+    UtstallningsPeriod: null,
+    PedagogisVerksamhet: null,
+    Marknadsforing: null,
+    Yta: null,
+    Exempel:null // this.fb.array([])
+    // Exempel:this.fb.group(this._exempelMdl.genFG)
+  }
+
+
+
 
   // public genFG:any  =
   // {

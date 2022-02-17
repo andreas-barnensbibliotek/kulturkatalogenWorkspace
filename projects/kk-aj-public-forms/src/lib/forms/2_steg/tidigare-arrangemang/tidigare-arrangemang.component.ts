@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { FormArrangemangModel } from './../../MODELformGroup/FormArrangemangModel';
+import { FormFaktaModel } from './../../MODELformGroup/FormFaktaModel';
+import { FormGroupDirective, FormBuilder } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tidigare-arrangemang',
@@ -6,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tidigare-arrangemang.component.scss']
 })
 export class TidigareArrangemangComponent implements OnInit {
+  @Output() GetTidigareArr=new EventEmitter();
+  constructor(private rootformGroup: FormGroupDirective, public fb:FormBuilder, private _arrMdl:FormArrangemangModel, private _faktaMdl:FormFaktaModel) { }
 
-  constructor() { }
 
   ngOnInit(): void {
   }
@@ -23,5 +27,9 @@ export class TidigareArrangemangComponent implements OnInit {
    }
    showHideinfo(infoboxID:number){
      this.showinfo[infoboxID] = !this.showinfo[infoboxID]
+   }
+
+   GetTidigareArrangemang(val:number){
+    this.GetTidigareArr.emit(val);
    }
 }

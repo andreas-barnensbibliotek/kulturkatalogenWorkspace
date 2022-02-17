@@ -10,16 +10,21 @@ export class BesoksmalComponent implements OnInit {
   BesoksmalFrmGrp!: FormGroup;
   showinfo:Array<boolean> = new Array;
   SmakprovFrmGrp!: FormGroup;
+  onCheckboxClicked:boolean=false;
+  toAge:Array<boolean> = new Array;
 
   constructor(private rootformGroup: FormGroupDirective) {}
 
   ngOnInit(): void {
     this.BesoksmalFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
     this.SmakprovFrmGrp= this.rootformGroup.control;
+    console.log("init");
+    this.initFromGroupdata();
   }
 
   onCheckboxChange(e:any, controlname:string) {
     const checkArray: FormArray = this.BesoksmalFrmGrp.get(controlname) as FormArray;
+    this.onCheckboxClicked= true;
 
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
@@ -45,5 +50,25 @@ export class BesoksmalComponent implements OnInit {
     this.showinfo[infoboxID] = !this.showinfo[infoboxID]
   }
 
+  get AlderFran(){
+    return this.BesoksmalFrmGrp.get("AlderFran") as FormArray;
+  }
+
+  initFromGroupdata(){
+    this.test();
+    // this.BesoksmalFrmGrp.valueChanges.subscribe(x => {
+
+    //   console.log("i loopen");
+    // })
+  }
+  test() {
+    let i: number = 0;
+    this.AlderFran.controls.forEach((item: any) => {
+      this.toAge[item.value] = true;
+      this.onCheckboxClicked= true;
+      i++;
+    });
+
+  }
 
 }

@@ -12,44 +12,49 @@ export class SkolbioComponent implements OnInit {
   @Input() formGroupName!: string;
   SkolbioFrmGrp!: FormGroup;
   ExempelFrmGrp!: FormGroup;
-  tmpSkolbioFrmGrp!: FormGroup;
+  // tmpSkolbioFrmGrp!: FormGroup;
   showinfo:Array<boolean> = new Array;
   sliderval:any = "0"
   onCheckboxClicked:boolean=false;
   onSpeltidClicked:boolean=false;
+  toAge:Array<boolean> = new Array;
 
   constructor(private rootformGroup: FormGroupDirective, public fb:FormBuilder, public _faktaMdl: FormFaktaModel,) { }
 
   ngOnInit(): void {
+    this.SkolbioFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+
+
     this.ExempelFrmGrp = this.rootformGroup.control
-    this.initFromGroupdata();
+
   }
 
-  initFromGroupdata(){
-    this.tmpSkolbioFrmGrp = this.fb.group(this._faktaMdl.genFGSkolbioValidator);
-    this.tmpSkolbioFrmGrp.valueChanges.subscribe(x => {
-      console.log('tmpSkolbioFrmGrp changed: ' + this.tmpSkolbioFrmGrp.valid)
-      if(this.tmpSkolbioFrmGrp.valid){
-        this.updateBaseForm();
-        console.log(x)
-      }
-    })
-  }
-  updateBaseForm(){
-console.log("this.formGroupName: " +this.formGroupName)
-    this.SkolbioFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
-    this.SkolbioFrmGrp.patchValue(this.tmpSkolbioFrmGrp.value);
-    console.log('tmpSkolbioFrmGrp form value changed: ' + this.tmpSkolbioFrmGrp.valid)
-  }
+  // initFromGroupdata(){
+  //   this.tmpSkolbioFrmGrp = this.fb.group(this._faktaMdl.genFGSkolbioValidator);
+  //   this.tmpSkolbioFrmGrp.valueChanges.subscribe(x => {
+  //     console.log('tmpSkolbioFrmGrp changed: ' + this.tmpSkolbioFrmGrp.valid)
+  //     if(this.tmpSkolbioFrmGrp.valid){
+  //       this.updateBaseForm();
+  //       console.log(x)
+  //     }
+  //   })
+  // }
+
+  // updateBaseForm(){
+  //   console.log("this.formGroupName: " +this.formGroupName)
+  //   this.SkolbioFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+  //   this.SkolbioFrmGrp.patchValue(this.tmpSkolbioFrmGrp.value);
+  //   console.log('tmpSkolbioFrmGrp form value changed: ' + this.tmpSkolbioFrmGrp.valid)
+  // }
 
   get AlderFran(){
-    return this.tmpSkolbioFrmGrp.get("AlderFran") as FormArray;
+    return this.SkolbioFrmGrp.get("AlderFran") as FormArray;
   }
   get speltid(){
-    return this.tmpSkolbioFrmGrp.get("Speltid") as FormControl;
+    return this.SkolbioFrmGrp.get("Speltid") as FormControl;
   }
   get Kostnad(){
-    return this.tmpSkolbioFrmGrp.get("Kostnad") as FormControl;
+    return this.SkolbioFrmGrp.get("Kostnad") as FormControl;
   }
 
   changeSpeltid(e:any, value:string){
@@ -57,7 +62,7 @@ console.log("this.formGroupName: " +this.formGroupName)
     this.speltid.setValue(value);
   }
   onCheckboxChange(e:any, controlname:string) {
-    const checkArray: FormArray = this.tmpSkolbioFrmGrp.get(controlname) as FormArray;
+    const checkArray: FormArray = this.SkolbioFrmGrp.get(controlname) as FormArray;
     this.onCheckboxClicked= true;
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
@@ -74,6 +79,24 @@ console.log("this.formGroupName: " +this.formGroupName)
   }
 
 
+initFromGroupdata(){
+
+    this.SkolbioFrmGrp.valueChanges.subscribe(x => {
+
+      this.test();
+    })
+  }
+
+  test() {
+    let i: number = 0;
+    this.AlderFran.controls.forEach((item: any) => {
+      if (item.value) {
+        console.log("värde: " + item.value);
+        return;
+      }
+      i++;
+    });
+  }
   // copytomainForm(){
   //   if(this.tmpSkolbioFrmGrp.get("AlderFran")?.valid){
   //     this.SkolbioFrmGrp.get("AlderFran")?.patchValue(this.tmpSkolbioFrmGrp.get("AlderFran")?.value)

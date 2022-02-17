@@ -1,3 +1,5 @@
+import { ServerApiResponsModel } from './forms/MODELformGroup/ServerApiResponsModel';
+import { getTidigareModule } from './forms/MODELformGroup/getTidigareModule';
 import { FormFaktaModel } from './forms/MODELformGroup/FormFaktaModel';
 import { FormArrangemangModel } from './forms/MODELformGroup/FormArrangemangModel';
 import { FormVisaBlockHandlerModel } from './forms/MODELformGroup/FormVisaBlockHandlerModel';
@@ -77,8 +79,7 @@ import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
     ImageUploaderModule,
     NgxBootstrapSliderModule,
     NgbModule,
-    NgxDynamicTabindexModule
-
+    NgxDynamicTabindexModule,
   ],
   providers: [
     formUtovareModel,
@@ -86,7 +87,9 @@ import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
     FormVisaBlockHandlerModel,
     FormArrangemangModel,
     FormExempelModel,
-    FormFaktaModel
+    FormFaktaModel,
+    getTidigareModule,
+    ServerApiResponsModel
   ],
   exports: [
     KkAjPublicFormsComponent

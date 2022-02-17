@@ -1,3 +1,4 @@
+import { getTidigareModule } from './../MODELformGroup/getTidigareModule';
 
 import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
@@ -25,6 +26,7 @@ export class BaseformComponent implements OnInit {
     private _arrMdl:FormArrangemangModel,
     public _blockMdl: FormVisaBlockHandlerModel,
     public _faktaMdl: FormFaktaModel,
+    public _TidigareMdl: getTidigareModule,
     public fb:FormBuilder,
     private ref: ChangeDetectorRef,
   ) { }
@@ -37,8 +39,8 @@ export class BaseformComponent implements OnInit {
     this.BaseRootForm = this.fb.group({
       Utovarelist: this.fb.group(this._utovareMdl.genFG),
       Kontakt: this.fb.group(this._kontaktMdl.genFG, {validator: KontaktFormValidator}),
-      Arrangemang: this.fb.group(this._arrMdl.genFG),
-      Faktalist:this.fb.group(this._faktaMdl.genFG)
+      Arrangemang: null,
+      Faktalist:null
     });
     console.log("detta2:" + this.BaseRootForm.get('Kontakt')!.valid );
   }
@@ -53,7 +55,6 @@ export class BaseformComponent implements OnInit {
     // this.BaseRootForm.patchValue({Utovarelist:this._utovareMdl.getUtovareData()});
     this._blockMdl.showTidigareUtovare();
   }
-
 
   valUtovare(val:number){
     if(val==1){
@@ -73,6 +74,17 @@ export class BaseformComponent implements OnInit {
   }
 
   ShowSteg(val:number){
+    if(val==1){
+      this.BaseRootForm.removeControl('Arrangemang');
+      this.BaseRootForm.addControl('Arrangemang', this.fb.group([]),);
+      this.BaseRootForm.removeControl('Faktalist');
+      this.BaseRootForm.addControl('Faktalist', this.fb.group([]),);
+    }
+    if(val==2){
+      this.BaseRootForm.removeControl('Arrangemang');
+      this.BaseRootForm.addControl('Arrangemang', this.fb.group(this._arrMdl.genFG),);
+    }
+
     this._blockMdl.stegBlock(val)
     return false;
   }
@@ -100,11 +112,28 @@ export class BaseformComponent implements OnInit {
     }
   }
 
+  GetTidigareArrangemang(val:number){
+    console.log("get tidigare: " + val);
+    // this.BaseRootForm.get('Arrangemang')?.patchValue(this._arrMdl.genFGTmp);
+         this.BaseRootForm.get('Arrangemang')?.patchValue(this._TidigareMdl.getTidigareArr(7));
+    // this.BaseRootForm.removeControl('Arrangemang');
+    // this.BaseRootForm.addControl('Arrangemang', this.fb.group(this._TidigareMdl.getTidigareArr(7)));
+    this.BaseRootForm.removeControl('Faktalist');
+    this.BaseRootForm.addControl('Faktalist', this.fb.group(this._TidigareMdl.getTidigareFakta(7)));
+    // let testar = this._faktaMdl.tmpgenFGBesoksmal;
+    // testar.AlderFran.forEach((t: any) => {
+    //   console.log(t);
+    // });
+    // this.BaseRootForm.get('Faktalist')?.patchValue(this._faktaMdl.tmpgenFGBesoksmal);
+  }
 
   ngAfterContentChecked() {
     this.ref.detectChanges();
   }
   ngAfterViewInit() {
-
+  }
 }
-}
+// AlderFran:  ["3","4"],
+// OvrigaKostnader: 'test',
+// Ovrigt: 'test2',
+// Exempel: null

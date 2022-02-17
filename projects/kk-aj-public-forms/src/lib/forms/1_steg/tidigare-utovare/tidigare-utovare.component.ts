@@ -19,8 +19,8 @@ export class TidigareUtovareComponent implements OnInit {
     this.tidigareUtovareFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
-  changeUppgifter(){
-    this.ChangeUtovareInfo.emit();
+  changeUppgifter(val:number){
+    this.ChangeUtovareInfo.emit(val);
   }
 
   initshowhideVal(antalShowInfo:number):void{

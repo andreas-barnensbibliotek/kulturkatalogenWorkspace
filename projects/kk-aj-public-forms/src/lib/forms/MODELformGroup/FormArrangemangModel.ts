@@ -7,33 +7,11 @@ export class FormArrangemangModel {
   constructor(private fb: FormBuilder) { }
 
   public genFG:any  = {
-    Rubrik: [''],
-    UnderRubrik: [''],
-    Innehall:[''],
-    Arrangemangtyp: [''],
-    Konstform: [''],
-    Konstform2: [''],
-    Konstform3: [''],
-    MainImage: this.fb.group({
-      MediaID: [''],
-      MediaUrl: [''],
-      MediaFilename: [''],
-      MediaSize: [''],
-      MediaAlt: [''],
-      MediaFoto: [''],
-      MediaTyp: [''],
-      MediaVald: [''],
-      mediaTitle:[''],
-      mediaBeskrivning:[''],
-      mediaLink: [''],
-    })
-  }
-  public genFGTmp:any  = {
     Rubrik: ['',Validators.required],
     UnderRubrik: [''],
     Innehall:['',Validators.required],
     Arrangemangtyp: ['',Validators.required],
-    Konstform: this.fb.array([],Validators.required),
+    Konstform: [null,Validators.required],
     Konstform2: [''],
     Konstform3: [''],
     MainImage: this.fb.group({
@@ -49,6 +27,28 @@ export class FormArrangemangModel {
       mediaBeskrivning:[''],
       mediaLink: [''],
     },Validators.required)
+  }
+  public genFGTmp:any  = {
+    Rubrik: 'Rubrikimport',
+    UnderRubrik: 'Underrubrik Import',
+    Innehall:'Import texte i editor',
+    Arrangemangtyp: '7',
+    Konstform: '',
+    Konstform2: '',
+    Konstform3: '',
+    MainImage: [{
+      MediaID: '',
+      MediaUrl: '',
+      MediaFilename: '',
+      MediaSize: '',
+      MediaAlt: '',
+      MediaFoto: '',
+      MediaTyp: '',
+      MediaVald: '',
+      mediaTitle:'',
+      mediaBeskrivning:'',
+      mediaLink: '',
+    }]
   }
 
 }

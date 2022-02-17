@@ -2,6 +2,7 @@
   <!-- start container   -->
 <ng-container [formGroup]="BaseRootForm">
     {{BaseRootForm.value | json}}
+    {{BaseRootForm.valid}}
     <div class="row">
       <div class="col-12">
         <div class="wizard-numbers steps ">
@@ -62,7 +63,7 @@
         <app-kontakt-person formGroupName="Kontakt" *ngIf="_blockMdl.blnKontaktUpg" ></app-kontakt-person>
         <div class="row mt-5 mb-5">
           <div class="col-12 col-lg-8" >
-            <button   role="tab" (click)="ShowSteg(2)"  class="btn btn-primary btn-lg active" rel="2" >Nästa steg - Arrangemang</button>
+            <button role="tab" (click)="ShowSteg(2)" [disabled]="BaseRootForm.invalid"  class="btn btn-primary btn-lg active" rel="2" >Nästa steg - Arrangemang</button>
           </div>
         </div>
       </div>
@@ -76,8 +77,11 @@
       <div class="col-12 col-md-10">
         <div class="col-12 col-lg-8">
           <h2>Arrangemang</h2>
-        </div>
 
+          <div class="row">
+            <app-tidigare-arrangemang (GetTidigareArr)="GetTidigareArrangemang($event)"></app-tidigare-arrangemang>
+          </div>
+        </div>
         <app-val-arrangemangs-typ formGroupName="Arrangemang" ></app-val-arrangemangs-typ>
         <!-- <div class="col-12 col-lg-8">
           <hr/>
@@ -91,8 +95,8 @@
         </div>
         <div class="row mt-5 mb-5">
           <div class="col-12 col-lg-8" >
-              <button role="tab" [disabled]="BaseRootForm.invalid" (click)="ShowSteg(1)"  class="btn btn-success btn-md active float-start" rel="2" tabindex="0" >Föregående steg - Kontaktuppgifter</button>
-              <button role="tab"  [disabled]="BaseRootForm.invalid" (click)="ShowSteg(3)"  class="btn btn-primary btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Arrangemang</button>
+              <button role="tab" (click)="ShowSteg(1)"  class="btn btn-success btn-md active float-start" rel="2" tabindex="0" >Föregående steg - Kontaktuppgifter</button>
+              <button role="tab" (click)="ShowSteg(3)" [disabled]="BaseRootForm.invalid" class="btn btn-primary btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Arrangemang</button>
             </div>
           </div>
         </div>
