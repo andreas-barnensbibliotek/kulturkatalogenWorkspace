@@ -11,7 +11,9 @@ export class App_Global {
   private _liveAPI:string = "https://api.kulturkatalogenvast.org";
   private _devAPI:string = "https://devapi.kulturkatalogenvast.org";
   private _SandboxAPI:string = "https://sandboxapi.kulturkatalogenvast.org";
+  private _SandboxCoreAPI:string ="https://sandboxapicore.kulturkatalogenvast.org"
   private _localdevserver:string = "http://localhost:60485";
+  private _localCordevserver:string = "https://localhost:44372";
 
   private _usedServer:string = this._SandboxAPI; // <-- denna används
   private _cmdApi:string = "/Api_v2";
@@ -29,7 +31,9 @@ export class App_Global {
   currentpage!:number;
   filterform:any;
   server:string = this._usedServer + this._cmdApi;
+  coreserver:string = this._localCordevserver;
   devkey:string = "/alf/?type=json";
+  coredevkey:string = "?devKey=alf";
   showspinner:boolean= true;
   testtotal:any;
   currentversion:string="Version: 0.0.1 2021-12-01"

@@ -27,7 +27,7 @@ export class AjApiServicesService  extends AjApiService {
   }
 
   public searchArrangemang(formdata:any){
-    let url:string = this._global.server +"/api/PublicSearch";
+    let url:string = this._global.server +"/api/PublicSearch/" + this._global.coredevkey;
      console.log("SearchArrangemang: /api/PublicSearch URL: " + url);
      console.log(formdata);
     return this.doPost(url,formdata);
@@ -115,5 +115,4 @@ export class AjApiServicesService  extends AjApiService {
   //    console.log(formdata);
   //   return this.doPostFile(url,formdata);
   // }
-
 }

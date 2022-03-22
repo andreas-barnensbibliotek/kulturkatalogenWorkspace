@@ -1,3 +1,4 @@
+import { IpostSearchV2 } from './../interface/ipost-search-v2';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import {throwError } from 'rxjs';
@@ -27,6 +28,13 @@ export class ApiServiceService {
   }
 
   doPost(url:string, postobj:IpostSearch){
+    return this.http.post(url,JSON.stringify(postobj),this._httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  doPostV2(url:string, postobj:IpostSearchV2){
     return this.http.post(url,JSON.stringify(postobj),this._httpOptions)
     .pipe(
       catchError(this.handleError)

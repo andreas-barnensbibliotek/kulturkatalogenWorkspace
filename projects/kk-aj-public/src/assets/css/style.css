@@ -66,7 +66,7 @@ Moz Selection
 ================================================*/
 :root {
     --primary-color: #7e9d8e;
-    --primarydark-color: #849c8f;
+    --primarydark-color: #7e9d8e;
     --black-color: #333333;
     --dark-color: #5a5a5a;
     --secondary-color: #cecfd1;
@@ -115,7 +115,8 @@ body {
     font-size: 1rem;
     font-style: normal;
     font-weight: normal;
-    line-height: 2;
+    /* line-height: 2; */
+    line-height: 1.9;
     color: var(--secondary-color);
     overflow-x: hidden;
 }
@@ -156,6 +157,7 @@ h2 {
     font-size: 36px;
     font-style: normal;
     line-height: 44px;
+    font-weight: 400!important;
 }
 
 h3 {
@@ -168,6 +170,8 @@ h4 {
     font-size: 28px;
     font-style: normal;
     line-height: 36px;
+    font-weight: 400;
+
 }
 
 h5 {
@@ -402,7 +406,7 @@ section,
 }
 
 .gen-section-padding-2 {
-    padding: 60px 0px 40px 0px;
+    padding: 40px 0px 40px 0px;
 }
 
 .gen-section-padding-3 {
@@ -572,7 +576,7 @@ input[type="button"],
     overflow: hidden;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
-    border-radius: 0px;
+    border-radius: 10px;
 }
 
 .gen-button-dark {
@@ -580,7 +584,8 @@ input[type="button"],
 }
 
 .gen-button-flat {
-    padding: 5px 30px;
+    padding: 5px 20px;
+    text-decoration: none;
 }
 
 .gen-button span {
@@ -594,8 +599,9 @@ input[type="button"],
 
 .gen-button:hover,
 .gen-button:focus {
-    color: var(--white-color);
+    color: var(--grey-color);
     background: var(--primarydark-color);
+text-decoration: underline!important;
 }
 
 /*===== Button link =====*/
@@ -635,6 +641,7 @@ input[type="button"],
 .gen-button.gen-button-link:hover i {
     background: var(--primary-color);
     color: var(--white-color);
+
 }
 
 /*===== Button outline =====*/
@@ -4476,6 +4483,7 @@ Carousel Movies
     margin-bottom: 30px;
     display: inline-block;
     width: 100%;
+
 }
 
 .gen-carousel-movies-style-2 .gen-movie-contain {
@@ -6391,3 +6399,4 @@ Icon-Box
 }
 
 /*===========================================================================================================*/
+

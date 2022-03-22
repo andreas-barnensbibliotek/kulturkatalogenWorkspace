@@ -1,3 +1,4 @@
+import { IpostSearchV2 } from './../../interface/ipost-search-v2';
 import { App_Global } from './../../global/app_global';
 import { ApiServiceService } from '../api-service.service';
 import { HttpClient } from '@angular/common/http';
@@ -19,11 +20,24 @@ export class KatalogenApiService extends ApiServiceService  {
     super("",Http);
   }
 
-  getKatalogList(postdata:IpostSearch){
+  getKatalogList(postdata:IpostSearchV2){
     let url:string = this._glb.server +"/search/mainsearch/devkey"+ this._glb.devkey;
-    return this.doPost(url,postdata);
+    return this.doPostV2(url,postdata);
   }
 
+  getCoreKatalogList(postdata:IpostSearchV2){
+    let url:string = this._glb.coreserver +"/api/PublicSearch/"+ this._glb.coredevkey;
+    return this.doPostV2(url,postdata);
+  }
+  getCoreAutoCompleteList(postdata:IpostSearchV2){
+    let url:string = this._glb.coreserver +"/api/PublicSearch/"+ this._glb.coredevkey;
+    postdata.cmdTyp="Auto"
+    return this.doPostV2(url,postdata);
+  }
+  getCoreFreeSearchList(postdata:IpostSearchV2){
+    let url:string = this._glb.coreserver +"/api/PublicSearch/"+ this._glb.coredevkey;
+    return this.doPostV2(url,postdata);
+  }
   getfreeSearchList(postdata:IpostSearch){
     let url:string = this._glb.server +"/search/freesearch/devkey"+ this._glb.devkey;
     return this.doPost(url,postdata);

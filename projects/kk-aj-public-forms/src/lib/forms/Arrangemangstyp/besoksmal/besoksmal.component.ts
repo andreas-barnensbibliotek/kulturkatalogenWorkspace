@@ -19,7 +19,7 @@ export class BesoksmalComponent implements OnInit {
     this.BesoksmalFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
     this.SmakprovFrmGrp= this.rootformGroup.control;
     console.log("init");
-    this.initFromGroupdata();
+     this.CheckAge();
   }
 
   onCheckboxChange(e:any, controlname:string) {
@@ -54,14 +54,7 @@ export class BesoksmalComponent implements OnInit {
     return this.BesoksmalFrmGrp.get("AlderFran") as FormArray;
   }
 
-  initFromGroupdata(){
-    this.test();
-    // this.BesoksmalFrmGrp.valueChanges.subscribe(x => {
-
-    //   console.log("i loopen");
-    // })
-  }
-  test() {
+  CheckAge() {
     let i: number = 0;
     this.AlderFran.controls.forEach((item: any) => {
       this.toAge[item.value] = true;

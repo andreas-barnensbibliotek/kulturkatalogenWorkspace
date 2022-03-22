@@ -117,7 +117,8 @@ export class ServerApiResponsModel {
           "ansokningcontentid": "1119",
           "ansokningtitle": "TEST ARRANGEMANG ", //DETTA
           "ansokningsubtitle": "TEST", //DETTA
-          "ansokningContent": "&lt;p&gt;DETTA ÄR ETT TEST ARRANGEMANG&lt;/p&gt;", //DETTA
+          // "ansokningContent": "<p>DETTA ÄR ETT TEST ARRANGEMANG</p>;", //DETTA
+          "ansokningContent": "&lt;p&gt;DETTA ÄR ETT TEST ARRANGEMANG&lt;/p&gt;&lt;p&gt;DETTA ÄR igen ETT TEST ARRANGEMANG&lt;/p&gt;", //DETTA
           "ansokningutovare": "dev Kulturkatalogen",
           "ansokningurl": "",
           "ansokningbilaga": "",
@@ -125,7 +126,7 @@ export class ServerApiResponsModel {
           "ansokninglast": "ja",
           "ansokningstatus": "Nekad",
           "ansokningtypid": "7", //DETTA
-          "ansokningkonstformid": ["11"], //DETTA
+          "ansokningkonstformid": ["1","6"], //DETTA
           "ansokningtyp": "Besöksmål med resestöd",
           "ansokningkonstform": "Science Center",
           "ansokningFaktalist": [{ //DETTA
@@ -148,8 +149,8 @@ export class ServerApiResponsModel {
           "ansokningUsername": "1",
           "ansokningMediaImage": {  //DETTA
             "MediaID": 0,
-            "MediaUrl": "1213_kulturkatalog.jpg",
-            "MediaFilename": null,
+            "MediaUrl": "C:\\fakepath\\3595_yvonne.jpg",
+            "MediaFilename": "3595_yvonne.jpg",
             "MediaSize": "",
             "MediaAlt": "adfadf",
             "MediaFoto": "adf",

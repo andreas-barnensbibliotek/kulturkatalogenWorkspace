@@ -11,7 +11,7 @@ export class FormArrangemangModel {
     UnderRubrik: [''],
     Innehall:['',Validators.required],
     Arrangemangtyp: ['',Validators.required],
-    Konstform: [null,Validators.required],
+    Konstform: this.fb.array([],Validators.required),
     Konstform2: [''],
     Konstform3: [''],
     MainImage: this.fb.group({

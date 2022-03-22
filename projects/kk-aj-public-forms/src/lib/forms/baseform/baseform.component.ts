@@ -114,8 +114,10 @@ export class BaseformComponent implements OnInit {
 
   GetTidigareArrangemang(val:number){
     console.log("get tidigare: " + val);
-    // this.BaseRootForm.get('Arrangemang')?.patchValue(this._arrMdl.genFGTmp);
-         this.BaseRootForm.get('Arrangemang')?.patchValue(this._TidigareMdl.getTidigareArr(7));
+    // this.BaseRootForm.removeControl('Arrangemang');
+    // this.BaseRootForm.addControl('Arrangemang', this.fb.group(this._TidigareMdl.getTidigareArr(7)));
+    // this.BaseRootForm.addControl('Arrangemang', this._TidigareMdl.getTidigareArr(7));
+     this.BaseRootForm.get('Arrangemang')?.patchValue(this._TidigareMdl.getTidigareArr(7));
     // this.BaseRootForm.removeControl('Arrangemang');
     // this.BaseRootForm.addControl('Arrangemang', this.fb.group(this._TidigareMdl.getTidigareArr(7)));
     this.BaseRootForm.removeControl('Faktalist');

@@ -26,28 +26,28 @@
       <legend>Välj huvudsaklig konstform</legend>
       <div class="cc-selector">
         <div class="col-12">
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="1" id="val_arkitektur" title="Arkitektur" tooltip="Arkitektur" tabindex/>
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="1" [checked]="chkKF[1]" id="val_arkitektur" title="Arkitektur" tooltip="Arkitektur" tabindex/>
         <label class="kf_val1-cc kf_val1" for="val_arkitektur"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="2" id="val_dans" tabindex />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="2" [checked]="chkKF[2]" id="val_dans" tabindex />
         <label class="kf_val2-cc kf_val2" for="val_dans"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="3" id="val_film"  tabindex/>
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="3" [checked]="chkKF[3]" id="val_film"  tabindex/>
         <label class="kf_val3-cc kf_val3" for="val_film"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="4" id="val_konst" tabindex />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="4" [checked]="chkKF[4]" id="val_konst" tabindex />
         <label class="kf_val4-cc kf_val4" for="val_konst"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="5" id="val_litteratur" tabindex />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="5" [checked]="chkKF[5]" id="val_litteratur" tabindex />
         <label class="kf_val5-cc kf_val5" for="val_litteratur"></label>
 
       <!-- </div>
       <div class="col-12"> -->
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="6" id="val_musik" title="Musik" tooltip="Musik" tabindex/>
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="6" [checked]="chkKF[6]" id="val_musik" title="Musik" tooltip="Musik" tabindex/>
         <label class="kf_val6-cc kf_val6" for="val_musik"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="7" id="val_naturochkultruarv" tabindex />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="7" [checked]="chkKF[7]" id="val_naturochkultruarv" tabindex />
         <label class="kf_val7-cc kf_val7" for="val_naturochkultruarv"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="8" id="val_nycirkus" tabindex />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="8" [checked]="chkKF[8]" id="val_nycirkus" tabindex />
         <label class="kf_val8-cc kf_val8" for="val_nycirkus"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="9" id="val_slojd" tabindex />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="9" [checked]="chkKF[9]" id="val_slojd" tabindex />
         <label class="kf_val9-cc kf_val9" for="val_slojd"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="10" id="val_teater" tabindex />
+        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="10" [checked]="chkKF[10]" id="val_teater" tabindex />
         <label class="kf_val10-cc kf_val10" for="val_teater"></label>
       <!-- </div>
       <div class="col-12"> -->

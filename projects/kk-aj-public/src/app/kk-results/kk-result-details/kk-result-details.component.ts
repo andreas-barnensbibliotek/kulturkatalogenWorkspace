@@ -29,9 +29,9 @@ console.log("detta");
   }
 
   goBack(): void {
-    // this._router.navigateByUrl('/lista/' + this.glb.currentCategoryID);
+     this._router.navigateByUrl('/lista/' + this.glb.currentCategoryID);
     //  this.navBack.back();
-  this.location.back();
+  //this.location.back();
   }
 
 }

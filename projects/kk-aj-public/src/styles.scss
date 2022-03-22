@@ -124,23 +124,24 @@ carousel{
 .gen-info-contain{
   h3{
     line-height: 18px;
-    padding-bottom:.5rem;
+    // padding-bottom:.5rem;
   }
    p{
-    line-height: 22px;
+    line-height: 28px;
     font-size: 1.1rem;
     margin:0;
     padding:0;
+    padding-bottom:.5rem;
   }
   .gen-movie-meta-holder{
     p{
-      padding-top:.5rem;
       font-size: .9rem;
+
     }
   }
 }
 .gen-movie-img, .gen-post-media{
-  background-color: #343a40;
+  background-color:#323333; // #343a40;
   border-radius:6px;
    img{
     border-radius: 6px;
@@ -150,17 +151,20 @@ carousel{
 // Sections bakgrundsfärger
 
 .aj-section-bg-color-dark{
-  background-color:#464e57;
+  background-color:#616161;
+  // background-color:#464e57;
 }
 .aj-section-bg-color-darker{
-  background-color:#343a40;
+  // background-color:#343a40;
+  background-color:#494949;
 }
 
 .aj-section-bgimg-color-darker{
-  background-position: right bottom;
+  background-position: center bottom;
   background-repeat: no-repeat;
-  background-color:#343a40;
-  background-image: url('/assets/images/kulturkatalog_flowers_small.png');
+  // background-color:#343a40;
+  background-color:#565656;
+  background-image: url('/assets/images/Bakgrund_top_flat.jpg');
 }
 
 .gen-blog-post .gen-blog-contain {
@@ -208,7 +212,7 @@ carousel{
 }
 
 .autocomplete-container .suggestions-container {
-  margin-top: 40px;
+  // margin-top: 40px;
 }
 @media (max-width:1023px) {
   .navbar-collapse:not(.show)  {
@@ -244,4 +248,34 @@ carousel{
 }
 .is-AJinvalid{
   border: 1px solid red;
+}
+
+carousel .carousel-cell a{
+  text-decoration: none !important;
+}
+.cc-animate.cc-revoke.cc-bottom{
+  z-index: 99999!important;
+}
+
+.fdb-block{
+  p{
+    color:#fff
+  }
+}
+.gen-carousel-movies-style-2 {
+  a{
+    color:#fff;
+    text-decoration:none;
+  }
+  // &hover{
+
+  // }
+}
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+ .gen-movie-img{
+min-height: 225px;
 }

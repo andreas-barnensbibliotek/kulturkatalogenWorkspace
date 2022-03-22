@@ -10,7 +10,7 @@
           </div>
           <div class="col-2 text-end">
             <a (click)="goBack()" class="gen-button gen-button-flat">
-              <span class="text">Tillbaka</span>
+              Tillbaka
             </a>
 
           </div>
@@ -23,17 +23,17 @@
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
-
             <app-kk-no-result *ngIf="noresult(mainCaruselData)"></app-kk-no-result>
 
               <div class="row ajmax-row-height">
 
                 <!-- Item loop START-->
-                  <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let itm of mainCaruselData.arrangemangslist">
+                  <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let itm of mainCaruselData.ansokningar">
                     <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                      <div class="gen-movie-contain">
+                      <a routerLink="Arrangemang/{{itm.ansokningid}}" target="{{itm.ansokningtitle}}">
+                        <div class="gen-movie-contain">
                         <div class="gen-movie-img text-center">
-                          <img class="img-fluid" src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.imageUrl}}" alt="{{itm.rubrik}}">
+                          <img class="img-fluid" src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.ansokningMediaImage.mediaUrl}}" alt="{{itm.rubrik}}">
                           <div class="gen-movie-add">
                               <div class="wpulike wpulike-heart">
                                 <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
@@ -48,23 +48,24 @@
                         </div>
                         <div class="gen-info-contain">
                           <div class="gen-movie-info">
-                            <h3><a routerLink="Arrangemang/{{itm.arrID}}" >{{itm.rubrik}}</a></h3>
-                            <p>{{itm.underrubrik}}</p>
+                            <h3>{{itm.ansokningtitle}}</h3>
+                            <p>{{itm.ansokningsubtitle}} &nbsp;</p>
                           </div>
                           <div class="gen-movie-meta-holder">
-                            <p>Utövare: {{itm.organisation}}<br>
-                            Ålder: {{itm.startyear}}-{{itm.stoppyear}}
+                            <p>Utövare: {{itm.ansokningutovare}}<br>
+                              Ålder: {{itm.ansokningAgespan}}
                             </p>
                           </div>
                         </div>
-                      </div>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 <!-- Item loop STOPP-->
 
               </div>
           </div>
-          <div class="col-lg-12 col-md-12">
+          <div class="col-lg-12 col-md-12" style="display: none;">
             <div class="gen-pagination">
                 <nav aria-label="Page navigation">
                     <ul class="page-numbers">

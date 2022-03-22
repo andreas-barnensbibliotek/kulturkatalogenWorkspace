@@ -14,6 +14,7 @@ export class Global {
   VisaMainNav:boolean=true;
   VisaGuideNav:boolean=false;
   currentversion:string="Version: 0.0.1 2021-12-01"
+  coredevkey:string = "?devKey=alf";
 
   server:string = this._SandboxAPI;// + this._wpApi;
   postserver:string = this._SandboxAPI + this._wpApiPost;

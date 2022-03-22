@@ -1,3 +1,6 @@
+import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
+import { clsPostDataV2 } from './../core/models/clsPostData-v2';
+import { IpostSearchV2 } from './../core/interface/ipost-search-v2';
 import { NavigationServiceService } from './../core/services/NavigationService/navigation-service.service'
 import { AjApiServicesService } from 'aj-api-services';
 import { ActivatedRoute, Router, Scroll } from '@angular/router';
@@ -16,9 +19,11 @@ import { filter } from 'rxjs/operators';
 })
 export class KkResultsComponent implements OnInit {
   scrollPosition!: any;
+  postdataV2:IpostSearchV2 = new clsPostDataV2;
   mainCaruselData?:any = [];
+  mellan?:any=[];
 
-  constructor(private ajApi:AjApiServicesService, private gbl:App_Global,private viewportScroller: ViewportScroller, private ActivatedRoute:ActivatedRoute, private _router:Router, private location:Location,  private titleService: Title,  private navBack:NavigationServiceService) {
+  constructor(private wpApi:KatalogenApiService, private gbl:App_Global,private viewportScroller: ViewportScroller, private ActivatedRoute:ActivatedRoute, private _router:Router, private location:Location,  private titleService: Title,  private navBack:NavigationServiceService) {
     // this._router.events.pipe(
     //   filter(e => e instanceof Scroll)
     // ).subscribe(e => {
@@ -42,35 +47,52 @@ export class KkResultsComponent implements OnInit {
     let id:number = 0;
     this.ActivatedRoute.paramMap.subscribe(prams =>{
      id = Number(prams.get('id'));
+     this.postdataV2.konstartIdList.push(id);
       if(id > 0){
-       this.getCaruselData(id)
+       this.getCaruselData(this.postdataV2)
       }
+      this.gbl.currentCategoryID = id;
     });
-    this.gbl.currentCategoryID = id;
+
 
     this.titleService.setTitle(this.gbl.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
+
+  }
+  getCaruselData(CData:IpostSearchV2){
+
+    this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
+      this.mellan = Response;
+      this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
+    })
+
+    // this.ajApi.searchArrangemang(CData).subscribe(Response => {
+    //   this.mainCaruselData = Response;
+    //           // this.SpinnerLoader = false;
+
+    // });
   }
 
-  getCaruselData(CData:any){
+  // getCaruselData2(CData:any){
 
-    let cardata = {
-      "cmdTyp": "",
-      "arrTypID": 0,
-      "konstartID": CData,
-      "startYear":0,
-      "stoppYear": 0
-    }
+  //   let cardata = {
+  //     "cmdTyp": "",
+  //     "arrTypID": 0,
+  //     "konstartID": CData,
+  //     "startYear":0,
+  //     "stoppYear": 0
+  //   }
 
-    this.ajApi.searchArrangemang(cardata).subscribe(Response => {
-      this.mainCaruselData = Response;
-              // this.SpinnerLoader = false;
+  //   this.ajApi.searchArrangemang(cardata).subscribe(Response => {
+  //     this.mainCaruselData = Response;
+  //             // this.SpinnerLoader = false;
 
-    });
-  }
+  //   });
+  // }
 
   goBack(): void {
     // this.navBack.back();
-    this._router.navigateByUrl('/')
+    console.log('/#gotoCat'+ this.gbl.currentCategoryID);
+    this._router.navigateByUrl('/');
    // this.location.back();
  }
  noresult(obj:any){

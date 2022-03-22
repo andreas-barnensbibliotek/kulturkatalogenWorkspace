@@ -3,9 +3,9 @@
     <div class="container ">
         <div class="row gx-3">
           <div class="col-10">
-            <h1>Avancerad sök</h1>
+            <h4>Avancerad sök</h4>
           </div>
-          <div class="col-2 text-end">
+          <div class="col-12 col-md-2 text-end">
             <a (click)="goBack()" class="gen-button gen-button-flat">
               <span class="text">Tillbaka</span>
             </a>
@@ -14,6 +14,7 @@
         </div>
     </div>
 </section>
+
 <section class="py-1 bg-image-full aj-section-bg-color-darker" >
   <!-- Features section-->
     <div class="container my-5">
@@ -25,27 +26,31 @@
           <div class="col-12 col-lg-10 col-xl-6 mb-5 mb-lg-0 ">
 
             <div class="topblockContainer">
-              <ng-container [formGroup]="advSearchForm">
-              <div ngbDropdown class="aj-btn-group" >
-                <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>{{searchdrpTitle}}</button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="DropdownMenu"  >
-                  <button (click)="drpChange('Alla arrangemangstyper')" ngbDropdownItem>Alla arrangemangstyper</button>
-                  <button (click)="drpChange('Besöksmål med resestöd')" ngbDropdownItem>Besöksmål med resestöd</button>
-                  <button (click)="drpChange('Föreställning på turné')" ngbDropdownItem>Föreställning på turné</button>
-                  <button (click)="drpChange('Skolbio')" ngbDropdownItem>Skolbio</button>
-                  <button (click)="drpChange('Utställning på turné')" ngbDropdownItem>Utställning på turné</button>
-                  <button (click)="drpChange('Workshops/Projekt')" ngbDropdownItem>Workshops/Projekt</button>
-                </div>
-                <div class="ng-autocomplete">
+              <ng-container [formGroup]="FgAdvSearch">
+                {{FgAdvSearch.value | json}}
+              <div  class="aj-btn-group" >
+                <select formControlName="arrTypID" class="form-select custom-select " aria-label="Default select example">
+                  <option >Alla arrangemangstyper</option>
+                  <option value="1">Besöksmål med resestöd</option>
+                  <option value="2">Föreställning på turné</option>
+                  <option value="3">Skolbio</option>
+                  <option value="4">Utställning på turné</option>
+                  <option value="5">Workshops/Projekt</option>
+                </select>
+
+                <div class="ng-autocomplete" >
                   <ng-autocomplete
                     [data]="autocompletedata"
                     [searchKeyword]="keyword"
                     [customFilter] = autofilter()
                     (selected)='selectEvent($event)'
                     (inputChanged)='onChangeSearch($event)'
+                    (inputCleared)='onCleared()'
                     [itemTemplate]="itemTemplate"
                     [notFoundTemplate]="notFoundTemplate"
                     (inputFocused)='onFocused()'
+                    [minQueryLength]="3"
+                    [focusFirst]="true"
                     #ngaoutoControll>
                   </ng-autocomplete>
 
@@ -54,71 +59,71 @@
                   </ng-template>
 
                   <ng-template #notFoundTemplate let-notFound>
-                  <div [innerHTML]="notFound"></div>
+                  <div>Har inte hittat något</div>
                   </ng-template>
                 </div>
-                <button class="btn btn-success" (click)="formFreetextSearchClick()"  id="dropdownBasic1">SÖK</button>
+                <button class="btn btn-success" (keydown.enter)="formCoreSearchClick()" (click)="formCoreSearchClick()"  id="dropdownBasic1">SÖK</button>
               </div>
 
               <div class="srhKonstformBlock pt-3">
                 <div class="btn-group btn-group-toggle">
-                  <label class="btn btn-outline-secondary chkkonstform active" ngbButtonLabel>
-                    <input  formControlName="alla" (click)="formKonstFormClick(0)" [ngClass]="{'vald': currfid == 0}" rel="0" (change)="onCheckboxChange($event,'alla')" ngbButton>Alla
+                  <label class="btn btn-outline-secondary chkkonstform active" [ngClass]="{'active': chkKF[0]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="0" rel="0" ngbButton>Alla
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox"  (click)="formKonstFormClick(12)" [ngClass]="{'vald': currfid == 12}" rel="12" ngbButton> Annan scenkonst
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[12]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="12" rel="12" ngbButton> Annan scenkonst
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(2)" [ngClass]="{'vald': currfid == 2}" rel="2" ngbButton>Dans
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[2]? true : false}"ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="2" rel="2" ngbButton>Dans
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(3)" [ngClass]="{'vald': currfid == 3}" rel="3" ngbButton>Film & media
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[3]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="3" rel="3" ngbButton>Film & media
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(4)" [ngClass]="{'vald': currfid == 4}" rel="4" ngbButton>Konst, form & design
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[4]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="4" rel="4" ngbButton>Konst, form & design
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(4)" [ngClass]="{'vald': currfid == 4}" rel="4" ngbButton>Litteratur, berättande
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[5]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="5" rel="5" ngbButton>Litteratur, berättande
                   </label>
                 </div>
                 <div class="btn-group btn-group-toggle pt-2">
-                  <label class="btn btn-outline-secondary chkkonstform " ngbButtonLabel>
-                    <input  formControlName="alla" (click)="formKonstFormClick(6)" [ngClass]="{'vald': currfid == 6}" rel="6"  (change)="onCheckboxChange($event,'alla')" ngbButton>Musik
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[6]? true : false}" ngbButtonLabel>
+                    <input type="checkbox"  (change)="onCheckboxChange($event,'konstartidList')" value="6" rel="6" ngbButton>Musik
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox"  (click)="formKonstFormClick(12)" [ngClass]="{'vald': currfid == 12}" rel="12" ngbButton>Natur- och kulturarv
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[7]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="7" rel="7" ngbButton>Natur- och kulturarv
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(7)" [ngClass]="{'vald': currfid == 7}" rel="7" ngbButton> Nycirkus/cirkus
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[8]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="8" rel="8" ngbButton> Nycirkus/cirkus
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(2)" [ngClass]="{'vald': currfid == 2}" rel="2" ngbButton> Science Center
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[11]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="11" rel="11" ngbButton> Science Center
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(3)" [ngClass]="{'vald': currfid == 3}" rel="3" ngbButton> Slöjd
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[9]? true : false}" ngbButtonLabel>
+                    <input type="checkbox"(change)="onCheckboxChange($event,'konstartidList')" value="9" rel="9" ngbButton> Slöjd
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox" (click)="formKonstFormClick(4)" [ngClass]="{'vald': currfid == 4}" rel="4" ngbButton> Teater
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[10]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="10" rel="10" ngbButton> Teater
                   </label>
                 </div>
                 <div class="btn-group btn-group-toggle mt-3">
-                  <label class="btn btn-outline-secondary chkkonstform active" ngbButtonLabel>
-                    <input type="checkbox" ngbButton>Alla
+                  <label class="btn btn-outline-secondary chkkonstform active" [ngClass]="{'active': chkAge[0]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'ageList')" value="0"  ngbButton>Alla
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox"  ngbButton> 0-6 år
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkAge[1]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'ageList')" value="1" ngbButton> 0-6 år
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox"  ngbButton> 7-9 år
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkAge[2]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'ageList')" value="2" ngbButton> 7-9 år
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox"  ngbButton>10-12 år
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkAge[3]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'ageList')" value="3" ngbButton>10-12 år
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox"  ngbButton> 13-15 år
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkAge[4]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'ageList')" value="4" ngbButton> 13-15 år
                   </label>
-                  <label class="btn btn-outline-secondary chkkonstform" ngbButtonLabel>
-                    <input type="checkbox"  ngbButton> 16-19 år
+                  <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkAge[5]? true : false}" ngbButtonLabel>
+                    <input type="checkbox" (change)="onCheckboxChange($event,'ageList')" value="5" ngbButton> 16-19 år
                   </label>
                 </div>
               </div>
@@ -138,7 +143,7 @@
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
-            <h2>Hittade arrangemang (<span *ngIf="ShowSpinner" class="spinner-border spinner-border-lg" role="status"> </span><span *ngIf="!ShowSpinner">{{filterMetadata?.count}}</span>)</h2>
+            <h4>Hittade arrangemang (<span *ngIf="ShowSpinner" class="spinner-border spinner-border-lg" role="status"> </span><span *ngIf="!ShowSpinner">{{filterMetadata?.count}}</span>)</h4>
 
             <app-kk-no-result *ngIf="showNoPostToShow"></app-kk-no-result>
               <!-- START paginering nummer block -->
@@ -160,36 +165,38 @@
                 <!-- Item loop START-->
                   <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let item of mainPageData | customFilter:filterterm.konstform:filterterm.bokningsbar:filterterm.kostnad:filterterm.tid:filterterm.morklaggning:filterterm.takhojd:filterMetadata  | paginate: { itemsPerPage: showPageMax, currentPage: p}">
                     <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                      <div class="gen-movie-contain">
-                        <div class="gen-movie-img text-center">
-                          <a [routerLink]="['Arrangemang/', item.ansokningid]" id="goto{{item.ansokningid}}" (click)="setfilter()" class="img-fluid">
-                            <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{item.ansokningMediaImage.MediaUrl}}" alt="ansokningtitle">
-                          </a>
-                          <div class="gen-movie-add">
-                              <div class="wpulike wpulike-heart">
-                                <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                  <button type="button" class="wp_ulike_btn wp_ulike_put_image" title="Lägg till som i minneslistan"></button>
+                      <a routerLink="/Arr/id/{{item.ansokningid}}" title="{{item.ansokningtitle}}">
+                        <div class="gen-movie-contain">
+                          <div class="gen-movie-img text-center">
+                            <a [routerLink]="['Arrangemang/', item.ansokningid]" id="goto{{item.ansokningid}}" (click)="setfilter()" class="img-fluid">
+                              <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{item.ansokningMediaImage.mediaUrl}}" alt="ansokningtitle">
+                            </a>
+                            <div class="gen-movie-add">
+                                <div class="wpulike wpulike-heart">
+                                  <div class="wp_ulike_general_class wp_ulike_is_not_liked">
+                                    <button type="button" class="wp_ulike_btn wp_ulike_put_image" title="Lägg till som i minneslistan"></button>
+                                  </div>
                                 </div>
-                              </div>
+                            </div>
+                            <div class="gen-movie-action">
+                                <!-- <a href="single-movie.html" class="gen-button">
+                                  <i class="fa fa-play"></i>
+                                </a> -->
+                            </div>
                           </div>
-                          <div class="gen-movie-action">
-                              <!-- <a href="single-movie.html" class="gen-button">
-                                <i class="fa fa-play"></i>
-                              </a> -->
+                          <div class="gen-info-contain">
+                            <div class="gen-movie-info">
+                              <h3><a routerLink="/Arr/id/{{item.ansokningid}}" >{{item.ansokningtitle}}</a></h3>
+                                  <p>{{item.ansokningsubtitle}}</p>
+                            </div>
+                            <div class="gen-movie-meta-holder">
+                              <p>Utövare: {{item.ansokningutovare}}<br>
+                              Ålder: {{item.ansokningAgespan}} ÅR
+                              </p>
+                            </div>
                           </div>
                         </div>
-                        <div class="gen-info-contain">
-                          <div class="gen-movie-info">
-                            <h3><a routerLink="/Arr/id/{{item.ansokningid}}" >{{item.ansokningtitle}}</a></h3>
-                                <p>{{item.ansokningsubtitle}}</p>
-                          </div>
-                          <div class="gen-movie-meta-holder">
-                            <p>Utövare: {{item.ansokningutovare}}<br>
-                            Ålder: {{item.ansokningAgespan}} ÅR
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      </a>
                     </div>
                   </div>
                 <!-- Item loop STOPP-->

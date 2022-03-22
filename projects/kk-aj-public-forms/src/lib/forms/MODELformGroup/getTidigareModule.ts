@@ -1,6 +1,6 @@
 import { ServerApiResponsModel } from './ServerApiResponsModel';
 import { FormArrangemangModel } from './FormArrangemangModel';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroupDirective } from '@angular/forms';
 import { FormFaktaModel } from './FormFaktaModel';
 import {Injectable } from "@angular/core";
 
@@ -10,7 +10,7 @@ export class getTidigareModule {
 
   mainData?:any=[];
 
-  constructor(public fb:FormBuilder, public _faktaMdl: FormFaktaModel, private _arrMdl:FormArrangemangModel, private _fullApiMdl:ServerApiResponsModel){}
+  constructor( public fb:FormBuilder, public _faktaMdl: FormFaktaModel, private _arrMdl:FormArrangemangModel, private _fullApiMdl:ServerApiResponsModel){}
 
   public getTidigareArr(id:number){
       return this.getFULLArrfromServer(id);
@@ -70,6 +70,9 @@ export class getTidigareModule {
 
 
 
+
+
+
   private getFULLArrfromServer(id:number){
     // Do ajaxcall
     let basedata = this._fullApiMdl.tmpFullAPIResponse;
@@ -78,17 +81,17 @@ export class getTidigareModule {
 
     updatedArrFormObj.Rubrik=  specdata.ansokningtitle;
     updatedArrFormObj.UnderRubrik=  specdata.ansokningsubtitle;
-    updatedArrFormObj.Innehall=  specdata.ansokningContent;
+    updatedArrFormObj.Innehall=  this.decodeHTML(specdata.ansokningContent);
     updatedArrFormObj.Arrangemangtyp=  specdata.ansokningtypid;
     // updatedArrFormObj.Konstform=  specdata.ansokningtitle);
 
     if(specdata.ansokningkonstformid){
-      let testar:any=[];
-          specdata.ansokningkonstformid.forEach((t: any) => {
-            testar.push(t);
-          });
-          updatedArrFormObj.Konstform = testar;
-        }
+       let konstformID:any;
+      specdata.ansokningkonstformid.forEach((t: any) => {
+        updatedArrFormObj.Konstform.push(this.fb.control(t));
+      });
+      updatedArrFormObj.Konstform =konstformID;
+    }
 
     if(specdata.ansokningMediaImage){
       let tmparr = {
@@ -110,6 +113,13 @@ export class getTidigareModule {
     return updatedArrFormObj;
 
   }
+
+
+  private decodeHTML = function (html:string) {
+    var txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  };
   // private getFULLArrfromServer(id:number){
   //   // Do ajaxcall
   //   let basedata = this._fullApiMdl.tmpFullAPIResponse;

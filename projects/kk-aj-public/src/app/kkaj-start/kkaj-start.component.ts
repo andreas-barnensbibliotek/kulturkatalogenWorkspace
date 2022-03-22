@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { App_Global } from './../core/global/app_global';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
@@ -14,12 +16,15 @@ export class KkajStartComponent implements OnInit {
   mainPageData?:any=[];
 
 
-  constructor(private gbl:App_Global, private titleService: Title, private cd:ChangeDetectorRef, ) { }
+  constructor(private gbl:App_Global, private titleService: Title, private cd:ChangeDetectorRef, private vpScroller: ViewportScroller,  private router: Router ) { }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.gbl.HeadTitleMapper("Start"));
 
   }
+test(){
+  this.scroll('gotoCat'+ 4);
+}
 
   ngAfterViewChecked() {
 
@@ -27,15 +32,17 @@ export class KkajStartComponent implements OnInit {
 
     // tillbaka från detaljvyn scroll
     if(this.gbl.currentCategoryID>0){
-        this.scroll('#gotoCat'+ this.gbl.currentCategoryID);
-
+        this.scroll('gotoCat'+ this.gbl.currentCategoryID);
+console.log("tillbaka från detaljvyn scroll "+ this.gbl.currentCategoryID)
         this.gbl.currentCategoryID=0;
     }
   }
 
   scroll(gotoarrId: string) {
-      document.querySelector(gotoarrId)?.scrollIntoView({behavior: 'smooth'});
-
+    console.log("scroll "+ gotoarrId)
+    // this.vpScroller.scrollToAnchor(gotoarrId);
+      // document.querySelector(gotoarrId)?.scrollIntoView({behavior: 'smooth'});
+      this.router.navigate([], { fragment: gotoarrId });
   }
 
 }

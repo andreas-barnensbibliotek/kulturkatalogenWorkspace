@@ -20,7 +20,7 @@
      <div class="row mt-3">
         <div class="col-12">
            <div class="gen-style-2"> -->
-            <div *ngIf="!mainCaruselData.arrangemangslist">
+            <div *ngIf="!mainCaruselData.ansokningar">
 
               <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6">
@@ -172,12 +172,13 @@
                 objectfit= "cover"
                 [loop]="true">
 
-                <div class=" carousel-cell item" *ngFor="let itm of mainCaruselData.arrangemangslist">
+                <div class=" carousel-cell item" *ngFor="let itm of mainCaruselData.ansokningar">
                     <div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
                       <div class="gen-carousel-movies-style-2 movie-grid style-2">
+                        <a routerLink="/Arr/id/{{itm.ansokningid}}" title="{{itm.ansokningtitle}}" >
                         <div class="gen-movie-contain">
                             <div class="gen-movie-img">
-                              <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.imageUrl}}" alt="{{itm.rubrik}}">
+                              <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.ansokningMediaImage.mediaUrl}}" alt="{{itm.rubrik}}">
 
                               <div class="gen-movie-add">
                                   <div class="wpulike wpulike-heart">
@@ -193,12 +194,12 @@
                             </div>
                             <div class="gen-info-contain">
                               <div class="gen-movie-info">
-                                <h3><a routerLink="/Arr/id/{{itm.arrID}}" >{{itm.rubrik}}</a></h3>
-                                <p>{{itm.underrubrik}}</p>
+                                <h3>{{itm.ansokningtitle}}</h3>
+                                <p >{{itm.ansokningsubtitle}} &nbsp;</p>
                               </div>
                               <div class="gen-movie-meta-holder">
-                               <p>Utövare: {{itm.organisation}}<br>
-                                Ålder: {{itm.startyear}}-{{itm.stoppyear}}
+                               <p>Utövare: {{itm.ansokningutovare}}<br>
+                                Ålder: {{itm.ansokningAgespan}}
                                 </p>
                               </div>
 
@@ -207,6 +208,7 @@
 
                             </div>
                         </div>
+                      </a>
                       </div>
                     </div>
                   <!-- #post-## -->

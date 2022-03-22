@@ -1,3 +1,7 @@
+import { App_Global } from './../../global/app_global';
+import { KatalogenApiService } from './../../services/katalogenApi/katalogen-api.service';
+import { clsPostDataV2 } from './../../models/clsPostData-v2';
+import { IpostSearchV2 } from './../../interface/ipost-search-v2';
 
 import { AjApiServicesService } from 'aj-api-services';
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
@@ -9,33 +13,49 @@ declare let $: any;
 })
 export class KkajCaruselComponent implements OnInit {
 
-  @Input() CaruselData?:any;
+  @Input() CaruselData!:clsPostDataV2;
 
- mainCaruselData?:any = [];
+  mainCaruselData?:any = [];
+  mellan?:any=[];
 
-  constructor(private ajApi :AjApiServicesService,private renderer: Renderer2) { }
+  constructor(private wpApi:KatalogenApiService, private glb:App_Global, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.getCaruselData(this.CaruselData)
   }
 
 
-  getCaruselData(CData:any){
+  getCaruselData(CData:IpostSearchV2){
 
-    let cardata = {
-      "cmdTyp": "",
-      "arrTypID": 0,
-      "konstartID": CData,
-      "startYear":0,
-      "stoppYear": 0
-    }
+    this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
+      this.mellan = Response;
+      this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
+    })
 
-    this.ajApi.searchArrangemang(CData).subscribe(Response => {
-      this.mainCaruselData = Response;
-              // this.SpinnerLoader = false;
+    // this.ajApi.searchArrangemang(CData).subscribe(Response => {
+    //   this.mainCaruselData = Response;
+    //           // this.SpinnerLoader = false;
 
-    });
+    // });
   }
+
+  // getCaruselData2(CData:any){
+
+  //   let cardata = {
+  //     "cmdTyp": "",
+  //     "arrTypID": 0,
+  //     "konstartID": CData,
+  //     "startYear":0,
+  //     "stoppYear": 0
+  //   }
+
+  //   this.ajApi.searchArrangemang(CData).subscribe(Response => {
+  //     this.mainCaruselData = Response;
+  //             // this.SpinnerLoader = false;
+
+  //   });
+  // }
+
   ngAfterViewInit(){
 
 
