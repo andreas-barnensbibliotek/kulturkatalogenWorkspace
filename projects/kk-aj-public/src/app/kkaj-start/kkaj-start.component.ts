@@ -32,9 +32,9 @@ test(){
 
     // tillbaka från detaljvyn scroll
     if(this.gbl.currentCategoryID>0){
-        this.scroll('gotoCat'+ this.gbl.currentCategoryID);
-console.log("tillbaka från detaljvyn scroll "+ this.gbl.currentCategoryID)
-        this.gbl.currentCategoryID=0;
+      this.scroll('gotoCat'+ this.gbl.currentCategoryID);
+      console.log("tillbaka från detaljvyn scroll "+ this.gbl.currentCategoryID)
+      this.gbl.currentCategoryID=0;
     }
   }
 
