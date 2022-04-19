@@ -25,7 +25,12 @@
   display: flex;
   vertical-align: middle;
 }
-
+.btn-group{
+  display: block;
+  &>.btn{
+    max-width: 200px;
+  }
+}
 .chkkonstform{
   input{
     display: none;
@@ -87,4 +92,13 @@
 
 .form-select option:hover:before {
   display: inline;
+}
+#arridBlock{margin-right: 10px;}
+
+.btn-outline-Search {
+  color: #ebbf9b;
+  border-color: #ed6d04;
+}
+.gen-section-padding-2{
+  padding: 20px 0px 40px 0px;
 }

@@ -13,7 +13,7 @@
             <div class="topblockContainer blockcolor2">
               <h2 class="h2">Sök i katalogen</h2>
               <p>Här kan du söka bland alla fina kultur- och naturaktiviteter i Kulturkatalogen Väst</p>
-              <a (click)="test()" class="gen-button gen-button-flat">
+              <a routerLink="/advsearch" title="BÖRJA SÖKA HÄR!" class="gen-button gen-button-flat">
                 <span class="text">BÖRJA SÖKA HÄR!</span>
               </a>
             </div>
@@ -65,19 +65,7 @@
       <div class="col-12">
         <div class="gen-style-2">
           <app-kkaj-carusel
-            [CaruselData]="{
-              cmdTyp: 'search',
-              freeTextSearch:'',
-              arrTypID: 0,
-              konstartID: 0,
-              startYear: 0,
-              stoppYear: 0,
-              ageList:[],
-              konstartIdList:[4],
-              tagList:[]
-            }">
-
-
+            [CaruselData]=caruselData(showList[0])>
           </app-kkaj-carusel>
         </div>
       </div>
@@ -107,17 +95,7 @@
       <div class="col-12">
         <div class="gen-style-2">
           <app-kkaj-carusel
-            [CaruselData]="{
-              cmdTyp: 'search',
-              freeTextSearch:'',
-              arrTypID: 0,
-              konstartID: 0,
-              startYear: 0,
-              stoppYear: 0,
-              ageList:[],
-              konstartIdList:[2],
-              tagList:[]
-            }">
+          [CaruselData]=caruselData(showList[1])>
           </app-kkaj-carusel>
         </div>
       </div>
@@ -189,17 +167,7 @@
       <div class="col-12">
         <div class="gen-style-2">
           <app-kkaj-carusel
-            [CaruselData]="{
-              cmdTyp: 'search',
-              freeTextSearch:'',
-              arrTypID: 0,
-              konstartID: 0,
-              startYear: 0,
-              stoppYear: 0,
-              ageList:[],
-              konstartIdList:[3],
-              tagList:[]
-            }">
+             [CaruselData]=caruselData(showList[2])>
           </app-kkaj-carusel>
         </div>
       </div>

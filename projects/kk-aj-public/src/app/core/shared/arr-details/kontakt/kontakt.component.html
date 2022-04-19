@@ -1,62 +1,38 @@
-<div *ngIf="Kontaktblock" class="artsidecontainer granska_Kontakt_mainblock">
-  <h3>Kontakt</h3>
-  <div class="row granska_Utovare_Organisation_block">
-    <div class="small-12 medium-6 columns faktalabel">
-      Aktör/Utövare/Grupp
+
+<div *ngIf="Kontaktblock" class="container-grid wrap-facts">
+  <div class="container-grid fact-header-big">
+    <h4 class="fact-main-heading">Kontakt</h4>
+  </div>
+  <div class="container-grid wrap-single-fact">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">Kontaktperson<br></p>
     </div>
-    <div class="small-12 medium-6 columns">
-      <span class="granska_Utovare_Organisation">
-        {{Kontaktblock.Organisation}}
-      </span>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info">{{Kontaktblock.ansokningKontaktfornamn}} {{Kontaktblock.ansokningKontaktEfternamn}}</p>
     </div>
   </div>
-  <div class="row granska_Utovare_namn_block">
-    <div class="small-12 medium-6 columns faktalabel">
-      Kontaktperson
+  <div class="container-grid wrap-single-fact">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">Telefon<br></p>
     </div>
-    <div class="small-12 medium-6 columns">
-      <span class="granska_Utovare_namn">{{Kontaktblock.Fornamn}} {{Kontaktblock.Efternamn}}</span>
-    </div>
-  </div>
-  <div class="row granska_Utovare_Adress_block">
-    <div class="small-12 medium-6 columns faktalabel">Adress</div>
-    <div class="small-12 medium-6 columns">
-      <span class="granska_Utovare_Adress">{{Kontaktblock.Adress}}</span>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info">{{Kontaktblock.ansokningKontaktTelefon}}</p>
     </div>
   </div>
-  <div class="row granska_Utovare_postort_block">
-    <div class="small-12 medium-6 columns faktalabel">
-      Postort
+  <div class="container-grid wrap-single-fact">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">Epost<br></p>
     </div>
-    <div class="small-12 medium-6 columns">
-      <span class="granska_Utovare_postort">{{Kontaktblock.Postnr}} {{Kontaktblock.Ort}}</span>
-    </div>
-  </div>
-  <div class="row granska_Utovare_tfn_block">
-    <div class="small-12 medium-6 columns faktalabel">
-      Telefon
-    </div>
-    <div class="small-12 medium-6 columns">
-      <span class="granska_Utovare_tfn">{{Kontaktblock.Telefon}}</span>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info longfakta"><a href="mailto:{{Kontaktblock.ansokningKontaktEpost}}" title="Epostadress">{{Kontaktblock.ansokningKontaktEpost}}</a></p>
     </div>
   </div>
-  <div class="row granska_Utovare_epost_block">
-    <div class="small-12 medium-12 columns faktalabel">
-      E-post
+  <div class="container-grid wrap-single-fact" *ngIf="Kontaktblock.Weburl">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">Hemsida<br></p>
     </div>
-    <div class="small-12 medium-12 columns">
-      <span class="granska_Utovare_epost right">
-        <a href="mailto:{{Kontaktblock.Epost}}">{{Kontaktblock.Epost}}</a></span>
-    </div>
-  </div>
-  <div class="row granska_Utovare_hemsida_block">
-    <div class="small-12 medium-12 columns faktalabel">
-      Hemsida
-    </div>
-    <div class="small-12 medium-12 columns">
-      <span class="granska_Utovare_hemsida right">
-        <a href="https://{{Kontaktblock.Weburl}}" target="_blank">{{Kontaktblock.Weburl}}</a>
-      </span>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info longfakta"><a href="https://{{Kontaktblock.Weburl}}" title="Adress hemsida" target="_blank">{{Kontaktblock.Weburl}}</a></p>
     </div>
   </div>
 </div>

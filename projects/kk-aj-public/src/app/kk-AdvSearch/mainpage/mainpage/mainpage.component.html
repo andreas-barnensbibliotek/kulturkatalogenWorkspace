@@ -27,9 +27,9 @@
 
             <div class="topblockContainer">
               <ng-container [formGroup]="FgAdvSearch">
-                {{FgAdvSearch.value | json}}
+
               <div  class="aj-btn-group" >
-                <select formControlName="arrTypID" class="form-select custom-select " aria-label="Default select example">
+                <select id="arridBlock" formControlName="arrTypID" class="form-select custom-select " aria-label="Default select example">
                   <option >Alla arrangemangstyper</option>
                   <option value="1">Besöksmål med resestöd</option>
                   <option value="2">Föreställning på turné</option>
@@ -66,7 +66,7 @@
               </div>
 
               <div class="srhKonstformBlock pt-3">
-                <div class="btn-group btn-group-toggle">
+                <div class="btn-group btn-group-toggle flex-wrap">
                   <label class="btn btn-outline-secondary chkkonstform active" [ngClass]="{'active': chkKF[0]? true : false}" ngbButtonLabel>
                     <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="0" rel="0" ngbButton>Alla
                   </label>
@@ -85,8 +85,7 @@
                   <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[5]? true : false}" ngbButtonLabel>
                     <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="5" rel="5" ngbButton>Litteratur, berättande
                   </label>
-                </div>
-                <div class="btn-group btn-group-toggle pt-2">
+
                   <label class="btn btn-outline-secondary chkkonstform" [ngClass]="{'active': chkKF[6]? true : false}" ngbButtonLabel>
                     <input type="checkbox"  (change)="onCheckboxChange($event,'konstartidList')" value="6" rel="6" ngbButton>Musik
                   </label>
@@ -106,7 +105,7 @@
                     <input type="checkbox" (change)="onCheckboxChange($event,'konstartidList')" value="10" rel="10" ngbButton> Teater
                   </label>
                 </div>
-                <div class="btn-group btn-group-toggle mt-3">
+                <div class="btn-group btn-group-toggle flex-wrap mt-3">
                   <label class="btn btn-outline-secondary chkkonstform active" [ngClass]="{'active': chkAge[0]? true : false}" ngbButtonLabel>
                     <input type="checkbox" (change)="onCheckboxChange($event,'ageList')" value="0"  ngbButton>Alla
                   </label>
@@ -139,12 +138,20 @@
 
 
 <!-- Section-1 Start -->
-<section class="gen-section-padding-3 aj-section-bg-color-dark">
+<section class=" aj-section-bg-color-dark" [ngClass]=" searchResultParam.length >0 ? 'gen-section-padding-2' : 'gen-section-padding-3'">
   <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="btn-group mb-3" role="group" aria-label="Sökning" *ngIf="searchResultParam.length >0">Sökning:
+          <div type="button" disabled class="btn btn-outline-Search btn-sm me-2" *ngFor="let itm of searchResultParam">{{itm}}</div>
+        </div>
+      </div>
+    </div>
       <div class="row">
           <div class="col-lg-12">
             <h4>Hittade arrangemang (<span *ngIf="ShowSpinner" class="spinner-border spinner-border-lg" role="status"> </span><span *ngIf="!ShowSpinner">{{filterMetadata?.count}}</span>)</h4>
-
+          </div>
+          <div class="col-lg-12">
             <app-kk-no-result *ngIf="showNoPostToShow"></app-kk-no-result>
               <!-- START paginering nummer block -->
               <div class="row kk_aj_productPagerblock" *ngIf="showNoPostToShow || filterMetadata.count >0 ">
@@ -174,7 +181,7 @@
                             <div class="gen-movie-add">
                                 <div class="wpulike wpulike-heart">
                                   <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                    <button type="button" class="wp_ulike_btn wp_ulike_put_image" title="Lägg till som i minneslistan"></button>
+                                    <button type="button" id="minnesID_{{item.ansokningid}}" class="wp_ulike_btn wp_ulike_put_image" title="Lägg till som i minneslistan"></button>
                                   </div>
                                 </div>
                             </div>
@@ -191,7 +198,7 @@
                             </div>
                             <div class="gen-movie-meta-holder">
                               <p>Utövare: {{item.ansokningutovare}}<br>
-                              Ålder: {{item.ansokningAgespan}} ÅR
+                              Ålder: 0- 19{{item.ansokningAgespan}} ÅR
                               </p>
                             </div>
                           </div>

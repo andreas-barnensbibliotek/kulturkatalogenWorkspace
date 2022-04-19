@@ -14,12 +14,15 @@ export class KkajStartComponent implements OnInit {
 
   title ="Kulturkatalogen Väst - Version 3.0.1"
   mainPageData?:any=[];
-
-
+  showList:number[] =[0];
   constructor(private gbl:App_Global, private titleService: Title, private cd:ChangeDetectorRef, private vpScroller: ViewportScroller,  private router: Router ) { }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.gbl.HeadTitleMapper("Start"));
+
+    this.showList[0]=4;
+    this.showList.push(2);
+    this.showList.push(3);
 
   }
 test(){
@@ -43,6 +46,20 @@ test(){
     // this.vpScroller.scrollToAnchor(gotoarrId);
       // document.querySelector(gotoarrId)?.scrollIntoView({behavior: 'smooth'});
       this.router.navigate([], { fragment: gotoarrId });
+  }
+  caruselData(typ:number){
+
+    return {
+      cmdTyp: 'search',
+      freeTextSearch:'',
+      arrTypID: 0,
+      konstartID: 0,
+      startYear: 0,
+      stoppYear: 0,
+      ageList:[],
+      konstartIdList:[typ],
+      tagList:[]
+    }
   }
 
 }

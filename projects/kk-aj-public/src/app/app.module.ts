@@ -22,7 +22,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestarComponent } from './testar/testar.component';
 import { KkStartComponent } from './kk-start/kk-start.component';
 import { MainArrFormComponent } from './kk-Forms/main-arr-form/main-arr-form.component';
 import { Err404PageComponent } from './core/shared/err404-page/err404-page.component';
@@ -47,6 +46,7 @@ import { KkajCaruselComponent } from './core/shared/kkaj-carusel/kkaj-carusel.co
 import { KkNoResultComponent } from './kk-results/kk-no-result/kk-no-result.component';
 import { KkResultListComponent } from './kk-results/kk-result-list/kk-result-list.component';
 import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
+import { LazyLoadDirective } from './core/directive/lazy-load.directive';
 
 
 const cookieConfig:NgcCookieConsentConfig = {
@@ -97,7 +97,6 @@ const cookieConfig:NgcCookieConsentConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    TestarComponent,
     KkStartComponent,
     MainArrFormComponent,
     Err404PageComponent,
@@ -122,6 +121,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     KkajCaruselComponent,
     KkNoResultComponent,
     KkResultListComponent,
+    LazyLoadDirective,
 
   ],
   imports: [

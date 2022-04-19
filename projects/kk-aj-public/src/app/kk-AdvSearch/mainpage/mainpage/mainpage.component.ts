@@ -43,6 +43,8 @@ export class MainpageComponent implements OnInit {
   keyword = 'ansokningtitle';
   autocompletedata:any = [];
   showNoPostToShow:boolean= false;
+  result:boolean=true;
+  searchResultParam:any=[];
 
   ShowSpinner:boolean=true;
 
@@ -120,14 +122,18 @@ init_SearchForm(){
     console.log("laddar ny data: ", this.glb.mainJsonKatalogItemList);
     if(this.glb.isEmptyObj(this.glb.mainJsonKatalogItemList)){
       this.resultatantal =0;
+
       this.loadPageData(this.postdataV2);
+      this.spinnerhandler(false);
+
     }else{
-      //console.log("data finns: ", this.glb.mainJsonKatalogItemList.kk_aj_admin);
+      console.log("data finns: ", this.glb.mainJsonKatalogItemList.kk_aj_admin);
       this.mainPageData = this.glb.mainJsonKatalogItemList.kk_aj_admin.ansokningarlista.ansokningar;
       this.resultatantal = this.mainPageData.length;
       this.spinnerhandler(false);
       // console.log(this.glb.showPageMax + " glb.pageSize: "+ this.glb.pageSize);
       // this.mainCategoryname= this.glb.currentCategoryName;
+
     }
   }
 
@@ -196,6 +202,7 @@ init_SearchForm(){
   }
 
   MainSearchFormClick(){
+
     this.mainPageData=[];
     this.loadPageData(this.postdataV2);
     this.resetAdvsearchform();
@@ -204,6 +211,7 @@ init_SearchForm(){
   }
 
   formFreetextSearchClick(){
+
     if(this.currsearchstr){
       this.mainPageData=[];
       this.loadFreetextSearchData(this.postdataV2);
@@ -213,6 +221,7 @@ init_SearchForm(){
   }
 
   formCoreSearchClick(){
+
     this.postdataV2 = new clsPostDataV2
     this.postdataV2.arrTypID= this.fixarridValue(this.FgAdvSearch.get("arrTypID")?.value);
     this.postdataV2.freeTextSearch = this.currsearchstr;
@@ -221,7 +230,7 @@ init_SearchForm(){
     this.mainPageData=[];
     this.loadCoreSearchData(this.postdataV2);
     this.scroll('#AnchorSearchlist');
-
+this.valdaSearchParam();
     return false;
   }
 
@@ -301,6 +310,8 @@ init_SearchForm(){
   onCleared(){
     // this.FgAdvSearch.get("freeTextSearch")?.setValue('');
     this.currsearchstr ="";
+   this.FgAdvSearch.get("freeTextSearch")?.setValue("");
+
     this.formCoreSearchClick();
     this.ngaoutoControll.close();
     // this.init_SearchForm()
@@ -403,5 +414,129 @@ init_SearchForm(){
     // console.log("hitta hit");
     this.glb.showspinner= val;
     this.ShowSpinner= this.glb.showspinner;
+  }
+
+  valdaSearchParam(){
+    this.searchResultParam= [];
+    let searchstr:string = this.FgAdvSearch.get("freeTextSearch")?.value;
+    if(searchstr){
+      this.searchResultParam.push(searchstr);
+    }
+
+    let arrTyp:string = this.FgAdvSearch.get("arrTypID")?.value;
+    if(arrTyp!='Alla arrangemangstyper'){
+      this.searchResultParam.push(this.getArrtypName(arrTyp));
+    }
+    let chkBtn:Array<number> = this.FgAdvSearch.get("konstartidList")?.value;
+      chkBtn.forEach((item: any, i:number) => {
+        this.searchResultParam.push(this.getkonstFormName(item));
+    });
+    let age:Array<number> = this.FgAdvSearch.get("ageList")?.value;
+      age.forEach((item: any, i:number) => {
+        this.searchResultParam.push(this.getAgeName(item));
+    });
+  }
+
+  getArrtypName(id:string){
+    let ret:string ="";
+    switch(id) {
+      case "1": {
+        ret = "Besöksmål med resestöd";
+        break;
+      }
+      case "2": {
+        ret = "Föreställning på turné";
+        break;
+      }
+      case "3": {
+        ret = "Skolbio";
+        break;
+      }
+      case "4": {
+        ret = "Utställning på turné";
+          break;
+      }
+      case "5": {
+        ret = "Workshops/Projekt";
+          break;
+      }
+    }
+    return ret;
+  }
+  getkonstFormName(id:string){
+    let ret:string ="";
+    switch(id) {
+      case "2": {
+        ret = "Dans";
+        break;
+      }
+      case "3": {
+        ret = "Film & media";
+        break;
+      }
+      case "4": {
+        ret = "Konst, form & design";
+          break;
+      }
+      case "5": {
+        ret = "Litteratur, berättande";
+          break;
+      }
+      case "6": {
+        ret = "Musik";
+        break;
+      }
+      case "7": {
+        ret = "Natur- och kulturarv";
+        break;
+      }
+      case "8": {
+        ret = "Nycirkus/cirkus";
+        break;
+      }
+      case "9": {
+        ret = "Slöjd";
+          break;
+      }
+      case "10": {
+        ret = "Teater";
+          break;
+      }
+      case "11": {
+        ret = "Science Center";
+          break;
+      }
+      case "12": {
+        ret = "Annan scenkonst";
+          break;
+      }
+    }
+    return ret;
+  }
+  getAgeName(id:string){
+    let ret:string ="";
+    switch(id) {
+      case "1": {
+        ret = " 0-6 år";
+        break;
+      }
+      case "2": {
+        ret = "7-9 år";
+        break;
+      }
+      case "3": {
+        ret = "10-12 år";
+        break;
+      }
+      case "4": {
+        ret = "13-15 år";
+          break;
+      }
+      case "5": {
+        ret = "16-19 år";
+          break;
+      }
+    }
+    return ret;
   }
 }

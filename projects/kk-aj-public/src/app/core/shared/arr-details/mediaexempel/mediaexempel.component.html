@@ -1,31 +1,44 @@
 
 
-
-
-
-
-      <div class="card">
-        <div class="row">
-
-           <!-- Om bild -->
-          <div class="col-sm-5" *ngIf="MediaExempelblock.MediaTyp == 1" >
-            <img [src]=videoUrl />
+        <div class="container-grid wrap-more-picture" *ngIf="MediaExempelblock.MediaTyp == 1">
+          <div class="container-grid container-9"><a href="#" class="responsive-picture picture-link-1">
+              <picture>
+                <img alt="Placeholder Picture" width="418" height="340" [src]=videoUrl loading="lazy">
+              </picture>
+            </a></div>
+          <div class="container-grid container-8">
+            <div class="container-grid container-6">
+              <h4 class="more-heading">{{MediaExempelblock.mediaTitle}}</h4>
+              <p class="paragraph">{{MediaExempelblock.mediaBeskrivning}}</p>
+            </div>
+            <p class="paragraph credit-text"></p>
           </div>
-          <!-- Om film -->
-          <div class="col-sm-5" *ngIf="MediaExempelblock.MediaTyp == 2" >
-            <iframe width="auto" height="auto" [src]=videoUrl frameborder="0" allowfullscreen="true" style="max-width:100%;"></iframe>
-          </div>
-          <!-- Om ljud -->
-          <div class="col-sm-5" *ngIf="MediaExempelblock.MediaTyp == 3" >
-            <audio preload id="audio1" [src]=videoUrl controls="controls">Your browser does not support HTML5 Audio!</audio>
-          </div>
+        </div>
 
-          <div class="col-sm-7">
-            <div class="card-block">
-              <h3>{{MediaExempelblock.mediaTitle}}</h3>
-              <p>{{MediaExempelblock.mediaBeskrivning}}</p>
+        <div class="container-grid wrap-more-video" *ngIf="MediaExempelblock.MediaTyp == 2">
+          <div class="container-grid container-7">
+            <div class="responsive-video video-platform-2 youtube" >
+              <iframe width="auto" height="auto" [src]=videoUrl frameborder="0" allowfullscreen="true" style="max-width:100%;"></iframe>
             </div>
           </div>
-
+          <div class="container-grid container-8">
+            <div class="container-grid container-6">
+              <h4 class="more-heading">{{MediaExempelblock.mediaTitle}}</h4>
+              <p class="paragraph">{{MediaExempelblock.mediaBeskrivning}}</p>
+            </div>
+            <p class="paragraph credit-text"></p>
+          </div>
         </div>
+
+        <div class="container-grid wrap-more-picture" *ngIf="MediaExempelblock.MediaTyp == 3">
+          <div class="responsive-video video-platform-2 youtube" >
+            <audio preload id="audio1" [src]=videoUrl controls="controls">Your browser does not support HTML5 Audio!</audio>
+          </div>
+          <div class="container-grid container-8">
+            <div class="container-grid container-6">
+              <h4 class="more-heading">{{MediaExempelblock.mediaTitle}}</h4>
+              <p class="paragraph">{{MediaExempelblock.mediaBeskrivning}}</p>
+            </div>
+            <p class="paragraph credit-text"></p>
+          </div>
         </div>

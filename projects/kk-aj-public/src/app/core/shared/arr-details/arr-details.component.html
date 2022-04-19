@@ -2,63 +2,46 @@
 
    <!-- blog single -->
    <section class="gen-section-padding-3 aj-section-bg-color-dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 col-md-12">
-                <div class="gen-blog-post">
-                    <div class="gen-post-media text-center">
-                      <img
-                      class="granska_pressentationsbild"
-                      [src]="'https://www.kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/'
-                      + detailpage[0]?.ansokningMediaImage.MediaUrl"
-                      alt="{{detailpage[0]?.ansokningtitle}}" loading="lazy" />
-                    </div>
-                    <div class="gen-blog-contain">
-                        <div class="gen-post-meta">
-                            <ul>
-                                <li class="gen-post-author">
-                                  {{ detailpage[0]?.ansokningutovare }}
-                                </li>
-                            </ul>
-                        </div>
-                        <h1>
-                          {{ detailpage[0]?.ansokningtitle }}
-                        </h1>
 
-                        <h2 class="granska_underrubrik" *ngIf="detailpage[0]?.ansokningsubtitle">
-                          {{ detailpage[0]?.ansokningsubtitle }}
-                        </h2>
-
-                        <div class="granska_innehall col-11" *ngIf="detailpage[0]?.ansokningContent" [innerHTML]="detailpage[0]?.ansokningContent | unescape">
-                         <!-- <span class="spinner-border spinner-border-lg" role="status"></span> -->
-                        </div>
-
-                      <div class="row mb-4" *ngIf="detailpage[0]?.ansokningMedialist != ''">
-                          <div class="col-8 ">
-                            <h3 *ngIf="detailpage[0]?.ansokningContent" class="comment-reply-title">SMAKPROV FRÅN FÖRESTÄLLNINGEN </h3>
-                              <ul class="arrExempellist pt-2">
-                                <!-- item loop START -->
-
-                                <li *ngFor="let item of detailpage[0]?.ansokningMedialist">
-                                  <app-mediaexempel [MediaExempelblock]="item"></app-mediaexempel>
-
-                                </li>
-                                <!-- item loop STOP -->
-                              </ul>
-
-                          </div>
-                          <div class="col-2">
-
-                          </div>
-                      </div>
-                    </div>
-                </div>
+    <div class="container-grid wrap-main">
+      <div class="container-grid container-1">
+        <div class="container-grid container-2">
+          <div class="responsive-video video-platform-1 youtube" >
+            <img
+                class="granska_pressentationsbild"
+                [src]="'https://www.kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/'
+                + detailpage[0]?.ansokningMediaImage.MediaUrl"
+                alt="{{detailpage[0]?.ansokningtitle}}" loading="lazy" />
+          </div>
+          <div class="container-grid wrap-text-main">
+            <div class="rule">
+              <hr>
+            </div>
+            <h2 class="performer-heading">{{ detailpage[0]?.ansokningtitle }}</h2>
+            <div class="rule">
+              <hr>
+            </div>
+            <h1 class="production-heading">{{ detailpage[0]?.ansokningutovare }}</h1>
+            <h3 class="sub-heading"*ngIf="detailpage[0]?.ansokningsubtitle">
+              {{ detailpage[0]?.ansokningsubtitle }}</h3>
+             <p class="paragraph main-text" *ngIf="detailpage[0]?.ansokningContent" [innerHTML]="detailpage[0]?.ansokningContent | unescape"></p>
+            <div class="rule">
+              <hr>
+            </div>
+            <div *ngIf="detailpage[0]?.ansokningMedialist != ''">
+              <h4 class="more-heading">Smakprov</h4>
+              <div *ngFor="let item of detailpage[0]?.ansokningMedialist">
+                  <app-mediaexempel [MediaExempelblock]="item"></app-mediaexempel>
+              </div>
 
             </div>
-            <div class="col-lg-3 col-md-12 mt-4 mt-lg-0">
-              <app-fakta [faktablock]="detailpage[0]?.ansokningFaktalist"></app-fakta>
-            </div>
+          </div>
         </div>
+        <div class="container-grid container-3" >
+          <app-fakta [faktablock]="detailpage[0]?.ansokningFaktalist"></app-fakta>
+          <app-kontakt [Kontaktblock]="detailpage[0]"></app-kontakt>
+        </div>
+      </div>
     </div>
 </section>
 <!-- blog single -->
