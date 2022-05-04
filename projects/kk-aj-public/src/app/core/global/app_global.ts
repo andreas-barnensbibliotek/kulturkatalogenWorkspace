@@ -31,7 +31,7 @@ export class App_Global {
   currentpage!:number;
   filterform:any;
   server:string = this._usedServer + this._cmdApi;
-  coreserver:string = this._SandboxCoreAPI;
+  coreserver:string = this._localCordevserver;
   devkey:string = "/alf/?type=json";
   coredevkey:string = "?devKey=alf";
   showspinner:boolean= true;

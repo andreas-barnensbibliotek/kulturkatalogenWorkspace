@@ -1,30 +1,173 @@
 
-<carousel
-[cellsToScroll]= "4"
-[cellWidth] = "320"
-[height]="360"
+ <div *ngIf="!mainCaruselData.ansokningar">
 
-[autoplay]= false
-[autoplayInterval]= "1000"
-[lightDOM]=true
-[margin]="20"
-objectfit= "cover"
->
-<div class="carousel-cell item" *ngFor="let itm of mainCaruselData.arrangemangslist">
-  <a href="/Arr/id/{{itm.arrID}}">
-    <img
-    src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.imageUrl}}"
-    alt="{{itm.rubrik}}">
-    <div class="textTopMarker">
+  <div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gen-carousel-movies-style-2 movie-grid style-2">
+          <div class="gen-movie-contain">
+            <div class="gen-movie-img empty-carousel-List">
+              <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
+              <div class="gen-movie-add">
+                  <div class="wpulike wpulike-heart">
+                    <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+                          type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+                  </div>
+              </div>
+              <div class="gen-movie-action">
+                  <!-- <a href="single-movie.html" class="gen-button">
+                    <i class="fa fa-play"></i>
+                  </a> -->
+              </div>
+            </div>
+            <div class="gen-info-contain">
+              <div class="gen-movie-info">
+                <h3>Laddar..</h3>
+                <p></p>
+              </div>
+              <div class="gen-movie-meta-holder">
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-    <div class="textwrapper">
-      <h2 class="">{{itm.rubrik}}</h2>
-      <p class="">{{itm.underrubrik}}</p>
-      <h3>Utövare: {{itm.organisation}}</h3>
-      <h3>Ålder: {{itm.startyear}}-{{itm.stoppyear}}</h3>
+    <div class="col-xl-3 col-lg-4 col-md-6">
+      <div class="gen-carousel-movies-style-2 movie-grid style-2">
+        <div class="gen-movie-contain">
+          <div class="gen-movie-img empty-carousel-List"  style="height: 226px;">
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+            <div class="gen-movie-add">
+                <div class="wpulike wpulike-heart">
+                  <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+                        type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+                </div>
+            </div>
+            <div class="gen-movie-action">
+                <!-- <a href="single-movie.html" class="gen-button">
+                  <i class="fa fa-play"></i>
+                </a> -->
+            </div>
+          </div>
+          <div class="gen-info-contain">
+            <div class="gen-movie-info">
+              <h3>Laddar..</h3>
+              <p></p>
+            </div>
+            <div class="gen-movie-meta-holder">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </a>
+    <div class="col-xl-3 col-lg-4 col-md-6">
+      <div class="gen-carousel-movies-style-2 movie-grid style-2">
+        <div class="gen-movie-contain">
+          <div class="gen-movie-img empty-carousel-List" style="height: 226px;">
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+            <div class="gen-movie-add">
+                <div class="wpulike wpulike-heart">
+                  <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+                        type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+                </div>
+            </div>
+            <div class="gen-movie-action">
+                <!-- <a href="single-movie.html" class="gen-button">
+                  <i class="fa fa-play"></i>
+                </a> -->
+            </div>
+          </div>
+          <div class="gen-info-contain">
+            <div class="gen-movie-info">
+              <h3>Laddar..</h3>
+              <p></p>
+            </div>
+            <div class="gen-movie-meta-holder">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-6">
+      <div class="gen-carousel-movies-style-2 movie-grid style-2">
+        <div class="gen-movie-contain">
+          <div class="gen-movie-img empty-carousel-List" style="height: 226px;">
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+            <div class="gen-movie-add">
+                <div class="wpulike wpulike-heart">
+                  <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+                        type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+                </div>
+            </div>
+            <div class="gen-movie-action">
+                <!-- <a href="single-movie.html" class="gen-button">
+                  <i class="fa fa-play"></i>
+                </a> -->
+            </div>
+          </div>
+          <div class="gen-info-contain">
+            <div class="gen-movie-info">
+              <h3>Laddar..</h3>
+              <p></p>
+            </div>
+            <div class="gen-movie-meta-holder">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-</carousel>
+  <carousel
+    [cellsToScroll]= "2"
+    [cellWidth] = "400"
+    [height]="380"
+    [arrowsOutside]="false"
+    [autoplay]= false
+    [autoplayInterval]= "1000"
+    [lightDOM]=true
+    [margin]="20"
+    objectfit= "cover"
+    [loop]="true">
 
+    <div class=" carousel-cell item" *ngFor="let itm of mainCaruselData.ansokningar">
+        <div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+          <div class="gen-carousel-movies-style-2 movie-grid style-2">
+            <a  (click)="loadPageData(itm.ansokningid)" title="{{itm.ansokningtitle}}" >
+            <div class="gen-movie-contain">
+                <div class="gen-movie-img">
+                  <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.ansokningMediaImage.mediaUrl}}" alt="{{itm.rubrik}}">
+
+                  <div class="gen-movie-add">
+                      <div class="wpulike wpulike-heart">
+                        <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+                              type="button" class="wp_ulike_btn wp_ulike_put_image" id="minnesID_{{itm.ansokningid}}" title="Lägg till som i minneslistan"></button></div>
+                      </div>
+                  </div>
+                  <div class="gen-movie-action">
+                      <!-- <a href="single-movie.html" class="gen-button">
+                        <i class="fa fa-play"></i>
+                      </a> -->
+                  </div>
+                </div>
+                <div class="gen-info-contain">
+                  <div class="gen-movie-info">
+                    <h3>{{itm.ansokningtitle}}</h3>
+                    <p >{{itm.ansokningsubtitle}} &nbsp;</p>
+                  </div>
+                  <div class="gen-movie-meta-holder">
+                   <p>Utövare:{{itm.ansokningutovare}}<br>
+                    Ålder: 0- 19 {{itm.ansokningAgespan}}
+                    </p>
+                  </div>
+                </div>
+            </div>
+          </a>
+          </div>
+        </div>
+      <!-- #post-## -->
+    </div>
+  </carousel>

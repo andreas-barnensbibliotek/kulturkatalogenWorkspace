@@ -122,6 +122,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     KkNoResultComponent,
     KkResultListComponent,
     LazyLoadDirective,
+    AjCarouselBlockComponent
 
   ],
   imports: [

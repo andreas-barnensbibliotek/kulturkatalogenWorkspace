@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 export class ArrDetailsComponent implements OnInit {
   @Input() detailid!:any;
 
+
   ico_fa_tumbsup = faThumbsUp;
   ico_fa_print = faPrint;
   ico_fa_chevron= faChevronLeft;
@@ -51,6 +52,25 @@ export class ArrDetailsComponent implements OnInit {
   goBack(): void {
 
     this.location.back();
+  }
+
+  caruselData(typ:number){
+
+    return {
+      cmdTyp: 'search',
+      freeTextSearch:'',
+      arrTypID: 0,
+      konstartID: 0,
+      startYear: 0,
+      stoppYear: 0,
+      ageList:[],
+      konstartIdList:[typ],
+      tagList:[]
+    }
+  }
+
+  changeDetail(id:string){
+    this.loadPageData(id);
   }
   // gotodetail(url:any){
 
