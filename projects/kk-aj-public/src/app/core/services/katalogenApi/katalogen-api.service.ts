@@ -47,4 +47,9 @@ export class KatalogenApiService extends ApiServiceService  {
     let url:string = this._glb.server +"/arrangemang/all_details/uid/0/typ/"+ arrid +"/devkey"+ this._glb.devkey;
     return this.getPosts(url);
   }
+
+  getPageByName(page:string){ //Get allt innehåll och alla sectionsblock för vald sida
+    let url:string = this._glb.coreserver +"/api/Page"+ this._glb.coredevkey + "&searchStr="+page;
+    return this.getPosts(url);
+  }
 }

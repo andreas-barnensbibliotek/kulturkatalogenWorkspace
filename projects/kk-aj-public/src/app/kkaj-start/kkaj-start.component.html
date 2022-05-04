@@ -1,55 +1,32 @@
-<section class="py-5 bg-image-full aj-section-bgimg-color-darker" >
+
+<section  class="py-5 bg-image-full aj-section-bgimg-color-darker" >
   <!-- Features section-->
     <div class="container my-5">
         <div class="row gx-3">
-          <div class="col-12 col-sm-6 col-lg-4 mb-5 mb-lg-0 ">
-            <div class="topblockContainer blockcolor1">
-              <h2 class="h2">Välkommen!</h2>
-              <p>I Kulturkatalogen Väst finns ett brett utbud av professionell scenkonst, workshops, projekt, skolbiofilmer och besöksmål. Massor att välja på för dig som är kultursamordnare, pedagog, fritidsledare, föreningsaktiv eller annan kulturarrangör i Västra Götaland.
-              </p><p>Allt är riktat till barn och unga, allt är kvalitetssäkrat och allt omfattas av det regionala arrangörsstödet.</p>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-lg-4 mb-5 mb-lg-0 ">
-            <div class="topblockContainer blockcolor2">
-              <h2 class="h2">Sök i katalogen</h2>
-              <p>Här kan du söka bland alla fina kultur- och naturaktiviteter i Kulturkatalogen Väst</p>
-              <a routerLink="/advsearch" title="BÖRJA SÖKA HÄR!" class="gen-button gen-button-flat">
-                <span class="text">BÖRJA SÖKA HÄR!</span>
+          <div *ngFor="let itm of pagejson.sections; let i = index"  class="col-12 col-sm-6 col-lg-4 mb-5 mb-lg-0 ">
+            <div *ngIf="itm.typ== 'StartTopBlock'" class="topblockContainer" [ngClass]="itm.content[0].metaClass=='blockcolor2' ? 'blockcolor2' :  'blockcolor1'">
+              <h2 class="h2">{{itm.content[0].rubrik}}</h2>
+              <div [innerHtml]="itm.content[0].content"></div>
+              <a *ngIf="itm.content[0].linkUrl" [routerLink]="itm.content[0].linkUrl" title="BÖRJA SÖKA HÄR!" class="gen-button gen-button-flat">
+                <span class="text">{{itm.content[0].linkText}}</span>
               </a>
             </div>
           </div>
-          <!-- <div class="col-md-4 mb-5 mb-lg-0 fronttopimg" style="background-size: cover; background-image: url('https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/2904_DSC03164 beskuren.jpg')">
-            <div class="topblockContainerImg">
-              <h2 class="h4 fw-bolder">Featured title</h2>
-              <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-              <a class="text-decoration-none" href="#!">
-                  Call to action
-                  <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div> -->
-          <div class="col-12 col-lg-4 mb-5 mb-lg-0 fronttopimg" >
-            <div class="topblockContainer blockcolor3">
-              <h2 class="h2">Featured title</h2>
-              <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-              <a class="text-decoration-none" href="#!">
-                  Call to action
-                  <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
+
         </div>
     </div>
-
 </section>
 
 
+<span *ngFor="let itm of pagejson.sections; let i = index; ">
+
 <!-- owl-carousel Videos Section-1 Start -->
-<section id="gotoCat4" class="gen-section-padding-2 aj-section-bg-color-dark" >
+<section *ngIf="itm.typ== 'ListBlock'" id="gotoCat4" class="gen-section-padding-2" [ngClass]="itm.content[0].metaClass == 'Darker' ? 'aj-section-bg-color-darker' : 'aj-section-bg-color-dark'"  >
+
   <div class="container">
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-6">
-          <h4 class="gen-heading-title">0- 6 År</h4>
+          <h4 class="gen-heading-title">{{itm.content[0].rubrik}}</h4>
       </div>
       <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
           <div class="gen-movie-action">
@@ -65,7 +42,7 @@
       <div class="col-12">
         <div class="gen-style-2">
           <app-kkaj-carusel
-            [CaruselData]=caruselData(showList[0])>
+            [CaruselData]=caruselData(itm.content[0].genArrList)>
           </app-kkaj-carusel>
         </div>
       </div>
@@ -75,16 +52,16 @@
 <!-- owl-carousel Videos Section-1 End -->
 
 <!-- owl-carousel Videos Section-1 Start -->
-<section id="gotoCat2" class="gen-section-padding-2 aj-section-bg-color-darker" >
+<section *ngIf="itm.typ== 'ListValBlock'" id="gotoCat4" class="gen-section-padding-2" [ngClass]="itm.content[0].metaClass == 'Darker' ? 'aj-section-bg-color-darker' : 'aj-section-bg-color-dark'"  >
   <div class="container">
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-6">
-          <h4 class="gen-heading-title">7- 12 År</h4>
+          <h4 class="gen-heading-title">{{itm.content[0].rubrik}}</h4>
       </div>
       <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
           <div class="gen-movie-action">
             <div class="gen-btn-container text-right">
-                <a routerLink="/lista/2" class="gen-button gen-button-flat">
+                <a routerLink="/lista/4" class="gen-button gen-button-flat">
                   <span class="text">Se alla</span>
                 </a>
             </div>
@@ -95,7 +72,7 @@
       <div class="col-12">
         <div class="gen-style-2">
           <app-kkaj-carusel
-          [CaruselData]=caruselData(showList[1])>
+            [CaruselData]=caruselData(itm.content[0].genArrList)>
           </app-kkaj-carusel>
         </div>
       </div>
@@ -105,7 +82,7 @@
 <!-- owl-carousel Videos Section-1 End -->
 
 <!-- Foala calltoaction 14-->
-<section class="fdb-block py-0  gen-section-padding-2 aj-section-bg-color-dark">
+<section  *ngIf="itm.typ== 'Text_Bild_2col'" class="fdb-block py-0  gen-section-padding-2 aj-section-bg-color-dark">
   <div class="container bg-r py-5 my-5" style="background-image: url(https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/3700_01_mars2030_low-res.jpg);">
     <div class="row py-5">
       <div class="col-12 col-sm-10 col-md-8 col-lg-6 text-left">
@@ -120,7 +97,7 @@
     </div>
   </div>
 </section>
-
+</span>
 <!-- Contents 16
 <section class="fdb-block gen-section-padding-2 aj-section-bg-color-dark">
   <div class="col-fill-right d-none d-md-block " style="background-image: url(https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/3700_01_mars2030_low-res.jpg);">
@@ -146,32 +123,5 @@
   </div>
 </section> -->
 
-<!-- owl-carousel Videos Section-1 Start -->
-<section id="gotoCat3" class="gen-section-padding-2 aj-section-bg-color-darker" >
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-6">
-          <h4 class="gen-heading-title">13- 19 År</h4>
-      </div>
-      <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-          <div class="gen-movie-action">
-            <div class="gen-btn-container text-right">
-                <a routerLink="/lista/3" class="gen-button gen-button-flat">
-                  <span class="text">Se alla</span>
-                </a>
-            </div>
-          </div>
-      </div>
-    </div>
-    <div class="row mt-2">
-      <div class="col-12">
-        <div class="gen-style-2">
-          <app-kkaj-carusel
-             [CaruselData]=caruselData(showList[2])>
-          </app-kkaj-carusel>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 <!-- owl-carousel Videos Section-1 End -->

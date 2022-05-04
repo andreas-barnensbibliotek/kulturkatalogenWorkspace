@@ -4,12 +4,13 @@ import { clsPostDataV2 } from './../../models/clsPostData-v2';
 import { IpostSearchV2 } from './../../interface/ipost-search-v2';
 
 import { AjApiServicesService } from 'aj-api-services';
-import { Component, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, Renderer2, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 declare let $: any;
 @Component({
   selector: 'app-kkaj-carusel',
   templateUrl: './kkaj-carusel.component.html',
-  styleUrls: ['./kkaj-carusel.component.scss']
+  styleUrls: ['./kkaj-carusel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class KkajCaruselComponent implements OnInit {
 
@@ -18,7 +19,7 @@ export class KkajCaruselComponent implements OnInit {
   mainCaruselData?:any = [];
   mellan?:any=[];
 
-  constructor(private wpApi:KatalogenApiService, private glb:App_Global, private renderer: Renderer2) { }
+  constructor(private wpApi:KatalogenApiService, private glb:App_Global, private renderer: Renderer2,  private cd:ChangeDetectorRef,) { }
 
   ngOnInit(): void {
     this.getCaruselData(this.CaruselData)
@@ -30,6 +31,7 @@ export class KkajCaruselComponent implements OnInit {
     this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
       this.mellan = Response;
       this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
+      this.cd.detectChanges();
     })
 
     // this.ajApi.searchArrangemang(CData).subscribe(Response => {
@@ -56,10 +58,7 @@ export class KkajCaruselComponent implements OnInit {
   //   });
   // }
 
-  ngAfterViewInit(){
 
-
-  }
   addJsToElement(src: string): HTMLScriptElement {
     const script = document.createElement('script');
     script.type = 'text/javascript';

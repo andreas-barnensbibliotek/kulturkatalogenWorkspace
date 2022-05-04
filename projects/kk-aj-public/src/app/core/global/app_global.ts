@@ -16,7 +16,12 @@ export class App_Global {
   private _localCordevserver:string = "https://localhost:44372";
 
   private _usedServer:string = this._SandboxAPI; // <-- denna används
-  private _cmdApi:string = "/Api_v2";
+  private _cmdApi_v2:string = "/Api_v2";
+
+  server:string = this._usedServer + this._cmdApi_v2;
+  coreserver:string = this._SandboxCoreAPI;
+  devkey:string = "/alf/?type=json";
+  coredevkey:string = "?devKey=alf";
 
   mainJsonKatalogItemList:any =[];
   showPageMax:number= 24;
@@ -30,13 +35,9 @@ export class App_Global {
   currentCategoryID:any;
   currentpage!:number;
   filterform:any;
-  server:string = this._usedServer + this._cmdApi;
-  coreserver:string = this._localCordevserver;
-  devkey:string = "/alf/?type=json";
-  coredevkey:string = "?devKey=alf";
   showspinner:boolean= true;
   testtotal:any;
-  currentversion:string="Version: 0.0.1 2021-12-01"
+  currentversion:string="Version: 0.5.0 " + new Date().toISOString().slice(0, 10);
 
   private _mainJsonKatalogItemListHandler: Subject<void> = new Subject<void>();
   get mainJsonKatalogItemListHandler(){
