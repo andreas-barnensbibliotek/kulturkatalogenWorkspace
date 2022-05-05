@@ -1,3 +1,4 @@
+
 import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
@@ -16,7 +17,7 @@ export class KkajStartComponent implements OnInit {
 
   title ="Kulturkatalogen Väst - Version 3.0.1"
   mainPageData?:any=[];
-  showList:number[] =[0];
+  // showList:number[] =[0];
   pagejson?:any=[];
 
   constructor(private gbl:App_Global,
@@ -30,9 +31,9 @@ export class KkajStartComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle(this.gbl.HeadTitleMapper("Start"));
     this.loadPageData("Start");
-    this.showList[0]=4;
-    this.showList.push(2);
-    this.showList.push(3);
+    // this.showList[0]=4;
+    // this.showList.push(2);
+    // this.showList.push(3);
 
   }
 
@@ -58,15 +59,15 @@ loadPageData(arrid:string){
   }
 
   scroll(gotoarrId: string) {
-    console.log("scroll "+ gotoarrId)
+    // console.log("scroll "+ gotoarrId)
     // this.vpScroller.scrollToAnchor(gotoarrId);
       // document.querySelector(gotoarrId)?.scrollIntoView({behavior: 'smooth'});
       this.router.navigate([], { fragment: gotoarrId });
   }
-  caruselData(typ:number){
-console.log(typ);
+  caruselData(valdcmdtyp:string, typ:number){
+// console.log(typ);
     return {
-      cmdTyp: 'search',
+      cmdTyp: valdcmdtyp,
       freeTextSearch:'',
       arrTypID: 0,
       konstartID: 0,

@@ -5,11 +5,14 @@
         <div class="row gx-3">
           <div *ngFor="let itm of pagejson.sections; let i = index"  class="col-12 col-sm-6 col-lg-4 mb-5 mb-lg-0 ">
             <div *ngIf="itm.typ== 'StartTopBlock'" class="topblockContainer" [ngClass]="itm.content[0].metaClass=='blockcolor2' ? 'blockcolor2' :  'blockcolor1'">
+
               <h2 class="h2">{{itm.content[0].rubrik}}</h2>
               <div [innerHtml]="itm.content[0].content"></div>
-              <a *ngIf="itm.content[0].linkUrl" [routerLink]="itm.content[0].linkUrl" title="BÖRJA SÖKA HÄR!" class="gen-button gen-button-flat">
+
+              <a *ngIf="itm.content[0].linkUrl" [routerLink]="itm.content[0].linkUrl" title="{{itm.content[0].linkText}}" class="gen-button gen-button-flat">
                 <span class="text">{{itm.content[0].linkText}}</span>
               </a>
+
             </div>
           </div>
 
@@ -31,7 +34,7 @@
       <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
           <div class="gen-movie-action">
             <div class="gen-btn-container text-right">
-                <a routerLink="/lista/4" class="gen-button gen-button-flat">
+                <a routerLink="/lista/{{itm.content[0].genArrList}}" class="gen-button gen-button-flat">
                   <span class="text">Se alla</span>
                 </a>
             </div>
@@ -42,7 +45,7 @@
       <div class="col-12">
         <div class="gen-style-2">
           <app-kkaj-carusel
-            [CaruselData]=caruselData(itm.content[0].genArrList)>
+            [CaruselData]=caruselData(itm.content[0].genArrListTyp,itm.content[0].genArrList)>
           </app-kkaj-carusel>
         </div>
       </div>
@@ -61,7 +64,7 @@
       <div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
           <div class="gen-movie-action">
             <div class="gen-btn-container text-right">
-                <a routerLink="/lista/4" class="gen-button gen-button-flat">
+                <a routerLink="/lista/{{itm.content[0].genArrList}}" class="gen-button gen-button-flat">
                   <span class="text">Se alla</span>
                 </a>
             </div>
@@ -72,7 +75,7 @@
       <div class="col-12">
         <div class="gen-style-2">
           <app-kkaj-carusel
-            [CaruselData]=caruselData(itm.content[0].genArrList)>
+            [CaruselData]=caruselData(itm.content[0].genArrListTyp,itm.content[0].genArrList)>
           </app-kkaj-carusel>
         </div>
       </div>
@@ -82,16 +85,17 @@
 <!-- owl-carousel Videos Section-1 End -->
 
 <!-- Foala calltoaction 14-->
-<section  *ngIf="itm.typ== 'Text_Bild_2col'" class="fdb-block py-0  gen-section-padding-2 aj-section-bg-color-dark">
-  <div class="container bg-r py-5 my-5" style="background-image: url(https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/3700_01_mars2030_low-res.jpg);">
+<section *ngIf="itm.typ == 'Text_Bild_2col'" class="fdb-block py-0  gen-section-padding-2" [ngClass]="itm.content[0].metaClass == 'Darker' ? 'aj-section-bg-color-darker' : 'aj-section-bg-color-dark'">
+  <div class="container bg-r py-5 my-5" [ngStyle]="{ 'background-image' : (itm.content[0].bild1Url) ? 'url(' + itm.content[0].bild1Url + ')' : '' }">
     <div class="row py-5">
       <div class="col-12 col-sm-10 col-md-8 col-lg-6 text-left">
-        <h1>Call to Action</h1>
-        <p class="lead">
-          A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
-        </p>
-        <p class="mt-4">
-          <a class="gen-button gen-button-flat" href="https://www.froala.com">Download</a>
+        <h1>{{itm.content[0].rubrik}}</h1>
+        <div [innerHtml]="itm.content[0].content" class="lead">
+        </div>
+        <p *ngIf="itm.bild2Url" class="mt-4">
+          <a *ngIf="itm.content[0].linkUrl" [routerLink]="itm.content[0].linkUrl" title="{{itm.content[0].linkText}}" class="gen-button gen-button-flat">
+            <span class="text">{{itm.content[0].linkText}}</span>
+          </a>
         </p>
       </div>
     </div>

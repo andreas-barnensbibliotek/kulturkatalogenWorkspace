@@ -22,42 +22,74 @@ export class KkajCaruselComponent implements OnInit {
   constructor(private wpApi:KatalogenApiService, private glb:App_Global, private renderer: Renderer2,  private cd:ChangeDetectorRef,) { }
 
   ngOnInit(): void {
-    this.getCaruselData(this.CaruselData)
+    // this.getCaruselData(this.CaruselData)
+    this.getMaindata(this.CaruselData)
+
   }
 
 
-  getCaruselData(CData:IpostSearchV2){
+  // getCaruselData(CData:IpostSearchV2){
 
-    this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
-      this.mellan = Response;
-      this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
-      this.cd.detectChanges();
-    })
-
-    // this.ajApi.searchArrangemang(CData).subscribe(Response => {
-    //   this.mainCaruselData = Response;
-    //           // this.SpinnerLoader = false;
-
-    // });
-  }
-
-  // getCaruselData2(CData:any){
-
-  //   let cardata = {
-  //     "cmdTyp": "",
-  //     "arrTypID": 0,
-  //     "konstartID": CData,
-  //     "startYear":0,
-  //     "stoppYear": 0
-  //   }
-
-  //   this.ajApi.searchArrangemang(CData).subscribe(Response => {
-  //     this.mainCaruselData = Response;
-  //             // this.SpinnerLoader = false;
-
-  //   });
+  //   this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
+  //     this.mellan = Response;
+  //     this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
+  //     this.cd.detectChanges();
+  //   })
   // }
 
+
+
+  getMaindata(CData:IpostSearchV2){
+    let storageItem: string = this.getSearchVal(CData);
+
+    if(this.glb.isEmptyObj(localStorage.getItem(storageItem))){
+
+        this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
+          this.mellan = Response;
+          this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
+          localStorage.setItem(storageItem, JSON.stringify(this.mainCaruselData))
+          this.cd.detectChanges();
+        });
+
+    }else{
+      let test:any = localStorage.getItem(storageItem);
+      this.mainCaruselData = JSON.parse(test);
+
+    }
+  }
+
+  getSearchVal(CData:IpostSearchV2){
+    let retobj:string= "";
+
+    switch(CData.cmdTyp){
+      case "ageList" :
+        retobj= "ageList"+ CData.ageList[0];
+        break;
+      case "arrTypID" :
+        retobj= "arrTypID"+ CData.arrTypID;
+        break;
+      case "konstartID" :
+        retobj= "konstartID"+ CData.konstartID;
+        break;
+      case "konstartIdList" :
+        retobj= "konstartIdList"+ CData.konstartIdList[0];
+        break;
+      case "startYear" :
+        retobj= "startYear"+ CData.startYear;
+        break;
+      case "stoppYear" :
+        retobj= "stoppYear"+ CData.stoppYear;
+        break;
+      case "tagList" :
+        retobj= "tagList"+ CData.tagList[0];
+        break;
+      default :
+        retobj= "konstartID4";
+          break;
+    }
+
+    return retobj;
+  }
 
   addJsToElement(src: string): HTMLScriptElement {
     const script = document.createElement('script');
