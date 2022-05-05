@@ -1,3 +1,4 @@
+import { App_Global } from './core/global/app_global';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgcCookieConsentService, NgcInitializeEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
 import { Subscription } from 'rxjs';
@@ -18,7 +19,7 @@ private statusChangeSubscription!: Subscription;
 private revokeChoiceSubscription!: Subscription;
 private noCookieLawSubscription!: Subscription;
 
-constructor(private ccService: NgcCookieConsentService){}
+constructor(private ccService: NgcCookieConsentService, private glb:App_Global){}
 
 ngOnInit() {
   // subscribe to cookieconsent observables to react to main events
@@ -40,6 +41,9 @@ ngOnInit() {
   this.statusChangeSubscription = this.ccService.statusChange$.subscribe(
     (event: NgcStatusChangeEvent) => {
       // you can use this.ccService.getConfig() to do stuff...
+      localStorage.clear();
+      console.log("storage is cleard")
+      this.glb.deleteAllCookies();
     });
 
   this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(

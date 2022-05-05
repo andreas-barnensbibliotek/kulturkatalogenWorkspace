@@ -42,11 +42,11 @@ export class KkajCaruselComponent implements OnInit {
   getMaindata(CData:IpostSearchV2){
     let storageItem: string = this.getSearchVal(CData);
 
-    if(this.glb.isEmptyObj(localStorage.getItem(storageItem))){
+    if(this.glb.isEmptyObj(localStorage.getItem(storageItem)) || !this.glb.showCookies()){
 
         this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
           this.mellan = Response;
-          this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
+          this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista;
           localStorage.setItem(storageItem, JSON.stringify(this.mainCaruselData))
           this.cd.detectChanges();
         });

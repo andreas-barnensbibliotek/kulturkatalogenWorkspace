@@ -39,6 +39,7 @@ export class App_Global {
   testtotal:any;
   currentversion:string="Version: 0.5.0 " + new Date().toISOString().slice(0, 10);
 
+
   private _mainJsonKatalogItemListHandler: Subject<void> = new Subject<void>();
   get mainJsonKatalogItemListHandler(){
     return this._mainJsonKatalogItemListHandler;
@@ -195,6 +196,21 @@ export class App_Global {
     }
   };
 
+  public showCookies(){
+    let retobj:boolean= true;
+    let val:any;
+    let name:string = "cookieconsent_status";
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+
+    if (parts.length == 2) {
+        val= parts!.pop()!.split(";").shift();
+    }
+    if(val == "deny"){
+      retobj= false;
+    }
+    return retobj;
+  }
 
   public HeadTitleMapper(url:string){
     return this.capitalize(url.replace('/', '')) + " - Kulturkatalogen Väst";

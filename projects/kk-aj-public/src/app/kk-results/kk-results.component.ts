@@ -23,7 +23,7 @@ export class KkResultsComponent implements OnInit {
   mainCaruselData?:any = [];
   mellan?:any=[];
 
-  constructor(private wpApi:KatalogenApiService, private gbl:App_Global,private viewportScroller: ViewportScroller, private ActivatedRoute:ActivatedRoute, private _router:Router, private location:Location,  private titleService: Title,  private navBack:NavigationServiceService) {
+  constructor(private wpApi:KatalogenApiService, private glb:App_Global,private viewportScroller: ViewportScroller, private ActivatedRoute:ActivatedRoute, private _router:Router, private location:Location,  private titleService: Title,  private navBack:NavigationServiceService) {
     // this._router.events.pipe(
     //   filter(e => e instanceof Scroll)
     // ).subscribe(e => {
@@ -47,15 +47,16 @@ export class KkResultsComponent implements OnInit {
     let id:number = 0;
     this.ActivatedRoute.paramMap.subscribe(prams =>{
      id = Number(prams.get('id'));
+     this.postdataV2.cmdTyp = "konstartIdList";
      this.postdataV2.konstartIdList.push(id);
       if(id > 0){
-       this.getCaruselData(this.postdataV2)
+       this.getMaindata(this.postdataV2)
       }
-      this.gbl.currentCategoryID = id;
+      this.glb.currentCategoryID = id;
     });
 
 
-    this.titleService.setTitle(this.gbl.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
+    this.titleService.setTitle(this.glb.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
 
   }
   getCaruselData(CData:IpostSearchV2){
@@ -72,6 +73,57 @@ export class KkResultsComponent implements OnInit {
     // });
   }
 
+
+  getMaindata(CData:IpostSearchV2){
+    let storageItem: string = this.getSearchVal(CData);
+
+    if(this.glb.isEmptyObj(localStorage.getItem(storageItem)) || !this.glb.showCookies()){
+
+        this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
+          this.mellan = Response;
+          this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
+          localStorage.setItem(storageItem, JSON.stringify(this.mainCaruselData))
+        });
+
+    }else{
+      let test:any = localStorage.getItem(storageItem);
+      this.mainCaruselData = JSON.parse(test);
+
+    }
+  }
+
+  getSearchVal(CData:IpostSearchV2){
+    let retobj:string= "";
+
+    switch(CData.cmdTyp){
+      case "ageList" :
+        retobj= "ageList"+ CData.ageList[0];
+        break;
+      case "arrTypID" :
+        retobj= "arrTypID"+ CData.arrTypID;
+        break;
+      case "konstartID" :
+        retobj= "konstartID"+ CData.konstartID;
+        break;
+      case "konstartIdList" :
+        retobj= "konstartIdList"+ CData.konstartIdList[0];
+        break;
+      case "startYear" :
+        retobj= "startYear"+ CData.startYear;
+        break;
+      case "stoppYear" :
+        retobj= "stoppYear"+ CData.stoppYear;
+        break;
+      case "tagList" :
+        retobj= "tagList"+ CData.tagList[0];
+        break;
+      default :
+        retobj= "konstartID4";
+          break;
+    }
+
+    return retobj;
+  }
   // getCaruselData2(CData:any){
 
   //   let cardata = {
@@ -91,11 +143,11 @@ export class KkResultsComponent implements OnInit {
 
   goBack(): void {
     // this.navBack.back();
-    console.log('/#gotoCat'+ this.gbl.currentCategoryID);
+    console.log('/#gotoCat'+ this.glb.currentCategoryID);
     this._router.navigateByUrl('/');
    // this.location.back();
  }
  noresult(obj:any){
-   return this.gbl.isEmptyObj(obj);
+   return this.glb.isEmptyObj(obj);
  }
 }

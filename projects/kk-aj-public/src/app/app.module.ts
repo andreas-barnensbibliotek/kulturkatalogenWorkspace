@@ -75,7 +75,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     `,
   },
   content:{
-    message: 'På guidepublikutveckling.se använder vi cookies för att ge dig en bra användarupplevelse. Genom att använda cookies så slipper du som användare registrera dej flera gånger för att få tillgång till guiden. Väljer du att Tillåta kakor/coockies på vår webplats, godkänner du att vi använder cookies och browserstorage.',
+    message: 'På https://www.kulturkatalogenvast.org/ använder vi cookies för att ge dig en bra användarupplevelse. Genom att använda cookies så blir sidan snabbare och du ha möjlighet att spara dina favoriter. Väljer du att Tillåta kakor/coockies på vår webplats, godkänner du att vi använder cookies och browserstorage.',
 
     cookiePolicyLink: 'Läs mer om cookie/kakor',
     cookiePolicyHref: 'https://www.cookiesandyou.com/',
