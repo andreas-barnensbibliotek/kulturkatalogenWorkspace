@@ -2,10 +2,8 @@ import { KkajStartComponent } from './kkaj-start/kkaj-start.component';
 import { MainpageComponent } from './kk-AdvSearch/mainpage/mainpage/mainpage.component';
 import { KkResultsComponent } from './kk-results/kk-results.component';
 import { DetailpageComponent } from './kk-AdvSearch/detailpage/detailpage/detailpage.component';
-import { KatalogenMainComponent } from './kk-AdvSearch/katalogen-main/katalogen-main.component';
-import { MainArrFormComponent } from './kk-Forms/main-arr-form/main-arr-form.component';
 import { Err404PageComponent } from './core/shared/err404-page/err404-page.component';
-import { KkStartComponent } from './kk-start/kk-start.component';
+
 import { NgModule } from '@angular/core';
 import { ExtraOptions, PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { KkResultDetailsComponent } from './kk-results/kk-result-details/kk-result-details.component';
@@ -19,7 +17,11 @@ const routerOptions: ExtraOptions = {
 const routes: Routes = [
 
   { path: 'start',  component: KkajStartComponent, },
-  { path: 'arrform',  component: MainArrFormComponent, },
+  // { path: 'arrform',  component: MainArrFormComponent, },
+  {
+    path: 'arrform',
+    loadChildren: ()=> import('kk-aj-public-forms').then(m=> m.KkAjPublicFormsModule)
+  },
   { path: 'advsearch',component: MainpageComponent, },
   { path: 'lista' ,
     children: [

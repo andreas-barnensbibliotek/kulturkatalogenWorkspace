@@ -1,3 +1,4 @@
+import { Routes, RouterModule } from '@angular/router';
 import { ServerApiResponsModel } from './forms/MODELformGroup/ServerApiResponsModel';
 import { getTidigareModule } from './forms/MODELformGroup/getTidigareModule';
 import { FormFaktaModel } from './forms/MODELformGroup/FormFaktaModel';
@@ -39,9 +40,13 @@ import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListasmakprovComponent } from './forms/smakprov/listasmakprov/listasmakprov.component';
 import { SafeHtmlPipe } from './forms/pipes/safepipe';
 import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
+import { CommonModule } from '@angular/common';
 
+const routes: Routes = [
 
-
+  { path: '',
+  component: KkAjPublicFormsComponent, },
+];
 
 @NgModule({
   declarations: [
@@ -71,7 +76,8 @@ import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
+    // BrowserModule,
     EditorModule,
     ReactiveFormsModule,
     FormsModule,
@@ -80,6 +86,7 @@ import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
     NgxBootstrapSliderModule,
     NgbModule,
     NgxDynamicTabindexModule,
+    RouterModule.forChild(routes)
   ],
   providers: [
     formUtovareModel,

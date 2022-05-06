@@ -1,7 +1,7 @@
 import { clsAdvFilter } from './../models/clsAdvFilter';
 import { IAdvFilter } from './../interface/iadv-filter';
 import { Pipe, PipeTransform } from '@angular/core';
-import * as _ from 'lodash';
+import { isEmpty, filter } from 'lodash-es';
 
 @Pipe({
   name: 'customFilter',
@@ -41,16 +41,16 @@ export class CustomFilterPipe implements PipeTransform {
  }
 
  filterBokningsbar(tmplista:any,search:any){
-  if(!_.isEmpty(search)){
-    return _.filter(tmplista, (itm)=>{ return  Number(itm.ansokningFilterfakta.Bokningsbar) <= Number(search)})
+  if(!isEmpty(search)){
+    return filter(tmplista, (itm)=>{ return  Number(itm.ansokningFilterfakta.Bokningsbar) <= Number(search)})
   }else{
     return tmplista;
   }
  }
 
  filterMorklaggning(tmplista:any,search:any){
-  if(!_.isEmpty(search)){
-    return _.filter(tmplista, (itm)=>{ return itm.ansokningFilterfakta.Morklaggning ==search})
+  if(!isEmpty(search)){
+    return filter(tmplista, (itm)=>{ return itm.ansokningFilterfakta.Morklaggning ==search})
   }else{
     return tmplista;
   }
@@ -58,9 +58,9 @@ export class CustomFilterPipe implements PipeTransform {
 
  filterTakhojd(tmplista:any,search:any){
 
-  if(!_.isEmpty(search)){
+  if(!isEmpty(search)){
 
-    return _.filter(tmplista, (itm)=>{ return Number(itm.ansokningFilterfakta.Takhojd) >=Number(search)})
+    return filter(tmplista, (itm)=>{ return Number(itm.ansokningFilterfakta.Takhojd) >=Number(search)})
   }else{
     return tmplista;
   }
@@ -68,7 +68,7 @@ export class CustomFilterPipe implements PipeTransform {
 
  filterSpeltid(tmplista:any,search:number){
   if(search>0){
-    return _.filter(tmplista, (itm)=>{ return Number(itm.ansokningFilterfakta.Speltid) <=Number(search) && Number(itm.ansokningFilterfakta.Speltid) >0})
+    return filter(tmplista, (itm)=>{ return Number(itm.ansokningFilterfakta.Speltid) <=Number(search) && Number(itm.ansokningFilterfakta.Speltid) >0})
   }else{
     return tmplista;
   }
@@ -76,7 +76,7 @@ export class CustomFilterPipe implements PipeTransform {
 
  filterKostnad(tmplista:any,search:number){
   if(search>0){
-    return _.filter(tmplista, (itm)=>{ return Number(itm.ansokningFilterfakta.Kostnad) <=Number(search) && Number(itm.ansokningFilterfakta.Kostnad) >0})
+    return filter(tmplista, (itm)=>{ return Number(itm.ansokningFilterfakta.Kostnad) <=Number(search) && Number(itm.ansokningFilterfakta.Kostnad) >0})
   }else{
     return tmplista;
   }

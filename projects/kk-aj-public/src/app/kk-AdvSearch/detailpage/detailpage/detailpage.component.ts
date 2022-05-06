@@ -1,13 +1,13 @@
-import { NavigationServiceService } from './../../../core/services/NavigationService/navigation-service.service'
+// import { NavigationServiceService } from './../../../core/services/NavigationService/navigation-service.service'
 import { App_Global } from './../../../core/global/app_global';
 import { Title } from '@angular/platform-browser';
-import { KatalogenApiService } from './../../../core/services/katalogenApi/katalogen-api.service';
-import { Global } from './../../../core/models/global';
+// import { KatalogenApiService } from './../../../core/services/katalogenApi/katalogen-api.service';
+// import { Global } from './../../../core/models/global';
 import { Component, OnInit, Input } from '@angular/core';
-import { faChevronLeft, faPrint, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { ActivatedRoute, ParamMap, Router, UrlTree } from '@angular/router';
-import { Location, LocationStrategy } from '@angular/common';
-import { map } from 'rxjs/operators';
+// import { faChevronLeft, faPrint, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
+import {  LocationStrategy } from '@angular/common';
+// import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detailpage',
@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
 })
 export class DetailpageComponent implements OnInit {
  @Input() detailid:any;
-  constructor( private glb:App_Global, private activatedRoute:ActivatedRoute, private _router:Router, private titleService: Title, private navBack:NavigationServiceService,private location: LocationStrategy) {
+  constructor( private glb:App_Global, private activatedRoute:ActivatedRoute,  private titleService: Title, private location: LocationStrategy) {
 
   }
 

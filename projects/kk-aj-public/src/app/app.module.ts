@@ -3,7 +3,6 @@ import { MainFooterComponent } from './core/shared/main-footer/main-footer.compo
 import { NavigationServiceService } from './core/services/NavigationService/navigation-service.service';
 
 import { categoryStyles } from './core/models/categoryStyles';
-import { Global } from './core/models/global';
 import { MediaexempelComponent } from './../app/core/shared/arr-details/mediaexempel/mediaexempel.component';
 import { KontaktComponent } from './core/shared/arr-details/kontakt/kontakt.component';
 import { UnescapePipe } from './core/pipes/unescape.pipe';
@@ -15,14 +14,13 @@ import { DetailpageComponent } from './kk-AdvSearch/detailpage/detailpage/detail
 import { MainpageComponent } from './kk-AdvSearch/mainpage/mainpage/mainpage.component';
 import { App_Global } from './core/global/app_global';
 
-import {KkAjPublicFormsModule} from 'kk-aj-public-forms';
+// import {KkAjPublicFormsModule} from 'kk-aj-public-forms';
 import {AjApiServicesModule} from "aj-api-services"
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { KkStartComponent } from './kk-start/kk-start.component';
 import { MainArrFormComponent } from './kk-Forms/main-arr-form/main-arr-form.component';
 import { Err404PageComponent } from './core/shared/err404-page/err404-page.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
@@ -51,7 +49,7 @@ import { LazyLoadDirective } from './core/directive/lazy-load.directive';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
-    domain: 'localhost' //'localhost'// it is recommended to set your domain, for cookies to work properly
+    domain: 'sandbox.kulturkatalogenvast.org' //'localhost'// it is recommended to set your domain, for cookies to work properly
   },
   palette: {
     popup: {
@@ -97,7 +95,6 @@ const cookieConfig:NgcCookieConsentConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    KkStartComponent,
     MainArrFormComponent,
     Err404PageComponent,
     AjCarouselBlockComponent,
@@ -128,7 +125,7 @@ const cookieConfig:NgcCookieConsentConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    KkAjPublicFormsModule,
+    // KkAjPublicFormsModule,
     AjApiServicesModule,
     IvyCarouselModule,
     HttpClientModule,
@@ -145,7 +142,7 @@ const cookieConfig:NgcCookieConsentConfig = {
   ],
   providers: [
     App_Global,
-    Global,
+    // Global,
     categoryStyles,
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },

@@ -1,9 +1,9 @@
 
 import { categoryStyles } from './../models/categoryStyles';
-import * as _ from 'lodash';
-import {Injectable } from "@angular/core";
+import { orderBy, filter, get, assign } from 'lodash-es';
+import { Injectable } from "@angular/core";
 import { Subject } from 'rxjs';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms';
 
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
 export class App_Global {
@@ -106,10 +106,10 @@ export class App_Global {
   filterlodash(){
     let catlist = this.categorynameList();
     // let svar = _.filter(catlist, ['name', 'Djur']);
-    let svar = _.filter(catlist, (itm: { id: number; })=>{ return itm.id >10});
-    svar = _.orderBy(svar, ['name'], ['asc']);
+    let svar = filter(catlist, (itm: { id: number; })=>{ return itm.id >10});
+    svar = orderBy(svar, ['name'], ['asc']);
 
-    let object = _.assign({}, svar);
+    let object = assign({}, svar);
     return object
   }
 
@@ -119,8 +119,8 @@ export class App_Global {
     // let svar = _.filter(mainArrlist, (itm)=>{ return itm.id >10});
     if(!typ){ typ='asc';}
 
-    let listselection = _.get(mainArrlist, 'kk_aj_admin.ansokningarlista.ansokningar')
-    mainArrlist.kk_aj_admin.ansokningarlista.ansokningar= _.orderBy(listselection, 'ansokningtitle' )
+    let listselection = get(mainArrlist, 'kk_aj_admin.ansokningarlista.ansokningar')
+    mainArrlist.kk_aj_admin.ansokningarlista.ansokningar= orderBy(listselection, 'ansokningtitle' )
 
     this.mainJsonKatalogItemList= mainArrlist;
     this.mainJsonKatalogItemListHandler.next();
@@ -140,8 +140,8 @@ export class App_Global {
       return jsonlist
     }else{
       let mainArrlist = jsonlist;
-      let listselection = _.get(mainArrlist, 'kk_aj_admin.ansokningarlista.ansokningar')
-       return mainArrlist.kk_aj_admin.ansokningarlista.ansokningar= _.filter(listselection, (itm: { ansokningFilterfakta: { Bokningsbar: any; }; })=>{ return itm.ansokningFilterfakta.Bokningsbar ==val})
+      let listselection = get(mainArrlist, 'kk_aj_admin.ansokningarlista.ansokningar')
+       return mainArrlist.kk_aj_admin.ansokningarlista.ansokningar= filter(listselection, (itm: { ansokningFilterfakta: { Bokningsbar: any; }; })=>{ return itm.ansokningFilterfakta.Bokningsbar ==val})
 
     }
   }

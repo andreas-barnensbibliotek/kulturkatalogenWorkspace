@@ -7,7 +7,7 @@ import { ActivatedRoute, Router, Scroll } from '@angular/router';
 import { App_Global } from './../core/global/app_global';
 import { Component, OnInit } from '@angular/core';
 import { Location, ViewportScroller } from '@angular/common';
-import { Global } from '../core/models/global';
+// import { Global } from '../core/models/global';
 
 import { Title } from '@angular/platform-browser';
 import { filter } from 'rxjs/operators';
