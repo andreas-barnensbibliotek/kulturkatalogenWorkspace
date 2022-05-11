@@ -31,6 +31,7 @@ export class MainpageComponent implements OnInit {
   DropdownMenu:boolean=false;
   p:number=1;
   mainPageData:any=[];
+  IsSearching:boolean= true;
   mainCategoryname:any;
   elipsIcon = "" ;//faEllipsisV;
   currarrid:number= 0;

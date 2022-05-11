@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { IpostSearchV2 } from './../../interface/ipost-search-v2';
 import { KatalogenApiService } from './../../services/katalogenApi/katalogen-api.service';
 import { clsPostDataV2 } from './../../models/clsPostData-v2';
@@ -16,7 +17,7 @@ export class AjCarouselBlockComponent implements OnInit {
   mainCaruselData?:any = [];
   mellan?:any=[];
 
-  constructor(private wpApi:KatalogenApiService, private renderer: Renderer2) { }
+  constructor(private wpApi:KatalogenApiService, private renderer: Renderer2, private _router:Router) { }
 
   ngOnInit(): void {
     this.getCaruselData(this.CaruselData)
@@ -31,6 +32,7 @@ export class AjCarouselBlockComponent implements OnInit {
 
   loadPageData(id:string){
     this.changeDetailId.emit(id);
+    this._router.navigateByUrl('/Arr/id/' +id);
   }
 
   addJsToElement(src: string): HTMLScriptElement {

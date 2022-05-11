@@ -138,7 +138,7 @@
 
 
 <!-- Section-1 Start -->
-<section class=" aj-section-bg-color-dark" [ngClass]=" searchResultParam.length >0 ? 'gen-section-padding-2' : 'gen-section-padding-3'">
+<section *ngIf="IsSearching" class=" aj-section-bg-color-dark" [ngClass]=" searchResultParam.length >0 ? 'gen-section-padding-2' : 'gen-section-padding-3'">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

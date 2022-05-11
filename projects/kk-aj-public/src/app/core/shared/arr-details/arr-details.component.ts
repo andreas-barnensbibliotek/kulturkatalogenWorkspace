@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { App_Global } from './../../global/app_global';
 import { KatalogenApiService } from './../../services/katalogenApi/katalogen-api.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location, ViewportScroller } from '@angular/common';
+import { IpostSearchV2 } from '../../interface/ipost-search-v2';
 
 @Component({
   selector: 'app-arr-details',
@@ -22,7 +23,7 @@ export class ArrDetailsComponent implements OnInit {
   pagejson:any=[];
   detailpage:any=[];
   currpageSlug:any;
-  constructor(private wpApi:KatalogenApiService,private glb:App_Global, private activatedRoute:ActivatedRoute,private router:Router,private location: Location) {
+  constructor(private wpApi:KatalogenApiService,private location: Location) {
 
   }
 
@@ -38,7 +39,7 @@ export class ArrDetailsComponent implements OnInit {
   // }
 
   loadPageData(arrid:string){
-
+    this.detailpage=[];
     this.wpApi.getByArrId(arrid).subscribe(Response => {
 
       this.pagejson = Response;
@@ -56,7 +57,7 @@ export class ArrDetailsComponent implements OnInit {
 
   caruselData(typ:number){
 
-    return {
+    let retobj: IpostSearchV2 = {
       cmdTyp: 'search',
       freeTextSearch:'',
       arrTypID: 0,
@@ -65,13 +66,17 @@ export class ArrDetailsComponent implements OnInit {
       stoppYear: 0,
       ageList:[],
       konstartIdList:[typ],
-      tagList:[]
-    }
+      tagList:[],
+      utovareId: 0
+    };
+   return retobj;
   }
 
   changeDetail(id:string){
     this.loadPageData(id);
   }
+
+
   // gotodetail(url:any){
 
   //   console.log("funkar detta: " +this.location);

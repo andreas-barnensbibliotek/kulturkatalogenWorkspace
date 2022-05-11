@@ -12,5 +12,6 @@ export class clsPostDataV2 implements IpostSearchV2{
   ageList:Array<number>=[];
   konstartIdList:Array<number> = [];
   tagList:Array<string>=[];
+  utovareId:number=0;
 }
 

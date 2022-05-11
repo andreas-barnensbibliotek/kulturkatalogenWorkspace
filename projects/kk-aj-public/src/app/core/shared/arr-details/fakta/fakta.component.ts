@@ -17,7 +17,10 @@ export class FaktaComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+
+  }
 
   ngOnChanges(): void {
     if(this.faktablock){
@@ -26,6 +29,11 @@ export class FaktaComponent implements OnInit {
   }
 
   sortfaktagupper(faktajson:any){
+    this.fakta=[];
+    this.lokal=[];
+    this.publik=[];
+    this.ekonomi=[];
+    this.ovrigt=[];
     faktajson.forEach((faktatyp: { FaktaTypID: number; Faktarubrik: any; FaktaValue: string; }) => {
 
       switch (faktatyp.FaktaTypID) {

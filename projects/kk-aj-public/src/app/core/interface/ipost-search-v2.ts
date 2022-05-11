@@ -16,6 +16,7 @@
     ageList:Array<number>,
     konstartIdList:Array<number>,
     tagList:Array<string>,
+    utovareId:number,
   }
 
   // "cmdTyp": "string",
