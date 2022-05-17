@@ -23,9 +23,11 @@ const routes: Routes = [
     loadChildren: ()=> import('kk-aj-public-forms').then(m=> m.KkAjPublicFormsModule)
   },
   { path: 'advsearch',component: MainpageComponent, },
+  { path: 'favoriter', component: KkResultsComponent },
   { path: 'lista' ,
     children: [
       {path: ':id/Arrangemang/:arrid', component: KkResultDetailsComponent},
+      {path: 'favoriter', component: KkResultsComponent},
       {path: ':id', component: KkResultsComponent},
       {path: '', component: KkajStartComponent},
     ]

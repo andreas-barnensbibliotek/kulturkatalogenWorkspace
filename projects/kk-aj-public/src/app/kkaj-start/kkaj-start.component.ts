@@ -1,3 +1,5 @@
+import { ServerJson } from './../core/models/ServerJson';
+import { IpostSearchV2 } from './../core/interface/ipost-search-v2';
 
 import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
 import { Router } from '@angular/router';
@@ -42,31 +44,39 @@ loadPageData(arrid:string){
   this.wpApi.getPageByName("start").subscribe(Response => {
 
     this.pagejson = Response;
-    this.cd.detectChanges();
+      this.cd.detectChanges();
 
   })
 }
   ngAfterViewChecked() {
 
-     //this.cd.detectChanges(); // använd för att inte får expressionchangedAfterItHasbeenCheckedError
-
     // tillbaka från detaljvyn scroll
     if(this.gbl.currentCategoryID>0){
-      this.scroll('gotoCat'+ this.gbl.currentCategoryID);
-      console.log("tillbaka från detaljvyn scroll "+ this.gbl.currentCategoryID)
-      this.gbl.currentCategoryID=0;
+
+      setTimeout(() => {
+        this.scroll('gotoCat'+ this.gbl.currentCategoryID);
+              console.log("tillbaka från detaljvyn scroll "+ this.gbl.currentCategoryID)
+              this.gbl.currentCategoryID=0;
+      }, 500);
+
+        // this.cd.detectChanges(); använd för att inte får expressionchangedAfterItHasbeenCheckedError
     }
+
   }
 
+
   scroll(gotoarrId: string) {
-    // console.log("scroll "+ gotoarrId)
-    // this.vpScroller.scrollToAnchor(gotoarrId);
+    console.log("scroll "+ gotoarrId)
+    // this.cd.detectChanges();
+   this.vpScroller.scrollToAnchor(gotoarrId);
       // document.querySelector(gotoarrId)?.scrollIntoView({behavior: 'smooth'});
-      this.router.navigate([], { fragment: gotoarrId });
+      // this.router.navigate([], { fragment: gotoarrId });
+
   }
   caruselData(valdcmdtyp:string, typ:number){
 // console.log(typ);
-    return {
+
+    let retobj: IpostSearchV2 = {
       cmdTyp: valdcmdtyp,
       freeTextSearch:'',
       arrTypID: 0,
@@ -75,10 +85,14 @@ loadPageData(arrid:string){
       stoppYear: 0,
       ageList:[],
       konstartIdList:[typ],
-      tagList:[]
-    }
+      tagList:[],
+      utovareId: 0
+    };
+   return retobj;
+
   }
   test(){
-    this.scroll('gotoCat'+ 4);
+
+    this.scroll('gotoCat'+ 2);
   }
 }

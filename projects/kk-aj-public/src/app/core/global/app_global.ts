@@ -1,5 +1,5 @@
 
-import { categoryStyles } from './../models/categoryStyles';
+// import { categoryStyles } from './../models/categoryStyles';
 import { orderBy, filter, get, assign } from 'lodash-es';
 import { Injectable } from "@angular/core";
 import { Subject } from 'rxjs';
@@ -37,7 +37,7 @@ export class App_Global {
   filterform:any;
   showspinner:boolean= true;
   testtotal:any;
-  currentversion:string="Version: 0.5.0 " + new Date().toISOString().slice(0, 10);
+  currentversion:string="Version: 0.6.0 " + new Date().toISOString().slice(0, 10);
 
 
   private _mainJsonKatalogItemListHandler: Subject<void> = new Subject<void>();
@@ -46,72 +46,72 @@ export class App_Global {
     // Global event handler ------
   }
 
-  constructor(private catstyleobj:categoryStyles){
+  constructor(){
       this.showMainpage();
   }
 
-  getskrivbokenPublicList(){
-      return this.mainJsonKatalogItemList.Skrivbokenlist;
-  }
+  // getskrivbokenPublicList(){
+  //     return this.mainJsonKatalogItemList.Skrivbokenlist;
+  // }
 
-  public getTextBySkrivid(skrivid:number){
-    let usrlang:any=""
+  // public getTextBySkrivid(skrivid:number){
+  //   let usrlang:any=""
 
-    if(skrivid){
-       usrlang = this.getskrivbokenPublicList().find((i: { SkrivID: number; }) => i.SkrivID === skrivid);
-    }
+  //   if(skrivid){
+  //      usrlang = this.getskrivbokenPublicList().find((i: { SkrivID: number; }) => i.SkrivID === skrivid);
+  //   }
 
-      return usrlang;
-    }
+  //     return usrlang;
+  //   }
 
-  public getCategoryName(id:number){
-      let nameobj = this.categorynameList().find(i => i.id === id);
-      this.currentCategoryName= nameobj?.name;
-      return nameobj;
-  }
-  public getCategorysearch(search:string){
-      let arr:any = [];
-      arr.push(this.getskrivbokenPublicList().filter(function (el: { Title: string; }) {
-           if(el.Title.includes(search) || el.Title.startsWith(search)){
-              return el;
-          }
-        }))
-        return arr[0];
+  // public getCategoryName(id:number){
+  //     let nameobj = this.categorynameList().find(i => i.id === id);
+  //     this.currentCategoryName= nameobj?.name;
+  //     return nameobj;
+  // }
+  // public getCategorysearch(search:string){
+  //     let arr:any = [];
+  //     arr.push(this.getskrivbokenPublicList().filter(function (el: { Title: string; }) {
+  //          if(el.Title.includes(search) || el.Title.startsWith(search)){
+  //             return el;
+  //         }
+  //       }))
+  //       return arr[0];
 
-  }
+  // }
 
-  public categorynameList() {
-      return [
-          { id: 0, name: 'Alla' },
-          { id: 9999, name: 'Laddar' },
-          { id: 3, name: 'Berättelse'},
-          { id: 8, name: 'Deckare'},
-          { id: 4, name: 'Dikt'},
-          { id: 9, name: 'Djur'},
-          { id: 10, name: 'Fantasy'},
-          { id: 16, name: 'Humor' },
-          { id: 12, name: 'Kärlek'},
-          { id: 21, name: 'Hästar'},
-          { id: 13, name: 'Ramsa'},
-          { id: 11, name: 'Skräck'},
-          { id: 15, name: 'Sorgligt'},
-          { id: 17, name: 'Spänning'},
-          { id: 18, name: 'Spöken'},
-          { id: 5, name: 'Tankar' },
-          { id: 19, name: 'Äventyr'},
-          { id: 6, name: 'Övrigt'}
-      ];
-  }
+  // public categorynameList() {
+  //     return [
+  //         { id: 0, name: 'Alla' },
+  //         { id: 9999, name: 'Laddar' },
+  //         { id: 3, name: 'Berättelse'},
+  //         { id: 8, name: 'Deckare'},
+  //         { id: 4, name: 'Dikt'},
+  //         { id: 9, name: 'Djur'},
+  //         { id: 10, name: 'Fantasy'},
+  //         { id: 16, name: 'Humor' },
+  //         { id: 12, name: 'Kärlek'},
+  //         { id: 21, name: 'Hästar'},
+  //         { id: 13, name: 'Ramsa'},
+  //         { id: 11, name: 'Skräck'},
+  //         { id: 15, name: 'Sorgligt'},
+  //         { id: 17, name: 'Spänning'},
+  //         { id: 18, name: 'Spöken'},
+  //         { id: 5, name: 'Tankar' },
+  //         { id: 19, name: 'Äventyr'},
+  //         { id: 6, name: 'Övrigt'}
+  //     ];
+  // }
 
-  filterlodash(){
-    let catlist = this.categorynameList();
-    // let svar = _.filter(catlist, ['name', 'Djur']);
-    let svar = filter(catlist, (itm: { id: number; })=>{ return itm.id >10});
-    svar = orderBy(svar, ['name'], ['asc']);
+  // filterlodash(){
+  //   let catlist = this.categorynameList();
+  //   // let svar = _.filter(catlist, ['name', 'Djur']);
+  //   let svar = filter(catlist, (itm: { id: number; })=>{ return itm.id >10});
+  //   svar = orderBy(svar, ['name'], ['asc']);
 
-    let object = assign({}, svar);
-    return object
-  }
+  //   let object = assign({}, svar);
+  //   return object
+  // }
 
   filterSortera(typ:string){
     let mainArrlist = this.mainJsonKatalogItemList;
@@ -167,11 +167,11 @@ export class App_Global {
       this.blnDetailpage= false;
   }
 
-  catstylehandler(catid:any){
-      let styleobj = this.catstyleobj.catStyleConfig().find(i => i.catid === catid);
-      return styleobj;
+  // catstylehandler(catid:any){
+  //     let styleobj = this.catstyleobj.catStyleConfig().find(i => i.catid === catid);
+  //     return styleobj;
 
-  }
+  // }
   public isEmptyObj = (obj:any) => {
       return obj === null || undefined
           ? true

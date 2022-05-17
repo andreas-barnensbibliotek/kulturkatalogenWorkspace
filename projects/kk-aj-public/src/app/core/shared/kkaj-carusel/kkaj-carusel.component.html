@@ -175,23 +175,25 @@
                 <div class=" carousel-cell item" *ngFor="let itm of mainCaruselData.ansokningar">
                     <div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
                       <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                        <a routerLink="/Arr/id/{{itm.ansokningid}}" title="{{itm.ansokningtitle}}" >
+
                         <div class="gen-movie-contain">
+                          <a routerLink="/Arr/id/{{itm.ansokningid}}" title="{{itm.ansokningtitle}}" >
                             <div class="gen-movie-img">
                               <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.ansokningMediaImage.mediaUrl}}" alt="{{itm.rubrik}}">
-
-                              <div class="gen-movie-add">
-                                  <div class="wpulike wpulike-heart">
-                                    <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-                                          type="button" class="wp_ulike_btn wp_ulike_put_image" id="minnesID_{{itm.ansokningid}}" title="Lägg till som i minneslistan"></button></div>
-                                  </div>
-                              </div>
-                              <div class="gen-movie-action">
-                                  <!-- <a href="single-movie.html" class="gen-button">
-                                    <i class="fa fa-play"></i>
-                                  </a> -->
-                              </div>
                             </div>
+                          </a>
+                            <div class="gen-movie-add">
+                                <div class="wpulike wpulike-heart">
+                                  <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button (click)="addToFavorit(itm)"
+                                        type="button" class="wp_ulike_btn wp_ulike_put_image" id="minnesID_{{itm.ansokningid}}" title="Lägg till i minneslistan"><i [ngClass]="setFavoClass(itm.ansokningid) ? 'fa-check' : 'fa-plus'" class="fa  ajfavoritIconRing" aria-hidden="true"></i></button></div>
+                                </div>
+                            </div>
+                            <div class="gen-movie-action">
+                                <!-- <a href="single-movie.html" class="gen-button">
+                                  <i class="fa fa-play"></i>
+                                </a> -->
+                            </div>
+
                             <div class="gen-info-contain">
                               <div class="gen-movie-info">
                                 <h3>{{itm.ansokningtitle}}</h3>
@@ -202,13 +204,9 @@
                                 Ålder: 0- 19 {{itm.ansokningAgespan}}
                                 </p>
                               </div>
-
-
-
-
                             </div>
                         </div>
-                      </a>
+
                       </div>
                     </div>
                   <!-- #post-## -->

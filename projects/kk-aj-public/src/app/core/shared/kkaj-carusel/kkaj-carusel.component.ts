@@ -1,3 +1,5 @@
+import { Ifavoobj } from './../../interface/Ifavoobj';
+import { ServerJson } from './../../models/ServerJson';
 import { App_Global } from './../../global/app_global';
 import { KatalogenApiService } from './../../services/katalogenApi/katalogen-api.service';
 import { clsPostDataV2 } from './../../models/clsPostData-v2';
@@ -19,7 +21,7 @@ export class KkajCaruselComponent implements OnInit {
   mainCaruselData?:any = [];
   mellan?:any=[];
 
-  constructor(private wpApi:KatalogenApiService, private glb:App_Global, private renderer: Renderer2,  private cd:ChangeDetectorRef,) { }
+  constructor(private wpApi:KatalogenApiService, private glb:App_Global, private renderer: Renderer2,  private cd:ChangeDetectorRef, private _favo:ServerJson) { }
 
   ngOnInit(): void {
     // this.getCaruselData(this.CaruselData)
@@ -98,4 +100,30 @@ export class KkajCaruselComponent implements OnInit {
     this.renderer.appendChild(document.body, script);
     return script;
   }
+
+  addToFavorit(itm:any):void{
+    if(itm){
+      this._favo.changefavo(itm);
+        // this.mainCaruselData= this._favo.getFavoritLista();
+    };
+  }
+
+  setFavoClass(arrid:number):boolean{
+
+    return this._favo.setFavoClass(arrid);;
+    // return true;
+   }
+
+  //  setFavoClass(arrid:number):boolean{
+  //   let i = 0;
+  //   'let currentobj:Ifavoobj = this.localfavolist.find((e:Ifavoobj) => e.arrid == arrid) as Ifavoobj;
+  //   let currentobj:any = this.localfavolist.indexOf(e.arrid); ((e:Ifavoobj) => e.arrid == arrid) as Ifavoobj;
+  //   console.log(i += 1);
+  //   let retobj: boolean= false;
+  //   if (currentobj){
+  //     retobj = currentobj.isfavo;
+  //   }
+  //   return retobj;
+  // }
+
 }

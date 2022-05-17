@@ -4,9 +4,9 @@
     <div class="container ">
         <div class="row gx-3">
           <div class="col-10">
-            <h3>
-
-            </h3>
+            <h1>
+              {{listrubrik}}
+            </h1>
           </div>
           <div class="col-2 text-end">
             <a (click)="goBack()" class="gen-button gen-button-flat">
@@ -17,7 +17,6 @@
         </div>
     </div>
 </section>
-
 <!-- Section-1 Start -->
 <section class="gen-section-padding-3 aj-section-bg-color-dark">
   <div class="container">
@@ -28,16 +27,21 @@
               <div class="row ajmax-row-height">
 
                 <!-- Item loop START-->
-                  <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let itm of mainCaruselData.ansokningar">
+                  <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let itm of mainCaruselData.ansokningar let i = index;">
                     <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                      <a routerLink="Arrangemang/{{itm.ansokningid}}" title="{{itm.ansokningtitle}}">
+
                         <div class="gen-movie-contain">
-                        <div class="gen-movie-img text-center">
-                          <img class="img-fluid" src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.ansokningMediaImage.mediaUrl}}" alt="{{itm.rubrik}}">
+                          <a routerLink="Arrangemang/{{itm.ansokningid}}" title="{{itm.ansokningtitle}}">
+                            <div class="gen-movie-img text-center">
+
+                                <img class="img-fluid" src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{itm.ansokningMediaImage.mediaUrl}}" alt="{{itm.rubrik}}">
+
+                            </div>
+                          </a>
                           <div class="gen-movie-add">
                               <div class="wpulike wpulike-heart">
                                 <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-                                      type="button" class="wp_ulike_btn wp_ulike_put_image"  id="minnesID_{{itm.ansokningid}}"  title="Lägg till som i minneslistan"></button></div>
+                                      type="button" (click)="addToFavorit(itm)" id="minnesID_{{itm.ansokningid}}"  class="wp_ulike_btn wp_ulike_put_image" title="Lägg till i minneslistan"><i [ngClass]="setFavoClass(itm.ansokningid) ? 'fa-check' : 'fa-plus'" class="fa  ajfavoritIconRing" aria-hidden="true"></i></button></div>
                               </div>
                           </div>
                           <div class="gen-movie-action">
@@ -45,8 +49,9 @@
                                 <i class="fa fa-play"></i>
                               </a> -->
                           </div>
-                        </div>
+
                         <div class="gen-info-contain">
+                          <a routerLink="Arrangemang/{{itm.ansokningid}}" title="{{itm.ansokningtitle}}">
                           <div class="gen-movie-info">
                             <h3>{{itm.ansokningtitle}}</h3>
                             <p>{{itm.ansokningsubtitle}} &nbsp;</p>
@@ -56,9 +61,10 @@
                               Ålder: 0- 19 {{itm.ansokningAgespan}}
                             </p>
                           </div>
+                        </a>
                         </div>
                         </div>
-                      </a>
+
                     </div>
                   </div>
                 <!-- Item loop STOPP-->

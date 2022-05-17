@@ -1,3 +1,4 @@
+import { ServerJson } from './core/models/ServerJson';
 import { FaktaComponent } from './../app/core/shared/arr-details/fakta/fakta.component';
 import { MainFooterComponent } from './core/shared/main-footer/main-footer.component';
 import { NavigationServiceService } from './core/services/NavigationService/navigation-service.service';
@@ -142,7 +143,7 @@ const cookieConfig:NgcCookieConsentConfig = {
   ],
   providers: [
     App_Global,
-    // Global,
+    ServerJson,
     categoryStyles,
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },

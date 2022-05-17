@@ -17,11 +17,11 @@
             <div class="rule">
               <hr>
             </div>
-            <h2 class="performer-heading">{{ detailpage[0]?.ansokningtitle }}</h2>
+            <h2 class="performer-heading">{{ detailpage[0]?.ansokningutovare }}</h2>
             <div class="rule">
               <hr>
             </div>
-            <h1 class="production-heading">{{ detailpage[0]?.ansokningutovare }}</h1>
+            <h1 class="production-heading">{{ detailpage[0]?.ansokningtitle }}</h1>
             <h3 class="sub-heading"*ngIf="detailpage[0]?.ansokningsubtitle">
               {{ detailpage[0]?.ansokningsubtitle }}</h3>
              <p class="paragraph main-text" *ngIf="detailpage[0]?.ansokningContent" [innerHTML]="detailpage[0]?.ansokningContent | unescape"></p>

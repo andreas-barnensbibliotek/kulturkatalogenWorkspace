@@ -1,3 +1,5 @@
+import { Ifavoobj } from './../core/interface/Ifavoobj';
+import { ServerJson } from './../core/models/ServerJson';
 import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
 import { clsPostDataV2 } from './../core/models/clsPostData-v2';
 import { IpostSearchV2 } from './../core/interface/ipost-search-v2';
@@ -11,6 +13,7 @@ import { Location, ViewportScroller } from '@angular/common';
 
 import { Title } from '@angular/platform-browser';
 import { filter } from 'rxjs/operators';
+import { jsonpFactory } from '@angular/http/src/http_module';
 
 @Component({
   selector: 'app-kk-results',
@@ -22,8 +25,16 @@ export class KkResultsComponent implements OnInit {
   postdataV2:IpostSearchV2 = new clsPostDataV2;
   mainCaruselData?:any = [];
   mellan?:any=[];
+  isShowingFavo:boolean=false;
+  listrubrik:string="";
+  // favolist:Array<Ifavoobj>=[];
 
-  constructor(private wpApi:KatalogenApiService, private glb:App_Global,private viewportScroller: ViewportScroller, private ActivatedRoute:ActivatedRoute, private _router:Router, private location:Location,  private titleService: Title,  private navBack:NavigationServiceService) {
+  constructor(private wpApi:KatalogenApiService,
+    private glb:App_Global,
+    private _favo:ServerJson,
+    private ActivatedRoute:ActivatedRoute,
+    private _router:Router,
+    private titleService: Title) {
     // this._router.events.pipe(
     //   filter(e => e instanceof Scroll)
     // ).subscribe(e => {
@@ -36,8 +47,8 @@ export class KkResultsComponent implements OnInit {
    // window.scrollTo(500, 1000);
 // this.viewportScroller.scrollToPosition(this.scrollPosition);
     console.log("position: " + this.scrollPosition)
-
   }
+
   ngAfterViewInit() {
     console.log("position: " + this.scrollPosition)
 
@@ -46,16 +57,25 @@ export class KkResultsComponent implements OnInit {
   ngOnInit(): void {
     let id:number = 0;
     this.ActivatedRoute.paramMap.subscribe(prams =>{
-     id = Number(prams.get('id'));
-     this.postdataV2.cmdTyp = "konstartIdList";
-     this.postdataV2.konstartIdList.push(id);
-      if(id > 0){
-       this.getMaindata(this.postdataV2)
+      console.log("kolla: " + JSON.stringify(prams))
+      if (this._router.url =="/favoriter"){
+        this.listrubrik = "Minneslista";
+        this.getFavoritLista();
+
+      }else{
+        id = Number(prams.get('id'));
+        this.listrubrik = "Arrangemangslista"
+          this.postdataV2.cmdTyp = "konstartIdList";
+          this.postdataV2.konstartIdList.push(id);
+          if(id > 0){
+            this.getMaindata(this.postdataV2)
+          }
+          this.glb.currentCategoryID = id;
+        }
       }
-      this.glb.currentCategoryID = id;
-    });
+    );
 
-
+    // this.favolist = this._favo.favolist;
     this.titleService.setTitle(this.glb.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
 
   }
@@ -91,6 +111,8 @@ export class KkResultsComponent implements OnInit {
 
     }
   }
+
+
 
   getSearchVal(CData:IpostSearchV2){
     let retobj:string= "";
@@ -144,10 +166,66 @@ export class KkResultsComponent implements OnInit {
   goBack(): void {
     // this.navBack.back();
     console.log('/#gotoCat'+ this.glb.currentCategoryID);
-    this._router.navigateByUrl('/');
+     this._router.navigateByUrl('/');
    // this.location.back();
- }
- noresult(obj:any){
-   return this.glb.isEmptyObj(obj);
- }
+  }
+  noresult(obj:any){
+    return this.glb.isEmptyObj(obj);
+  }
+
+  getFavoritLista(){
+    // let favoListan:any = localStorage.getItem('favoritStorageItem');
+    // if(favoListan){
+    //   this.mainCaruselData = JSON.parse(favoListan);
+    // }else{    //   [];
+    // }
+    this.isShowingFavo = true;
+    this.mainCaruselData= this._favo.getFavoritLista()
+
+
+  }
+
+  addToFavorit(itm:any):void{
+    if(itm){
+      this._favo.changefavo(itm);
+      if (this.isShowingFavo){
+        this.mainCaruselData= this._favo.getFavoritLista()
+      }
+    };
+  }
+  testar(){
+    alert("nu!");
+  }
+
+setFavoClass(arrid:number):boolean{
+
+ return this._favo.setFavoClass(arrid)
+  // let currentobj:Ifavoobj = this.favolist.find((e:Ifavoobj) => e.arrid == arrid) as Ifavoobj;
+  // let retobj: boolean= false;
+  // if (currentobj){
+  //   retobj = currentobj.isfavo
+  // }
+  // return retobj;
+}
+
+  // addfavo(itm:any){
+  //   let t:Ifavoobj= {
+  //     isfavo : true,
+  //     arrid: itm.ansokningid
+  //   };
+  //   this.favolist[itm.ansokningid] = t;
+  //   console.log("click add");
+  //   this._favo.addFavoritToStorage(itm);
+  // }
+
+  // delfavo(itmId:number){
+  //   this.favolist.splice(itmId,1);
+  //   console.log("click delete");
+  //   this._favo.delFavoritFromStorage(itmId);
+  // }
+
+
+  // scroll(){
+  //   //this.scroll('gotoCat'+ 2);
+  // }
 }
