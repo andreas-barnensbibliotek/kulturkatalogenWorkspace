@@ -969,6 +969,14 @@ h2.more-heading {
     color: #7e9d8e;
     background-color: #fff;
   }
+  &.fa-check{
+    background-color: #fe6655;
+    &:hover{
+      color: #fe6655;
+      background-color: #fff;
+    }
+  }
+
 }
 .gen-carousel-movies-style-2 .gen-movie-add {
   top: 180px;

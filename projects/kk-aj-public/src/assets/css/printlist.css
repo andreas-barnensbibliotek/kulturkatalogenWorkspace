@@ -1,0 +1,5 @@
+body{background-color: #fff;
+}
+a{color:black;}
+a:hover{text-decoration: none; color: #000!important;}
+.gen-movie-add{display: none;}

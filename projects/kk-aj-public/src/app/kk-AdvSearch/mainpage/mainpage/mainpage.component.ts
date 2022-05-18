@@ -1,3 +1,4 @@
+import { ServerJson } from './../../../core/models/ServerJson';
 import { Router } from '@angular/router';
 import { clsPostDataV2 } from './../../../core/models/clsPostData-v2';
 import { IpostSearchV2 } from './../../../core/interface/ipost-search-v2';
@@ -63,6 +64,7 @@ export class MainpageComponent implements OnInit {
     private cd:ChangeDetectorRef,
     private location: LocationStrategy,
     private fb: FormBuilder,
+    private _favo:ServerJson,
     private _router:Router
     ) {
       this.DropdownMenu = false;
@@ -539,5 +541,15 @@ this.valdaSearchParam();
       }
     }
     return ret;
+  }
+
+  // Favorithandlers
+  addToFavorit(itm:any):void{
+    if(itm){
+      this._favo.changefavo(itm);
+    };
+  }
+  setFavoClass(arrid:number):boolean{
+    return this._favo.setFavoClass(arrid);
   }
 }

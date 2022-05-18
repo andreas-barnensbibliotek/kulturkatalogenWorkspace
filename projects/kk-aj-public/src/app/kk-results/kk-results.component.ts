@@ -58,7 +58,7 @@ export class KkResultsComponent implements OnInit {
     let id:number = 0;
     this.ActivatedRoute.paramMap.subscribe(prams =>{
       console.log("kolla: " + JSON.stringify(prams))
-      if (this._router.url =="/favoriter"){
+      if (this._router.url =="/lista/favoriter"){
         this.listrubrik = "Minneslista";
         this.getFavoritLista();
 
@@ -228,4 +228,17 @@ setFavoClass(arrid:number):boolean{
   // scroll(){
   //   //this.scroll('gotoCat'+ 2);
   // }
+
+  printList():void{
+    const printContent = document.getElementById("listprintcontainer");
+    const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+    WindowPrt!.document.write("<div><h1>Skriv ut</h1></div>");
+    WindowPrt!.document.write(printContent!.innerHTML);
+    WindowPrt!.document.write('<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap4.min.css">');
+    WindowPrt!.document.write('<link rel="stylesheet" type="text/css" href="/assets/css/printlist.css">');
+    // WindowPrt!.document.close();
+    // WindowPrt!.focus();
+    // WindowPrt!.print();
+    // WindowPrt!.close();
+  }
 }

@@ -3,13 +3,16 @@
   <!-- Features section-->
     <div class="container ">
         <div class="row gx-3">
-          <div class="col-10">
+          <div class="col-8">
             <h1>
               {{listrubrik}}
             </h1>
           </div>
-          <div class="col-2 text-end">
-            <a (click)="goBack()" class="gen-button gen-button-flat">
+          <div class="col-4 text-end">
+            <a (click)="printList()" class="gen-button gen-button-flat m-2">
+              Skriv ut
+            </a>
+            <a (click)="goBack()" class="gen-button gen-button-flat m-2">
               Tillbaka
             </a>
 
@@ -21,13 +24,13 @@
 <section class="gen-section-padding-3 aj-section-bg-color-dark">
   <div class="container">
       <div class="row">
-          <div class="col-lg-12">
+          <div id="listprintcontainer" class="col-lg-12">
             <app-kk-no-result *ngIf="noresult(mainCaruselData)"></app-kk-no-result>
 
               <div class="row ajmax-row-height">
 
                 <!-- Item loop START-->
-                  <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let itm of mainCaruselData.ansokningar let i = index;">
+                  <div  class="col-xl-3 col-lg-4 col-md-6" *ngFor="let itm of mainCaruselData.ansokningar let i = index;">
                     <div class="gen-carousel-movies-style-2 movie-grid style-2">
 
                         <div class="gen-movie-contain">

@@ -172,16 +172,19 @@
                 <!-- Item loop START-->
                   <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let item of mainPageData | customFilter:filterterm.konstform:filterterm.bokningsbar:filterterm.kostnad:filterterm.tid:filterterm.morklaggning:filterterm.takhojd:filterMetadata  | paginate: { itemsPerPage: showPageMax, currentPage: p}">
                     <div class="gen-carousel-movies-style-2 movie-grid style-2">
-                      <a routerLink="/Arr/id/{{item.ansokningid}}" title="{{item.ansokningtitle}}">
+
                         <div class="gen-movie-contain">
+
+                          <a [routerLink]="['/Arr/id/', item.ansokningid]" id="goto{{item.ansokningid}}" (click)="setfilter()" title="{{item.ansokningtitle}}" class="img-fluid">
                           <div class="gen-movie-img text-center">
-                            <a [routerLink]="['Arrangemang/', item.ansokningid]" id="goto{{item.ansokningid}}" (click)="setfilter()" class="img-fluid">
-                              <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{item.ansokningMediaImage.mediaUrl}}" alt="ansokningtitle">
-                            </a>
+                            <img src="https://kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/{{item.ansokningMediaImage.mediaUrl}}" alt="ansokningtitle">
+                            </div>
+                          </a>
+
                             <div class="gen-movie-add">
                                 <div class="wpulike wpulike-heart">
                                   <div class="wp_ulike_general_class wp_ulike_is_not_liked">
-                                    <button type="button" id="minnesID_{{item.ansokningid}}" class="wp_ulike_btn wp_ulike_put_image" title="Lägg till som i minneslistan"></button>
+                                    <button type="button" (click)="addToFavorit(item)" id="minnesID_{{item.ansokningid}}" class="wp_ulike_btn wp_ulike_put_image" title="Lägg till i minneslistan"><i [ngClass]="setFavoClass(item.ansokningid) ? 'fa-check' : 'fa-plus'" class="fa  ajfavoritIconRing" aria-hidden="true"></i></button>
                                   </div>
                                 </div>
                             </div>
@@ -190,10 +193,11 @@
                                   <i class="fa fa-play"></i>
                                 </a> -->
                             </div>
-                          </div>
+
                           <div class="gen-info-contain">
+                            <a routerLink="/Arr/id/{{item.ansokningid}}" >
                             <div class="gen-movie-info">
-                              <h3><a routerLink="/Arr/id/{{item.ansokningid}}" >{{item.ansokningtitle}}</a></h3>
+                              <h3>{{item.ansokningtitle}}</h3>
                                   <p>{{item.ansokningsubtitle}}</p>
                             </div>
                             <div class="gen-movie-meta-holder">
@@ -201,9 +205,10 @@
                               Ålder: 0- 19{{item.ansokningAgespan}} ÅR
                               </p>
                             </div>
+                          </a>
                           </div>
                         </div>
-                      </a>
+
                     </div>
                   </div>
                 <!-- Item loop STOPP-->
