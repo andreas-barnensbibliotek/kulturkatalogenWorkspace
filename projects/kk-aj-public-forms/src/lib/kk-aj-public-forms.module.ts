@@ -41,6 +41,7 @@ import { ListasmakprovComponent } from './forms/smakprov/listasmakprov/listasmak
 import { SafeHtmlPipe } from './forms/pipes/safepipe';
 import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 import { CommonModule } from '@angular/common';
+import { ArrFormComponent } from './forms/arr-form/arr-form.component';
 
 const routes: Routes = [
 
@@ -72,7 +73,8 @@ const routes: Routes = [
     SkolbioComponent,
     WorkshopComponent,
     ListasmakprovComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ArrFormComponent
 
   ],
   imports: [

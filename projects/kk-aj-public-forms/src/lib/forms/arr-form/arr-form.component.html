@@ -1,0 +1,51 @@
+
+  <ng-container [formGroup]="ArrForm">
+    {{ArrForm.value | json}}
+    <!-- Steg 2 block  -->
+    <div class="row" *ngIf="_blockMdl.blnSteg2">
+      <div class="col-12 col-md-2">
+        <h2>Steg 2</h2>
+      </div>
+      <div class="col-12 col-md-10">
+        <div class="col-12 col-lg-8">
+
+          <div class="row">
+            <!-- <app-tidigare-arrangemang (GetTidigareArr)="GetTidigareArrangemang($event)"></app-tidigare-arrangemang> -->
+          </div>
+        </div>
+
+        <ng-container >
+          <div class="form-group mt-2">
+            <fieldset>
+              <legend>Välj typ av arrangemang</legend>
+              <div class="cc-selector">
+                <input type="radio" value="7"  (click)="setFaktalist(7)" id="val_resmalsbesok" title="Resmål med resestöd" tooltip="test" tabindex/>
+                <label class="arr_val1-cc arr_val1" for="val_resmalsbesok"></label>
+                <input type="radio" value="1"  (click)="setFaktalist(1)" id="val_forestallningtune" tabindex/>
+                <label class="arr_val2-cc arr_val2" for="val_forestallningtune"></label>
+                <input type="radio" value="8"  (click)="setFaktalist(8)" id="val_Skolbio" tabindex/>
+                <label class="arr_val3-cc arr_val3" for="val_Skolbio"></label>
+                <input type="radio" value="2"  (click)="setFaktalist(2)" id="val_Utstallningturne" tabindex/>
+                <label class="arr_val4-cc arr_val4" for="val_Utstallningturne"></label>
+                <input type="radio" value="4"  (click)="setFaktalist(4)" id="val_Kulturpedagogiskaprojekt" tabindex/>
+                <label class="arr_val5-cc arr_val5" for="val_Kulturpedagogiskaprojekt"></label>
+              </div>
+            </fieldset>
+              <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small>
+          </div>
+        </ng-container>
+
+
+
+        <div class="row mt-5 mb-5">
+          <div class="col-12 col-lg-8" >
+              <button role="tab" (click)="ShowSteg(1)"  class="btn btn-success btn-md active float-start" rel="2" tabindex="0" >Föregående steg - Kontaktuppgifter</button>
+              <button role="tab" (click)="ShowSteg(3)" [disabled]="ArrForm.invalid" class="btn btn-primary btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Arrangemang</button>
+            </div>
+          </div>
+        </div>
+  <!-- end container   -->
+  </div>
+
+</ng-container>
+

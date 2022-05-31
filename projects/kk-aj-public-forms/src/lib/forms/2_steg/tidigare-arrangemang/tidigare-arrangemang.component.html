@@ -1,12 +1,49 @@
 <div class="form-group">
-  <legend>Hämta tidigare arrangemang</legend>
+  <div class="btn-group" role="group" aria-label="Basic radio toggle button group" >
+    <input type="radio" (change)="valNyttTidigare(1)" class="btn-check" value="1" name="btnradio" id="btnradio1"  checked >
+    <label class="btn btn-outline-primary" for="btnradio1" >Nytt arrangemang</label>
+    <input type="radio" (change)="valNyttTidigare(2)" class="btn-check" value="2" name="btnradio" id="btnradio2" >
+    <label class="btn btn-outline-primary" for="btnradio2" >Hämta tidigare arrangemang</label>
+  </div>
+</div>
 
-  <label for="arr_getTidigareArrangemang">Tidigare arrangemang <a (click)="showHideinfo(1)" class="info" rel="arr_getTidigareArrangemang_info" tabindex="-1"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-  <div *ngIf="showinfo[1]" class="arr_getTidigareArrangemang_infotext infotext">Här har du möjlighet att hämta uppgifter om tidigare arrangemang. Klicka i rutan för att välja ett tidigare arrangemang.</div>
-  <select id="arr_getTidigareArrangemang" name="form_getTidigareArrangemang" tabindex class="custom-select" type="text" placeholder="Tidigare arrangemang">
-    <option value="1">1</option>
-    <option value="2">2</option>
-  </select>
-  <button id="arr_getTidigareArrangemang_Get"(click)="GetTidigareArrangemang(8)" class="btn btn-outline-primary mt-2 pull-right">Hämta arrangemang</button>
+<div *ngIf="_blnVisaNytt" class="form-group">
+  <label for="arr_getNyttArrangemang">Skapa nytt arrangemang
+    <a (click)="showHideinfo(1)" class="info" rel="arr_getNyttArrangemang_info" tabindex="-1">
+     <i class="fa fa-question-circle" aria-hidden="true"></i>
+    </a>
+  </label>
+  <div *ngIf="showinfo[1]" class="arr_getNyttArrangemang_infotext infotext">
+    Klicka i rutan för att skapa ett nytt arrangemang.
+  </div>
+  <div class="form-row align-items-center">
+    <div class="col-12 ">
+      <button id="arr_getNyttArrangemangid" (click)="GetTidigareArrangemang(0)" class="btn btn-outline-success">Skapa arrangemang</button>
+    </div>
+  </div>
+</div>
 
+
+<div *ngIf="!_blnVisaNytt" class="form-group">
+  <label for="arr_getTidigareArrangemang">Tidigare arrangemang
+    <a (click)="showHideinfo(2)" class="info" rel="arr_getTidigareArrangemang_info" tabindex="-1">
+     <i class="fa fa-question-circle" aria-hidden="true"></i>
+    </a>
+  </label>
+  <div *ngIf="showinfo[2]" class="arr_getTidigareArrangemang_infotext infotext">
+    Här har du möjlighet att hämta uppgifter om tidigare arrangemang.
+    Klicka i rutan för att välja ett tidigare arrangemang.
+  </div>
+  <div class="form-row align-items-center">
+    <div class="col-8 ">
+      <select id="arr_getTidigareArrangemang" name="form_getTidigareArrangemang" tabindex class="custom-select" type="text" placeholder="Tidigare arrangemang">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </div>
+    <div class="col-4 ">
+      <button id="arr_getTidigareArrangemang_Get"(click)="GetTidigareArrangemang(8)" class="btn btn-outline-primary right-align ">Hämta arrangemang</button>
+    </div>
+
+ </div>
 </div>

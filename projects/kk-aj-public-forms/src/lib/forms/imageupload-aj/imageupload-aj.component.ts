@@ -28,6 +28,11 @@ export class ImageuploadAJComponent implements OnInit {
   constructor(private http: HttpClient, private rootformGroup: FormGroupDirective) {}
   ngOnInit(): void {
     this.imageUploadFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+
+    ///tar bort error att input file inte får innehålla något ...
+    if(this.imageUploadFrmGrp.get("MediaUrl")!.value){
+      this.imageUploadFrmGrp.patchValue({MediaUrl: ""})
+    }
   }
 
   fileProgress(fileInput: any) {

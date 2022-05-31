@@ -1,8 +1,9 @@
+<ng-container [formGroup]="BaseRootForm">
+  {{BaseRootForm.value | json}}
+  {{BaseRootForm.valid}}
 
   <!-- start container   -->
-<ng-container [formGroup]="BaseRootForm">
-    {{BaseRootForm.value | json}}
-    {{BaseRootForm.valid}}
+  <ng-container >
     <div class="row">
       <div class="col-12">
         <div class="wizard-numbers steps ">
@@ -31,15 +32,16 @@
         </div>
       </div>
     </div>
-
+  </ng-container>
+  <ng-container *ngIf="_blockMdl.blnSteg1">
     <!-- Steg 1 block -->
-    <div class="row" *ngIf="_blockMdl.blnSteg1">
+    <div class="row">
       <div class="col-12 col-md-2">
-        <h2>Steg 1</h2>
+        <h2></h2>
       </div>
       <div class="col-12 col-md-10">
-        <div class="col-12 col-lg-8">
-          <h2>Kontaktuppgifter</h2>
+        <div class="col-12 col-lg-8 pt-5">
+          <h2></h2>
           <fieldset>
             <legend>Välkommen att söka till Kulturkatalogen Väst!</legend>
             <p>Kulturkatalogen Väst är en digital utbudskatalog med professionell konst och kultur, natur- och kulturarv för barn och unga i Västra Götaland.
@@ -68,39 +70,29 @@
         </div>
       </div>
     </div>
+  </ng-container>
+  <ng-container *ngIf="_blockMdl.blnSteg2">
 
-    <!-- Steg 2 block  -->
-    <div class="row" *ngIf="_blockMdl.blnSteg2">
+    <aj-arr-form formGroupName="ArrForm" (ArrDataLoaded)="ArrDataLoaded($event)" ></aj-arr-form>
+
+     <div class="row">
       <div class="col-12 col-md-2">
-        <h2>Steg 2</h2>
+        <h2></h2>
       </div>
       <div class="col-12 col-md-10">
-        <div class="col-12 col-lg-8">
-          <h2>Arrangemang</h2>
+        <app-val-arrangemangs-typ *ngIf="isArrDataLoaded" formGroupName="ArrForm"></app-val-arrangemangs-typ>
 
-          <div class="row">
-            <app-tidigare-arrangemang (GetTidigareArr)="GetTidigareArrangemang($event)"></app-tidigare-arrangemang>
-          </div>
-        </div>
-        <app-val-arrangemangs-typ formGroupName="Arrangemang" ></app-val-arrangemangs-typ>
-        <!-- <div class="col-12 col-lg-8">
-          <hr/>
-        </div> -->
-        <div class="row">
-          <aj-besoksmal *ngIf="showFaktaBlock(7)" formGroupName="Faktalist" ></aj-besoksmal>
-          <aj-forestallning *ngIf="showFaktaBlock(1)" formGroupName="Faktalist" ></aj-forestallning>
+        <div class="row" >
+          <aj-besoksmal *ngIf="isArrDataLoaded" formGroupName="ArrForm" ></aj-besoksmal>
+          <!-- <aj-forestallning *ngIf="showFaktaBlock(1)" formGroupName="Faktalist" ></aj-forestallning>
           <aj-skolbio *ngIf="showFaktaBlock(8)" formGroupName="Faktalist" ></aj-skolbio>
           <aj-utstallning *ngIf="showFaktaBlock(2)" formGroupName="Faktalist" ></aj-utstallning>
-          <aj-workshop *ngIf="showFaktaBlock(4)" formGroupName="Faktalist" ></aj-workshop>
+          <aj-workshop *ngIf="showFaktaBlock(4)" formGroupName="Faktalist" ></aj-workshop> -->
         </div>
-        <div class="row mt-5 mb-5">
-          <div class="col-12 col-lg-8" >
-              <button role="tab" (click)="ShowSteg(1)"  class="btn btn-success btn-md active float-start" rel="2" tabindex="0" >Föregående steg - Kontaktuppgifter</button>
-              <button role="tab" (click)="ShowSteg(3)" [disabled]="BaseRootForm.invalid" class="btn btn-primary btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Arrangemang</button>
-            </div>
-          </div>
-        </div>
-  <!-- end container   -->
-  </div>
+      </div>
+    </div>
 
+  </ng-container>
 </ng-container>
+
+

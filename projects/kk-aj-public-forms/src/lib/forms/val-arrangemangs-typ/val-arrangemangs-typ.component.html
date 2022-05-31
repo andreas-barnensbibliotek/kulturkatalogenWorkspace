@@ -2,25 +2,6 @@
   {{arrangemangFrmGrp.value | json}}
 <div class="col-12 col-lg-8">
 
-  <div class="form-group mt-2">
-    <fieldset>
-      <legend>Välj typ av arrangemang</legend>
-      <div class="cc-selector">
-        <input type="radio" value="7" formControlName="Arrangemangtyp" (click)="setFaktalist(7)" id="val_resmalsbesok" title="Resmål med resestöd" tooltip="test" tabindex/>
-        <label class="arr_val1-cc arr_val1" for="val_resmalsbesok"></label>
-        <input type="radio" value="1" formControlName="Arrangemangtyp" (click)="setFaktalist(1)" id="val_forestallningtune" tabindex/>
-        <label class="arr_val2-cc arr_val2" for="val_forestallningtune"></label>
-        <input type="radio" value="8" formControlName="Arrangemangtyp" (click)="setFaktalist(8)" id="val_Skolbio" tabindex/>
-        <label class="arr_val3-cc arr_val3" for="val_Skolbio"></label>
-        <input type="radio" value="2" formControlName="Arrangemangtyp" (click)="setFaktalist(2)" id="val_Utstallningturne" tabindex/>
-        <label class="arr_val4-cc arr_val4" for="val_Utstallningturne"></label>
-        <input type="radio" value="4" formControlName="Arrangemangtyp" (click)="setFaktalist(4)" id="val_Kulturpedagogiskaprojekt" tabindex/>
-        <label class="arr_val5-cc arr_val5" for="val_Kulturpedagogiskaprojekt"></label>
-      </div>
-    </fieldset>
-      <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small>
-  </div>
-
   <div class="form-group mt-5">
     <fieldset>
       <legend>Välj huvudsaklig konstform</legend>
@@ -140,4 +121,5 @@
  <small class="text-danger"
           *ngIf="MainImage?.invalid && MainImage?.touched">Vänligen ladda upp en bild för arrangemanget</small>
 </div>
+
 </ng-container>

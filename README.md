@@ -34,3 +34,20 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+#TO FIX
+2022-05-18
+  till favoriter knapp på alla sidor..
+
+  Klart -- favorit item länkar fel sätt route till lista/favoriter ist
+
+  Klart -- skrivut knapp
+
+  Klart -- favorit funktionen i avancerad sök.
+
+  om favorit i localstorage är tom kör inte testen på alla
+
+  kolla first initial loading.
+
+  rensa alla kommenterad kod och sånt som inte används
+
+  kolla över responsiviteten på alla sidor

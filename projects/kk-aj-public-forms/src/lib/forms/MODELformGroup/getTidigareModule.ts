@@ -1,6 +1,6 @@
 import { ServerApiResponsModel } from './ServerApiResponsModel';
 import { FormArrangemangModel } from './FormArrangemangModel';
-import { FormBuilder, FormArray, FormGroupDirective } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroupDirective, Validator, Validators } from '@angular/forms';
 import { FormFaktaModel } from './FormFaktaModel';
 import {Injectable } from "@angular/core";
 
@@ -16,6 +16,10 @@ export class getTidigareModule {
       return this.getFULLArrfromServer(id);
 
   }
+  public ResetArr(){
+    return this.getFULLArrfromServer(0);
+
+}
   public getTidigareFakta(id:number){
     let JsonData = this.getArrfromServer(id);
     if(id == 7){ // besöksmål
@@ -27,6 +31,7 @@ export class getTidigareModule {
     let updatedFormObj = this._faktaMdl.genFGBesoksmal;
 
     if(tidigareArrObjFromApi.AlderFran){
+      tidigareArrObjFromApi.AlderFran =  [];
       tidigareArrObjFromApi.AlderFran.forEach((t: any) => {
         updatedFormObj.AlderFran.push(this.fb.control(t));
       });
@@ -75,7 +80,13 @@ export class getTidigareModule {
 
   private getFULLArrfromServer(id:number){
     // Do ajaxcall
-    let basedata = this._fullApiMdl.tmpFullAPIResponse;
+    let basedata;
+    if(id==0){
+      basedata= this._fullApiMdl.tmpResetArrModel;
+    }else{
+      basedata= this._fullApiMdl.tmpFullAPIResponse;
+    }
+
     let specdata = basedata.kk_aj_admin.ansokningarlista.ansokningar[0];
     let updatedArrFormObj = this._arrMdl.genFG;
 
@@ -86,11 +97,13 @@ export class getTidigareModule {
     // updatedArrFormObj.Konstform=  specdata.ansokningtitle);
 
     if(specdata.ansokningkonstformid){
-       let konstformID:any;
+      //  let konstformID:any = '1';
+      updatedArrFormObj.Konstform=this.fb.array([],Validators.required);
       specdata.ansokningkonstformid.forEach((t: any) => {
         updatedArrFormObj.Konstform.push(this.fb.control(t));
       });
-      updatedArrFormObj.Konstform =konstformID;
+
+      // updatedArrFormObj.Konstform =konstformID;
     }
 
     if(specdata.ansokningMediaImage){

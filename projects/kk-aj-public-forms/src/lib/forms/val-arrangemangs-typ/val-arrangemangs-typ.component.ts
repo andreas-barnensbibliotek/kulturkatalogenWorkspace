@@ -1,6 +1,6 @@
 import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { FormArray, FormGroup, FormGroupDirective, FormControl, FormBuilder } from '@angular/forms';
 import { ImageUploaderOptions } from 'ngx-image-uploader-next';
 
@@ -9,9 +9,10 @@ import { ImageUploaderOptions } from 'ngx-image-uploader-next';
   templateUrl: './val-arrangemangs-typ.component.html',
   styleUrls: ['./val-arrangemangs-typ.component.scss']
 })
-export class ValArrangemangsTypComponent implements OnInit {
+export class ValArrangemangsTypComponent implements OnInit, OnChanges {
   @Input() formGroupName!:string;
   arrangemangFrmGrp!:FormGroup;
+  test:any;
   // tmpArrangemangFrmGrp!:FormGroup;
   onCheckboxClicked:boolean=false;
   chkKF:Array<boolean> = new Array;
@@ -24,23 +25,33 @@ export class ValArrangemangsTypComponent implements OnInit {
     maxImageSize: 3
   };
 
-  constructor(private rootformGroup: FormGroupDirective, public fb:FormBuilder, private _arrMdl:FormArrangemangModel,private _faktaMdl:FormFaktaModel) { }
+  constructor(private rootformGroup: FormGroupDirective, public fb:FormBuilder, private ref: ChangeDetectorRef, private _faktaMdl:FormFaktaModel) { }
 
   ngOnInit(): void {
-     this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
-
-      this.initArrangemangFromGroupdata();
+     this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang') as FormGroup;
   }
 
-  initArrangemangFromGroupdata(){
-    // this.tmpArrangemangFrmGrp = this.fb.group(this._arrMdl.genFGTmp);
-    this.arrangemangFrmGrp.valueChanges.subscribe(x => {
-      // console.log('changed: ' + this.tmpArrangemangFrmGrp.valid)
-      //  if(!this.onCheckboxClicked){
-      //   this.CheckKonstForm()
-      //   // console.log(x)
-      //  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.rootformGroup.control.valueChanges.subscribe((values: any)=> {
+      this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang') as FormGroup;
+      console.log("Värden ändraded: ValArrangemangsTypComponent ", values);
     })
+
+    // this.initArrangemangFromGroupdata();
+    // console.log("värden ändras: " + changes);
+    // this.ref.detectChanges();
+ }
+  initArrangemangFromGroupdata(){
+    // this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang') as FormGroup;
+    // this.tmpArrangemangFrmGrp = this.fb.group(this._arrMdl.genFGTmp);
+    // this.arrangemangFrmGrp.valueChanges.subscribe(x => {
+    //   this.arrangemangFrmGrp = this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang') as FormGroup;
+    //   // console.log('changed: ' + this.tmpArrangemangFrmGrp.valid)
+    //   //  if(!this.onCheckboxClicked){
+    //   //   this.CheckKonstForm()
+    //    console.log(x)
+    //   //  }
+    // })
   }
 
   get Rubrik(){
@@ -55,6 +66,9 @@ export class ValArrangemangsTypComponent implements OnInit {
   get MainImage(){
     return this.arrangemangFrmGrp.get('MainImage');
   }
+
+
+
   // get Konstform(){
   //   return this.arrangemangFrmGrp.get("Konstform") as FormArray;
   // }
@@ -73,26 +87,27 @@ export class ValArrangemangsTypComponent implements OnInit {
   // }
 
   setFaktalist(val:number){
-    // this.rootformGroup.control.get('Faktalist')?.setValue(this._faktaMdl.genFGEmpty)
-    this.rootformGroup.control.removeControl("Faktalist");
-    if(val==1){
-      this.rootformGroup.control.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
-    }
-    if(val==2){
-      this.rootformGroup.control.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
-    }
-    if(val==4){
-      this.rootformGroup.control.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
-    }
-    if(val==7){
-      this.rootformGroup.control.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGBesoksmal));
-    }
-    if(val==8){
-      this.rootformGroup.control.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGSkolbioValidator));
-    }
+    // // this.rootformGroup.control.get('Faktalist')?.setValue(this._faktaMdl.genFGEmpty)
+    // this.rootformGroup.control.removeControl("Faktalist");
+    // if(val==1){
+    //   this.rootformGroup.control.addControl('Faktalist', this._faktaMdl.genFG);
+    // }
+    // if(val==2){
+    //   this.rootformGroup.control.addControl('Faktalist', this._faktaMdl.genFG);
+    // }
+    // if(val==4){
+    //   this.rootformGroup.control.addControl('Faktalist',this._faktaMdl.genFG);
+    // }
+    // if(val==7){
+    //   this.rootformGroup.control.addControl('Faktalist', this._faktaMdl.genFGBesoksmal);
+    // }
+    // if(val==8){
+    //   this.rootformGroup.control.addControl('Faktalist', this._faktaMdl.genFGSkolbioValidator);
+    // }
   }
 
   onCheckboxChange(e:any, controlname:string) {
+    console.log("konstformCHK")
     const checkArray: FormArray = this.arrangemangFrmGrp.get(controlname) as FormArray;
     this.onCheckboxClicked= true;
     if (e.target.checked) {

@@ -204,4 +204,87 @@ export class ServerApiResponsModel {
       "status": "Arrangemangsdetaljer är listade!"
     }
   }
+  public tmpResetArrModel:any = {
+    "kk_aj_admin": {
+      "Ansokningstyp": "",
+      "ansokningarlista": {
+        "ansokningarcount": "",
+        "ansokningar": [{
+          "ansokningid": 0,
+          "ansokningdate": "",
+          "ansokningcontentid": "0",
+          "ansokningtitle": "", //DETTA
+          "ansokningsubtitle": "", //DETTA
+          // "ansokningContent": "<p>DETTA ÄR ETT TEST ARRANGEMANG</p>;", //DETTA
+          "ansokningContent": "", //DETTA
+          "ansokningutovare": "",
+          "ansokningurl": "",
+          "ansokningbilaga": "",
+          "ansokningpublicerad": "",
+          "ansokninglast": "",
+          "ansokningstatus": "",
+          "ansokningtypid": "0", //DETTA
+          "ansokningkonstformid": [], //DETTA
+          "ansokningtyp": "",
+          "ansokningkonstform": "",
+          "ansokningFaktalist": [],
+          "ansokningMedialist": [],
+          "ansokningUsername": "1",
+          "ansokningMediaImage": {  //DETTA
+            "MediaID": 0,
+            "MediaUrl": "",
+            "MediaFilename": "",
+            "MediaSize": "",
+            "MediaAlt": "",
+            "MediaFoto": "",
+            "MediaTyp": "",
+            "MediaVald": "",
+            "mediaTitle": "",
+            "mediaBeskrivning": "",
+            "mediaLink": "",
+            "sortering": "0"
+          },
+          "ansokningUtovarid": 0,
+          "ansokningUtovardata": {
+            "UtovarID": 0,
+            "Organisation": "",
+            "Fornamn": "",
+            "Efternamn": "0",
+            "Telefon": "",
+            "Adress": "",
+            "Postnr": "",
+            "Ort": "",
+            "Epost": "",
+            "Kommun": "",
+            "Weburl": ""
+          },
+          "ansokningAgespan": "- ",
+          "ansokningFilterfakta": {
+            "Bokningsbar": "0",
+            "Morklaggning": "0",
+            "Takhojd": "0",
+            "Speltid": "0",
+            "Kostnad": "0"
+          },
+          "ansokningKonstform2": "0",
+          "ansokningKonstform3": "0",
+          "ansokningKontaktId": "",
+          "ansokningKontaktfornamn": "",
+          "ansokningKontaktEfternamn": "",
+          "ansokningKontaktTelefon": "",
+          "ansokningKontaktEpost": "",
+          "PeriodStart": "",
+          "PeriodSlut": "",
+          "ArkivStatus": "0"
+        }]
+      },
+      "Ansokningarlistacount": 0,
+      "Ansokningarlistacurrentpage": 0,
+      "Ansokningarlistatotalpages": 0,
+      "nyaansokningarcount": 0,
+      "approvedansokningarcount": 0,
+      "deniedansokningarcount": 0,
+      "status": ""
+    }
+  }
 }

@@ -10,10 +10,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TidigareArrangemangComponent implements OnInit {
   @Output() GetTidigareArr=new EventEmitter();
+
+  _blnVisaNytt:boolean = true;
+
   constructor(private rootformGroup: FormGroupDirective, public fb:FormBuilder, private _arrMdl:FormArrangemangModel, private _faktaMdl:FormFaktaModel) { }
 
-
   ngOnInit(): void {
+    this._blnVisaNytt=true;
   }
 
   // visa el dölj infotexter i formuläret
@@ -32,4 +35,16 @@ export class TidigareArrangemangComponent implements OnInit {
    GetTidigareArrangemang(val:number){
     this.GetTidigareArr.emit(val);
    }
+
+   valNyttTidigare(val:number){
+    if(val==1){
+      this._blnVisaNytt= true;
+    };
+    if(val==2){
+      this._blnVisaNytt= false;
+    };
+      console.log(val);
+    return false;
+  }
+
 }

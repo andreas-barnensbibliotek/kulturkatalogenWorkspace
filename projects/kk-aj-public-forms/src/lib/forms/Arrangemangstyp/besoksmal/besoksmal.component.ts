@@ -16,10 +16,13 @@ export class BesoksmalComponent implements OnInit {
   constructor(private rootformGroup: FormGroupDirective) {}
 
   ngOnInit(): void {
-    this.BesoksmalFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
-    this.SmakprovFrmGrp= this.rootformGroup.control;
+    let testar = this.rootformGroup.control.get(this.formGroupName);
+    console.log("testar_ " + testar);
+    this.BesoksmalFrmGrp = testar?.get('Faktalist') as FormGroup;
+
+    // this.SmakprovFrmGrp= this.rootformGroup.control;
     console.log("init");
-     this.CheckAge();
+    //  this.CheckAge();
   }
 
   onCheckboxChange(e:any, controlname:string) {
