@@ -1,0 +1,18 @@
+<ng-container [formGroup]="utstallLokalFrmGrp">
+  <div class="col-12 col-lg-8">
+    <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
+      <div class="form-group mt-5">
+
+        <legend>Lokal</legend>
+
+          <label for="formYta">Yta (m2) <a (click)="showHideinfo(1)" class="info" rel="arr_formYta_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div  *ngIf="showinfo[1]" class="arr_formYta_infotext infotext">Ange önskad lokalyta i kvadratmeter.</div>
+          <input formControlName="Byggtid" type="text" id="formYta" name="formBuildTime" class="form-control" type="text" tabindex="1"/>
+          <small class="text-danger formYta_error">Vänligen ange önskad lokalyta i kvadratmeter. Använd enbart siffror.</small><br />
+
+            <label for="formVenueRequiermentsId" class="kk_aj_fob kk_aj_ut kk_aj_sb">Lokalkrav (ej obligatorisk) <a (click)="showHideinfo(9)" class="info" rel="arr_formVenueRequiermentsId_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+            <div *ngIf="showinfo[9]" class="arr_formVenueRequiermentsId_infotext infotext">Här kan du ange lokalkrav ex rumstemperatur, lokalens storlek, om du behöver tom golvyta, behov av bygghjälp,  tillgång till vatten, bord att arbeta vid etc.</div>
+            <textarea formControlName="OvrigaLokalkrav" id="formVenueRequiermentsId" rel="18" name="formVenueRequierments" maxlength="400" class="form-control"></textarea>
+      </div>
+  </div>
+  </ng-container>

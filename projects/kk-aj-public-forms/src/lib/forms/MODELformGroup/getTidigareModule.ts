@@ -1,3 +1,4 @@
+import { formGlobalsModel } from './formGlobalsModel';
 import { ServerApiResponsModel } from './ServerApiResponsModel';
 import { FormArrangemangModel } from './FormArrangemangModel';
 import { FormBuilder, FormArray, FormGroupDirective, Validator, Validators } from '@angular/forms';
@@ -10,7 +11,13 @@ export class getTidigareModule {
 
   mainData?:any=[];
 
-  constructor( public fb:FormBuilder, public _faktaMdl: FormFaktaModel, private _arrMdl:FormArrangemangModel, private _fullApiMdl:ServerApiResponsModel){}
+  constructor(
+    public fb:FormBuilder,
+    public _faktaMdl: FormFaktaModel,
+    private _arrMdl:FormArrangemangModel,
+    private _fullApiMdl:ServerApiResponsModel,
+    private _frmGlb: formGlobalsModel
+    ){}
 
   public getTidigareArr(id:number){
       return this.getFULLArrfromServer(id);
@@ -22,7 +29,7 @@ export class getTidigareModule {
 }
   public getTidigareFakta(id:number){
     let JsonData = this.getArrfromServer(id);
-    if(id == 7){ // besöksmål
+    if(id == this._frmGlb.faktaTypId.besoksmal){ // besöksmål
       return this.getTidigareBesoksmal(JsonData);
     }
   }
@@ -72,11 +79,6 @@ export class getTidigareModule {
     }
     return returl;
   }
-
-
-
-
-
 
   private getFULLArrfromServer(id:number){
     // Do ajaxcall

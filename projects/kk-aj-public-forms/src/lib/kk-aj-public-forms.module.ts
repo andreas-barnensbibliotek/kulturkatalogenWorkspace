@@ -1,3 +1,5 @@
+import { UtstallFaktaComponent } from './forms/Arrangemangstyp/utstallning/utstall-fakta/utstall-fakta.component';
+import { formGlobalsModel } from './forms/MODELformGroup/formGlobalsModel';
 import { Routes, RouterModule } from '@angular/router';
 import { ServerApiResponsModel } from './forms/MODELformGroup/ServerApiResponsModel';
 import { getTidigareModule } from './forms/MODELformGroup/getTidigareModule';
@@ -42,6 +44,7 @@ import { SafeHtmlPipe } from './forms/pipes/safepipe';
 import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 import { CommonModule } from '@angular/common';
 import { ArrFormComponent } from './forms/arr-form/arr-form.component';
+import { UtstallLokalComponent } from './forms/Arrangemangstyp/utstallning/utstall-lokal/utstall-lokal.component';
 
 const routes: Routes = [
 
@@ -74,7 +77,9 @@ const routes: Routes = [
     WorkshopComponent,
     ListasmakprovComponent,
     SafeHtmlPipe,
-    ArrFormComponent
+    ArrFormComponent,
+    UtstallFaktaComponent,
+    UtstallLokalComponent
 
   ],
   imports: [
@@ -98,7 +103,8 @@ const routes: Routes = [
     FormExempelModel,
     FormFaktaModel,
     getTidigareModule,
-    ServerApiResponsModel
+    ServerApiResponsModel,
+    formGlobalsModel
   ],
   exports: [
     KkAjPublicFormsComponent

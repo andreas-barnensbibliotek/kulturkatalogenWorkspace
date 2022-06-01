@@ -1,3 +1,4 @@
+import { formGlobalsModel } from './../MODELformGroup/formGlobalsModel';
 import { getTidigareModule } from './../MODELformGroup/getTidigareModule';
 import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
 import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHandlerModel';
@@ -17,6 +18,7 @@ export class ArrFormComponent implements OnInit, OnChanges {
   ArrForm!:FormGroup;
   showArr:boolean= false;
 
+
   constructor(
     private rootformGroup: FormGroupDirective,
     public fb:FormBuilder,
@@ -24,7 +26,9 @@ export class ArrFormComponent implements OnInit, OnChanges {
     public _blockMdl: FormVisaBlockHandlerModel,
     public _faktaMdl: FormFaktaModel,
     public _TidigareMdl: getTidigareModule,
-    private ref: ChangeDetectorRef,) { }
+    private ref: ChangeDetectorRef,
+    private _frmGlb:formGlobalsModel
+    ) { }
 
   ngOnInit(): void {
 
@@ -51,30 +55,30 @@ export class ArrFormComponent implements OnInit, OnChanges {
     this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang')?.get('Arrangemangtyp')?.patchValue(val)
 
 
-    // this.ArrForm.removeControl("Faktalist");
-    if(val==1){
+     this.ArrForm.removeControl("Faktalist");
+    if(val==this._frmGlb.faktaTypId.forestallning){
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
     }
-    if(val==2){
+    if(val==this._frmGlb.faktaTypId.utstallning){
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
     }
-    if(val==4){
+    if(val==this._frmGlb.faktaTypId.workshop){
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
     }
-    if(val==7){
+    if(val== this._frmGlb.faktaTypId.besoksmal){
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGBesoksmal));
     }
-    if(val==8){
+    if(val==this._frmGlb.faktaTypId.skolbio){
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGSkolbioValidator));
     }
 
     this.showArr= true;
-    this.IsArrLoaded();
+    this.IsArrLoaded(val);
   }
 
-  IsArrLoaded(){
+  IsArrLoaded(arrtypid:number){
     this.ref.detectChanges();
-    this.ArrDataLoaded.emit(this.showArr);
+    this.ArrDataLoaded.emit({'isloaded': this.showArr,'arrtypid':arrtypid});
 
    }
 

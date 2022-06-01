@@ -1,11 +1,11 @@
 import { FormGroup, FormGroupDirective, FormArray, FormControl, FormBuilder } from '@angular/forms';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 @Component({
   selector: 'aj-besoksmal',
   templateUrl: './besoksmal.component.html',
   styleUrls: ['./besoksmal.component.scss']
 })
-export class BesoksmalComponent implements OnInit {
+export class BesoksmalComponent implements OnInit, OnChanges {
   @Input() formGroupName!: string;
   BesoksmalFrmGrp!: FormGroup;
   showinfo:Array<boolean> = new Array;
@@ -16,13 +16,20 @@ export class BesoksmalComponent implements OnInit {
   constructor(private rootformGroup: FormGroupDirective) {}
 
   ngOnInit(): void {
-    let testar = this.rootformGroup.control.get(this.formGroupName);
-    console.log("testar_ " + testar);
-    this.BesoksmalFrmGrp = testar?.get('Faktalist') as FormGroup;
+    let bascontrol = this.rootformGroup.control.get(this.formGroupName);
+    this.BesoksmalFrmGrp = bascontrol?.get('Faktalist') as FormGroup;
 
     // this.SmakprovFrmGrp= this.rootformGroup.control;
     console.log("init");
     //  this.CheckAge();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.rootformGroup.control.valueChanges.subscribe((values: any)=> {
+      let bascontrol = this.rootformGroup.control.get(this.formGroupName);
+      this.BesoksmalFrmGrp = bascontrol?.get('Faktalist') as FormGroup;
+      console.log("Värden ändraded: BesoksmalComponent ", values);
+    })
   }
 
   onCheckboxChange(e:any, controlname:string) {

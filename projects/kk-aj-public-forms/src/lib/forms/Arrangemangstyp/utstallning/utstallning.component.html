@@ -1,1 +1,29 @@
-<p>utstallning works!</p>
+<ng-container [formGroup]="utstallningFrmGrp">
+  <app-aj-utstall-fakta formGroupName="Faktalist"></app-aj-utstall-fakta>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-lokal formGroupName="Faktalist"></app-lokal>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-deltagarepublik formGroupName="Faktalist"></app-deltagarepublik>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-kostnader formGroupName="Faktalist" ></app-kostnader>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+  <app-smakprov formGroupName="Faktalist"></app-smakprov>
+  <!-- <app-smakprov formGroupName="Faktalist"></app-smakprov> -->
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-bedomning-info formGroupName="Faktalist" ></app-bedomning-info>
+</ng-container>
+

@@ -1,3 +1,4 @@
+import { formGlobalsModel } from './../MODELformGroup/formGlobalsModel';
 import { getTidigareModule } from './../MODELformGroup/getTidigareModule';
 
 import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
@@ -22,6 +23,7 @@ export class BaseformComponent implements OnInit, OnChanges {
   // ArrForm!:FormGroup;
   isArrDataLoaded:boolean= false;
 
+  visaFaktablock:any=[];
 
   constructor(
     private _utovareMdl: formUtovareModel,
@@ -32,6 +34,7 @@ export class BaseformComponent implements OnInit, OnChanges {
     public _TidigareMdl: getTidigareModule,
     public fb:FormBuilder,
     private ref: ChangeDetectorRef,
+    private _frmGlb:formGlobalsModel
   ) { }
 
   ngOnInit(): void {
@@ -48,18 +51,9 @@ export class BaseformComponent implements OnInit, OnChanges {
       Kontakt: this.fb.group(this._kontaktMdl.genFG, {validator: KontaktFormValidator}),
       ArrForm: this.fb.group([])
     });
-
-    // this.ArrForm = this.fb.group({
-    //   Arrangemang: this.fb.group([]),
-    //   Faktalist:this.fb.group([])
-    // });
-
-
-    console.log("detta2:" + this.BaseRootForm.get('Kontakt')!.valid );
   }
 
   onUpload(file: FileQueueObject) {
-
     console.log("detta:" + file.response);
   }
 
@@ -86,73 +80,41 @@ export class BaseformComponent implements OnInit, OnChanges {
     this._blockMdl.showChangeUtovareUppgifter();
   }
 
-  ArrDataLoaded(isloaded:boolean){
-    this.isArrDataLoaded =isloaded;
+  ArrDataLoaded(obj:any){
+    console.log("arrtypid: " +obj.arrtypid + " isloaded: " +obj.isloaded);
+    this.isArrDataLoaded =obj.isloaded;
+    this.showFaktaBlock(obj.arrtypid);
   }
 
   ShowSteg(val:number){
-    // if(val==1){
-    //   this._TidigareMdl.ResetArr();
-    //   this.ArrForm.removeControl('Arrangemang');
-    //   this.ArrForm.addControl('Arrangemang', this.fb.group([]),);
-    //   this.ArrForm.removeControl('Faktalist');
-    //   this.ArrForm.addControl('Faktalist', this.fb.group([]),);
-    // }
-    // if(val==2){
-    //   this.ArrForm.removeControl('Arrangemang');
-    //   this.ArrForm.addControl('Arrangemang', this.fb.group(this._arrMdl.genFG),);
-    // }
-
-    this._blockMdl.stegBlock(val)
+      this._blockMdl.stegBlock(val)
     return false;
   }
 
   showFaktaBlock(arrtypid:number){
-    let test = this.BaseRootForm.get('ArrForm') as FormGroup;
+    this.visaFaktablock[this._frmGlb.faktaTypId.forestallning] = false;
+    this.visaFaktablock[this._frmGlb.faktaTypId.utstallning] = false;
+    this.visaFaktablock[this._frmGlb.faktaTypId.workshop] = false;
+    this.visaFaktablock[this._frmGlb.faktaTypId.besoksmal] = false;
+    this.visaFaktablock[this._frmGlb.faktaTypId.skolbio] = false;
 
-
-        let visaFakta = test.get('Arrangemang')!.get('Arrangemangtyp')!.value;
-console.log("visaFakta--- " + visaFakta)
-let ret:boolean= false;
-
-if(arrtypid==visaFakta){
-  ret= true;
+    switch ( arrtypid ) {
+      case 1:
+        this.visaFaktablock[this._frmGlb.faktaTypId.forestallning] = true;
+          break;
+      case 2:
+        this.visaFaktablock[this._frmGlb.faktaTypId.utstallning] = true;
+          break;
+      case 4:
+        this.visaFaktablock[this._frmGlb.faktaTypId.workshop] = true;
+          break;
+      case 7:
+        this.visaFaktablock[this._frmGlb.faktaTypId.besoksmal] = true;
+          break;
+      case 8:
+        this.visaFaktablock[this._frmGlb.faktaTypId.skolbio] = true;
+          break;
     }
-
-// if(arrtypid==1){
-//   ret= true;
-//     }
-//     if(arrtypid==2){
-//       ret= true;
-//     }
-//     if(arrtypid==4){
-//       ret= true;
-//     }
-//     if(arrtypid==7){
-//       ret= true;
-//     }
-//     if(arrtypid==8){
-//       ret= true;
-//     }
-    return ret;
-
-        if(arrtypid == visaFakta){
-          // this.BaseRootForm.removeControl('Faktalist');
-          // switch ( arrtypid ) {
-          //   case 1:
-          //     this.BaseRootForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
-          //       break;
-          //   case 7:
-          //     this.BaseRootForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGBesoksmal));
-          //       break;
-          //   default:
-          //     this.BaseRootForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
-          //      break;
-          // }
-
-
-        }
-
 
   }
 
@@ -192,7 +154,4 @@ if(arrtypid==visaFakta){
   ngAfterViewInit() {
   }
 }
-// AlderFran:  ["3","4"],
-// OvrigaKostnader: 'test',
-// Ovrigt: 'test2',
-// Exempel: null
+

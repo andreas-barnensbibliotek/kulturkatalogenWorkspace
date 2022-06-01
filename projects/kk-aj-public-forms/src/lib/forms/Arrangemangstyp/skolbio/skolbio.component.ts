@@ -1,14 +1,13 @@
 import { FormFaktaModel } from './../../MODELformGroup/FormFaktaModel';
 import { FormGroup, FormArray, FormGroupDirective, FormBuilder, FormControl } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
-import { FalseLiteral } from 'typescript';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'aj-skolbio',
   templateUrl: './skolbio.component.html',
   styleUrls: ['./skolbio.component.scss']
 })
-export class SkolbioComponent implements OnInit {
+export class SkolbioComponent implements OnInit,OnChanges {
   @Input() formGroupName!: string;
   SkolbioFrmGrp!: FormGroup;
   ExempelFrmGrp!: FormGroup;
@@ -22,13 +21,21 @@ export class SkolbioComponent implements OnInit {
   constructor(private rootformGroup: FormGroupDirective, public fb:FormBuilder, public _faktaMdl: FormFaktaModel,) { }
 
   ngOnInit(): void {
-    this.SkolbioFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+    let bascontrol = this.rootformGroup.control.get(this.formGroupName);
+    this.SkolbioFrmGrp = bascontrol?.get('Faktalist') as FormGroup;
 
-
-    this.ExempelFrmGrp = this.rootformGroup.control
-
+    // this.ExempelFrmGrp = this.rootformGroup.control;
+    // console.log("init");
+    //  this.CheckAge();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.rootformGroup.control.valueChanges.subscribe((values: any)=> {
+      let bascontrol = this.rootformGroup.control.get(this.formGroupName);
+      this.SkolbioFrmGrp = bascontrol?.get('Faktalist') as FormGroup;
+      console.log("Värden ändraded: BesoksmalComponent ", values);
+    })
+  }
   // initFromGroupdata(){
   //   this.tmpSkolbioFrmGrp = this.fb.group(this._faktaMdl.genFGSkolbioValidator);
   //   this.tmpSkolbioFrmGrp.valueChanges.subscribe(x => {
