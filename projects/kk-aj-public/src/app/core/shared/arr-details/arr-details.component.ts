@@ -65,9 +65,9 @@ export class ArrDetailsComponent implements OnInit {
       startYear: 0,
       stoppYear: 0,
       ageList:[],
-      konstartIdList:[typ],
+      konstartIdList:[],
       tagList:[],
-      utovareId: 0
+      utovareId: 450
     };
    return retobj;
   }

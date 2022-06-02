@@ -118,7 +118,7 @@ body {
     font-style: normal;
     font-weight: normal;
     /* line-height: 2; */
-    line-height: 1.9;
+    line-height: 1.4;
     color: var(--secondary-color);
     overflow-x: hidden;
 }

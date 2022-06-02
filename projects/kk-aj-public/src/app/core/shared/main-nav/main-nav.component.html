@@ -17,7 +17,7 @@
                              <a routerLink="/start" aria-current="page" tabindex="2">START</a>
                           </li>
                           <li class="menu-item"  routerLinkActive="active">
-                             <a routerLink="/lista" tabindex="3">OM KATALOGEN</a>
+                             <a routerLink="/om" tabindex="3">OM KATALOGEN</a>
 
                           </li>
                           <li class="menu-item"  routerLinkActive="active">
@@ -27,8 +27,13 @@
                           <li class="menu-item"  routerLinkActive="active">
                              <a routerLink="/advsearch" tabindex="5">AVANCERAD SÖK</a>
                           </li>
-
+                          <li class="menu-item" routerLinkActive="active">
+                            <a routerLink="/lista/favoriter" class="nav-favo_mobil" aria-current="page" [title]="visafavotext" tabindex="6">
+                              <div class="Nav-Favo" [ngClass]="visafavo > 0 ? 'hasItems':''"  height="24px" alt="Favoriter"></div>
+                            </a>
+                         </li>
                        </ul>
+
                     </div>
                  </div>
                  <div class="gen-header-info-box">

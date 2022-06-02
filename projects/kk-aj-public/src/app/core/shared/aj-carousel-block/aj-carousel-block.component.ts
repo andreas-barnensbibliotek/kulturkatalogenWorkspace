@@ -1,3 +1,4 @@
+import { ServerJson } from './../../models/ServerJson';
 import { App_Global } from './../../global/app_global';
 import { Router } from '@angular/router';
 import { IpostSearchV2 } from './../../interface/ipost-search-v2';
@@ -18,7 +19,12 @@ export class AjCarouselBlockComponent implements OnInit {
   mainCaruselData?:any = [];
   mellan?:any=[];
 
-  constructor(private wpApi:KatalogenApiService, private renderer: Renderer2, private _router:Router, private gbl:App_Global) { }
+  constructor(
+    private wpApi:KatalogenApiService,
+    private renderer: Renderer2,
+    private _router:Router,
+    private gbl:App_Global,
+    private _favo:ServerJson) { }
 
   ngOnInit(): void {
     this.getCaruselData(this.CaruselData)
@@ -44,8 +50,17 @@ export class AjCarouselBlockComponent implements OnInit {
     return script;
   }
 
-  addToFavorit(id:any){
-    alert("Added to favorit " + id);
-    return false;
+  addToFavorit(itm:any):void{
+    if(itm){
+      this._favo.changefavo(itm);
+        // this.mainCaruselData= this._favo.getFavoritLista();
+    };
   }
+
+  setFavoClass(arrid:number):boolean{
+
+    return this._favo.setFavoClass(arrid);;
+    // return true;
+   }
+
 }

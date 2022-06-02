@@ -289,13 +289,13 @@ h4.more-heading {
 }
 
 p.paragraph.fact-heading {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-weight: 700;
   font-size: 14px;
 }
 
 p.paragraph.fact-info {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-weight: 400;
   font-size: 14px;
 }
@@ -450,7 +450,7 @@ div.responsive-video.video-platform-1 {
 }
 
 .container-grid.wrap-text-main {
-  padding: 20px 10px 30px;
+  padding: 20px 30px 30px;
   min-height: 100px;
   width: 100%;
   height: auto;
@@ -988,3 +988,34 @@ h2.more-heading {
 .logotext{
   text-transform: capitalize;
 }
+
+.fact-ovrigt{
+  margin-left:10px;
+}
+
+.gen-movie-info{
+  a{
+    cursor: pointer;
+  }
+}
+.nav-favo_mobil{
+    max-width: 24px;
+  }
+
+.Nav-Favo{
+  height:24px;
+  width: 24px;
+  margin-top: 70%;
+  margin-bottom: 4px;
+  background-image:url(./assets/img/icons8-basket-24.png);
+  &:hover{
+    background-image:url(./assets/img/icons8-basket-24_invert.png);
+  }
+  &.hasItems{
+    &:hover{
+      background-image:url(./assets/img/icons8-paid-24_invert.png);
+    }
+    background-image:url(./assets/img/icons8-paid-24.png);
+  }
+}
+

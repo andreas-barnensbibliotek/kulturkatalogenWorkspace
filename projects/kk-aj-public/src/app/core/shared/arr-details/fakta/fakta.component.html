@@ -63,11 +63,11 @@
     <h4 class="fact-main-heading">Övrigt</h4>
   </div>
   <div class="container-grid wrap-single-fact" *ngFor="let item of ovrigt">
-    <div class="container-grid container-4">
+    <!-- <div class="container-grid container-4">
       <p class="paragraph fact-heading">{{ item.Faktarubrik }}<br></p>
-    </div>
-    <div class="container-grid container-5">
-      <p class="paragraph fact-info">{{ item.FaktaValue }}</p>
+    </div> -->
+    <div class="container-grid">
+      <p class="paragraph fact-info fact-ovrigt">{{ item.FaktaValue }}</p>
     </div>
   </div>
 </div>

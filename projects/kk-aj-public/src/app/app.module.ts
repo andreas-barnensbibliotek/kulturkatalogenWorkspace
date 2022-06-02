@@ -1,3 +1,4 @@
+import { FavoritHandler } from './core/global/favoritHandler';
 import { ServerJson } from './core/models/ServerJson';
 import { FaktaComponent } from './../app/core/shared/arr-details/fakta/fakta.component';
 import { MainFooterComponent } from './core/shared/main-footer/main-footer.component';
@@ -138,13 +139,15 @@ const cookieConfig:NgcCookieConsentConfig = {
     NgbModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NgxDynamicTabindexModule
+    NgxDynamicTabindexModule,
+
 
   ],
   providers: [
     App_Global,
     ServerJson,
     categoryStyles,
+    FavoritHandler,
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     NavigationServiceService

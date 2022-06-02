@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash-es';
 import { Ifavoobj } from './../core/interface/Ifavoobj';
 import { ServerJson } from './../core/models/ServerJson';
 import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
@@ -27,6 +28,7 @@ export class KkResultsComponent implements OnInit {
   mellan?:any=[];
   isShowingFavo:boolean=false;
   listrubrik:string="";
+  isFavoEmpty:boolean=false;
   // favolist:Array<Ifavoobj>=[];
 
   constructor(private wpApi:KatalogenApiService,
@@ -180,7 +182,13 @@ export class KkResultsComponent implements OnInit {
     // }else{    //   [];
     // }
     this.isShowingFavo = true;
-    this.mainCaruselData= this._favo.getFavoritLista()
+    if(this._favo.favoCounter()>0){
+      this.mainCaruselData= this._favo.getFavoritLista();
+      this.isFavoEmpty = false;
+    }else{
+      this.isFavoEmpty = true;
+    }
+
 
 
   }
@@ -189,7 +197,12 @@ export class KkResultsComponent implements OnInit {
     if(itm){
       this._favo.changefavo(itm);
       if (this.isShowingFavo){
-        this.mainCaruselData= this._favo.getFavoritLista()
+        if(this._favo.favoCounter()>0){
+          this.mainCaruselData= this._favo.getFavoritLista();
+          this.isFavoEmpty = false;
+        }else{
+          this.isFavoEmpty = true;
+        }
       }
     };
   }

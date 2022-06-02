@@ -5,7 +5,11 @@ export class FavoritHandler {
 
 favoriteList:any = [];
 
+// public favoCount:number = this.favoriteList.length;
 
+public favoCounter(){
+  return this.favoriteList.length;
+}
 // getMaindata(CData:IpostSearchV2){
 //   let storageItem: string = this.getSearchVal(CData);
 

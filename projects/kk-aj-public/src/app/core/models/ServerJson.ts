@@ -1,3 +1,4 @@
+import { Observable, Subject } from 'rxjs';
 import { Ifavoobj } from './../interface/Ifavoobj';
 import {Injectable } from "@angular/core";
 
@@ -8,10 +9,33 @@ export class ServerJson {
   _favoListName:string= "favolist";
   favolist:any=[];
 
+  favoAntalSubject = new Subject<number>();
+
+  currentfavoritAntal(antal:number){
+    this.favoAntalSubject.next(this.favoCounter());
+  }
+
+  getFavoritAntal():Observable<number>{
+    return this.favoAntalSubject.asObservable();
+  }
+
 
   constructor(){
     this.setupFavoLocalStorage(0);
   }
+
+  public favoCounter(){
+    let favolistan:any = localStorage.getItem(this._favoritStorageName);
+    if(favolistan){
+      let jsonobj= JSON.parse(favolistan);
+    // console.log("detta" + Object.keys(jsonobj.ansokningar).length);
+    return Object.keys(jsonobj.ansokningar).length;
+    }else{
+      return 0;
+    }
+
+  }
+
   getServerJson(){
     let retobj = this.ServerJsonDecorator();
 
@@ -25,7 +49,7 @@ export class ServerJson {
   }
 
   getFavoritLista(){
-    let favoListan:any = localStorage.getItem('favoritStorageItem');
+    let favoListan:any = localStorage.getItem(this._favoritStorageName);
     if(favoListan){
       return JSON.parse(favoListan);
     }else{
@@ -64,15 +88,23 @@ export class ServerJson {
       jsonobj.ansokningar.push(additm);
     }
     localStorage.setItem(this._favoritStorageName, JSON.stringify(jsonobj))
+    this.favoAntalSubject.next(this.favoCounter())
   }
 
   delFavoritFromStorage(itemid:number): void{
     if(itemid){
       let jsonobj:any = localStorage.getItem(this._favoritStorageName);
-      let retobj = this.RemoveElementFromObjectArray(JSON.parse(jsonobj),itemid );
-      localStorage.setItem(this._favoritStorageName, JSON.stringify(retobj))
+      if(this.favoCounter()==0){
+        localStorage.removeItem(this._favoritStorageName);
+        localStorage.removeItem(this._favoListName)
+      }else{
+        let retobj = this.RemoveElementFromObjectArray(JSON.parse(jsonobj),itemid );
+        localStorage.setItem(this._favoritStorageName, JSON.stringify(retobj))
+      }
 
-      console.log( "visar: " +JSON.stringify(retobj));
+      this.favoAntalSubject.next(this.favoCounter())
+
+      // console.log( "visar: " +JSON.stringify(retobj));
     }
   }
 

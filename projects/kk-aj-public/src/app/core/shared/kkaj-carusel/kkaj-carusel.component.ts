@@ -21,7 +21,12 @@ export class KkajCaruselComponent implements OnInit {
   mainCaruselData?:any = [];
   mellan?:any=[];
 
-  constructor(private wpApi:KatalogenApiService, private glb:App_Global, private renderer: Renderer2,  private cd:ChangeDetectorRef, private _favo:ServerJson) { }
+  constructor(
+    private wpApi:KatalogenApiService,
+    private glb:App_Global,
+    private renderer: Renderer2,
+    private cd:ChangeDetectorRef,
+    private _favo:ServerJson) { }
 
   ngOnInit(): void {
     // this.getCaruselData(this.CaruselData)

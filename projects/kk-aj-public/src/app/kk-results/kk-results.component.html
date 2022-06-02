@@ -21,7 +21,7 @@
     </div>
 </section>
 <!-- Section-1 Start -->
-<section class="gen-section-padding-3 aj-section-bg-color-dark">
+<section *ngIf="!isFavoEmpty" class="gen-section-padding-3 aj-section-bg-color-dark">
   <div class="container">
       <div class="row">
           <div id="listprintcontainer" class="col-lg-12">
@@ -89,4 +89,10 @@
       </div>
   </div>
 </section>
-
+<section *ngIf="isFavoEmpty" class="gen-section-padding-3 aj-section-bg-color-dark">
+  <div class="container">
+      <div class="row">
+        <h2>Det finns inget i minneslistan</h2>
+      </div>
+  </div>
+</section>
