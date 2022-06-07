@@ -112,6 +112,13 @@ export class App_Global {
   //   let object = assign({}, svar);
   //   return object
   // }
+  currSearch:Array<any>=[];
+  setCurrentSearch(val:Array<any>){
+    this.currSearch= val;
+  }
+  getCurrentSearch(){
+    return this.currSearch;
+  }
 
   filterSortera(typ:string){
     let mainArrlist = this.mainJsonKatalogItemList;

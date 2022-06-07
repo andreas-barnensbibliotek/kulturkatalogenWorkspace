@@ -44,7 +44,6 @@
       </div>
     </div>
 </section>
-
 <!-- owl-carousel Videos Section-1 Start -->
 <section id="gotoCat4" class="gen-section-padding-2 aj-section-bg-color-darker" >
   <div class="container">
@@ -59,7 +58,7 @@
     <div class="row mt-2">
       <div class="col-12">
         <div class="gen-style-2" >
-          <app-aj-carousel-block (changeDetailId)="changeDetail($event)" [CaruselData]=caruselData(4)></app-aj-carousel-block>
+          <app-aj-carousel-block (changeDetailId)="changeDetail($event)" [CaruselData]="caruselData(detailpage[0].ansokningUtovarid)"></app-aj-carousel-block>
         </div>
       </div>
     </div>

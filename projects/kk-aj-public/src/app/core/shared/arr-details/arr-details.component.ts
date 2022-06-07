@@ -67,7 +67,7 @@ export class ArrDetailsComponent implements OnInit {
       ageList:[],
       konstartIdList:[],
       tagList:[],
-      utovareId: 450
+      utovareId: typ
     };
    return retobj;
   }

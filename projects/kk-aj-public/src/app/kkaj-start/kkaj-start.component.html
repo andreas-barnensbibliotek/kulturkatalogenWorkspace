@@ -3,20 +3,25 @@
   <!-- Features section-->
     <div class="container my-5">
         <div class="row gx-3">
-          <div *ngFor="let itm of pagejson.sections; let i = index"  class="col-12 col-sm-6 col-lg-4 mb-5 mb-lg-0 ">
-            <div *ngIf="itm.typ== 'StartTopBlock'" class="topblockContainer" [ngClass]="itm.content[0].metaClass=='blockcolor2' ? 'blockcolor2' :  'blockcolor1'">
+          <ng-container *ngFor="let itm of pagejson.sections; let i = index" >
+            <ng-container *ngIf="itm.typ=='StartTopBlock'">
+              <div  class="col-12 col-sm-12 col-lg-4 mb-5 mb-lg-0 " [ngClass]="i==2 ? 'col-md-12' :  'col-md-6'">
 
-              <h2 class="h2">{{itm.content[0].rubrik}}</h2>
-              <div [innerHtml]="itm.content[0].content"></div>
+                <div class="topblockContainer" [ngClass]="itm.content[0].metaClass=='blockcolor2' ? 'blockcolor2' :  'blockcolor1'">
 
-              <a *ngIf="itm.content[0].linkUrl" [routerLink]="itm.content[0].linkUrl" title="{{itm.content[0].linkText}}" class="gen-button gen-button-flat">
-                <span class="text">{{itm.content[0].linkText}}</span>
-              </a>
+                  <h2 class="h2">{{itm.content[0].rubrik}}</h2>
+                  <div [innerHtml]="itm.content[0].content"></div>
 
-            </div>
-          </div>
+                  <a *ngIf="itm.content[0].linkUrl" [routerLink]="itm.content[0].linkUrl" title="{{itm.content[0].linkText}}" class="gen-button gen-button-flat">
+                    <span class="text">{{itm.content[0].linkText}}</span>
+                  </a>
 
-        </div>
+                </div>
+
+              </div>
+          </ng-container>
+        </ng-container>
+      </div>
     </div>
 </section>
 

@@ -12,6 +12,7 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 // import { faEllipsisV} from '@fortawesome/free-solid-svg-icons';
 import { IpostSearch } from './../../../core/interface/ipost-search';
 import { clsPostData } from './../../../core/models/clsPostData';
+import { throwIfEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mainpage',
@@ -94,6 +95,9 @@ export class MainpageComponent implements OnInit {
     if(this.glb.currentpage>=1){
       this.pageChanged(this.glb.currentpage);
     }
+
+    this.handleSearchParam();
+
   }
 
 init_SearchForm(){
@@ -230,6 +234,7 @@ init_SearchForm(){
     this.postdataV2.freeTextSearch = this.currsearchstr;
     this.postdataV2.ageList = this.FgAdvSearch.get("ageList")?.value;
     this.postdataV2.konstartIdList = this.FgAdvSearch.get("konstartidList")?.value;
+
     this.mainPageData=[];
     this.loadCoreSearchData(this.postdataV2);
     this.scroll('#AnchorSearchlist');
@@ -272,10 +277,10 @@ this.valdaSearchParam();
   }
 
 
-  setfilter(){
-    this.glb.filterform=  this.filterterm;
-    console.log("filter är: " + this.filterterm.kostnad);
-  }
+  // setfilter(){
+  //   this.glb.filterform=  this.filterterm;
+  //   console.log("filter är: " + this.filterterm.kostnad);
+  // }
 
   autocompleteGetData(searchobj:IpostSearchV2){
     this.wpApi.getCoreAutoCompleteList(searchobj).subscribe(Response => {
@@ -355,6 +360,11 @@ this.valdaSearchParam();
     //  this.navBack.back();
   // this.location.back();
   this._router.navigateByUrl('/');
+  }
+
+  goToDetail(id:number){
+    this.glb.setCurrentSearch(this.searchResultParam);
+    this._router.navigateByUrl('/Arr/id/'+id);
   }
 
   onCheckboxChange(e:any, controlname:string) {
@@ -438,6 +448,17 @@ this.valdaSearchParam();
       age.forEach((item: any, i:number) => {
         this.searchResultParam.push(this.getAgeName(item));
     });
+    this.glb.setCurrentSearch(this.searchResultParam);
+    // sessionStorage.setItem('searchResultParam', this.searchResultParam);
+  }
+
+  handleSearchParam():void{
+    let checkSearchParam= this.glb.getCurrentSearch();
+
+      if(checkSearchParam){
+        this.searchResultParam= this.glb.getCurrentSearch();
+        this.glb.setCurrentSearch(new Array);
+      }
   }
 
   getArrtypName(id:string){
