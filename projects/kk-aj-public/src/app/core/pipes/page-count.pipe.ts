@@ -7,7 +7,7 @@ export class PageCountPipe implements PipeTransform {
 
   transform(listselection:any): any {
 
-    return listselection.map(t=> {
+    return listselection.map((t: any)=> {
         return {
             item: t,
             parent:listselection.lenght

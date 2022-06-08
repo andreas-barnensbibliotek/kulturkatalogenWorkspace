@@ -1,20 +1,11 @@
-import { isEmpty } from 'lodash-es';
-import { Ifavoobj } from './../core/interface/Ifavoobj';
 import { ServerJson } from './../core/models/ServerJson';
 import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
 import { clsPostDataV2 } from './../core/models/clsPostData-v2';
 import { IpostSearchV2 } from './../core/interface/ipost-search-v2';
-import { NavigationServiceService } from './../core/services/NavigationService/navigation-service.service'
-import { AjApiServicesService } from 'aj-api-services';
-import { ActivatedRoute, Router, Scroll } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { App_Global } from './../core/global/app_global';
 import { Component, OnInit } from '@angular/core';
-import { Location, ViewportScroller } from '@angular/common';
-// import { Global } from '../core/models/global';
-
 import { Title } from '@angular/platform-browser';
-import { filter } from 'rxjs/operators';
-import { jsonpFactory } from '@angular/http/src/http_module';
 
 @Component({
   selector: 'app-kk-results',
@@ -29,7 +20,6 @@ export class KkResultsComponent implements OnInit {
   isShowingFavo:boolean=false;
   listrubrik:string="";
   isFavoEmpty:boolean=false;
-  // favolist:Array<Ifavoobj>=[];
 
   constructor(private wpApi:KatalogenApiService,
     private glb:App_Global,
@@ -37,29 +27,11 @@ export class KkResultsComponent implements OnInit {
     private ActivatedRoute:ActivatedRoute,
     private _router:Router,
     private titleService: Title) {
-    // this._router.events.pipe(
-    //   filter(e => e instanceof Scroll)
-    // ).subscribe(e => {
-    //   if ((e as Scroll).position) {
-    //     this.scrollPosition = (e as Scroll).position;
-    //   } else {
-    //     this.scrollPosition = [0, 0];
-    //   }
-    // });
-   // window.scrollTo(500, 1000);
-// this.viewportScroller.scrollToPosition(this.scrollPosition);
-    console.log("position: " + this.scrollPosition)
-  }
-
-  ngAfterViewInit() {
-    console.log("position: " + this.scrollPosition)
-
   }
 
   ngOnInit(): void {
     let id:number = 0;
     this.ActivatedRoute.paramMap.subscribe(prams =>{
-      console.log("kolla: " + JSON.stringify(prams))
       if (this._router.url =="/lista/favoriter"){
         this.listrubrik = "Minneslista";
         this.getFavoritLista();
@@ -77,24 +49,15 @@ export class KkResultsComponent implements OnInit {
       }
     );
 
-    // this.favolist = this._favo.favolist;
     this.titleService.setTitle(this.glb.HeadTitleMapper("Lista alla i katagori " + id.toString() ));
-
   }
-  getCaruselData(CData:IpostSearchV2){
 
+  getCaruselData(CData:IpostSearchV2){
     this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
       this.mellan = Response;
       this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
-    })
-
-    // this.ajApi.searchArrangemang(CData).subscribe(Response => {
-    //   this.mainCaruselData = Response;
-    //           // this.SpinnerLoader = false;
-
-    // });
+    });
   }
-
 
   getMaindata(CData:IpostSearchV2){
     let storageItem: string = this.getSearchVal(CData);
@@ -108,13 +71,10 @@ export class KkResultsComponent implements OnInit {
         });
 
     }else{
-      let test:any = localStorage.getItem(storageItem);
-      this.mainCaruselData = JSON.parse(test);
-
+      let sitm:any = localStorage.getItem(storageItem);
+      this.mainCaruselData = JSON.parse(sitm);
     }
   }
-
-
 
   getSearchVal(CData:IpostSearchV2){
     let retobj:string= "";
@@ -148,39 +108,15 @@ export class KkResultsComponent implements OnInit {
 
     return retobj;
   }
-  // getCaruselData2(CData:any){
-
-  //   let cardata = {
-  //     "cmdTyp": "",
-  //     "arrTypID": 0,
-  //     "konstartID": CData,
-  //     "startYear":0,
-  //     "stoppYear": 0
-  //   }
-
-  //   this.ajApi.searchArrangemang(cardata).subscribe(Response => {
-  //     this.mainCaruselData = Response;
-  //             // this.SpinnerLoader = false;
-
-  //   });
-  // }
 
   goBack(): void {
-    // this.navBack.back();
-    console.log('/#gotoCat'+ this.glb.currentCategoryID);
      this._router.navigateByUrl('/');
-   // this.location.back();
   }
   noresult(obj:any){
     return this.glb.isEmptyObj(obj);
   }
 
   getFavoritLista(){
-    // let favoListan:any = localStorage.getItem('favoritStorageItem');
-    // if(favoListan){
-    //   this.mainCaruselData = JSON.parse(favoListan);
-    // }else{    //   [];
-    // }
     this.isShowingFavo = true;
     if(this._favo.favoCounter()>0){
       this.mainCaruselData= this._favo.getFavoritLista();
@@ -188,9 +124,6 @@ export class KkResultsComponent implements OnInit {
     }else{
       this.isFavoEmpty = true;
     }
-
-
-
   }
 
   addToFavorit(itm:any):void{
@@ -210,37 +143,10 @@ export class KkResultsComponent implements OnInit {
     alert("nu!");
   }
 
-setFavoClass(arrid:number):boolean{
+  setFavoClass(arrid:number):boolean{
+  return this._favo.setFavoClass(arrid);
 
- return this._favo.setFavoClass(arrid)
-  // let currentobj:Ifavoobj = this.favolist.find((e:Ifavoobj) => e.arrid == arrid) as Ifavoobj;
-  // let retobj: boolean= false;
-  // if (currentobj){
-  //   retobj = currentobj.isfavo
-  // }
-  // return retobj;
-}
-
-  // addfavo(itm:any){
-  //   let t:Ifavoobj= {
-  //     isfavo : true,
-  //     arrid: itm.ansokningid
-  //   };
-  //   this.favolist[itm.ansokningid] = t;
-  //   console.log("click add");
-  //   this._favo.addFavoritToStorage(itm);
-  // }
-
-  // delfavo(itmId:number){
-  //   this.favolist.splice(itmId,1);
-  //   console.log("click delete");
-  //   this._favo.delFavoritFromStorage(itmId);
-  // }
-
-
-  // scroll(){
-  //   //this.scroll('gotoCat'+ 2);
-  // }
+  }
 
   printList():void{
     const printContent = document.getElementById("listprintcontainer");

@@ -4,7 +4,6 @@ import { FaktaComponent } from './../app/core/shared/arr-details/fakta/fakta.com
 import { MainFooterComponent } from './core/shared/main-footer/main-footer.component';
 import { NavigationServiceService } from './core/services/NavigationService/navigation-service.service';
 
-import { categoryStyles } from './core/models/categoryStyles';
 import { MediaexempelComponent } from './../app/core/shared/arr-details/mediaexempel/mediaexempel.component';
 import { KontaktComponent } from './core/shared/arr-details/kontakt/kontakt.component';
 import { UnescapePipe } from './core/pipes/unescape.pipe';
@@ -47,7 +46,6 @@ import { KkNoResultComponent } from './kk-results/kk-no-result/kk-no-result.comp
 import { KkResultListComponent } from './kk-results/kk-result-list/kk-result-list.component';
 import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 import { LazyLoadDirective } from './core/directive/lazy-load.directive';
-
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -122,7 +120,6 @@ const cookieConfig:NgcCookieConsentConfig = {
     KkResultListComponent,
     LazyLoadDirective,
     AjCarouselBlockComponent
-
   ],
   imports: [
     BrowserModule,
@@ -140,13 +137,10 @@ const cookieConfig:NgcCookieConsentConfig = {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxDynamicTabindexModule,
-
-
   ],
   providers: [
     App_Global,
     ServerJson,
-    categoryStyles,
     FavoritHandler,
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },

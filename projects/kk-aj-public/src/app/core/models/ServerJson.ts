@@ -1,5 +1,4 @@
 import { Observable, Subject } from 'rxjs';
-import { Ifavoobj } from './../interface/Ifavoobj';
 import {Injectable } from "@angular/core";
 
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
@@ -11,17 +10,16 @@ export class ServerJson {
 
   favoAntalSubject = new Subject<number>();
 
+  constructor(){
+    this.setupFavoLocalStorage(0);
+  }
+
   currentfavoritAntal(antal:number){
     this.favoAntalSubject.next(this.favoCounter());
   }
 
   getFavoritAntal():Observable<number>{
     return this.favoAntalSubject.asObservable();
-  }
-
-
-  constructor(){
-    this.setupFavoLocalStorage(0);
   }
 
   public favoCounter(){
@@ -33,7 +31,6 @@ export class ServerJson {
     }else{
       return 0;
     }
-
   }
 
   getServerJson(){
@@ -43,9 +40,7 @@ export class ServerJson {
     console.log("get stored");
     let jsonobj= JSON.parse(favoritlist);
     console.log( JSON.parse(favoritlist));
-
     return ;
-
   }
 
   getFavoritLista(){
@@ -66,18 +61,6 @@ export class ServerJson {
 
   addFavoritToStorage(additm:any): void{
     let jsonobj:any = localStorage.getItem(this._favoritStorageName);
-
-    // if(this.glb.isEmptyObj(localStorage.getItem(this._favoritStorageName)) || !this.glb.showCookies()){
-    console.log("kör stored");
-
-    // let tmpadditem:any
-    // if(additm=="3710"){
-    //   tmpadditem = this.testar()
-    // }
-    // if(additm=="3711"){
-    //   tmpadditem = this.testar2()
-    // }
-
     if(additm){
       if(!jsonobj){
         jsonobj = {"ansokningar" : []}
@@ -96,27 +79,20 @@ export class ServerJson {
       let jsonobj:any = localStorage.getItem(this._favoritStorageName);
       if(this.favoCounter()==0){
         localStorage.removeItem(this._favoritStorageName);
-        localStorage.removeItem(this._favoListName)
+        localStorage.removeItem(this._favoListName);
       }else{
         let retobj = this.RemoveElementFromObjectArray(JSON.parse(jsonobj),itemid );
-        localStorage.setItem(this._favoritStorageName, JSON.stringify(retobj))
+        localStorage.setItem(this._favoritStorageName, JSON.stringify(retobj));
       }
-
-      this.favoAntalSubject.next(this.favoCounter())
-
-      // console.log( "visar: " +JSON.stringify(retobj));
+      this.favoAntalSubject.next(this.favoCounter());
     }
   }
-
-
-  // favolist:Array<Ifavoobj>=[];
 
   setupFavoLocalStorage(idx:number){
     let favolistObj:any = localStorage.getItem(this._favoListName);
 
     let tmp=this.favolist;
     if(this.favolist.length>0){
-      // let testar=tmp.find((e:Ifavoobj) => e.arrid == idx);
       localStorage.setItem(this._favoListName, JSON.stringify(this.favolist))
     }else{
       if(favolistObj){
@@ -127,8 +103,6 @@ export class ServerJson {
   }
 
   changefavo(itm:any):void{
-
-    // if (this.favolist.find((e:Ifavoobj) => e.arrid == itm.ansokningid)){
       let idx:number = this.favolist.indexOf(itm.ansokningid);
     if (idx >=0){
       this.delfavo(idx, itm.ansokningid);
@@ -139,27 +113,18 @@ export class ServerJson {
   }
 
   addfavo(itm:any){
-    // let t:Ifavoobj= {
-    //   isfavo : true,
-    //   arrid: itm.ansokningid
-    // };
-
     this.favolist.push(itm.ansokningid);
-    console.log("click add");
     this.addFavoritToStorage(itm);
   }
 
   delfavo(idx:number,itmId:number){
     this.favolist.splice(idx,1);
-    console.log("click delete");
     this.delFavoritFromStorage(itmId);
   }
 
   setFavoClass(arrid:number):boolean{
     let i = 0;
-    // let currentobj:Ifavoobj = this.favolist.find((e:Ifavoobj) => e.arrid == arrid) as Ifavoobj;
     let currentobj = this.favolist.indexOf(arrid)
-    // console.log(i += 1);
     let retobj: boolean= false;
     if (currentobj>=0){
       retobj = true;
@@ -314,7 +279,5 @@ export class ServerJson {
      "stoppyear": "",
      "imageUrl": "3710_KaptenKryp_Tempus_planetskotarna.jpg"
    };
-
-
-}
+  }
 }

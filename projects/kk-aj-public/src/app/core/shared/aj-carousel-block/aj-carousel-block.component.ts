@@ -53,7 +53,6 @@ export class AjCarouselBlockComponent implements OnInit {
   addToFavorit(itm:any):void{
     if(itm){
       this._favo.changefavo(itm);
-        // this.mainCaruselData= this._favo.getFavoritLista();
     };
   }
 

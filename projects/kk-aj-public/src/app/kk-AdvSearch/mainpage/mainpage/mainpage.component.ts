@@ -3,17 +3,13 @@ import { Router } from '@angular/router';
 import { clsPostDataV2 } from './../../../core/models/clsPostData-v2';
 import { IpostSearchV2 } from './../../../core/interface/ipost-search-v2';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { LocationStrategy } from '@angular/common';
 import { App_Global } from './../../../core/global/app_global';
 import { clsAdvFilter } from './../../../core/models/clsAdvFilter';
 import { KatalogenApiService } from './../../../core/services/katalogenApi/katalogen-api.service';
 
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-// import { faEllipsisV} from '@fortawesome/free-solid-svg-icons';
 import { IpostSearch } from './../../../core/interface/ipost-search';
 import { clsPostData } from './../../../core/models/clsPostData';
-import { throwIfEmpty } from 'rxjs/operators';
-
 @Component({
   selector: 'app-mainpage',
   templateUrl: './mainpage.component.html',
@@ -28,7 +24,6 @@ export class MainpageComponent implements OnInit {
   postdataV2:IpostSearchV2 = new clsPostDataV2;
   chkKF:Array<boolean> = new Array;
   chkAge:Array<boolean> = new Array;
-
 
   DropdownMenu:boolean=false;
   p:number=1;
@@ -48,9 +43,7 @@ export class MainpageComponent implements OnInit {
   showNoPostToShow:boolean= false;
   result:boolean=true;
   searchResultParam:any=[];
-
   ShowSpinner:boolean=true;
-
   filterMetadata:any= { count: -1 };
 
   filterterm:clsAdvFilter=new clsAdvFilter
@@ -63,30 +56,21 @@ export class MainpageComponent implements OnInit {
     private wpApi:KatalogenApiService,
     private glb:App_Global,
     private cd:ChangeDetectorRef,
-    private location: LocationStrategy,
     private fb: FormBuilder,
     private _favo:ServerJson,
     private _router:Router
     ) {
       this.DropdownMenu = false;
       this.showPageMax= glb.showPageMax;
-      // history.pushState(null, null, window.location.href);
-      // // check if back or forward button is pressed.
-      // this.location.onPopState(() => {
-      //   history.pushState(null, null, window.location.href);
-      // });
+
   }
 
   ngOnInit(): void {
     this.chkKF[0] = true;
     this.chkAge[0] = true;
-    // this.debug= this.activatedRoute.snapshot.queryParams
     this.init_SearchForm();
     this.spinnerhandler(true);
     this.getpagedata();
-    // this.wpApi.currentPageDataHandler.subscribe(()=>{
-    //   // handles global events
-    // });
     this.DropdownMenu = true;
     this.glb.mainJsonKatalogItemListHandler.subscribe(()=>{
       this.getpagedata();
@@ -138,9 +122,6 @@ init_SearchForm(){
       this.mainPageData = this.glb.mainJsonKatalogItemList.kk_aj_admin.ansokningarlista.ansokningar;
       this.resultatantal = this.mainPageData.length;
       this.spinnerhandler(false);
-      // console.log(this.glb.showPageMax + " glb.pageSize: "+ this.glb.pageSize);
-      // this.mainCategoryname= this.glb.currentCategoryName;
-
     }
   }
 
@@ -149,8 +130,6 @@ init_SearchForm(){
     this.spinnerhandler(true);
     this.wpApi.getCoreKatalogList(srhdata).subscribe(Response => {
       this.glb.mainJsonKatalogItemList = Response;
-      // this.resultatantal = this.glb.mainJsonKatalogItemList.kk_aj_admin.ansokningarlista.ansokningarcount;
-
       this.mainPageData = this.glb.mainJsonKatalogItemList.kk_aj_admin.ansokningarlista.ansokningar;
       this.resultatantal = this.mainPageData.length;
       console.log("ny data är laddad: ", this.glb.mainJsonKatalogItemList);
@@ -177,15 +156,6 @@ init_SearchForm(){
       this.spinnerhandler(false);
     })
   }
-
-  // loadFreetextSearchData(srhdata:IpostSearch){
-  //   this.wpApi.getfreeSearchList(srhdata).subscribe(Response => {
-  //     this.glb.mainJsonKatalogItemList = Response
-  //     this.resultatantal = this.glb.mainJsonKatalogItemList.kk_aj_admin.ansokningarlista.ansokningarcount
-  //     this.mainPageData = this.glb.mainJsonKatalogItemList.kk_aj_admin.ansokningarlista.ansokningar
-  //     this.spinnerhandler(false);
-  //   })
-  // }
 
   noresult(){
      this.showNoPostToShow= false;
@@ -228,7 +198,6 @@ init_SearchForm(){
   }
 
   formCoreSearchClick(){
-
     this.postdataV2 = new clsPostDataV2
     this.postdataV2.arrTypID= this.fixarridValue(this.FgAdvSearch.get("arrTypID")?.value);
     this.postdataV2.freeTextSearch = this.currsearchstr;
@@ -238,7 +207,7 @@ init_SearchForm(){
     this.mainPageData=[];
     this.loadCoreSearchData(this.postdataV2);
     this.scroll('#AnchorSearchlist');
-this.valdaSearchParam();
+    this.valdaSearchParam();
     return false;
   }
 
@@ -254,8 +223,6 @@ this.valdaSearchParam();
 
   ageFormClick(ageformStartYear:number,ageformStopYear:number){
     this.currAgeid= ageformStopYear;
-    // this.postdataV2.startyear = String(ageformStartYear);
-    // this.postdataV2.stopyear = String(ageformStopYear);
   }
 
 //END  main searchform och textsearch
@@ -276,21 +243,11 @@ this.valdaSearchParam();
     return false;
   }
 
-
-  // setfilter(){
-  //   this.glb.filterform=  this.filterterm;
-  //   console.log("filter är: " + this.filterterm.kostnad);
-  // }
-
   autocompleteGetData(searchobj:IpostSearchV2){
     this.wpApi.getCoreAutoCompleteList(searchobj).subscribe(Response => {
       let tmpobj:any= Response
       this.autocompletedata = tmpobj.kk_aj_admin.ansokningarlista.ansokningar
-    })
-    // this.wpApi.getfreeSearchList(searchobj).subscribe(Response => {
-    //   let tmpobj:any= Response
-    //   this.autocompletedata = tmpobj.kk_aj_admin.ansokningarlista.ansokningar
-    // })
+    });
   }
 
   selectEvent(item: { ansokningtitle: string; }) {
@@ -300,29 +257,21 @@ this.valdaSearchParam();
     this.chkKF= this.resetFormArray(this.chkKF);
     console.log(item.ansokningtitle)
     this.formCoreSearchClick();
-    // this.formFreetextSearchClick()
   }
 
   onChangeSearch(val: string) {
     let tmpauto:IpostSearchV2 = new clsPostDataV2
     tmpauto.freeTextSearch= val;
-    // let tmpauto:IpostSearch = new clsPostData
-    // tmpauto.searchstr= val;
     this.currsearchstr = val;
     this.FgAdvSearch.get("freeTextSearch")?.patchValue(val);
     this.autocompleteGetData(tmpauto);
-    // this.formCoreSearchClick();
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.
   }
   onCleared(){
-    // this.FgAdvSearch.get("freeTextSearch")?.setValue('');
     this.currsearchstr ="";
    this.FgAdvSearch.get("freeTextSearch")?.setValue("");
 
     this.formCoreSearchClick();
     this.ngaoutoControll.close();
-    // this.init_SearchForm()
   }
 
   onFocused(){
@@ -354,11 +303,7 @@ this.valdaSearchParam();
     this.p = event;
   }
 
-
   goBack(): void {
-    // this._router.navigateByUrl('/lista/' + this.glb.currentCategoryID);
-    //  this.navBack.back();
-  // this.location.back();
   this._router.navigateByUrl('/');
   }
 
@@ -424,7 +369,6 @@ this.valdaSearchParam();
     return value;
   }
   spinnerhandler(val:boolean){
-    // console.log("hitta hit");
     this.glb.showspinner= val;
     this.ShowSpinner= this.glb.showspinner;
   }
@@ -449,7 +393,6 @@ this.valdaSearchParam();
         this.searchResultParam.push(this.getAgeName(item));
     });
     this.glb.setCurrentSearch(this.searchResultParam);
-    // sessionStorage.setItem('searchResultParam', this.searchResultParam);
   }
 
   handleSearchParam():void{

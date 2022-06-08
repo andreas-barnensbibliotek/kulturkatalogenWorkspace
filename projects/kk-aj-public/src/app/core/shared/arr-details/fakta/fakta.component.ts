@@ -18,8 +18,6 @@ export class FaktaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
-
   }
 
   ngOnChanges(): void {

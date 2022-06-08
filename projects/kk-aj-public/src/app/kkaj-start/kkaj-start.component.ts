@@ -1,4 +1,3 @@
-import { ServerJson } from './../core/models/ServerJson';
 import { IpostSearchV2 } from './../core/interface/ipost-search-v2';
 
 import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
@@ -92,7 +91,6 @@ loadPageData(arrid:string){
 
   }
   test(){
-
     this.scroll('gotoCat'+ 2);
   }
 }

@@ -13,13 +13,10 @@ export class MediaexempelComponent implements OnInit {
 testurl:any ;
 MediaExempelblockInit:any
   constructor(private _sanitizer: DomSanitizer) {
-
     this.updateVideoUrl("https://www.youtube.com/embed/wfWxdh-_k_4");
-
   }
 
   ngOnInit(): void {
-
     this.mediahandler(this.MediaExempelblock)
   }
 
@@ -44,14 +41,12 @@ MediaExempelblockInit:any
             this.videoUrl= MediaObj.MediaUrl;
             break;
     }
-    // console.log("rettext: "+ rettext)
     return this._sanitizer.bypassSecurityTrustHtml(rettext);
   }
 
 
   mediahandler2(MediaObj:any){
     let rettext = "";
-    // console.log("MediaObj.MediaTyp: "+MediaObj.MediaTyp)
     switch (MediaObj.MediaTyp) {
         case "1":
             rettext = '<img src="' + MediaObj.MediaUrl + '" />';
@@ -71,7 +66,6 @@ MediaExempelblockInit:any
             rettext = '<audio preload id="audio1" src="' + MediaObj.MediaUrl + '" controls="controls">Your browser does not support HTML5 Audio!</audio>'
             break;
     }
-    // console.log("rettext: "+ rettext)
     return this._sanitizer.bypassSecurityTrustHtml(rettext);
   }
 

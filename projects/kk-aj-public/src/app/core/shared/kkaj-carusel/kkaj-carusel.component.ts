@@ -29,22 +29,8 @@ export class KkajCaruselComponent implements OnInit {
     private _favo:ServerJson) { }
 
   ngOnInit(): void {
-    // this.getCaruselData(this.CaruselData)
-    this.getMaindata(this.CaruselData)
-
+    this.getMaindata(this.CaruselData);
   }
-
-
-  // getCaruselData(CData:IpostSearchV2){
-
-  //   this.wpApi.getCoreKatalogList(CData).subscribe(Response => {
-  //     this.mellan = Response;
-  //     this.mainCaruselData = this.mellan.kk_aj_admin.ansokningarlista
-  //     this.cd.detectChanges();
-  //   })
-  // }
-
-
 
   getMaindata(CData:IpostSearchV2){
     let storageItem: string = this.getSearchVal(CData);
@@ -59,9 +45,8 @@ export class KkajCaruselComponent implements OnInit {
         });
 
     }else{
-      let test:any = localStorage.getItem(storageItem);
-      this.mainCaruselData = JSON.parse(test);
-
+      let storeditem:any = localStorage.getItem(storageItem);
+      this.mainCaruselData = JSON.parse(storeditem);
     }
   }
 
@@ -109,26 +94,11 @@ export class KkajCaruselComponent implements OnInit {
   addToFavorit(itm:any):void{
     if(itm){
       this._favo.changefavo(itm);
-        // this.mainCaruselData= this._favo.getFavoritLista();
     };
   }
 
   setFavoClass(arrid:number):boolean{
-
-    return this._favo.setFavoClass(arrid);;
-    // return true;
+    return this._favo.setFavoClass(arrid);
    }
-
-  //  setFavoClass(arrid:number):boolean{
-  //   let i = 0;
-  //   'let currentobj:Ifavoobj = this.localfavolist.find((e:Ifavoobj) => e.arrid == arrid) as Ifavoobj;
-  //   let currentobj:any = this.localfavolist.indexOf(e.arrid); ((e:Ifavoobj) => e.arrid == arrid) as Ifavoobj;
-  //   console.log(i += 1);
-  //   let retobj: boolean= false;
-  //   if (currentobj){
-  //     retobj = currentobj.isfavo;
-  //   }
-  //   return retobj;
-  // }
 
 }

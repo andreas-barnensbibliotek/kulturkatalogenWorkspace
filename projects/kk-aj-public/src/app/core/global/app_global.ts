@@ -38,7 +38,7 @@ export class App_Global {
   showspinner:boolean= true;
   testtotal:any;
   currentversion:string="Version: 0.9.5 " + new Date().toISOString().slice(0, 10);
-
+  private filterstartlist:any =[];
 
   private _mainJsonKatalogItemListHandler: Subject<void> = new Subject<void>();
   get mainJsonKatalogItemListHandler(){
@@ -50,68 +50,6 @@ export class App_Global {
       this.showMainpage();
   }
 
-  // getskrivbokenPublicList(){
-  //     return this.mainJsonKatalogItemList.Skrivbokenlist;
-  // }
-
-  // public getTextBySkrivid(skrivid:number){
-  //   let usrlang:any=""
-
-  //   if(skrivid){
-  //      usrlang = this.getskrivbokenPublicList().find((i: { SkrivID: number; }) => i.SkrivID === skrivid);
-  //   }
-
-  //     return usrlang;
-  //   }
-
-  // public getCategoryName(id:number){
-  //     let nameobj = this.categorynameList().find(i => i.id === id);
-  //     this.currentCategoryName= nameobj?.name;
-  //     return nameobj;
-  // }
-  // public getCategorysearch(search:string){
-  //     let arr:any = [];
-  //     arr.push(this.getskrivbokenPublicList().filter(function (el: { Title: string; }) {
-  //          if(el.Title.includes(search) || el.Title.startsWith(search)){
-  //             return el;
-  //         }
-  //       }))
-  //       return arr[0];
-
-  // }
-
-  // public categorynameList() {
-  //     return [
-  //         { id: 0, name: 'Alla' },
-  //         { id: 9999, name: 'Laddar' },
-  //         { id: 3, name: 'Berättelse'},
-  //         { id: 8, name: 'Deckare'},
-  //         { id: 4, name: 'Dikt'},
-  //         { id: 9, name: 'Djur'},
-  //         { id: 10, name: 'Fantasy'},
-  //         { id: 16, name: 'Humor' },
-  //         { id: 12, name: 'Kärlek'},
-  //         { id: 21, name: 'Hästar'},
-  //         { id: 13, name: 'Ramsa'},
-  //         { id: 11, name: 'Skräck'},
-  //         { id: 15, name: 'Sorgligt'},
-  //         { id: 17, name: 'Spänning'},
-  //         { id: 18, name: 'Spöken'},
-  //         { id: 5, name: 'Tankar' },
-  //         { id: 19, name: 'Äventyr'},
-  //         { id: 6, name: 'Övrigt'}
-  //     ];
-  // }
-
-  // filterlodash(){
-  //   let catlist = this.categorynameList();
-  //   // let svar = _.filter(catlist, ['name', 'Djur']);
-  //   let svar = filter(catlist, (itm: { id: number; })=>{ return itm.id >10});
-  //   svar = orderBy(svar, ['name'], ['asc']);
-
-  //   let object = assign({}, svar);
-  //   return object
-  // }
   currSearch:Array<any>=[];
   setCurrentSearch(val:Array<any>){
     this.currSearch= val;
@@ -133,23 +71,13 @@ export class App_Global {
     this.mainJsonKatalogItemListHandler.next();
   }
 
-  private filterstartlist:any =[];
-
   Advancedfilter(cmd:string,jsonlist:any,val:any){
-
-    // let svar = _.filter(catlist, ['name', 'Djur']);
-    // let svar = _.filter(mainArrlist, (itm)=>{ return itm.id >10});
-  //  if(this.isEmptyObj(this.filterstartlist)){
-  //   this.filterstartlist = this.mainJsonKatalogItemList;
-  //  }
-
-   if(cmd =='reset'){
+    if(cmd =='reset'){
       return jsonlist
     }else{
       let mainArrlist = jsonlist;
       let listselection = get(mainArrlist, 'kk_aj_admin.ansokningarlista.ansokningar')
-       return mainArrlist.kk_aj_admin.ansokningarlista.ansokningar= filter(listselection, (itm: { ansokningFilterfakta: { Bokningsbar: any; }; })=>{ return itm.ansokningFilterfakta.Bokningsbar ==val})
-
+       return mainArrlist.kk_aj_admin.ansokningarlista.ansokningar= filter(listselection, (itm: { ansokningFilterfakta: { Bokningsbar: any; }; })=>{ return itm.ansokningFilterfakta.Bokningsbar ==val});
     }
   }
   resetFilter(){
@@ -158,39 +86,31 @@ export class App_Global {
       this.filterstartlist=[];
     }
   }
-
   showMainpage(){
       this.hidepages();
       this.blnMainpage= true;
   }
-
   showDetailpage(){
       this.hidepages();
       this.blnDetailpage= true;
   }
-
   hidepages(){
       this.blnMainpage= false;
       this.blnDetailpage= false;
   }
 
-  // catstylehandler(catid:any){
-  //     let styleobj = this.catstyleobj.catStyleConfig().find(i => i.catid === catid);
-  //     return styleobj;
-
-  // }
   public isEmptyObj = (obj:any) => {
-      return obj === null || undefined
-          ? true
-          : (() => {
-              for (const prop in obj) {
-                if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-                  return false;
-                }
-              }
-              return true;
-            })();
-      };
+    return obj === null || undefined
+      ? true
+      : (() => {
+          for (const prop in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+              return false;
+            }
+          }
+          return true;
+        })();
+  };
 
   public deleteAllCookies() {
     var cookies = document.cookie.split(";");
@@ -209,7 +129,6 @@ export class App_Global {
     let name:string = "cookieconsent_status";
     const value = "; " + document.cookie;
     const parts = value.split("; " + name + "=");
-
     if (parts.length == 2) {
         val= parts!.pop()!.split(";").shift();
     }
@@ -244,7 +163,6 @@ export class App_Global {
       return error;
     })
   }
-
 }
 export interface BooleanFn {
   (): boolean;

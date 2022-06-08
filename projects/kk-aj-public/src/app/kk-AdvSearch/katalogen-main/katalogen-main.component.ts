@@ -14,13 +14,6 @@ export class KatalogenMainComponent implements OnInit {
 debug:any=""
 
   constructor(public glb:App_Global, private location: LocationStrategy, ){
-    // history.pushState(null, '', window.location.href);
-    // // check if back or forward button is pressed.
-    // this.location.onPopState(() => {
-    //     history.pushState(null, '', window.location.href);
-
-    // });
-
   }
   ngOnInit() {
   }
