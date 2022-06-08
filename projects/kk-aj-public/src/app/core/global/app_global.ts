@@ -37,7 +37,7 @@ export class App_Global {
   filterform:any;
   showspinner:boolean= true;
   testtotal:any;
-  currentversion:string="Version: 0.6.0 " + new Date().toISOString().slice(0, 10);
+  currentversion:string="Version: 0.9.5 " + new Date().toISOString().slice(0, 10);
 
 
   private _mainJsonKatalogItemListHandler: Subject<void> = new Subject<void>();
