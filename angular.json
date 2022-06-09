@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kkAjPublic",
+            "outputPath": "dist/kkAjPublic/browser",
             "index": "projects/kk-aj-public/src/index.html",
             "main": "projects/kk-aj-public/src/main.ts",
             "polyfills": "projects/kk-aj-public/src/polyfills.ts",
@@ -108,7 +108,8 @@
             "tsConfig": [
               "projects/kk-aj-public/tsconfig.app.json",
               "projects/kk-aj-public/tsconfig.spec.json",
-              "projects/kk-aj-public/e2e/tsconfig.json"
+              "projects/kk-aj-public/e2e/tsconfig.json",
+              "projects/kk-aj-public/tsconfig.server.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -125,6 +126,53 @@
             "production": {
               "devServerTarget": "kkAjPublic:serve:production"
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/kkAjPublic/server",
+            "main": "projects/kk-aj-public/server.ts",
+            "tsConfig": "projects/kk-aj-public/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "projects/kk-aj-public/src/environments/environment.ts",
+                  "with": "projects/kk-aj-public/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "kkAjPublic:build",
+            "serverTarget": "kkAjPublic:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "kkAjPublic:build:production",
+              "serverTarget": "kkAjPublic:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "kkAjPublic:build:production",
+            "serverTarget": "kkAjPublic:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }

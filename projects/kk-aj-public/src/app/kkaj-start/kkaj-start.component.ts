@@ -1,9 +1,8 @@
 import { IpostSearchV2 } from './../core/interface/ipost-search-v2';
 
 import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-api.service';
-import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { App_Global } from './../core/global/app_global';
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 
@@ -25,12 +24,15 @@ export class KkajStartComponent implements OnInit {
     private titleService: Title,
     private cd:ChangeDetectorRef,
     private vpScroller: ViewportScroller,
-    private router: Router,
+    private metaService: Meta,
     private wpApi:KatalogenApiService
     ) { }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.gbl.HeadTitleMapper("Start"));
+    this.metaService.updateTag({
+      name: "description" , content: "Detta är ändrat från servern :)"
+    })
     this.loadPageData("Start");
     // this.showList[0]=4;
     // this.showList.push(2);

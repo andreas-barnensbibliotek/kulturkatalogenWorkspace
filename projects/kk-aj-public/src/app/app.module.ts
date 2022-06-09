@@ -31,7 +31,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { KkResultsComponent } from './kk-results/kk-results.component';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { ArrDetailsComponent } from './core/shared/arr-details/arr-details.component';
@@ -122,7 +122,7 @@ const cookieConfig:NgcCookieConsentConfig = {
     AjCarouselBlockComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     // KkAjPublicFormsModule,
     AjApiServicesModule,

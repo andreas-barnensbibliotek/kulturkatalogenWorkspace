@@ -125,16 +125,16 @@ export class App_Global {
 
   public showCookies(){
     let retobj:boolean= true;
-    let val:any;
-    let name:string = "cookieconsent_status";
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length == 2) {
-        val= parts!.pop()!.split(";").shift();
-    }
-    if(val == "deny"){
-      retobj= false;
-    }
+    // let val:any;
+    // let name:string = "cookieconsent_status";
+    // const value = "; " + document.cookie;
+    // const parts = value.split("; " + name + "=");
+    // if (parts.length == 2) {
+    //     val= parts!.pop()!.split(";").shift();
+    // }
+    // if(val == "deny"){
+    //   retobj= false;
+    // }
     return retobj;
   }
 
