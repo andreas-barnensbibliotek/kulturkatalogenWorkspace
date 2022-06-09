@@ -4,7 +4,7 @@
       <div class="container-grid container-1">
         <div class="container-grid container-2">
           <div class="responsive-video video-platform-1 youtube text-center" >
-            <img
+            <img *ngIf="detailpage[0]?.ansokningMediaImage.MediaUrl"
                 class="granska_pressentationsbild"
                 [src]="'https://www.kulturkatalogenvast.org/Portals/0/kulturkatalogenArrImages/'
                 + detailpage[0]?.ansokningMediaImage.MediaUrl"

@@ -56,7 +56,7 @@ loadPageData(arrid:string){
 
       setTimeout(() => {
         this.scroll('gotoCat'+ this.gbl.currentCategoryID);
-              console.log("tillbaka från detaljvyn scroll "+ this.gbl.currentCategoryID)
+              // console.log("tillbaka från detaljvyn scroll "+ this.gbl.currentCategoryID)
               this.gbl.currentCategoryID=0;
       }, 500);
 
@@ -67,7 +67,7 @@ loadPageData(arrid:string){
 
 
   scroll(gotoarrId: string) {
-    console.log("scroll "+ gotoarrId)
+    // console.log("scroll "+ gotoarrId)
     // this.cd.detectChanges();
    this.vpScroller.scrollToAnchor(gotoarrId);
       // document.querySelector(gotoarrId)?.scrollIntoView({behavior: 'smooth'});
