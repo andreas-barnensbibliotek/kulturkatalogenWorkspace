@@ -19,6 +19,7 @@ export class KkajStartComponent implements OnInit {
   mainPageData?:any=[];
   // showList:number[] =[0];
   pagejson?:any=[];
+  spinner:boolean= true;
 
   constructor(private gbl:App_Global,
     private titleService: Title,
@@ -45,6 +46,7 @@ loadPageData(arrid:string){
   this.wpApi.getPageByName("start").subscribe(Response => {
 
     this.pagejson = Response;
+    this.spinner = false;
       this.cd.detectChanges();
 
   })

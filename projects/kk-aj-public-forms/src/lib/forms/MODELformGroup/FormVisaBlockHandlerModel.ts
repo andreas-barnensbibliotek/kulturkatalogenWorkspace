@@ -3,8 +3,8 @@ import {Injectable } from "@angular/core";
 @Injectable() // Decorator that marks a class as available to be provided and injected as a dependency.
 export class FormVisaBlockHandlerModel {
 
-  blnSteg1:boolean=false;
-  blnSteg2:boolean=true;
+  blnSteg1:boolean=true;
+  blnSteg2:boolean=false;
   blnSteg3:boolean=false;
   blnSteg4:boolean=false;
 

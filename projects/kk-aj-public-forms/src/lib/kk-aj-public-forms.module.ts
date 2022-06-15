@@ -45,6 +45,8 @@ import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 import { CommonModule } from '@angular/common';
 import { ArrFormComponent } from './forms/arr-form/arr-form.component';
 import { UtstallLokalComponent } from './forms/Arrangemangstyp/utstallning/utstall-lokal/utstall-lokal.component';
+import { ArrStartComponent } from './forms/arr-start/arr-start.component';
+
 
 const routes: Routes = [
 
@@ -79,7 +81,8 @@ const routes: Routes = [
     SafeHtmlPipe,
     ArrFormComponent,
     UtstallFaktaComponent,
-    UtstallLokalComponent
+    UtstallLokalComponent,
+    ArrStartComponent
 
   ],
   imports: [

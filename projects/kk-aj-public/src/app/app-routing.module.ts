@@ -1,3 +1,4 @@
+import { MainArrFormComponent } from './kk-Forms/main-arr-form/main-arr-form.component';
 import { KkajStartComponent } from './kkaj-start/kkaj-start.component';
 import { MainpageComponent } from './kk-AdvSearch/mainpage/mainpage/mainpage.component';
 import { KkResultsComponent } from './kk-results/kk-results.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
     path: 'arrform',
     loadChildren: ()=> import('kk-aj-public-forms').then(m=> m.KkAjPublicFormsModule)
   },
+  { path: 'ansok', component: MainArrFormComponent},
   { path: 'advsearch',component: MainpageComponent, },
   { path: 'favoriter', component: KkResultsComponent },
   { path: 'lista' ,
@@ -38,9 +40,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

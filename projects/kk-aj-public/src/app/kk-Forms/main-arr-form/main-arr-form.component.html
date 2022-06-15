@@ -1,1 +1,386 @@
-<!-- <aj-kkAjPublicForms></aj-kkAjPublicForms> -->
+
+<div *ngFor="let itm of pagejson.sections; let i = index; ">
+  <!-- Foala calltoaction 14-->
+  <!-- <ng-container *ngIf="itm.typ == 'Bild1Text'">
+    <section  class="fdb-block py-0  gen-section-padding-2" [ngClass]="itm.content[0].metaClass == 'Darker' ? 'aj-section-bg-color-darker' : 'aj-section-bg-color-dark'">
+      <div class="container bg-r py-5 my-5" [ngStyle]="{ 'background-image' : (itm.content[0].bild1Url) ? 'url(' + itm.content[0].bild1Url + ')' : '' }">
+        <div class="row py-5">
+          <div class="col-12 col-sm-10 col-md-8 col-lg-6 text-left">
+            <h1>{{itm.content[0].rubrik}}</h1>
+            <div [innerHtml]="itm.content[0].content" class="lead">
+            </div>
+            <p *ngIf="itm.bild2Url" class="mt-4">
+              <a *ngIf="itm.content[0].linkUrl" [routerLink]="itm.content[0].linkUrl" title="{{itm.content[0].linkText}}" class="gen-button gen-button-flat">
+                <span class="text">{{itm.content[0].linkText}}</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </ng-container> -->
+
+    <ng-container *ngIf="itm.typ == 'Bild1Text'">
+      <!-- Call to Action 12 -->
+      <section class="fdb-block py-0  gen-section-padding-2" [ngClass]="itm.content[0].metaClass == 'Darker' ? 'aj-section-bg-color-darker' : 'aj-section-bg-color-dark'">
+        <div class="container mb-5">
+
+          <div class="row align-items-center pt-2 pt-lg-5">
+            <div class="col-12 col-md-6 col-lg-6">
+              <div class="topblockContainer blockcolor1 " >
+              <h2>{{itm.content[0].rubrik}}</h2>
+              <div [innerHtml]="itm.content[0].content">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+              </div>
+            </div>
+            </div>
+
+            <div class="col-12 col-md-6 m-auto m-md-0 ml-md-auto ">
+              <img alt="{{itm.content[0].bild1Text}}" class="img-fluid" [src]="itm.content[0].bild1Url">
+            </div>
+          </div>
+        </div>
+      </section>
+    </ng-container>
+  </div>
+
+
+
+
+  <!-- Feature 10 -->
+  <section class="fdb-block gen-section-padding-2 aj-section-bg-color-dark">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12">
+          <h2>Välj konstform</h2>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="d-none d-lg-block col-lg-1"></div>
+        <div class="col-12 col-lg-10">
+      <div class="row text-center justify-content-center mt-5  m-6">
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-sm-0">
+          <a title="Workshop/ Projekt" routerLink="/arrform/1">
+            <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+            <h3>Workshop/ Projekt</h3>
+            <p>Anskökningsformuläret är öppet</p>
+            </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-sm-0">
+          <a title="Workshop/ Projekt" href="" disabled>
+            <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+            <h3>Författarbesök</h3>
+            <p>Anskökningsformuläret är stängt <br> Öppnar 1 februari - 28 Mars
+            </p>
+          </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+          <a title="Workshop/ Projekt" href="">
+            <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+            <h3>Feature Three</h3>
+            <p>A small river named Duden flows by their place and supplies it</p>
+          </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Feature Four</h3>
+          <p>Duden flows by their place far far away, behind the word mountains.</p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-sm-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Workshop/ Projekt</h3>
+          <p>Anskökningsformuläret är öppet</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-sm-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+          <h3>Författarbesök</h3>
+          <p>Anskökningsformuläret är öppet</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Feature Three</h3>
+          <p>A small river named Duden flows by their place and supplies it</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Feature Four</h3>
+          <p>Duden flows by their place far far away, behind the word mountains.</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-sm-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Feature Two</h3>
+          <p>Separated they live in Bookmarksgrove right at the coast</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Feature Three</h3>
+          <p>A small river named Duden flows by their place and supplies it</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Feature Four</h3>
+          <p>Duden flows by their place far far away, behind the word mountains.</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+          <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+          <h3>Feature Four</h3>
+          <p>Duden flows by their place far far away, behind the word mountains.</p>
+        </div>
+      </div>
+      <div class="d-none d-lg-block col-lg-1"></div></div> </div>
+    </div>
+  </section>
+
+ <section class="fdb-block gen-section-padding-2 aj-section-bg-color-darker">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12">
+          <h2>Välj konstform</h2>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="d-none d-lg-block col-lg-1"></div>
+        <div class="col-12 col-lg-10">
+
+      <div class="row text-left pt-3 pt-sm-4 pt-md-5">
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+           <a href="">
+             <div class="row">
+              <div class="col-3 ">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Workshop/ Projekt</h3>
+                <p>Anskökningsformuläret är öppet</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Författarbesök</h3>
+                <p>Anskökningsformuläret är stängt <br> Öppnar 1 februari - 28 Mars
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/musik_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Musik</h3>
+                <p>Anskökningsformuläret är öppet</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3 ">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/dans_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Dans</h3>
+                <p>Anskökningsformuläret är öppet</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Five</h3>
+                <p>Separated they live in Bookmarksgrove right at the coast</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3 ">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/musik_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Six</h3>
+                <p>On her way she met a copy. The copy warned the Little Blind Text.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Four</h3>
+                <p>Duden flows by their place far far away, behind the word mountains.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+            <div class="col-3">
+              <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+            </div>
+            <div class="col-9">
+              <h3>Feature Five</h3>
+              <p>Separated they live in Bookmarksgrove right at the coast</p>
+            </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Five</h3>
+                <p>Separated they live in Bookmarksgrove right at the coast</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3 ">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/musik_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Six</h3>
+                <p>On her way she met a copy. The copy warned the Little Blind Text.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Four</h3>
+                <p>Duden flows by their place far far away, behind the word mountains.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+            <div class="col-3">
+              <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+            </div>
+            <div class="col-9">
+              <h3>Feature Five</h3>
+              <p>Separated they live in Bookmarksgrove right at the coast</p>
+            </div>
+            </div>
+          </a>
+        </div>
+
+
+        <!-- <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3 text-center">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/musik_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Six</h3>
+                <p>On her way she met a copy. The copy warned the Little Blind Text.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3 text-center">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/workshops_projekt_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Four</h3>
+                <p>Duden flows by their place far far away, behind the word mountains.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3 text-center">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/musik_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Five</h3>
+                <p>Separated they live in Bookmarksgrove right at the coast</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-md-4 pt-3 pt-sm-4 pt-md-0">
+          <a href="">
+            <div class="row">
+              <div class="col-3 text-center">
+                <img alt="image" class="fdb-icon" src="./../../../assets/img/forfattarbesok_invert.png">
+              </div>
+              <div class="col-9">
+                <h3>Feature Six</h3>
+                <p>On her way she met a copy. The copy warned the Little Blind Text.</p>
+              </div>
+            </div>
+          </a>
+        </div> -->
+
+      </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-1"></div>
+      </div>
+    </div>
+  </section>

@@ -33,7 +33,32 @@
       </div>
     </div>
   </ng-container>
+
   <ng-container *ngIf="_blockMdl.blnSteg1">
+
+    <aj-arr-form formGroupName="ArrForm" (ArrDataLoaded)="ArrDataLoaded($event)" ></aj-arr-form>
+
+    <ng-container *ngIf="isArrDataLoaded">
+     <div class="row">
+      <div class="col-12 col-md-2">
+        <h2></h2>
+      </div>
+      <div class="col-12 col-md-10">
+        <app-val-arrangemangs-typ  formGroupName="ArrForm"></app-val-arrangemangs-typ>
+          <div class="row" >
+            <aj-besoksmal *ngIf="visaFaktablock[7]" formGroupName="ArrForm" ></aj-besoksmal>
+            <aj-forestallning *ngIf="visaFaktablock[1]" formGroupName="ArrForm" ></aj-forestallning>
+
+             <aj-skolbio *ngIf="visaFaktablock[8]" formGroupName="ArrForm" ></aj-skolbio>
+            <!--<aj-utstallning *ngIf="visaFaktablock[2]" formGroupName="ArrForm" ></aj-utstallning>
+            <aj-workshop *ngIf="visaFaktablock[4]" formGroupName="ArrForm" ></aj-workshop> -->
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </ng-container>
+  <ng-container *ngIf="_blockMdl.blnSteg2">
     <!-- Steg 1 block -->
     <div class="row">
       <div class="col-12 col-md-2">
@@ -71,30 +96,7 @@
       </div>
     </div>
   </ng-container>
-  <ng-container *ngIf="_blockMdl.blnSteg2">
 
-    <aj-arr-form formGroupName="ArrForm" (ArrDataLoaded)="ArrDataLoaded($event)" ></aj-arr-form>
-
-    <ng-container *ngIf="isArrDataLoaded">
-     <div class="row">
-      <div class="col-12 col-md-2">
-        <h2></h2>
-      </div>
-      <div class="col-12 col-md-10">
-        <app-val-arrangemangs-typ  formGroupName="ArrForm"></app-val-arrangemangs-typ>
-          <div class="row" >
-            <aj-besoksmal *ngIf="visaFaktablock[7]" formGroupName="ArrForm" ></aj-besoksmal>
-            <aj-forestallning *ngIf="visaFaktablock[1]" formGroupName="ArrForm" ></aj-forestallning>
-
-             <aj-skolbio *ngIf="visaFaktablock[8]" formGroupName="ArrForm" ></aj-skolbio>
-            <!--<aj-utstallning *ngIf="visaFaktablock[2]" formGroupName="ArrForm" ></aj-utstallning>
-            <aj-workshop *ngIf="visaFaktablock[4]" formGroupName="ArrForm" ></aj-workshop> -->
-          </div>
-        </div>
-      </div>
-    </ng-container>
-
-  </ng-container>
 </ng-container>
 
 
