@@ -3,8 +3,9 @@ import { getTidigareModule } from './../MODELformGroup/getTidigareModule';
 import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
 import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHandlerModel';
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
-import { FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormBuilder, FormGroupDirective, FormArray } from '@angular/forms';
 import { Component, OnInit, ChangeDetectorRef, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'aj-arr-form',
@@ -16,9 +17,9 @@ export class ArrFormComponent implements OnInit, OnChanges {
   @Output() ArrDataLoaded=new EventEmitter();
 
   ArrForm!:FormGroup;
+  ArrTypNext:boolean=false;
   showArr:boolean= false;
-
-
+  valtKonstformID:any= 0;
   constructor(
     private rootformGroup: FormGroupDirective,
     public fb:FormBuilder,
@@ -27,11 +28,16 @@ export class ArrFormComponent implements OnInit, OnChanges {
     public _faktaMdl: FormFaktaModel,
     public _TidigareMdl: getTidigareModule,
     private ref: ChangeDetectorRef,
-    private _frmGlb:formGlobalsModel
+    private _frmGlb:formGlobalsModel,
+    private _ActivatedRoute:ActivatedRoute,
+
     ) { }
 
   ngOnInit(): void {
-
+    this._ActivatedRoute.paramMap.subscribe(prams =>{
+      this.valtKonstformID = prams.get('id');
+      console.log("id: " + this.valtKonstformID);
+    });
     this.initArrform();
 
   }
@@ -47,13 +53,17 @@ export class ArrFormComponent implements OnInit, OnChanges {
   // get Arrangemangtyp(){
   //   return this.ArrForm.get('Arrangemang')!.get('Arrangemangtyp');
   // }
-
+testarr:Array<number>= [];
   setFaktalist(val:number){
     // this.rootformGroup.control.get('Faktalist')?.setValue(this._faktaMdl.genFGEmpty)
     this.ArrForm.removeControl('Arrangemang');
     this.ArrForm.addControl('Arrangemang', this.fb.group(this._arrMdl.genFG));
     this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang')?.get('Arrangemangtyp')?.patchValue(val)
 
+    let pushkonstformid= this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang')?.get('Konstform');
+    (pushkonstformid as FormArray).clear();
+    (pushkonstformid as FormArray).push(this.fb.control(this.valtKonstformID));
+    this.rootformGroup.control.get(this.formGroupName)?.get('Arrangemang')?.get('Konstform2')?.patchValue(this.valtKonstformID);
 
      this.ArrForm.removeControl("Faktalist");
     if(val==this._frmGlb.faktaTypId.forestallning){
@@ -72,8 +82,11 @@ export class ArrFormComponent implements OnInit, OnChanges {
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGSkolbioValidator));
     }
 
-    this.showArr= true;
+    // this.showArr= true;
     this.IsArrLoaded(val);
+    if(val>0){
+      this.ArrTypNext = true;
+    }
   }
 
   IsArrLoaded(arrtypid:number){
@@ -153,8 +166,11 @@ export class ArrFormComponent implements OnInit, OnChanges {
     //   this.ArrForm.removeControl('Arrangemang');
     //   this.ArrForm.addControl('Arrangemang', this.fb.group(this._arrMdl.genFG),);
     // }
-
+    if(val==0){
+     console.log("navigate back to ansök till kulturkatalogen"); //navigate back to ansök till kulturkatalogen
+    }else{
     this._blockMdl.stegBlock(val)
+    };
     return false;
   }
 

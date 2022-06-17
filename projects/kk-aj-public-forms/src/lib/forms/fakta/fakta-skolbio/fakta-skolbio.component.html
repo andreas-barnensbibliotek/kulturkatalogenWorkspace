@@ -1,0 +1,24 @@
+<ng-container [formGroup]="FaktaFrmGrp">
+  <div class="col-12 col-lg-8">
+    <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
+      <div class="form-group mt-5">
+
+          <legend>Fakta</legend>
+
+          <label for="arr_laromedel">Lärarhandledning (ej obligatorisk) <a (click)="showHideinfo(6)" class="info" rel="arr_laromedel_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <div *ngIf="showinfo[6]" class="arr_laromedel_infotext infotext">Om lärarhandledning finns skriv in länken till den här.</div>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <span class="input-group-text">http://</span>
+            </div>
+            <input formControlName="Lararhandledning" id="arr_laromedel" type="text" class="form-control fix-rounded-right" >
+            <div class="invalid-feedback">
+              Välj länk
+            </div>
+          </div>
+
+      </div>
+  </div>
+
+</ng-container>
+

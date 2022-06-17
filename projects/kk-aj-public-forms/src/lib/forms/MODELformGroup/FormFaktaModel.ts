@@ -52,7 +52,7 @@ export class FormFaktaModel {
     PedagogisVerksamhet: null,
     Marknadsforing: null,
     Yta: null,
-    Exempel:null // this.fb.array([])
+    Exempel:this.fb.array([])
     // Exempel:this.fb.group(this._exempelMdl.genFG)
   }
 
@@ -83,7 +83,7 @@ export class FormFaktaModel {
     Speltid: ['', Validators.required],
     OvrigaKostnader: [''],
     Ovrigt: [''],
-    // Exempel: this.fb.array([])
+    Exempel: this.fb.array([])
   }
 
   public genFGEmpty:any  =
@@ -131,7 +131,7 @@ export class FormFaktaModel {
     PedagogisVerksamhet:"",
     Marknadsforing:"",
     Yta:"",
-    Exempel:"" // this.fb.array([])
+    Exempel: this.fb.array([])
     // Exempel:this.fb.group(this._exempelMdl.genFG)
   }
 
@@ -180,7 +180,7 @@ export class FormFaktaModel {
     PedagogisVerksamhet: null,
     Marknadsforing: null,
     Yta: null,
-    Exempel:null // this.fb.array([])
+    Exempel: this.fb.array([])
     // Exempel:this.fb.group(this._exempelMdl.genFG)
   }
 

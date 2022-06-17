@@ -82,8 +82,8 @@ export class SmakprovComponent implements OnInit {
   }
 
   addExempletoBaseForm(){
-// console.log(this.Exempel);
-// console.log(this.exempelFrmGrp.value);
+console.log(this.Exempel);
+console.log(this.exempelFrmGrp.value);
     //this.exempelFrmGrp.get('MediaUrl')!.value.replace(/(^\w+:|^)\/\//, '');
     this.Exempel.push(this.exempelFrmGrp);
     this.VisaExempelRubrik = true;

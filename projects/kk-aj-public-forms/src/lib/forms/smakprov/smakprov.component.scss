@@ -6,3 +6,13 @@
     color:#000;
   }
 }
+.nav-pills .nav-link {
+  background-color: transparent!important;
+  border:1px solid #666!important;
+  color: #fff;
+}
+.nav-pills .nav-link.active {
+  color: #fff!important;
+  background-color: #647c70!important;
+  border-color: #7b9086!important;
+}

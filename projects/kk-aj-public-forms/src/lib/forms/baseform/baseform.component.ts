@@ -5,11 +5,12 @@ import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
 import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHandlerModel';
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validator } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, RequiredValidator, Validator, Validators } from '@angular/forms';
 import { FileQueueObject, ImageUploaderOptions } from 'ngx-image-uploader-next';
 import { formUtovareModel } from '../MODELformGroup/formUtovareModel';
 import { formKontaktModel } from '../MODELformGroup/formKontaktModel';
 import { KontaktFormValidator } from '../../shared/KontaktFormGroup-Validator';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-baseform',
@@ -22,7 +23,6 @@ export class BaseformComponent implements OnInit, OnChanges {
   BaseRootForm!:FormGroup;
   // ArrForm!:FormGroup;
   isArrDataLoaded:boolean= false;
-
   visaFaktablock:any=[];
 
   constructor(
@@ -38,6 +38,7 @@ export class BaseformComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
+
     this.initFromGroupdata();
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -56,7 +57,9 @@ export class BaseformComponent implements OnInit, OnChanges {
   onUpload(file: FileQueueObject) {
     console.log("detta:" + file.response);
   }
-
+get arrformobj(){
+  return this.BaseRootForm.get("Kontakt");
+}
   gettidigare(){
     //hämta utövardatat från apit och patcha utövarlistan
     // this.BaseRootForm.patchValue({Utovarelist:this._utovareMdl.getUtovareData()});
@@ -84,9 +87,11 @@ export class BaseformComponent implements OnInit, OnChanges {
     console.log("arrtypid: " +obj.arrtypid + " isloaded: " +obj.isloaded);
     this.isArrDataLoaded =obj.isloaded;
     this.showFaktaBlock(obj.arrtypid);
+
   }
 
   ShowSteg(val:number){
+
       this._blockMdl.stegBlock(val)
     return false;
   }

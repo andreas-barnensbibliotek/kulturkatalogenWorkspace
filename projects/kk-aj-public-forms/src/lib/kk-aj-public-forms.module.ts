@@ -46,12 +46,22 @@ import { CommonModule } from '@angular/common';
 import { ArrFormComponent } from './forms/arr-form/arr-form.component';
 import { UtstallLokalComponent } from './forms/Arrangemangstyp/utstallning/utstall-lokal/utstall-lokal.component';
 import { ArrStartComponent } from './forms/arr-start/arr-start.component';
-
+import { DeltagarepublikSkolbioComponent } from './forms/deltagarepublik/deltagarepublik-skolbio/deltagarepublik-skolbio.component';
+import { LokalSkolbioComponent } from './forms/lokal/lokal-skolbio/lokal-skolbio.component';
+import { FaktaSkolbioComponent } from './forms/fakta/fakta-skolbio/fakta-skolbio.component';
+import { KostnaderSkolbioComponent } from './forms/kostnader/kostnader-skolbio/kostnader-skolbio.component';
+import { DeltagarepublikBesoksmalComponent } from './forms/deltagarepublik/deltagarepublik-besoksmal/deltagarepublik-besoksmal.component';
+import { KostnaderBesoksmalComponent } from './forms/kostnader/kostnader-besoksmal/kostnader-besoksmal.component';
 
 const routes: Routes = [
-
-  { path: '',
-  component: KkAjPublicFormsComponent, },
+  { path: '' ,
+    children: [
+      {path: ':id', component: KkAjPublicFormsComponent},
+      {path: '', component: KkAjPublicFormsComponent},
+    ]
+  },
+  // { path: '',
+  // component: KkAjPublicFormsComponent, },
 ];
 
 @NgModule({
@@ -82,8 +92,13 @@ const routes: Routes = [
     ArrFormComponent,
     UtstallFaktaComponent,
     UtstallLokalComponent,
-    ArrStartComponent
-
+    ArrStartComponent,
+    DeltagarepublikSkolbioComponent,
+    LokalSkolbioComponent,
+    FaktaSkolbioComponent,
+    KostnaderSkolbioComponent,
+    DeltagarepublikBesoksmalComponent,
+    KostnaderBesoksmalComponent
   ],
   imports: [
     CommonModule,

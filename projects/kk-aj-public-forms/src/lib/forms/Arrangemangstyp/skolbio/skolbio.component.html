@@ -1,94 +1,29 @@
 <ng-container [formGroup]="SkolbioFrmGrp">
   {{SkolbioFrmGrp.value | json}}
+
+  <aj-fakta-skolbio formGroupName="Faktalist"></aj-fakta-skolbio>
   <div class="col-12 col-lg-8">
-
-      <div class="form-group mt-5">
-          <legend>Fakta</legend>
-          <label for="arr_laromedel">Lärarhandledning (ej obligatorisk) <a (click)="showHideinfo(6)" class="info" rel="arr_laromedel_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-          <div *ngIf="showinfo[6]" class="arr_laromedel_infotext infotext">Om lärarhandledning finns skriv in länken till den här.</div>
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <span class="input-group-text">http://</span>
-            </div>
-            <input formControlName="Lararhandledning" id="arr_laromedel" type="text" class="form-control fix-rounded-right" >
-            <div class="invalid-feedback">
-            </div>
-          </div>
-      </div>
-      <hr/>
-
-      <div class="form-group mt-5">
-        <legend>Lokal</legend>
-        <label for="formVenueRequiermentsId" class="kk_aj_fob kk_aj_ut kk_aj_sb">Lokalkrav (ej obligatorisk) <a (click)="showHideinfo(9)" class="info" rel="arr_formVenueRequiermentsId_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-        <div *ngIf="showinfo[9]" class="arr_formVenueRequiermentsId_infotext infotext">Här kan du ange lokalkrav ex rumstemperatur, lokalens storlek, om du behöver tom golvyta, behov av bygghjälp,  tillgång till vatten, bord att arbeta vid etc.</div>
-        <textarea formControlName="OvrigaLokalkrav" id="formVenueRequiermentsId" rel="18" name="formVenueRequierments" maxlength="400" class="form-control"></textarea>
-      </div>
-      <hr/>
-
-      <div class="form-group mt-5">
-        <legend>Deltagare/Publik</legend>
-        <label for="formPresentationsbild">Ålder<a (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-        <div *ngIf="showinfo[3]" class="formPresentationsbild_infotext infotext">Här väljer du ålder, välj dom  en eller flera som passar ditt arrangemang.</div><br/>
-        <div class="form-check form-check-inline">
-          <input (change)="onCheckboxChange($event,'AlderFran')" [checked]="toAge[0]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
-          <label class="form-check-label" for="inlineCheckbox1">0-6 år</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input (change)="onCheckboxChange($event,'AlderFran')" [checked]="toAge[1]"  class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2">
-          <label class="form-check-label" for="inlineCheckbox2">7-9 år</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input  (change)="onCheckboxChange($event,'AlderFran')" [checked]="toAge[2]"   class="form-check-input" type="checkbox" id="inlineCheckbox1" value="3">
-          <label class="form-check-label" for="inlineCheckbox1">10-12 år</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input  (change)="onCheckboxChange($event,'AlderFran')" [checked]="toAge[3]"  class="form-check-input" type="checkbox" id="inlineCheckbox2" value="4">
-          <label class="form-check-label" for="inlineCheckbox2">13-15 år</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input (change)="onCheckboxChange($event,'AlderFran')"  [checked]="toAge[4]"  class="form-check-input" type="checkbox" id="inlineCheckbox3" value="5" >
-          <label class="form-check-label" for="inlineCheckbox3">16-19 år</label>
-        </div><br/>
-        <small class="text-danger kk_aj_search_utovareEpost_text-danger" *ngIf="AlderFran?.invalid && onCheckboxClicked || AlderFran?.invalid && Kostnad?.touched">
-          Vänligen fyll i ålder på arrangemanget</small><br/>
-
-        <label for="kk_aj_speltid" class="kk_aj_ft kk_aj_sb">Speltid (min)<a (click)="showHideinfo(5)" class="info" rel="arr_kk_aj_speltid_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-        <div *ngIf="showinfo[5]" class="arr_kk_aj_speltid_infotext infotext">Ange föreställningens längd i minuter.</div>
-        <div id="kk_aj_speltid_range" class="kk_aj_ft kk_aj_sb" ></div>
-        <div id="kk_aj_speltid" rel="26" class="kk_aj_ft kk_aj_sb"></div>
-        {{sliderval}} min <mv-slider id="kk_aj_speltid_range" (mouseup)="changeSpeltid($event,sliderval)" [(value)]="sliderval" [min]="1" [max]="180" [enabled]="true" style="margin-left:1%; width: 86%;"></mv-slider> <br/>
-        <small class="text-danger kk_aj_speltid_error"
-        *ngIf="speltid?.invalid && onSpeltidClicked|| speltid?.invalid && Kostnad?.touched">Vänligen ange föreställningens längd i minuter.</small><br/>
-      </div>
-      <hr/>
-
-      <div class="form-group mt-5">
-        <legend>Kostnader</legend>
-         <label for="arr_ekonomikostnad">Kostnad/Pris <a (click)="showHideinfo(1)" class="info" rel="arr_ekonomikostnad_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-            <div *ngIf="showinfo[1]" class="arr_ekonomikostnad_infotext infotext">Ange kostnad/pris för arrangemanget i SEK. Endast siffror. För paketpris använd fältet ”Övrigt om kostnader”. Här kan du också ange ev entréavgifter, kostnad för guidning, museilektioner etc (ingår inte i arrangörsstödet).</div>
-            <input formControlName="Kostnad"  id="arr_ekonomikostnad" type="text" class="form-control" type="text" tabindex="1"/>
-            <small class="text-danger arr_ekonomikostnad_error"
-            *ngIf="Kostnad?.invalid && Kostnad?.touched">Vänligen fyll i kostnad/pris för arrangemanget i SEK. Endast siffror.</small><br />
-
-          <label for="arr_resorovrigt">Övrigt om kostnader (ej obligatorisk)<a (click)="showHideinfo(5)" class="info" rel="arr_resorovrigt_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-            <div *ngIf="showinfo[5]" class="arr_resorovrigt_infotext infotext">Här kan du ange om det finns rabatter, paketpris eller om det tillkommer fler kostnader, t.ex. entréavgifter eller liknande.</div>
-            <textarea formControlName="OvrigaKostnader" id="arr_resorovrigt" name="arr_resorovrigt" rel="30" maxlength="400" class="form-control"></textarea>
-      </div>
-      <hr/>
-
-      <div class="form-group mt-5">
-        <legend>Övrigt</legend>
-        <label for="arr_overiganoter">Övriga noteringar (ej obligatorisk)<a (click)="showHideinfo(6)" class="info" rel="arr_overiganoter_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-            <div *ngIf="showinfo[6]" class="arr_overiganoter_infotext infotext">Fyll i om det är något mer som arrangören behöver veta om/inför arrangemanget.</div>
-            <textarea formControlName="Ovrigt" id="arr_overiganoter" name="arr_overiganoter" rel="33" maxlength="400"class="form-control"></textarea>
-
-      </div>
-  </div>
-
-</ng-container>
-<!-- <ng-container [formGroup]="ExempelFrmGrp">
-  <app-smakprov formGroupName="Faktalist"></app-smakprov>
-  <div class="col-12 col-lg-8 mt-5">
     <hr/>
   </div>
-</ng-container> -->
+
+  <aj-lokal-skolbio formGroupName="Faktalist"></aj-lokal-skolbio>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <aj-deltagarepublik-skolbio formGroupName="Faktalist"></aj-deltagarepublik-skolbio>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <aj-kostnader-skolbio formGroupName="Faktalist" ></aj-kostnader-skolbio>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-smakprov formGroupName="Faktalist"></app-smakprov>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  </ng-container>

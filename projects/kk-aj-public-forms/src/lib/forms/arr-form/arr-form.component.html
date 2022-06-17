@@ -1,6 +1,7 @@
 
   <ng-container [formGroup]="ArrForm">
     {{ArrForm.value | json}}
+
     <!-- Steg 2 block  -->
     <div class="row" *ngIf="_blockMdl.blnSteg1">
       <div class="col-12 col-md-2">
@@ -15,10 +16,93 @@
         </div>
 
         <ng-container >
-          <div class="form-group mt-2">
+          <h2>Välj typ av arrangemang:</h2>
+          <div class="form-group mt-4">
             <fieldset>
-              <legend>Välj typ av arrangemang</legend>
-              <div class="cc-selector">
+
+              <div class="">
+                <div class="form-check">
+                  <input type="radio" value="7" name="rdoArr" (click)="setFaktalist(7)" id="val_resmalsbesok" title="Resmål med resestöd" tooltip="test" tabindex/>
+                  <label class="rdoArr rdoArr_val1" for="val_resmalsbesok">Resmål med resestöd</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" value="1" name="rdoArr"  (click)="setFaktalist(1)" id="val_forestallningtune" tabindex/>
+                  <label class="rdoArr rdoArr_val2" for="val_forestallningtune">Föreställning på turné</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" value="8" name="rdoArr"  (click)="setFaktalist(8)" id="val_Skolbio" tabindex/>
+                  <label class="rdoArr rdoArr_val3" for="val_Skolbio">Skolbio</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" value="2" name="rdoArr"  (click)="setFaktalist(2)" id="val_Utstallningturne" tabindex/>
+                  <label class="rdoArr rdoArr_val4" for="val_Utstallningturne">Utställning på turné</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" value="4" name="rdoArr"  (click)="setFaktalist(4)" id="val_Kulturpedagogiskaprojekt" tabindex/>
+                  <label class="rdoArr rdoArr_val5" for="val_Kulturpedagogiskaprojekt">Workshop/ Projekt</label>
+                </div>
+              </div>
+              <div class="d-grid gap-2">
+
+              <!-- <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(7)"data-bs-toggle="button" autocomplete="off">
+                <div class="row">
+                  <div class="col-2 text-center">
+                    <img alt="image" class="fdb-icon imgMaxH" src="./../../../assets/img/besoksmalmedresestod_invert.png">
+                  </div>
+                  <div class="col-10 ">
+                    <h3>Resmål med resestöd</h3>
+                    <p></p>
+                  </div>
+                </div>
+              </button>
+              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(1)"data-bs-toggle="button" autocomplete="off">
+                <div class="row">
+                  <div class="col-2 text-center ">
+                    <img alt="image" class="fdb-icon" src="./../../../assets/img/forestallningpatune_invert.png">
+                  </div>
+                  <div class="col-10 ">
+                    <h3>Föreställning på turné</h3>
+                    <p></p>
+                  </div>
+                </div>
+              </button>
+
+              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(8)"data-bs-toggle="button" autocomplete="off">
+                <div class="row">
+                  <div class="col-2 text-center ">
+                    <img alt="image" class="fdb-icon" src="./../../../assets/img/Skolbio_invert.png">
+                  </div>
+                  <div class="col-10 ">
+                    <h3>Skolbio</h3>
+                    <p></p>
+                  </div>
+                </div>
+              </button>
+              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(2)"data-bs-toggle="button" autocomplete="off">
+                <div class="row">
+                  <div class="col-2 text-center ">
+                    <img alt="image" class="fdb-icon" src="./../../../assets/img/Skolbio_invert.png">
+                  </div>
+                  <div class="col-10 ">
+                    <h3>Utställning på turné</h3>
+                    <p></p>
+                  </div>
+                </div>
+              </button>
+              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(4)"data-bs-toggle="button" autocomplete="off">
+                <div class="row">
+                  <div class="col-2 text-center ">
+                    <img alt="image" class="fdb-icon" src="./../../../assets/img/Skolbio_invert.png">
+                  </div>
+                  <div class="col-10 ">
+                    <h3>Workshop/ Projekt</h3>
+                    <p></p>
+                  </div>
+                </div>
+              </button> -->
+
+              </div>
+              <!-- <div class="cc-selector">
                 <input type="radio" value="7"  (click)="setFaktalist(7)" id="val_resmalsbesok" title="Resmål med resestöd" tooltip="test" tabindex/>
                 <label class="arr_val1-cc arr_val1" for="val_resmalsbesok"></label>
                 <input type="radio" value="1"  (click)="setFaktalist(1)" id="val_forestallningtune" tabindex/>
@@ -29,18 +113,16 @@
                 <label class="arr_val4-cc arr_val4" for="val_Utstallningturne"></label>
                 <input type="radio" value="4"  (click)="setFaktalist(4)" id="val_Kulturpedagogiskaprojekt" tabindex/>
                 <label class="arr_val5-cc arr_val5" for="val_Kulturpedagogiskaprojekt"></label>
-              </div>
+              </div> -->
             </fieldset>
-              <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small>
           </div>
         </ng-container>
 
 
-
-        <div class="row mt-5 mb-5">
-          <div class="col-12 col-lg-8" >
-              <button role="tab" (click)="ShowSteg(1)"  class="btn btn-success btn-md active float-start" rel="2" tabindex="0" >Föregående steg - Kontaktuppgifter</button>
-              <button role="tab" (click)="ShowSteg(3)" [disabled]="ArrForm.invalid" class="btn btn-primary btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Arrangemang</button>
+          <div class="row mt-5 mb-5">
+            <div class="col-12 col-lg-8" >
+              <button role="tab" (click)="ShowSteg(0)"  class="btn btn-outline-success btn-md  float-start" rel="2" tabindex="0" >Föregående steg - Val konstform </button>
+              <button role="tab" (click)="ShowSteg(2)" [disabled]="!ArrTypNext" class="btn btn-success btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Kontaktuppgifter</button>
             </div>
           </div>
         </div>

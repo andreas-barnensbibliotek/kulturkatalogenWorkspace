@@ -7,11 +7,11 @@
 }
 // .visa{background-image:url(http://i.imgur.com/lXzJ1eB.png);}
 // .mastercard{background-image:url(http://i.imgur.com/SJbRQF7.png);}
-.arr_val1{background-image:url(../../../assets/img/besoksmalmedresestod.png); }
-.arr_val2{background-image:url(../../../assets/img/forestallningpatune.png); }
-.arr_val3{background-image:url(../../../assets/img/Skolbio.png); }
-.arr_val4{background-image:url(../../../assets/img/utstallningpaturne.png); }
-.arr_val5{background-image:url(../../../assets/img/workshops_projekt.png); }
+.arr_val1{background-image:url(../../../assets/img/besoksmalmedresestod_invert.png); }
+.arr_val2{background-image:url(../../../assets/img/forestallningpatune_invert.png); }
+.arr_val3{background-image:url(../../../assets/img/Skolbio_invert.png); }
+.arr_val4{background-image:url(../../../assets/img/utstallningpaturne_invert.png); }
+.arr_val5{background-image:url(../../../assets/img/workshops_projekt_invert.png); }
 
 
 .cc-selector input:active +.arr_val1-cc{opacity: 1;}
@@ -337,4 +337,16 @@ $kfval12_inv_img: $imgbassrc + "Annanscenkonst_invert.png";
 // a:visited{color:#888}
 // a{color:#444;text-decoration:none;}
 // p{margin-bottom:.3em;}
+
+.rdoArr{
+  padding-left: 10px;
+  font-size: 22px;
+}
+.fixtext{
+  text-align: left!important;
+  img{
+
+    max-height: 80px;
+  }
+}
 
