@@ -1,1 +1,24 @@
-<p>workshop works!</p>
+<ng-container [formGroup]="workshopFrmGrp">
+  <aj-fakta-workshop formGroupName="Faktalist"></aj-fakta-workshop>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <aj-deltagarepublik-workshop formGroupName="Faktalist"></aj-deltagarepublik-workshop>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <aj-kostnader-workshop formGroupName="Faktalist" ></aj-kostnader-workshop>
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+  <app-smakprov formGroupName="Faktalist"></app-smakprov>
+  <!-- <app-smakprov formGroupName="Faktalist"></app-smakprov> -->
+  <div class="col-12 col-lg-8">
+    <hr/>
+  </div>
+
+  <app-bedomning-info formGroupName="Faktalist" ></app-bedomning-info>
+</ng-container>
+

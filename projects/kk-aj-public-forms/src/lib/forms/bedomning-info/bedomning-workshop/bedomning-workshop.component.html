@@ -1,0 +1,79 @@
+<ng-container [formGroup]="FaktaFrmGrp">
+  <!-- Ekonomi block START -->
+  <div class="col-12 col-lg-8">
+   <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
+   <div class="form-group mt-5">
+     <legend>Information inför bedömning (publiceras ej i Kulturkatalogen)</legend>
+
+     <label>CV/konstnärlig bakgrund och utbildning <a (click)="showHideinfo(1)" class="info" rel="arr_cvmedverkande_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+       <div *ngIf="showinfo[1]" class="arr_cvmedverkande_infotext infotext">
+         <span class="kk_aj_kp">Beskriv din/er konstnärliga bakgrund och utbildning. Uppge i korthet ev medverkan i tidigare genomförda projekt och tidigare erfarenhet med barn och unga.</span>
+         <span class="kk_aj_ft">Ange din/er konstnärliga bakgrund och utbildning. Beskriv kortfattat din/er ev medverkan i tidigare produktioner, samt erfarenhet av konstnärligt arbete med barn och unga.</span>
+         <span class="kk_aj_fob">Beskriv din/er konstnärliga bakgrund och utbildning. Uppge i korthet ev medverkan i tidigare genomförda projekt och tidigare erfarenhet med barn och unga. </span>
+         <span class="kk_aj_rm">Beskriv ert pedagogiska upplägg och hur ni arbetar med barn och unga.</span>
+         <p>Ladda upp CV eller länka till extern webbsida. Är ni en grupp, samla allt i ett dokument. Informationen kommer inte att visas på webben.</p>
+       </div>
+
+       <nav>
+         <div class="nav nav-tabs" id="nav-tab" role="tablist">
+           <button class="nav-link " [ngClass]="{'active': valdtab == '1' }" id="nav-LinkToCv-tab" data-bs-toggle="tab" data-bs-target="#nav-LinkToCv" (click)="showCvTabs('1')" type="button" role="tab" aria-controls="nav-LinkToCv" aria-selected="true">Länka till CV</button>
+           <button class="nav-link " [ngClass]="{'active': valdtab == '2' }" id="nav-uploadCv-tab" data-bs-toggle="tab" data-bs-target="#nav-uploadCv" (click)="showCvTabs('2')" type="button" role="tab" aria-controls="nav-uploadCv" aria-selected="false">Ladda upp CV</button>
+         </div>
+       </nav>
+       <div class="tab-content mt-3 mb-3" id="nav-tabContent">
+         <div class="tab-pane fade " [ngClass]="{'show active': valdtab == '1' }" id="nav-LinkToCv" role="tabpanel" aria-labelledby="nav-LinkToCv-tab">
+           <div class="input-group">
+           <span class="input-group-text" id="basic-addon3">https://</span>
+             <input formControlName="Cv" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+           </div>
+         </div>
+         <div class="tab-pane fade " [ngClass]="{'show active': valdtab == '2' }" id="nav-uploadCv" role="tabpanel" aria-labelledby="nav-uploadCv-tab">
+           <input formControlName="Cv" class="form-control" type="file" id="formFile">
+         </div>
+       </div>
+       <small class="text-danger arr_cvmedverkande_error">Vänligen fyll i eller ladda upp CV</small><br />
+
+     <label for="arr_statligtstodjanej">Innehar statligt/regionalt/kommunalt/annat stöd <a (click)="showHideinfo(2)" class="info" rel="arr_statligtstodjanej_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+       <div *ngIf="showinfo[2]" class="arr_statligtstodjanej_infotext infotext">Innehar statligt/regionalt/kommunalt/annat bidrag eller stöd för arrangemanget.</div>
+       <br />
+       <div class="form-check form-check-inline">
+         <input formControlName="BidragStod" type="radio" class="form-check-input" name="BidragStod" rel="38" value="Ja" id="arr_statligtstodja" >
+         <label for="arr_statligtstodja">Ja</label>
+       </div>
+       <div class="form-check form-check-inline">
+         <input formControlName="BidragStod" type="radio" class="form-check-input" name="BidragStod" rel="38" value="Nej" id="arr_statligtstodnej">
+         <label for="arr_statligtstodnej">Nej</label>
+       </div><br />
+
+       <label for="arr_bedomningvilka">Om ja ange vilka </label>
+       <input formControlName="BidragStodFran" id="arr_bedomningvilka" type="text" class="form-control" type="text" tabindex="1"/>
+       <small class="text-danger kk_aj_search_arr_bedomningvilka_error">Vänligen ange om arrangemanget innehar statligt/regionalt/kommunalt/andra bidrag eller stöd.</small>
+       <br />
+
+     <label for="arr_fskattsedeljanej">Innehar F-skattsedel</label><br />
+       <div class="form-check form-check-inline">
+         <input formControlName="FSkatt" type="radio"  class="form-check-input" name="FSkatt" rel="38" value="Ja" id="arr_fskattsedelja" >
+         <label for="arr_fskattsedelja">Ja</label>
+       </div>
+       <div class="form-check form-check-inline">
+         <input formControlName="FSkatt" type="radio"  class="form-check-input" name="FSkatt" rel="38" value="Nej" id="arr_fskattsedelnej">
+         <label for="arr_fskattsedelnej">Nej</label>
+       </div><br />
+       <small class="text-danger kk_aj_search_arr_fskattsedeljanej_error">Vänligen fyll i om ni innehar F-skattsedel</small><br />
+
+     <label for="arr_centrumbildningjanej">Medlem i centrumbildning</label><br />
+       <div class="form-check form-check-inline">
+         <input formControlName="Centrumbildning" type="radio" class="form-check-input" name="Centrumbildning" rel="38" value="Ja" id="arr_centrumbildningja" >
+         <label for="arr_centrumbildningja">Ja</label>
+       </div>
+       <div class="form-check form-check-inline">
+         <input formControlName="Centrumbildning" type="radio" class="form-check-input" name="Centrumbildning" rel="38" value="Nej" id="arr_centrumbildningnej">
+         <label for="arr_centrumbildningnej">Nej</label>
+       </div><br />
+       <small class="text-danger kk_aj_search_arr_centrumbildningjanej_error">Vänligen fyll i om ni är medlem i centrumbildning</small><br />
+
+     <label for="arr_overiginformation">Övrig information</label>
+     <textarea formControlName="OvrigInfo" id="arr_overiginformation" name="arr_overiginformation" rel="42" maxlength="449" class="form-control"></textarea>
+   </div>
+ </div>
+ </ng-container>

@@ -1,3 +1,4 @@
+import { FormDataModel } from './forms/MODELformGroup/FormDataModel';
 import { UtstallFaktaComponent } from './forms/Arrangemangstyp/utstallning/utstall-fakta/utstall-fakta.component';
 import { formGlobalsModel } from './forms/MODELformGroup/formGlobalsModel';
 import { Routes, RouterModule } from '@angular/router';
@@ -52,6 +53,14 @@ import { FaktaSkolbioComponent } from './forms/fakta/fakta-skolbio/fakta-skolbio
 import { KostnaderSkolbioComponent } from './forms/kostnader/kostnader-skolbio/kostnader-skolbio.component';
 import { DeltagarepublikBesoksmalComponent } from './forms/deltagarepublik/deltagarepublik-besoksmal/deltagarepublik-besoksmal.component';
 import { KostnaderBesoksmalComponent } from './forms/kostnader/kostnader-besoksmal/kostnader-besoksmal.component';
+import { FaktaWorkshopComponent } from './forms/fakta/fakta-workshop/fakta-workshop.component';
+import { DeltagarepublikWorkshopComponent } from './forms/deltagarepublik/deltagarepublik-workshop/deltagarepublik-workshop.component';
+import { KostnaderWorkshopComponent } from './forms/kostnader/kostnader-workshop/kostnader-workshop.component';
+import { BedomningWorkshopComponent } from './forms/bedomning-info/bedomning-workshop/bedomning-workshop.component';
+import { GranskaComponent } from './forms/granska/granska.component';
+import { GranskaFaktaComponent } from './forms/granska/granska-fakta/granska-fakta.component';
+import { GranskaMediaComponent } from './forms/granska/granska-media/granska-media.component';
+import { GranskaKontaktComponent } from './forms/granska/granska-kontakt/granska-kontakt.component';
 
 const routes: Routes = [
   { path: '' ,
@@ -98,7 +107,15 @@ const routes: Routes = [
     FaktaSkolbioComponent,
     KostnaderSkolbioComponent,
     DeltagarepublikBesoksmalComponent,
-    KostnaderBesoksmalComponent
+    KostnaderBesoksmalComponent,
+    FaktaWorkshopComponent,
+    DeltagarepublikWorkshopComponent,
+    KostnaderWorkshopComponent,
+    BedomningWorkshopComponent,
+    GranskaComponent,
+    GranskaFaktaComponent,
+    GranskaMediaComponent,
+    GranskaKontaktComponent
   ],
   imports: [
     CommonModule,
@@ -122,7 +139,8 @@ const routes: Routes = [
     FormFaktaModel,
     getTidigareModule,
     ServerApiResponsModel,
-    formGlobalsModel
+    formGlobalsModel,
+    FormDataModel
   ],
   exports: [
     KkAjPublicFormsComponent

@@ -4,7 +4,7 @@
     <div class="container my-5">
         <div class="row gx-3">
 
-          <ng-container *ngIf="spinner">
+          <!-- <ng-container *ngIf="spinner">
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-5 mb-lg-0 ">
               <div class="topblockContainer blockcolor1 text-center" style="height:300px;">
                 <i class="fa fa-spinner fa-spin fa-4x"></i>
@@ -20,9 +20,9 @@
                 <i class="fa fa-spinner fa-spin fa-4x"></i>
               </div>
             </div>
-        </ng-container>
+        </ng-container> -->
 
-          <ng-container *ngFor="let itm of pagejson.sections; let i = index" >
+          <ng-container *ngFor="let itm of starttest | async; let i = index" >
             <ng-container *ngIf="itm.typ=='StartTopBlock'">
               <div  class="col-12 col-sm-12 col-lg-4 mb-5 mb-lg-0 " [ngClass]="i==2 ? 'col-md-12' :  'col-md-6'">
 
@@ -47,7 +47,7 @@
 </section>
 
 
-<div *ngFor="let itm of pagejson.sections; let i = index; ">
+<div *ngFor="let itm of starttest | async; let i = index; ">
 
 <!-- owl-carousel Videos Section-1 Start -->
 <ng-container *ngIf="itm.typ== 'ListBlock'">

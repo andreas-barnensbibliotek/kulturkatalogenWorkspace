@@ -1,0 +1,44 @@
+  <!-- blog single -->
+  <section class="gen-section-padding-3 aj-section-bgimg-color-dark pb-0">
+    <div class="container-grid wrap-main">
+      <div class="container-grid container-1">
+        <div class="container-grid container-2">
+          <div class="responsive-video video-platform-1 youtube text-center" >
+            <img
+                class="granska_pressentationsbild"
+                [src]="MediaUrl"
+                 loading="lazy" alt="" />
+          </div>
+          <div class="container-grid wrap-text-main">
+            <div class="rule">
+              <hr>
+            </div>
+            <h2 class="performer-heading">{{ mainObj.Utovarelist.Organisation }}</h2>
+            <div class="rule">
+              <hr>
+            </div>
+
+            <h1 class="production-heading">{{ mainObj.ArrForm.Arrangemang.Rubrik }}</h1>
+            <h3 class="sub-heading"*ngIf="mainObj.ArrForm.Arrangemang.UnderRubrik">
+              {{ mainObj.ArrForm.Arrangemang.UnderRubrik }}</h3>
+             <p class="paragraph main-text" *ngIf="mainObj.ArrForm.Arrangemang.Innehall" [innerHTML]="mainObj.ArrForm.Arrangemang.Innehall"></p>
+            <div class="rule">
+              <hr>
+            </div>
+            <div *ngIf="mainObj.ArrForm.Faktalist.Exempel != ''">
+              <h4 class="more-heading">Smakprov</h4>
+              <div *ngFor="let item of mainObj.ArrForm.Faktalist.Exempel">
+                  <aj-granska-media [MediaExempelblock]="item"></aj-granska-media>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="container-grid container-3" >
+          <aj-granska-fakta [faktablock]="detailpage[0]?.ansokningFaktalist"></aj-granska-fakta>
+          <aj-granska-kontakt [Kontaktblock]="detailpage[0]"></aj-granska-kontakt>
+        </div>
+      </div>
+    </div>
+</section>
+

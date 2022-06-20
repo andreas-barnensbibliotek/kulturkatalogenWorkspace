@@ -1,3 +1,4 @@
+import { FormDataModel } from './../MODELformGroup/FormDataModel';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
@@ -25,7 +26,7 @@ export class ImageuploadAJComponent implements OnInit {
   uploadedFilePath: string = "";
   tillGangligfalt:boolean = false;
 
-  constructor(private http: HttpClient, private rootformGroup: FormGroupDirective) {}
+  constructor(private http: HttpClient, private rootformGroup: FormGroupDirective, private fd:FormDataModel) {}
   ngOnInit(): void {
     this.imageUploadFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
 
@@ -64,6 +65,7 @@ export class ImageuploadAJComponent implements OnInit {
     reader.readAsDataURL(this.fileData);
     reader.onload = (_event) => {
       this.previewUrl = reader.result;
+      this.fd.previewImg = this.previewUrl;
       this.tillGangligfalt = true;
 
     this.imageUploadFrmGrp.patchValue({MediaFilename: this.fileData?.name})
@@ -71,7 +73,7 @@ export class ImageuploadAJComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = new FormData();
+    // const formData = this.fd.formData;
     if(!this.fileData){
       alert("Det är tomt");
       this.tillGangligfalt = false;
@@ -84,7 +86,7 @@ export class ImageuploadAJComponent implements OnInit {
         return;
       }
     }
-    formData.append('files', this.fileData);
+    this.fd.formImgData.append('files', this.fileData);
     this.imageUploadFrmGrp.patchValue({MediaFilename: this.fileData?.name})
     // this.fileUploadProgress = '0%';
 

@@ -20,7 +20,7 @@ export class ApiServiceService {
     // console.log("kommer hit " + url);
 
     if(url) this.url =url;
-      return this.http.get(this.url,this._httpOptions)
+      return this.http.get<any>(this.url,this._httpOptions)
     .pipe(
       retry(1),// använd retry för att göra om reqesten x gånger
       catchError(this.handleError),

@@ -2,6 +2,8 @@ import { KatalogenApiService } from './../../core/services/katalogenApi/kataloge
 import { Title, Meta } from '@angular/platform-browser';
 import { App_Global } from './../../core/global/app_global';
 import { Component, OnInit } from '@angular/core';
+import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-arr-form',
@@ -15,6 +17,7 @@ export class MainArrFormComponent implements OnInit {
   mainPageData?:any=[];
   // showList:number[] =[0];
   pagejson?:any=[];
+  pagejsonAsync:any;
   spinner:boolean= true;
 
   constructor(private gbl:App_Global,
@@ -28,14 +31,28 @@ export class MainArrFormComponent implements OnInit {
     this.metaService.updateTag({
       name: "description" , content: "Detta är Arrangörsformuläret ändrat från servern :)"
     })
-    this.loadPageData("ansok");
-
+    this.loadPageDataAsync("ansok");
   }
 
-  loadPageData(arrid:string){
-    this.wpApi.getPageByName(arrid).subscribe(Response => {
-      this.pagejson = Response;
+  loadPageDataAsync(arrid:string){
+    this.pagejsonAsync = this.wpApi.getPageByName(arrid).pipe(
+      map(data => data.sections)
+    ) as Observable<any>;
+
+    this.pagejsonAsync.subscribe((data: any) => {
+      localStorage["cacheArr"] = JSON.stringify(data)
       this.spinner = false;
-    })
+    });
+
+    this.pagejsonAsync = this.pagejsonAsync.pipe(
+      startWith(JSON.parse(localStorage["cacheArr"]|| '[]'))
+    );
   }
+
+  // loadPageData(arrid:string){
+  //   this.wpApi.getPageByName(arrid).subscribe(Response => {
+  //     this.pagejson = Response;
+
+  //   })
+  // }
 }

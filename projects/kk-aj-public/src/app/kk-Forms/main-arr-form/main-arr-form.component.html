@@ -1,5 +1,5 @@
 
-<div *ngFor="let itm of pagejson.sections; let i = index; ">
+<div *ngFor="let itm of pagejsonAsync | async; let i = index; ">
   <!-- Foala calltoaction 14-->
   <!-- <ng-container *ngIf="itm.typ == 'Bild1Text'">
     <section  class="fdb-block py-0  gen-section-padding-2" [ngClass]="itm.content[0].metaClass == 'Darker' ? 'aj-section-bg-color-darker' : 'aj-section-bg-color-dark'">
@@ -44,7 +44,7 @@
     </ng-container>
   </div>
 
- <section class="fdb-block gen-section-padding-2 aj-section-bg-color-darker">
+ <section class="fdb-block gen-section-padding-2 aj-section-bg-color-dark">
     <div class="container">
       <div class="row text-center">
         <div class="col-12">

@@ -1,0 +1,70 @@
+
+<div class="container-grid wrap-facts" *ngIf="fakta=== undefined || fakta.length > 0">
+  <div class="container-grid fact-header-big">
+    <h4 class="fact-main-heading">Fakta</h4>
+  </div>
+  <div class="container-grid wrap-single-fact" *ngFor="let item of fakta">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">{{ item.Faktarubrik }}<br></p>
+    </div>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info" *ngIf="item.FaktaTypID==25"><a href="{{ item.FaktaValue }}" target="_blank">Till handledning</a></p>
+      <p class="paragraph fact-info" *ngIf="item.FaktaTypID!=25">{{ item.FaktaValue }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-grid wrap-facts" *ngIf="publik=== undefined || publik.length > 0">
+  <div class="container-grid fact-header-big">
+    <h4 class="fact-main-heading">Publik</h4>
+  </div>
+  <div class="container-grid wrap-single-fact" *ngFor="let item of publik">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">{{ item.Faktarubrik }}<br></p>
+    </div>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info">{{ item.FaktaValue }}</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-grid wrap-facts" *ngIf=" lokal=== undefined || lokal.length > 0">
+  <div class="container-grid fact-header-big">
+    <h4 class="fact-main-heading">Lokal</h4>
+  </div>
+  <div class="container-grid wrap-single-fact" *ngFor="let item of lokal">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">{{ item.Faktarubrik }}<br></p>
+    </div>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info">{{ item.FaktaValue }}</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-grid wrap-facts" *ngIf=" ekonomi=== undefined || ekonomi.length > 0">
+  <div class="container-grid fact-header-big">
+    <h4 class="fact-main-heading">Kostnad/Pris</h4>
+  </div>
+  <div class="container-grid wrap-single-fact" *ngFor="let item of ekonomi">
+    <div class="container-grid container-4">
+      <p class="paragraph fact-heading">{{ item.Faktarubrik }}<br></p>
+    </div>
+    <div class="container-grid container-5">
+      <p class="paragraph fact-info">{{ item.FaktaValue }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-grid wrap-facts" *ngIf="!ovrigt === undefined || ovrigt.length > 0">
+  <div class="container-grid fact-header-big">
+    <h4 class="fact-main-heading">Övrigt</h4>
+  </div>
+  <div class="container-grid wrap-single-fact" *ngFor="let item of ovrigt">
+    <div class="container-grid">
+      <p class="paragraph fact-info fact-ovrigt">{{ item.FaktaValue }}</p>
+    </div>
+  </div>
+</div>

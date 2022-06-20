@@ -4,7 +4,10 @@ import { KatalogenApiService } from './../core/services/katalogenApi/katalogen-a
 import { ViewportScroller } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
 import { App_Global } from './../core/global/app_global';
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, Pipe } from '@angular/core';
+import { response } from 'express';
+import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -40,16 +43,27 @@ export class KkajStartComponent implements OnInit {
     // this.showList.push(3);
 
   }
+starttest:any;
 
 loadPageData(arrid:string){
+  this.starttest = this.wpApi.getPageByName("start").pipe(
+    map(data => data.sections)
+  ) as Observable<any>;
 
-  this.wpApi.getPageByName("start").subscribe(Response => {
+  this.starttest.subscribe((data: any) => {
+    localStorage["cacheData"] = JSON.stringify(data)
+  });
 
-    this.pagejson = Response;
-    this.spinner = false;
-      this.cd.detectChanges();
+  this.starttest = this.starttest.pipe(
+    startWith(JSON.parse(localStorage["cacheData"]|| '[]'))
+  );
 
-  })
+  //OLD Code utan asyc
+  // this.wpApi.getPageByName("start").subscribe(Response => {
+  //   this.pagejson = Response;
+  //   this.spinner = false;
+  //     this.cd.detectChanges();
+  // })
 }
   ngAfterViewChecked() {
 
