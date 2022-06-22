@@ -7,6 +7,7 @@ export class FormVisaBlockHandlerModel {
   blnSteg2:boolean=false;
   blnSteg3:boolean=false;
   blnSteg4:boolean=false;
+  blnSteg5:boolean=false;
 
   // Övergrippande hantering av block -----------------------------
 
@@ -23,6 +24,9 @@ export class FormVisaBlockHandlerModel {
         break;
       case 4:
         this.steg4_Block();
+        break;
+      case 5:
+        this.steg5_Block();
         break;
     }
   }
@@ -45,6 +49,10 @@ export class FormVisaBlockHandlerModel {
   steg4_Block(){
     this.hideAllStegBlock();
     this.blnSteg4= true;
+  }
+  steg5_Block(){
+    this.hideAllStegBlock();
+    this.blnSteg5= true;
   }
 
   // Steg 1 utövare och kontakt uppgifter block -------------------
@@ -94,5 +102,7 @@ export class FormVisaBlockHandlerModel {
     this.blnSteg2=false;
     this.blnSteg3=false;
     this.blnSteg4=false;
+    this.blnSteg5=false;
+
   }
 }

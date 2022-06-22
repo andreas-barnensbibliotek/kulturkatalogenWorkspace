@@ -1,3 +1,4 @@
+import { postFormDataModel } from './../MODELformGroup/postFormDataModel';
 import { formGlobalsModel } from './../MODELformGroup/formGlobalsModel';
 import { getTidigareModule } from './../MODELformGroup/getTidigareModule';
 
@@ -11,6 +12,7 @@ import { formUtovareModel } from '../MODELformGroup/formUtovareModel';
 import { formKontaktModel } from '../MODELformGroup/formKontaktModel';
 import { KontaktFormValidator } from '../../shared/KontaktFormGroup-Validator';
 import { ActivatedRoute } from '@angular/router';
+import { FormDataModel } from '../MODELformGroup/FormDataModel';
 
 @Component({
   selector: 'app-baseform',
@@ -34,7 +36,8 @@ export class BaseformComponent implements OnInit, OnChanges {
     public _TidigareMdl: getTidigareModule,
     public fb:FormBuilder,
     private ref: ChangeDetectorRef,
-    private _frmGlb:formGlobalsModel
+    private _frmGlb:formGlobalsModel,
+    private _postDataObj:FormDataModel
   ) { }
 
   ngOnInit(): void {
@@ -92,6 +95,10 @@ get arrformobj(){
 
   ShowSteg(val:number){
 
+      if (val==4){
+        // this._postDataObj.prepareDataForSubmit(this.BaseRootForm.value);
+        this._postDataObj.prepareDataForSubmit(this.BaseRootForm.value);
+      }
       this._blockMdl.stegBlock(val)
     return false;
   }

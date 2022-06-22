@@ -8,7 +8,7 @@
       <p class="paragraph fact-heading">{{ item.Faktarubrik }}<br></p>
     </div>
     <div class="container-grid container-5">
-      <p class="paragraph fact-info" *ngIf="item.FaktaTypID==25"><a href="{{ item.FaktaValue }}" target="_blank">Till handledning</a></p>
+      <p class="paragraph fact-info" *ngIf="item.FaktaTypID==25"><a href="https://{{ item.FaktaValue }}" target="_blank">Till handledning</a></p>
       <p class="paragraph fact-info" *ngIf="item.FaktaTypID!=25">{{ item.FaktaValue }}</p>
     </div>
   </div>

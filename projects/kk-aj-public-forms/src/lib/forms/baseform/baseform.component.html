@@ -46,18 +46,21 @@
       </div>
       <div class="col-12 col-md-10">
         <div class="col-12 col-lg-8 pt-5">
-          <h2></h2>
-          <fieldset>
-            <legend>Välkommen att söka till Kulturkatalogen Väst!</legend>
+          <h2 class="mb-4">Kontaktuppgifter</h2>
+
+
+            <!-- <fieldset>
+              <legend>Välkommen att söka till Kulturkatalogen Väst!</legend>
             <p>Kulturkatalogen Väst är en digital utbudskatalog med professionell konst och kultur, natur- och kulturarv för barn och unga i Västra Götaland.
                 Innan du börjar fylla i ansökan, se till att du har alla uppgifter och allt material tillgängligt så att ansökan blir komplett. Det går inte att spara och fortsätta vid ett senare tillfälle, så ha det här redo när du sätter igång:<br>
                 - Namn och adress<br>
                 - Fakta om lokal, kostnad etc<br>
                 - Bild/er, ev ljud och filmklipp<br>
                 - För utövare: Lista över din/er konstnärliga bakgrund och utbildning <br>
-            </p>
-          </fieldset>
-          <div class="btn-group" role="group" aria-label="Basic radio toggle button group" >
+            </p> </fieldset>
+          -->
+
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group mt-4" >
             <input type="radio" (change)="valUtovare(1)" class="btn-check" value="1" name="btnradio" id="btnradio1"  checked >
             <label class="btn btn-outline-primary" for="btnradio1" >Ny aktör/utövare</label>
             <input type="radio" (change)="valUtovare(2)" class="btn-check" value="2" name="btnradio" id="btnradio2" >
@@ -106,10 +109,20 @@
     </ng-container>
 
     <ng-container *ngIf="_blockMdl.blnSteg4">
-<aj-granska [BaseFormModel]="BaseRootForm.value">
-
-</aj-granska>
-
+      <aj-granska [BaseFormModel]="BaseRootForm.value"></aj-granska>
+      <div class="row mt-5 mb-5">
+        <div class="col-12 col-lg-8" >
+          <button role="tab" (click)="ShowSteg(3)"  class="btn btn-outline-success btn-md  float-start" rel="2" tabindex="0" >Föregående steg - Arrangemang </button>
+          <button role="tab" (click)="ShowSteg(5)" [disabled]="!BaseRootForm.valid" class="btn btn-success btn-md active float-end" rel="2" tabindex="0" >Nästa steg - Skicka in</button>
+        </div>
+      </div>
     </ng-container>
-
+    <ng-container *ngIf="_blockMdl.blnSteg5">
+      <aj-skickain-form></aj-skickain-form>
+      <div class="row mt-5 mb-5">
+        <div class="col-12 col-lg-8" >
+          <button role="tab" (click)="ShowSteg(4)"  class="btn btn-outline-success btn-md  float-start" rel="2" tabindex="0" >Föregående steg - Granska </button>
+        </div>
+      </div>
+    </ng-container>
 </ng-container>

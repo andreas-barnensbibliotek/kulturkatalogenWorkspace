@@ -18,9 +18,14 @@ export class GranskaFaktaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // console.log("Modeldata: " + this.faktablock);
+    // if(this.faktablock){
+    //   this.sortfaktagupper(this.faktablock);
+    // }
   }
 
   ngOnChanges(): void {
+    console.log("Modeldata: " + this.faktablock);
     if(this.faktablock){
       this.sortfaktagupper(this.faktablock);
     }
@@ -72,6 +77,9 @@ export class GranskaFaktaComponent implements OnInit {
 
         // EKONOMI 4
         case 19: case 20: case 21: case 22: case 23: case 24: case 29: case 30: case 31: case 32: case 34:
+          if (faktatyp.FaktaTypID == 19) {
+            faktatyp.FaktaValue = faktatyp.FaktaValue + " kr"
+          };
           this.ekonomi.push({
             "Faktaid": "4",
             "FaktaTypID": faktatyp.FaktaTypID,

@@ -18,6 +18,7 @@ export class GranskaComponent implements OnInit {
 
   pagejson:any=[];
   detailpage:any=[];
+  tmpfaktalist:any=[];
   mainObj:any;
   currpageSlug:any;
   MediaUrl:any;
@@ -26,7 +27,8 @@ export class GranskaComponent implements OnInit {
 
   ngOnInit(): void {
     this.mainObj = this.GranskaData;
-    console.log("data: " + this.mainObj.ArrForm.Faktalist.Ovrigt);
+
+    this.tmpfaktalist= this.fd.postdataObj.Faktalist;
     this.granskaFrmGrp = this.rootformGroup.control as FormGroup
     this.MediaUrl = this.fd.previewImg;
   }

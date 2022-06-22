@@ -23,7 +23,7 @@ MediaExempelblockInit:any
   mediahandler(MediaObj:any){
     let rettext = "";
     // console.log("MediaObj.MediaTyp: "+MediaObj.MediaTyp)
-    switch (MediaObj.MediaTyp) {
+    switch (MediaObj.MediaTyp.toString()) {
         case "1":
             this.videoUrl= MediaObj.MediaUrl;
             break;

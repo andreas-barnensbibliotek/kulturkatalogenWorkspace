@@ -32,9 +32,13 @@ export class SmakprovComponent implements OnInit {
   ngOnInit(): void {
     this.rootFrmGrp =this.rootformGroup.control as FormGroup
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
-
+    // console.log("exlist: " + this.ExempelLista);
     // this.parentFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormArray;
-    this.exempelFrmGrp = this.fb.group(this._ExempleMdl.genFG);
+    if(this.Exempel.length<=0){
+      this.exempelFrmGrp = this.fb.group(this._ExempleMdl.genFG);
+    }else{
+      this.ExempelLista = this.Exempel.value;
+    }
 
     // this.BesoksmalFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
 

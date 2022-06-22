@@ -1,3 +1,6 @@
+import { FaktalistModel } from './forms/MODELformGroup/FaktalistModel';
+import { PostFormModel } from './forms/MODELformGroup/PostFormModel';
+import { postFormDataModel } from './forms/MODELformGroup/postFormDataModel';
 import { FormDataModel } from './forms/MODELformGroup/FormDataModel';
 import { UtstallFaktaComponent } from './forms/Arrangemangstyp/utstallning/utstall-fakta/utstall-fakta.component';
 import { formGlobalsModel } from './forms/MODELformGroup/formGlobalsModel';
@@ -61,6 +64,7 @@ import { GranskaComponent } from './forms/granska/granska.component';
 import { GranskaFaktaComponent } from './forms/granska/granska-fakta/granska-fakta.component';
 import { GranskaMediaComponent } from './forms/granska/granska-media/granska-media.component';
 import { GranskaKontaktComponent } from './forms/granska/granska-kontakt/granska-kontakt.component';
+import { SkickainFormComponent } from './forms/skicka/skickain-form/skickain-form.component';
 
 const routes: Routes = [
   { path: '' ,
@@ -115,7 +119,8 @@ const routes: Routes = [
     GranskaComponent,
     GranskaFaktaComponent,
     GranskaMediaComponent,
-    GranskaKontaktComponent
+    GranskaKontaktComponent,
+    SkickainFormComponent,
   ],
   imports: [
     CommonModule,
@@ -140,7 +145,10 @@ const routes: Routes = [
     getTidigareModule,
     ServerApiResponsModel,
     formGlobalsModel,
-    FormDataModel
+    FormDataModel,
+    postFormDataModel,
+    PostFormModel,
+    FaktalistModel
   ],
   exports: [
     KkAjPublicFormsComponent

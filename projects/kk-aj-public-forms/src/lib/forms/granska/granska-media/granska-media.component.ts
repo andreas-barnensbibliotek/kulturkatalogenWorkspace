@@ -23,16 +23,16 @@ MediaExempelblockInit:any
   mediahandler(MediaObj:any){
     let rettext = "";
     // console.log("MediaObj.MediaTyp: "+MediaObj.MediaTyp)
-    switch (MediaObj.MediaTyp) {
+    switch (MediaObj.MediaTyp.toString()) {
         case "1":
             this.videoUrl= MediaObj.MediaUrl;
             break;
         case "2":
           let urltoMovie="";
             if (isNaN(MediaObj.MediaUrl)) {
-                urltoMovie = "https://www.youtube.com/embed/" + MediaObj.MediaUrl;
+                urltoMovie = "https://www.youtube.com/embed/" + MediaObj.MediaUrl.split('/').at(-1);
             } else {
-               urltoMovie = "https://player.vimeo.com/video/" + MediaObj.MediaUrl;
+               urltoMovie = "https://player.vimeo.com/video/" + MediaObj.MediaUrl.split('/').at(-1);
             };
             this.updateVideoUrl(urltoMovie)
 

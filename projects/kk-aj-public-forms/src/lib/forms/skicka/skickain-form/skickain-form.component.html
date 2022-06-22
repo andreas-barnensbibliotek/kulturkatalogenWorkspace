@@ -1,0 +1,54 @@
+<ng-container >
+  <!-- {{ArrForm.value | json}} -->
+
+  <!-- Steg 2 block  -->
+  <div class="row" >
+    <div class="col-12 col-md-2">
+      <h2></h2>
+    </div>
+    <div class="col-12 col-md-10">
+      <div class="col-12 col-lg-8">
+
+        <div class="row">
+          <!-- <app-tidigare-arrangemang (GetTidigareArr)="GetTidigareArrangemang($event)"></app-tidigare-arrangemang> -->
+        </div>
+      </div>
+
+      <ng-container >
+        <h2>Godkänn och skicka in:</h2>
+        <div class="form-group mt-4">
+          <fieldset>
+            <h3>Användarvillkor på Kulurkatalogen Väst</h3>
+            <p>För att kunna vara med i Kulturkatalogen Väst är det viktigt att du läser igenom och godkänner nedanstående avtal.</p>
+            <div id="ApproveText" >
+              <h4>Datalagringsavtal</h4>
+              <p>Jag godkänner </p>
+                <ul>
+                  <li>Kulturkatalogen väst som är en del av Förvaltningen för kulturutveckling använder informationen från detta forumlär som en del i sitt arbeta med sin digitala utbudskatalog.</li>
+                  <li>Kulturkatalogen väst behandlar och lagrar användardata som har fyllts i och angets i arrangörsformuläret.</li>
+                  <li>Kulturkatalogen väst använder uppgifterna för att visa arrangemang i sin digitala utbudskatalog samt återkoppla eller informera aktör/utövare/kontaktperson via epostutskick</li>
+                  <li>Alla uppgifter i formuläret är publika förutom de uppgifter som har fyllts i under rubriken ”Information inför bedömning”. För förställning på turné och utställning på turné gäller att alla uppgifter är publika då de saknar bedömningsdelen.</li>
+                  <li>Användardata kommer att lagras för arkivering då det innefattas av offentlighetsprincipen eller tills det att du som användare aktivt väljer att ta bort datat. Att användaruppgifterna lagras förenklar även fortsatt förnyelse av ett arrangemang.</li>
+                </ul>
+
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" (change)="onCheckboxChange($event)" id="defaultCheck1">
+              <label class="form-check-label" for="defaultCheck1">
+                <strong>Jag godkännner avtalet</strong>
+              </label>
+            </div>
+              <button class="btn btn-success" (click)="SkickaInArrFrom()" [disabled]="!approve">Skicka in</button>
+
+          </fieldset>
+        </div>
+      </ng-container>
+
+
+
+      </div>
+<!-- end container   -->
+</div>
+
+</ng-container>
+

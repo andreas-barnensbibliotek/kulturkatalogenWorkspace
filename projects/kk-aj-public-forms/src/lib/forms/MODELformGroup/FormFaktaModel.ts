@@ -49,7 +49,7 @@ export class FormFaktaModel {
     Centrumbildning: null,
     OvrigInfo:null,
     UtstallningsPeriod: null,
-    PedagogisVerksamhet: null,
+    PedagogiskVerksamhet: null,
     Marknadsforing: null,
     Yta: null,
     Exempel:this.fb.array([])
