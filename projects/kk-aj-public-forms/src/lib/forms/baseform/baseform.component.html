@@ -68,7 +68,7 @@
           </div>
         </div>
         <app-valj-utovare *ngIf="_blockMdl.blnValUtovare" (VisaUtovareData)="gettidigare()" ></app-valj-utovare>
-        <app-tidigare-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnTidigareUtovare" (click)="changeUtovareUppgifter()"></app-tidigare-utovare>
+        <app-tidigare-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnTidigareUtovare" (ChangeUtovareInfo)="changeUtovareUppgifter()"></app-tidigare-utovare>
         <app-ny-utovare formGroupName="Utovarelist" *ngIf="_blockMdl.blnNyUtovare"></app-ny-utovare>
         <app-kontakt-person formGroupName="Kontakt" *ngIf="_blockMdl.blnKontaktUpg" ></app-kontakt-person>
         <div class="row mt-5 mb-5">

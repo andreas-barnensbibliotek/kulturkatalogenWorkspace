@@ -1,6 +1,5 @@
 
   <ng-container [formGroup]="ArrForm">
-    {{ArrForm.value | json}}
 
     <!-- Steg 2 block  -->
     <div class="row" *ngIf="_blockMdl.blnSteg1">
@@ -42,82 +41,9 @@
                   <label class="rdoArr rdoArr_val5" for="val_Kulturpedagogiskaprojekt">Workshop/ Projekt</label>
                 </div>
               </div>
-              <div class="d-grid gap-2">
-
-              <!-- <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(7)"data-bs-toggle="button" autocomplete="off">
-                <div class="row">
-                  <div class="col-2 text-center">
-                    <img alt="image" class="fdb-icon imgMaxH" src="./../../../assets/img/besoksmalmedresestod_invert.png">
-                  </div>
-                  <div class="col-10 ">
-                    <h3>Resmål med resestöd</h3>
-                    <p></p>
-                  </div>
-                </div>
-              </button>
-              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(1)"data-bs-toggle="button" autocomplete="off">
-                <div class="row">
-                  <div class="col-2 text-center ">
-                    <img alt="image" class="fdb-icon" src="./../../../assets/img/forestallningpatune_invert.png">
-                  </div>
-                  <div class="col-10 ">
-                    <h3>Föreställning på turné</h3>
-                    <p></p>
-                  </div>
-                </div>
-              </button>
-
-              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(8)"data-bs-toggle="button" autocomplete="off">
-                <div class="row">
-                  <div class="col-2 text-center ">
-                    <img alt="image" class="fdb-icon" src="./../../../assets/img/Skolbio_invert.png">
-                  </div>
-                  <div class="col-10 ">
-                    <h3>Skolbio</h3>
-                    <p></p>
-                  </div>
-                </div>
-              </button>
-              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(2)"data-bs-toggle="button" autocomplete="off">
-                <div class="row">
-                  <div class="col-2 text-center ">
-                    <img alt="image" class="fdb-icon" src="./../../../assets/img/Skolbio_invert.png">
-                  </div>
-                  <div class="col-10 ">
-                    <h3>Utställning på turné</h3>
-                    <p></p>
-                  </div>
-                </div>
-              </button>
-              <button type="button" class="btn btn-primary_2 fixtext"  (click)="setFaktalist(4)"data-bs-toggle="button" autocomplete="off">
-                <div class="row">
-                  <div class="col-2 text-center ">
-                    <img alt="image" class="fdb-icon" src="./../../../assets/img/Skolbio_invert.png">
-                  </div>
-                  <div class="col-10 ">
-                    <h3>Workshop/ Projekt</h3>
-                    <p></p>
-                  </div>
-                </div>
-              </button> -->
-
-              </div>
-              <!-- <div class="cc-selector">
-                <input type="radio" value="7"  (click)="setFaktalist(7)" id="val_resmalsbesok" title="Resmål med resestöd" tooltip="test" tabindex/>
-                <label class="arr_val1-cc arr_val1" for="val_resmalsbesok"></label>
-                <input type="radio" value="1"  (click)="setFaktalist(1)" id="val_forestallningtune" tabindex/>
-                <label class="arr_val2-cc arr_val2" for="val_forestallningtune"></label>
-                <input type="radio" value="8"  (click)="setFaktalist(8)" id="val_Skolbio" tabindex/>
-                <label class="arr_val3-cc arr_val3" for="val_Skolbio"></label>
-                <input type="radio" value="2"  (click)="setFaktalist(2)" id="val_Utstallningturne" tabindex/>
-                <label class="arr_val4-cc arr_val4" for="val_Utstallningturne"></label>
-                <input type="radio" value="4"  (click)="setFaktalist(4)" id="val_Kulturpedagogiskaprojekt" tabindex/>
-                <label class="arr_val5-cc arr_val5" for="val_Kulturpedagogiskaprojekt"></label>
-              </div> -->
             </fieldset>
           </div>
         </ng-container>
-
 
           <div class="row mt-5 mb-5">
             <div class="col-12 col-lg-8" >

@@ -2,92 +2,93 @@
   <div class="col-12 col-lg-8">
 
     <div class="form-group mt-5">
+
       <label>Kontaktuppgifter utövare/aktör/grupp</label>
         <div class="row">
-            <div class="col-sm-4 ">
+            <div class="col-sm-5 ">
                 <span class="visa_utovareNamn1">Namn på aktör/utövare:</span>
             </div>
-            <div class="col-sm-8 ">
+            <div class="col-sm-7 ">
                 <span id="visa_utovareNamn2">{{ this.tidigareUtovareFrmGrp.get('Organisation')!.value }}</span>
             </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
                 <span class="visa_utovareHemsida1">Aktör/utövares hemsida:</span>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <span id="visa_utovareHemsida2">{{ this.tidigareUtovareFrmGrp.get('Weburl')!.value }}</span>
             </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
                 <span class="visa_utovareAdress1">Adress:</span>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <span id="visa_utovareAdress2">{{ this.tidigareUtovareFrmGrp.get('Adress')!.value }}</span>
             </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
                 <span class="visa_utovarePostnr1">Postnummer:</span>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <span id="visa_utovarePostnr2">{{ this.tidigareUtovareFrmGrp.get('Postnr')!.value }}</span>
             </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
                 <span class="visa_utovareOrt1">Ort:</span>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
               <span id="visa_utovareOrt2">{{ this.tidigareUtovareFrmGrp.get('Ort')!.value }}</span>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
                 <span class="visa_utovareKommun1">Kommun:</span>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
               <span id="visa_utovareKommun2">{{ this.tidigareUtovareFrmGrp.get('Kommun')!.value }}</span>
           </div>
         </div>
 
-        <label>Kontaktperson</label>
+        <label class="mt-4">Kontaktperson</label>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
               <span class="visa_utovareFornamn1">Förnamn:</span>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
             <span id="visa_utovareForamn2">{{ this.tidigareUtovareFrmGrp.get('Fornamn')!.value }}</span>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
               <span class="visa_utovareEfternamn1">Efternamn:</span>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
               <span id="visa_utovareEfternamn2">{{ this.tidigareUtovareFrmGrp.get('Efternamn')!.value }}</span>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
               <span class="visa_utovareTelenr1">Telefonnummer:</span>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
               <span id="visa_utovareTelenr2">{{ this.tidigareUtovareFrmGrp.get('Telefon')!.value }}</span>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 ">
+          <div class="col-sm-5 ">
               <span class="visa_utovareEpost1">E-postadress:</span>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
               <span id="visa_utovareEpost2">{{ this.tidigareUtovareFrmGrp.get('Epost')!.value }}</span>
           </div>
         </div>
         <div class="row">
           <div class="col-12 ">
-              <button id="ChangeUppgifterKontakt" class="btn btn-secondary pull-right changeuppgifter">Ändra uppgifter</button>
+              <button id="ChangeUppgifterKontakt" (click)="changeUppgifter(1)" class="btn btn-secondary pull-right changeuppgifter">Ändra uppgifter</button>
 
           </div>
         </div>

@@ -17,7 +17,7 @@
       <small class="text-danger kk_aj_search_utovarePostnr_text-danger"
       *ngIf="Postnr?.invalid && Postnr?.touched">Vänligen fyll i ett giltigt postnummer för aktör/utövare/grupp<br></small><br>
 
-      <button id="ChangeUppgifterKontakt" (click)="getTidigareUtovarData()" class="btn btn-primary changeuppgifter">Hämta uppgifter</button>
+      <button id="ChangeUppgifterKontakt" (click)="getTidigareUtovarData()" [disabled]="!TidigareUtovareFormGrp.valid" class="btn btn-primary changeuppgifter">Hämta uppgifter</button>
     </div>
 
   </div>

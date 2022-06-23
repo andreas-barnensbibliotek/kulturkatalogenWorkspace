@@ -1,7 +1,7 @@
 import { FormDataModel } from './../MODELformGroup/FormDataModel';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { FormGroup, FormGroupDirective, } from '@angular/forms'
 import { FormBuilder } from '@angular/forms'
 
@@ -24,7 +24,7 @@ export class ImageuploadAJComponent implements OnInit {
   previewUrl:any = this.previewTempimg;
   fileUploadProgress: string = "";
   uploadedFilePath: string = "";
-  tillGangligfalt:boolean = false;
+  tillGangligfalt:boolean = true;
 
   constructor(private http: HttpClient, private rootformGroup: FormGroupDirective, private fd:FormDataModel) {}
   ngOnInit(): void {
@@ -51,6 +51,7 @@ export class ImageuploadAJComponent implements OnInit {
         return;
       }
     }
+    console.log("här 1")
     this.preview();
   }
 
@@ -88,6 +89,8 @@ export class ImageuploadAJComponent implements OnInit {
     }
     this.fd.formImgData.append('files', this.fileData);
     this.imageUploadFrmGrp.patchValue({MediaFilename: this.fileData?.name})
+    console.log("här2")
+
     // this.fileUploadProgress = '0%';
 
     //  this.http.post('https://us-central1-tutorial-e6ea7.cloudfunctions.net/fileUpload', formData, {

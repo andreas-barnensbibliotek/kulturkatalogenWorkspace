@@ -1,6 +1,4 @@
-import { FaktalistModel } from './forms/MODELformGroup/FaktalistModel';
 import { PostFormModel } from './forms/MODELformGroup/PostFormModel';
-import { postFormDataModel } from './forms/MODELformGroup/postFormDataModel';
 import { FormDataModel } from './forms/MODELformGroup/FormDataModel';
 import { UtstallFaktaComponent } from './forms/Arrangemangstyp/utstallning/utstall-fakta/utstall-fakta.component';
 import { formGlobalsModel } from './forms/MODELformGroup/formGlobalsModel';
@@ -146,9 +144,7 @@ const routes: Routes = [
     ServerApiResponsModel,
     formGlobalsModel,
     FormDataModel,
-    postFormDataModel,
     PostFormModel,
-    FaktalistModel
   ],
   exports: [
     KkAjPublicFormsComponent

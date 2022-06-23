@@ -1,17 +1,15 @@
-import { postFormDataModel } from './../MODELformGroup/postFormDataModel';
+
 import { formGlobalsModel } from './../MODELformGroup/formGlobalsModel';
 import { getTidigareModule } from './../MODELformGroup/getTidigareModule';
 
 import { FormFaktaModel } from './../MODELformGroup/FormFaktaModel';
-import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
 import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHandlerModel';
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, RequiredValidator, Validator, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup } from '@angular/forms';
 import { FileQueueObject, ImageUploaderOptions } from 'ngx-image-uploader-next';
 import { formUtovareModel } from '../MODELformGroup/formUtovareModel';
 import { formKontaktModel } from '../MODELformGroup/formKontaktModel';
 import { KontaktFormValidator } from '../../shared/KontaktFormGroup-Validator';
-import { ActivatedRoute } from '@angular/router';
 import { FormDataModel } from '../MODELformGroup/FormDataModel';
 
 @Component({
@@ -30,7 +28,6 @@ export class BaseformComponent implements OnInit, OnChanges {
   constructor(
     private _utovareMdl: formUtovareModel,
     private _kontaktMdl: formKontaktModel,
-    private _arrMdl:FormArrangemangModel,
     public _blockMdl: FormVisaBlockHandlerModel,
     public _faktaMdl: FormFaktaModel,
     public _TidigareMdl: getTidigareModule,
@@ -94,7 +91,6 @@ get arrformobj(){
   }
 
   ShowSteg(val:number){
-
       if (val==4){
         // this._postDataObj.prepareDataForSubmit(this.BaseRootForm.value);
         this._postDataObj.prepareDataForSubmit(this.BaseRootForm.value);

@@ -16,10 +16,9 @@ export class ValjUtovareComponent implements OnInit {
   showinfo:Array<boolean> = new Array;
 
   constructor(private rootformGroup: FormGroupDirective, private _fb: FormBuilder, private _utovareMdl: formUtovareModel ) { }
+
   ngOnInit(): void {
-
       this.InitTidigareUtovareFormGrp();
-
   }
 
   get Epost(){
@@ -37,7 +36,6 @@ export class ValjUtovareComponent implements OnInit {
       }
     )
   }
-
 
   getTidigareUtovarData(){
     //this.TidigareUtovareFormGrp.get("Kommun")?.setValue("testar");
