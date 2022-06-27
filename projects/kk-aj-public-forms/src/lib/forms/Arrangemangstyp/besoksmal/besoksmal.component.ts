@@ -14,6 +14,7 @@ export class BesoksmalComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.BesoksmalFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+    window.scroll(0,0);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

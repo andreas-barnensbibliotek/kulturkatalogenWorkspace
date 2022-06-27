@@ -10,6 +10,7 @@ export class DeltagarepublikBesoksmalComponent implements OnInit {
   sliderval:any = "0"
   @Input() formGroupName!: string;
   FaktaFrmGrp!: FormGroup;
+  chkTuched:boolean=false;
 
   constructor(private rootformGroup: FormGroupDirective) { }
 
@@ -17,11 +18,15 @@ export class DeltagarepublikBesoksmalComponent implements OnInit {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
-  get speltid(){
-    return this.FaktaFrmGrp.get("Speltid") as FormControl;
+  // get speltid(){
+  //   return this.FaktaFrmGrp.get("Speltid") as FormControl;
+  // }
+  get AlderFran(){
+    return this.FaktaFrmGrp.get("AlderFran") as FormControl;
   }
 
   onCheckboxChange(e:any, controlname:string) {
+    this.chkTuched= true;
     const checkArray: FormArray = this.FaktaFrmGrp.get(controlname) as FormArray;
 
     if (e.target.checked) {
@@ -37,9 +42,9 @@ export class DeltagarepublikBesoksmalComponent implements OnInit {
       });
     }
   }
-  changeSpeltid(e:any, value:string){
-    this.speltid.setValue(value);
-  }
+  // changeSpeltid(e:any, value:string){
+  //   this.speltid.setValue(value);
+  // }
 
   showinfo:Array<boolean> = new Array;
   initshowhideVal(antalShowInfo:number):void{

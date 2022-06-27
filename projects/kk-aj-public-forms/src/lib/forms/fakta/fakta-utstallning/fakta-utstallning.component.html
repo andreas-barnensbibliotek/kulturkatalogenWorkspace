@@ -1,36 +1,39 @@
-<ng-container [formGroup]="utstallFaktaFrmGrp">
+<ng-container [formGroup]="FaktaFrmGrp">
   <div class="col-12 col-lg-8">
     <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
       <div class="form-group mt-5">
 
           <legend>Fakta</legend>
 
-          <label for="arr_utstallningsperiod" >Utställningsperiod <a (click)="showHideinfo(3)" class="info" rel="arr_utstallningsperiod_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+          <label for="arr_utstallningsperiod">Utställningsperiod <a (click)="showHideinfo(3)" class="info" rel="arr_utstallningsperiod_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[3]" class="arr_utstallningsperiod_infotext infotext">Ange antal veckor som utställningen pågår </div>
           <input formControlName="Period" id="arr_utstallningsperiod" class="form-control" type="text" tabindex="3"/>
-          <small class="text-danger arr_utstallningsperiod_error">Vänligen fyll antal veckor som utställningen pågår</small><br/>
+          <small class="text-danger arr_utstallningsperiod_error"
+          *ngIf="Period?.invalid && Period.touched">Vänligen fyll antal veckor som utställningen pågår</small><br/>
 
           <label for="arr_Premiardatum">Uruppförande/Premiär <a (click)="showHideinfo(4)" class="info" rel="arr_Premiardatum_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[4]" class="arr_Premiardatum_infotext infotext">Ange när föreställningen hade premiär.</div>
-          <div class="input-group mb-3 datumPickerWidht">
+          <div class="input-group mb-1 datumPickerWidht">
             <input id="arr_Premiardatum" class="form-control" placeholder="yyyy-mm-dd" tabindex="4"
                      name="dp" formControlName="PremiarDatum" ngbDatepicker #d="ngbDatepicker">
             <div class="input-group-append">
               <button class="btn btn-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
             </div>
           </div>
-          <small class="text-danger arr_Premiardatum_error">Vänligen fyll i när föreställningen hade premiär.</small><br/>
+          <small class="text-danger arr_Premiardatum_error"
+          *ngIf="PremiarDatum?.invalid && PremiarDatum.touched">Vänligen fyll i när föreställningen hade premiär.</small><br/>
 
           <label for="arr_Bokningsbar" >Bokningsbar till och med. <a (click)="showHideinfo(5)" class="info" rel="arr_Bokningsbar_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[5]" class="arr_Bokningsbar_infotext infotext">Ange sista bokningsdatum.</div>
-          <div class="input-group mb-3 datumPickerWidht" >
+          <div class="input-group mb-1 datumPickerWidht" >
             <input id="arr_Bokningsbar" class="form-control" placeholder="yyyy-mm-dd" tabindex="5"
                      name="dp2" formControlName="BokningsbarTom" ngbDatepicker #d2="ngbDatepicker">
             <div class="input-group-append">
               <button class="btn btn-secondary" (click)="d2.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
             </div>
           </div>
-          <small class="text-danger arr_Bokningsbar_error">Vänligen fyll i sista bokningsdatum.</small><br/>
+          <small class="text-danger arr_Bokningsbar_error"
+          *ngIf="BokningsbarTom?.invalid && BokningsbarTom.touched">Vänligen fyll i sista bokningsdatum.</small><br/>
 
           <label for="arr_laromedel">Lärarhandledning (ej obligatorisk) <a (click)="showHideinfo(6)" class="info" rel="arr_laromedel_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[6]" class="arr_laromedel_infotext infotext">Om lärarhandledning finns skriv in länken till den här.</div>
@@ -40,7 +43,7 @@
             </div>
             <input formControlName="Lararhandledning" id="arr_laromedel" type="text" class="form-control fix-rounded-right" >
             <div class="invalid-feedback">
-              Ange filnamn.
+              Välj fil
             </div>
           </div>
 
@@ -48,3 +51,4 @@
   </div>
 
 </ng-container>
+

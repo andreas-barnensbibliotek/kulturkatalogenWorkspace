@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UtstallLokalComponent } from './utstall-lokal.component';
+import { FaktaUtstallningComponent } from './fakta-utstallning.component';
 
-describe('UtstallLokalComponent', () => {
-  let component: UtstallLokalComponent;
-  let fixture: ComponentFixture<UtstallLokalComponent>;
+describe('FaktaUtstallningComponent', () => {
+  let component: FaktaUtstallningComponent;
+  let fixture: ComponentFixture<FaktaUtstallningComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UtstallLokalComponent ]
+      declarations: [ FaktaUtstallningComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UtstallLokalComponent);
+    fixture = TestBed.createComponent(FaktaUtstallningComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

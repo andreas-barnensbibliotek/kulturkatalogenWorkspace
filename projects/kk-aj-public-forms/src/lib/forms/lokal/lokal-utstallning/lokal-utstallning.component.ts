@@ -1,15 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'aj-kostnader-skolbio',
-  templateUrl: './kostnader-skolbio.component.html',
-  styleUrls: ['./kostnader-skolbio.component.scss']
+  selector: 'aj-lokal-utstallning',
+  templateUrl: './lokal-utstallning.component.html',
+  styleUrls: ['./lokal-utstallning.component.scss']
 })
-export class KostnaderSkolbioComponent implements OnInit {
+export class LokalUtstallningComponent implements OnInit {
 
   @Input() formGroupName!: string;
   FaktaFrmGrp!: FormGroup;
+  showinfo:Array<boolean> = new Array;
 
   constructor(private rootformGroup: FormGroupDirective) { }
 
@@ -17,11 +18,10 @@ export class KostnaderSkolbioComponent implements OnInit {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
-  get Kostnad(){
-    return this.FaktaFrmGrp.get("Kostnad") as FormControl;
+  get Yta(){
+    return this.FaktaFrmGrp.get("Yta") as FormControl;
   }
 
-  showinfo:Array<boolean> = new Array;
   initshowhideVal(antalShowInfo:number):void{
     for (let i:number = 0; i == antalShowInfo; i++) {
       this.showinfo[i] = false;

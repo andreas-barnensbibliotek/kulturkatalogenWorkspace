@@ -5,7 +5,7 @@ import { FormVisaBlockHandlerModel } from './../MODELformGroup/FormVisaBlockHand
 import { FormArrangemangModel } from './../MODELformGroup/FormArrangemangModel';
 import { FormGroup, FormBuilder, FormGroupDirective, FormArray } from '@angular/forms';
 import { Component, OnInit, ChangeDetectorRef, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'aj-arr-form',
@@ -30,7 +30,7 @@ export class ArrFormComponent implements OnInit, OnChanges {
     private ref: ChangeDetectorRef,
     private _frmGlb:formGlobalsModel,
     private _ActivatedRoute:ActivatedRoute,
-
+    private _router:Router
     ) { }
 
   ngOnInit(): void {
@@ -70,10 +70,10 @@ testarr:Array<number>= [];
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
     }
     if(val==this._frmGlb.faktaTypId.utstallning){
-      this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
+      this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGUtstallning));
     }
     if(val==this._frmGlb.faktaTypId.workshop){
-      this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFG));
+      this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGWorkshop));
     }
     if(val== this._frmGlb.faktaTypId.besoksmal){
       this.ArrForm.addControl('Faktalist', this.fb.group(this._faktaMdl.genFGBesoksmal));
@@ -167,10 +167,12 @@ testarr:Array<number>= [];
     //   this.ArrForm.addControl('Arrangemang', this.fb.group(this._arrMdl.genFG),);
     // }
     if(val==0){
+      this._router.navigate(['ansok']);
      console.log("navigate back to ansök till kulturkatalogen"); //navigate back to ansök till kulturkatalogen
     }else{
     this._blockMdl.stegBlock(val)
     };
+    window.scroll(0,0)
     return false;
   }
 

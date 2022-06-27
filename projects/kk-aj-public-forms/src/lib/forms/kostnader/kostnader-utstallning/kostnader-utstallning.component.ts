@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'aj-kostnader-skolbio',
-  templateUrl: './kostnader-skolbio.component.html',
-  styleUrls: ['./kostnader-skolbio.component.scss']
+  selector: 'aj-kostnader-utstallning',
+  templateUrl: './kostnader-utstallning.component.html',
+  styleUrls: ['./kostnader-utstallning.component.scss']
 })
-export class KostnaderSkolbioComponent implements OnInit {
+export class KostnaderUtstallningComponent implements OnInit {
 
   @Input() formGroupName!: string;
   FaktaFrmGrp!: FormGroup;
@@ -19,6 +19,15 @@ export class KostnaderSkolbioComponent implements OnInit {
 
   get Kostnad(){
     return this.FaktaFrmGrp.get("Kostnad") as FormControl;
+  }
+  get Resor(){
+    return this.FaktaFrmGrp.get("Resor") as FormControl;
+  }
+  get Logi(){
+    return this.FaktaFrmGrp.get("Logi") as FormControl;
+  }
+  get Traktamente(){
+    return this.FaktaFrmGrp.get("Traktamente") as FormControl;
   }
 
   showinfo:Array<boolean> = new Array;

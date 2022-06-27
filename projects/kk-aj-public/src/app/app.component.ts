@@ -1,5 +1,5 @@
 import { App_Global } from './core/global/app_global';
-import { Component, Inject, Injector, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Injector, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { NgcCookieConsentService, NgcInitializeEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
 import { Subscription } from 'rxjs';
 import { isPlatformServer } from '@angular/common';
@@ -7,7 +7,8 @@ import { isPlatformServer } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'] ,
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit, OnDestroy  {
   title = 'kkAjPublic';

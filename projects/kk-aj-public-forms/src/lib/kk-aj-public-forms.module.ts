@@ -1,6 +1,5 @@
 import { PostFormModel } from './forms/MODELformGroup/PostFormModel';
 import { FormDataModel } from './forms/MODELformGroup/FormDataModel';
-import { UtstallFaktaComponent } from './forms/Arrangemangstyp/utstallning/utstall-fakta/utstall-fakta.component';
 import { formGlobalsModel } from './forms/MODELformGroup/formGlobalsModel';
 import { Routes, RouterModule } from '@angular/router';
 import { ServerApiResponsModel } from './forms/MODELformGroup/ServerApiResponsModel';
@@ -46,7 +45,6 @@ import { SafeHtmlPipe } from './forms/pipes/safepipe';
 import { NgxDynamicTabindexModule } from 'ngx-dynamic-tabindex';
 import { CommonModule } from '@angular/common';
 import { ArrFormComponent } from './forms/arr-form/arr-form.component';
-import { UtstallLokalComponent } from './forms/Arrangemangstyp/utstallning/utstall-lokal/utstall-lokal.component';
 import { ArrStartComponent } from './forms/arr-start/arr-start.component';
 import { DeltagarepublikSkolbioComponent } from './forms/deltagarepublik/deltagarepublik-skolbio/deltagarepublik-skolbio.component';
 import { LokalSkolbioComponent } from './forms/lokal/lokal-skolbio/lokal-skolbio.component';
@@ -63,6 +61,12 @@ import { GranskaFaktaComponent } from './forms/granska/granska-fakta/granska-fak
 import { GranskaMediaComponent } from './forms/granska/granska-media/granska-media.component';
 import { GranskaKontaktComponent } from './forms/granska/granska-kontakt/granska-kontakt.component';
 import { SkickainFormComponent } from './forms/skicka/skickain-form/skickain-form.component';
+import { FaktaUtstallningComponent } from './forms/fakta/fakta-utstallning/fakta-utstallning.component';
+import { LokalUtstallningComponent } from './forms/lokal/lokal-utstallning/lokal-utstallning.component';
+import { DeltagarepublikUtstallningComponent } from './forms/deltagarepublik/deltagarepublik-utstallning/deltagarepublik-utstallning.component';
+import { KostnaderUtstallningComponent } from './forms/kostnader/kostnader-utstallning/kostnader-utstallning.component';
+import { ArrFormApiService } from './Service/Api/arr-form-api.service';
+
 
 const routes: Routes = [
   { path: '' ,
@@ -101,8 +105,6 @@ const routes: Routes = [
     ListasmakprovComponent,
     SafeHtmlPipe,
     ArrFormComponent,
-    UtstallFaktaComponent,
-    UtstallLokalComponent,
     ArrStartComponent,
     DeltagarepublikSkolbioComponent,
     LokalSkolbioComponent,
@@ -119,6 +121,11 @@ const routes: Routes = [
     GranskaMediaComponent,
     GranskaKontaktComponent,
     SkickainFormComponent,
+    FaktaUtstallningComponent,
+    LokalUtstallningComponent,
+    DeltagarepublikUtstallningComponent,
+    KostnaderUtstallningComponent
+
   ],
   imports: [
     CommonModule,
@@ -131,7 +138,7 @@ const routes: Routes = [
     NgxBootstrapSliderModule,
     NgbModule,
     NgxDynamicTabindexModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   providers: [
     formUtovareModel,
@@ -145,6 +152,7 @@ const routes: Routes = [
     formGlobalsModel,
     FormDataModel,
     PostFormModel,
+    ArrFormApiService
   ],
   exports: [
     KkAjPublicFormsComponent

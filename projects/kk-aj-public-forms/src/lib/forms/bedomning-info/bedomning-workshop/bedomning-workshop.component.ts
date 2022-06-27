@@ -1,4 +1,4 @@
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,6 +19,19 @@ export class BedomningWorkshopComponent implements OnInit {
   ngOnInit(): void {
     this.valdtab= '1';
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
+  }
+
+  get Cv(){
+    return this.FaktaFrmGrp.get("Cv") as FormControl;
+  }
+  get BidragStod(){
+    return this.FaktaFrmGrp.get("BidragStod") as FormControl;
+  }
+  get FSkatt(){
+    return this.FaktaFrmGrp.get("FSkatt") as FormControl;
+  }
+  get Centrumbildning(){
+    return this.FaktaFrmGrp.get("Centrumbildning") as FormControl;
   }
 
   showCvTabs(showtabId:string):void{

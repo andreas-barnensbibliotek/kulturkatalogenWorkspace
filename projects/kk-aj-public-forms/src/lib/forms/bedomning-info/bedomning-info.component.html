@@ -31,7 +31,8 @@
           <input formControlName="Cv" class="form-control" type="file" id="formFile">
         </div>
       </div>
-      <small class="text-danger arr_cvmedverkande_error">Vänligen fyll i eller ladda upp CV</small><br />
+      <small class="text-danger arr_cvmedverkande_error"
+      *ngIf="Cv?.invalid && Cv.touched">Vänligen fyll i eller ladda upp CV</small><br />
 
     <label for="arr_statligtstodjanej">Innehar statligt/regionalt/kommunalt/annat stöd <a (click)="showHideinfo(2)" class="info" rel="arr_statligtstodjanej_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[2]" class="arr_statligtstodjanej_infotext infotext">Innehar statligt/regionalt/kommunalt/annat bidrag eller stöd för arrangemanget.</div>
@@ -44,10 +45,10 @@
         <input formControlName="BidragStod" type="radio" class="form-check-input" name="BidragStod" rel="38" value="Nej" id="arr_statligtstodnej">
         <label for="arr_statligtstodnej">Nej</label>
       </div><br />
-
+      <small class="text-danger kk_aj_search_arr_arr_statligtstodnej_error"
+      *ngIf="BidragStod?.invalid && BidragStod.touched">Vänligen fyll i om ni innehar F-skattsedel</small><br />
       <label for="arr_bedomningvilka">Om ja ange vilka </label>
       <input formControlName="BidragStodFran" id="arr_bedomningvilka" type="text" class="form-control" type="text" tabindex="1"/>
-      <small class="text-danger kk_aj_search_arr_bedomningvilka_error">Vänligen ange om arrangemanget innehar statligt/regionalt/kommunalt/andra bidrag eller stöd.</small>
       <br />
 
     <label for="arr_fskattsedeljanej">Innehar F-skattsedel</label><br />
@@ -59,7 +60,8 @@
         <input formControlName="FSkatt" type="radio"  class="form-check-input" name="FSkatt" rel="38" value="Nej" id="arr_fskattsedelnej">
         <label for="arr_fskattsedelnej">Nej</label>
       </div><br />
-      <small class="text-danger kk_aj_search_arr_fskattsedeljanej_error">Vänligen fyll i om ni innehar F-skattsedel</small><br />
+      <small class="text-danger kk_aj_search_arr_fskattsedeljanej_error"
+      *ngIf="FSkatt?.invalid && FSkatt.touched">Vänligen fyll i om ni innehar F-skattsedel</small><br />
 
     <label for="arr_centrumbildningjanej">Medlem i centrumbildning</label><br />
       <div class="form-check form-check-inline">
@@ -70,7 +72,8 @@
         <input formControlName="Centrumbildning" type="radio" class="form-check-input" name="Centrumbildning" rel="38" value="Nej" id="arr_centrumbildningnej">
         <label for="arr_centrumbildningnej">Nej</label>
       </div><br />
-      <small class="text-danger kk_aj_search_arr_centrumbildningjanej_error">Vänligen fyll i om ni är medlem i centrumbildning</small><br />
+      <small class="text-danger kk_aj_search_arr_centrumbildningjanej_error"
+      *ngIf="Centrumbildning?.invalid && Centrumbildning.touched">Vänligen fyll i om ni är medlem i centrumbildning</small><br />
 
     <label for="arr_overiginformation">Övrig information</label>
     <textarea formControlName="OvrigInfo" id="arr_overiginformation" name="arr_overiginformation" rel="42" maxlength="449" class="form-control"></textarea>

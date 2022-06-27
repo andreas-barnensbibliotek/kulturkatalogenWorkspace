@@ -1,4 +1,4 @@
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
@@ -18,6 +18,16 @@ export class FaktaWorkshopComponent implements OnInit {
 
   ngOnInit(): void {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
+  }
+
+  get AntalMedverkande(){
+    return this.FaktaFrmGrp.get("AntalMedverkande") as FormControl;
+  }
+  get Medverkande(){
+    return this.FaktaFrmGrp.get("Medverkande") as FormControl;
+  }
+  get BokningsbarTom(){
+    return this.FaktaFrmGrp.get("BokningsbarTom") as FormControl;
   }
 
   showinfo:Array<boolean> = new Array;

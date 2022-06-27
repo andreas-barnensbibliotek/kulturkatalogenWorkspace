@@ -4,17 +4,19 @@
     <div class="form-group mt-5">
       <legend>Deltagare/Publik</legend>
 
-      <label for="formMaxAudienceId" id="labelMaxAudienceId" class="kk_aj_ft">Maxantal publik<a (click)="showHideinfo(1)" class="info" rel="arr_labelMaxAudienceId_info"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <label for="formMaxAudienceId" id="labelMaxAudienceId" class="kk_aj_ft">Maxantal publik <a (click)="showHideinfo(1)" class="info" rel="arr_labelMaxAudienceId_info"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[1]" class="arr_labelMaxAudienceId_infotext infotext">Ange max antal personer i publiken. Skriv enbart siffror. </div>
       <input formControlName="MaxPublik" type="text" id="formMaxAudienceId" name="formMaxAudience"  class="form-control" type="text" tabindex="1"/>
-      <small class="text-danger formMaxAudienceId_error">Vänligen ange max antal personer i publiken. Skriv enbart siffror.</small><br/>
+      <small class="text-danger formMaxAudienceId_error"
+      *ngIf="MaxPublik?.invalid && MaxPublik.touched">Vänligen ange max antal personer i publiken. Skriv enbart siffror.</small><br/>
 
-      <label for="formMaxParticipantsId" id="labelMaxParticipantsId" class="kk_aj_kp">Maxantal deltagare<a (click)="showHideinfo(2)" class="info" rel="arr_labelMaxParticipantsId_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <label for="formMaxParticipantsId" id="labelMaxParticipantsId" class="kk_aj_kp">Maxantal deltagare <a (click)="showHideinfo(2)" class="info" rel="arr_labelMaxParticipantsId_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[2]" class="arr_labelMaxParticipantsId_infotext infotext">Ange max antal deltagare. Skriv enbart siffror. </div>
       <input formControlName="MaxAntal" type="text" id="formMaxParticipantsId" name="formMaxParticipants" class="form-control" type="text" tabindex="1"/>
-      <small class="text-danger formMaxParticipantsId_error">Vänligen ange max antal deltagare. Skriv enbart siffror</small><br/>
+      <small class="text-danger formMaxParticipantsId_error"
+      *ngIf="MaxAntal?.invalid && MaxAntal.touched">Vänligen ange max antal deltagare. Skriv enbart siffror</small><br/>
 
-      <label for="formPresentationsbild">Ålder<a (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <label for="formPresentationsbild">Ålder <a (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[3]" class="formPresentationsbild_infotext infotext">Här väljer du ålder, välj dom  en eller flera som passar ditt arrangemang.</div><br/>
       <div class="form-check form-check-inline">
         <input  (change)="onCheckboxChange($event,'AlderFran')" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
@@ -36,19 +38,20 @@
         <input  Speltid class="form-check-input" type="checkbox" id="inlineCheckbox3" value="5" >
         <label class="form-check-label" for="inlineCheckbox3">16-19 år</label>
       </div><br/>
-      <small class="text-danger kk_aj_search_utovareEpost_text-danger">Vänligen fyll i ålder på arrangemanget</small><br/>
+      <small class="text-danger kk_aj_search_utovareEpost_text-danger"
+        *ngIf="AlderFran?.invalid && chkTuched">Vänligen fyll i ålder på arrangemanget</small><br/>
 
-      <label for="formMaxShowsId" id="labelMaxShowsId" class="kk_aj_ft">Föreställningar per dag (ej obligatorisk)<a (click)="showHideinfo(4)" class="info" rel="arr_formMaxShowsId_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <label for="formMaxShowsId" id="labelMaxShowsId" class="kk_aj_ft">Föreställningar per dag (ej obligatorisk) <a (click)="showHideinfo(4)" class="info" rel="arr_formMaxShowsId_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[4]" class="arr_formMaxShowsId_infotext infotext">Ange hur många föreställningar som kan spelas per dag. Skriv enbart siffror.</div>
       <input formControlName="ForestallningarDag" type="text" id="formMaxShowsId" name="formMaxShows" class="form-control" type="text" tabindex="1"/>
-      <small class="text-danger formMaxShowsId_error">Ange hur många föreställningar som kan ges per dag. Skriv enbart siffror.</small><br/>
 
       <label for="kk_aj_speltid" class="kk_aj_ft kk_aj_sb">Speltid (min)<a (click)="showHideinfo(5)" class="info" rel="arr_kk_aj_speltid_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[5]" class="arr_kk_aj_speltid_infotext infotext">Ange föreställningens längd i minuter.</div>
       <div id="kk_aj_speltid_range" class="kk_aj_ft kk_aj_sb" ></div>
       <div id="kk_aj_speltid" rel="26" class="kk_aj_ft kk_aj_sb"></div>
       {{sliderval}} min <mv-slider id="kk_aj_speltid_range" (mouseup)="changeSpeltid($event,sliderval)" [(value)]="sliderval" [min]="1" [max]="180" [enabled]="true" style="margin-left:1%; width: 86%;"></mv-slider> <br/>
-      <small class="text-danger kk_aj_speltid_error">Vänligen ange föreställningens längd i minuter.</small><br/>
+      <small class="text-danger kk_aj_speltid_error"
+      *ngIf="speltid?.invalid && speltidTuched">Vänligen ange föreställningens längd i minuter.</small><br/>
 
   </div>
 </div>

@@ -1,4 +1,6 @@
-import { FormControl, Validators, FormGroupDirective } from '@angular/forms';
+import { KkAjPublicFormsService } from './../../../kk-aj-public-forms.service';
+import { ArrFormApiService } from './../../../Service/Api/arr-form-api.service';
+import {FormGroupDirective } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +13,11 @@ export class SkickainFormComponent implements OnInit {
   approve:boolean= false;
   basevalid:boolean= false;
 
-  constructor(private rootformGroup: FormGroupDirective,) {
+  constructor(
+    private rootformGroup: FormGroupDirective,
+    private _arrApi: KkAjPublicFormsService
+    )
+  {
     this.basevalid = rootformGroup.valid || false
   }
 
@@ -32,8 +38,16 @@ export class SkickainFormComponent implements OnInit {
   }
 
   SkickaInArrFrom(){
+    console.log("test");
+    let url:string = "https://localhost:44372/api/ArrangemangForm";
+    // this._arrApi.getArrApi(url).subscribe(Response => {
+    //   console.log("testar: " + Response);
+    // });
 
-    alert("Skicka in: " + JSON.stringify(this.rootformGroup.value));
+    this._arrApi.doPostArrApi(url, this.rootformGroup.value).subscribe(Response => {
+      console.log("testar POST: " + Response);
+    });
+    // alert("Skicka in: " + JSON.stringify(this.rootformGroup.value));
     return false;
   }
 

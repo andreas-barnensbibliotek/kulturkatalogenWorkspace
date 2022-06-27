@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'aj-kostnader-workshop',
@@ -15,6 +15,20 @@ export class KostnaderWorkshopComponent implements OnInit {
   ngOnInit(): void {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup;
   }
+
+  get Kostnad(){
+    return this.FaktaFrmGrp.get("Kostnad") as FormControl;
+  }
+  get Resor(){
+    return this.FaktaFrmGrp.get("Resor") as FormControl;
+  }
+  get Logi(){
+    return this.FaktaFrmGrp.get("Logi") as FormControl;
+  }
+  get Traktamente(){
+    return this.FaktaFrmGrp.get("Traktamente") as FormControl;
+  }
+
 
   showinfo:Array<boolean> = new Array;
   initshowhideVal(antalShowInfo:number):void{

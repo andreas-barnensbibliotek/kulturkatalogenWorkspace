@@ -1,3 +1,4 @@
+import { Router, NavigationEnd } from '@angular/router';
 
 import { formGlobalsModel } from './../MODELformGroup/formGlobalsModel';
 import { getTidigareModule } from './../MODELformGroup/getTidigareModule';
@@ -34,10 +35,13 @@ export class BaseformComponent implements OnInit, OnChanges {
     public fb:FormBuilder,
     private ref: ChangeDetectorRef,
     private _frmGlb:formGlobalsModel,
-    private _postDataObj:FormDataModel
+    private _postDataObj:FormDataModel,
+    private _router:Router
   ) { }
 
   ngOnInit(): void {
+
+
 
     this.initFromGroupdata();
   }
@@ -96,6 +100,7 @@ get arrformobj(){
         this._postDataObj.prepareDataForSubmit(this.BaseRootForm.value);
       }
       this._blockMdl.stegBlock(val)
+      window.scroll(0,0)
     return false;
   }
 
@@ -156,10 +161,9 @@ get arrformobj(){
   //   this.ref.detectChanges();
   // }
 
-  ngAfterContentChecked() {
-    //  this.ref.detectChanges();
-  }
-  ngAfterViewInit() {
-  }
+  // ngAfterContentChecked() {
+  //   //  this.ref.detectChanges();
+  // }
+
 }
 

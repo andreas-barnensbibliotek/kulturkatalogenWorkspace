@@ -7,24 +7,24 @@ export class FormFaktaModel {
   constructor(public fb:FormBuilder,public _exempelMdl: FormExempelModel){
 
   }
-  public genFG:any  =
+  public genFG:any  = //foreställning på turne
   {
     AntalMedverkande: null,
     Medverkande: null,
     Period: null,
     BokningsbarTom: null,
     MaxPublik: null,
-    AlderFran:  null,
+    AlderFran:  this.fb.array([],Validators.required),
     AlderTill: null,
     ForestallningarDag: null,
-    Byggtid: null,
-    Rivtid:null,
-    ScenBredd: null,
-    ScenDjup: null,
-    ScenTakHojd: null,
-    Ljus: null,
-    BarHjalp: null,
-    El: null,
+    Byggtid: ['', Validators.required],
+    Rivtid:['', Validators.required],
+    ScenBredd: ['', Validators.required],
+    ScenDjup: ['', Validators.required],
+    ScenTakHojd: ['', Validators.required],
+    Ljus: ['', Validators.required],
+    BarHjalp: ['', Validators.required],
+    El: ['', Validators.required],
     OvrigaLokalkrav: null,
     Kostnad: null,
     KostnadAndraArr: null,
@@ -34,8 +34,8 @@ export class FormFaktaModel {
     Traktamente: null,
     Lararhandledning: null,
     Speltid: null,
-    Morklaggning:null,
-    Ljud: null,
+    Morklaggning:['', Validators.required],
+    Ljud: ['', Validators.required],
     KostnadPaket: null,
     OvrigaKostnader: null,
     Ovrigt: null,
@@ -56,10 +56,79 @@ export class FormFaktaModel {
     // Exempel:this.fb.group(this._exempelMdl.genFG)
   }
 
+  public genFGUtstallning:any  =
+  {
+    Period: ['', Validators.required],
+    PremiarDatum: ['', Validators.required],
+    BokningsbarTom: ['', Validators.required],
+    Lararhandledning: null,
+    Yta: ['', Validators.required],
+    OvrigaLokalkrav: null,
+    AlderFran:  this.fb.array([],Validators.required),
+    AlderTill: null,
+    Kostnad: ['', Validators.required],
+    Resor:['', Validators.required],
+    Logi: ['', Validators.required],
+    Traktamente: ['', Validators.required],
+    OvrigaKostnader: null,
+    Ovrigt: null,
+    Exempel:this.fb.array([])
+    // Exempel:this.fb.group(this._exempelMdl.genFG)
+  }
+
+  public genFGWorkshop:any  =
+  {
+    AntalMedverkande: ['', Validators.required],
+    Medverkande: ['', Validators.required],
+    Period: null,
+    BokningsbarTom: ['', Validators.required],
+    MaxPublik: null,
+    AlderFran:  this.fb.array([],Validators.required),
+    AlderTill: null,
+    // ForestallningarDag: null,
+    // Byggtid: null,
+    // Rivtid:null,
+    // ScenBredd: null,
+    // ScenDjup: null,
+    // ScenTakHojd: null,
+    // Ljus: null,
+    // BarHjalp: null,
+    // El: null,
+    // OvrigaLokalkrav: null,
+    Kostnad:['', Validators.required],
+    // KostnadAndraArr: null,
+    Resor:['', Validators.required],
+    Logi: ['', Validators.required],
+    LogiOvrigt: null,
+    Traktamente: ['', Validators.required],
+    // Lararhandledning: null,
+    // Speltid: null,
+    // Morklaggning:null,
+    // Ljud: null,
+    // KostnadPaket: null,
+    OvrigaKostnader: null,
+    Ovrigt: null,
+    // KostnadtredjeArr: null,
+    // PremiarDatum: null,
+    MaxAntal: ['', Validators.required],
+    Cv: ['', Validators.required],
+    BidragStod: ['', Validators.required],
+    BidragStodFran: null,
+    FSkatt: ['', Validators.required],
+    Centrumbildning: ['', Validators.required],
+    OvrigInfo:null,
+    UtstallningsPeriod: null,
+    PedagogiskVerksamhet: null,
+    Marknadsforing: null,
+    Yta: null,
+    Exempel:this.fb.array([])
+    // Exempel:this.fb.group(this._exempelMdl.genFG)
+  }
+
   public genFGBesoksmal:any  =
   {
     AlderFran: this.fb.array([],Validators.required),
-    OvrigaKostnader: ['', Validators.required],
+    OvrigaKostnader: null,
     Ovrigt: null,
     Exempel: this.fb.array([])
     // Exempel:this.fb.group(this._exempelMdl.genFG)

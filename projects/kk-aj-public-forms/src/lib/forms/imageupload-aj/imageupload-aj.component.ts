@@ -36,6 +36,10 @@ export class ImageuploadAJComponent implements OnInit {
     }
   }
 
+  get MediaAlt(){
+    return this.imageUploadFrmGrp.get('MediaAlt');
+  }
+
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
     if(!this.fileData){

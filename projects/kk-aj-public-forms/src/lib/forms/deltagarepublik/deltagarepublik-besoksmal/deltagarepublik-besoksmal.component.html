@@ -3,7 +3,7 @@
     <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
       <div class="form-group mt-5">
         <legend>Deltagare/Publik</legend>
-        <label for="formPresentationsbild">Ålder<a (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+        <label for="formPresentationsbild">Ålder <a (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         <div *ngIf="showinfo[3]" class="formPresentationsbild_infotext infotext">Här väljer du ålder, välj dom  en eller flera som passar ditt arrangemang.</div><br/>
         <div class="form-check form-check-inline">
           <input  (change)="onCheckboxChange($event,'AlderFran')" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
@@ -22,10 +22,13 @@
           <label class="form-check-label" for="inlineCheckbox2">13-15 år</label>
         </div>
         <div class="form-check form-check-inline">
-          <input  Speltid class="form-check-input" type="checkbox" id="inlineCheckbox3" value="5" >
+          <input (change)="onCheckboxChange($event,'AlderFran')" class="form-check-input" type="checkbox" id="inlineCheckbox3" value="5" >
           <label class="form-check-label" for="inlineCheckbox3">16-19 år</label>
         </div><br/>
-        <small class="text-danger kk_aj_search_utovareEpost_text-danger">Vänligen fyll i ålder på arrangemanget</small><br/>
+        <small class="text-danger kk_aj_search_utovareEpost_text-danger"
+        *ngIf="AlderFran?.invalid && chkTuched">Vänligen fyll i ålder på arrangemanget</small><br/>
+
+
     </div>
   </div>
   </ng-container>

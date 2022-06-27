@@ -1,12 +1,10 @@
-import { catchError } from 'rxjs/operators';
+import { retry, catchError } from 'rxjs/operators';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class KkAjPublicFormsService {
+@Injectable()
+export class ArrFormApiService {
   private _httpOptions = {
     headers: new HttpHeaders({
     'Content-Type' : 'application/json',

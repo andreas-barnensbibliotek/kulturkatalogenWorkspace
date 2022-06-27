@@ -23,14 +23,14 @@
 
       <div *ngIf="tillGangligfalt" class="form-group">
         <label for="utovare_ort">Alternativtext <a (click)="showHideinfo(2)" class="info" rel="arr_fotograf_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-        <div *ngIf="showinfo[2]" class="arr_fotograf_infotext infotext" >Fyll i alternativtext</div>
+        <div *ngIf="showinfo[2]" class="arr_fotograf_infotext infotext" >Alternativtext är den text som visas om skärmläsare använd eller om bilden inte laddas.</div>
         <input formControlName="MediaAlt" id="utovare_ort" class="form-control" type="text"  />
-        <small class="text-danger utovare_ort_text-danger">Vänligen fyll i Alternativtext</small><br/>
-
+        <small class="text-danger utovare_ort_text-danger"
+        *ngIf="MediaAlt?.invalid && MediaAlt?.touched">Vänligen fyll i Alternativtext</small><br/>
         <label for="media_foto">Fotograf/Illustratör <a (click)="showHideinfo(3)" class="info" rel="arr_fotograf_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         <div *ngIf="showinfo[3]" class="arr_fotograf_infotext infotext" >Fyll i fotograf</div>
-        <input formControlName="MediaFoto" id="media_foto" class="form-control" type="text"  />
-        <small class="text-danger media_foto_text-danger">Vänligen fyll i Fotograf/Illustratör</small><br/>
+        <input formControlName="MediaFoto" id="media_foto" class="form-control" type="text"  /><br/>
+        <!-- <small class="text-danger media_foto_text-danger">Vänligen fyll i Fotograf/Illustratör</small> -->
       </div>
       <hr>
     </div>

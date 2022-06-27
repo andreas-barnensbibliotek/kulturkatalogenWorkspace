@@ -1,17 +1,18 @@
-import { FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
-import { Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-fakta',
-  templateUrl: './fakta.component.html',
-  styleUrls: ['./fakta.component.scss']
+  selector: 'aj-fakta-utstallning',
+  templateUrl: './fakta-utstallning.component.html',
+  styleUrls: ['./fakta-utstallning.component.scss']
 })
-export class FaktaComponent implements OnInit {
+export class FaktaUtstallningComponent implements OnInit {
 
   @Input() formGroupName!: string;
   FaktaFrmGrp!: FormGroup;
   DatumModel!: NgbDateStruct;
+  showinfo:Array<boolean> = new Array;
 
   constructor(private rootformGroup: FormGroupDirective) { }
 
@@ -19,12 +20,6 @@ export class FaktaComponent implements OnInit {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
-  get AntalMedverkande(){
-    return this.FaktaFrmGrp.get("AntalMedverkande") as FormControl;
-  }
-  get Medverkande(){
-    return this.FaktaFrmGrp.get("Medverkande") as FormControl;
-  }
   get Period(){
     return this.FaktaFrmGrp.get("Period") as FormControl;
   }
@@ -35,7 +30,6 @@ export class FaktaComponent implements OnInit {
     return this.FaktaFrmGrp.get("BokningsbarTom") as FormControl;
   }
 
-  showinfo:Array<boolean> = new Array;
   initshowhideVal(antalShowInfo:number):void{
     for (let i:number = 0; i == antalShowInfo; i++) {
       this.showinfo[i] = false;

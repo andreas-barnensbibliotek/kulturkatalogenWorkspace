@@ -10,6 +10,8 @@ export class DeltagarepublikComponent implements OnInit {
   sliderval:any = "0"
   @Input() formGroupName!: string;
   FaktaFrmGrp!: FormGroup;
+  chkTuched:boolean=false;
+  speltidTuched:boolean=false;
 
   constructor(private rootformGroup: FormGroupDirective) { }
 
@@ -17,8 +19,17 @@ export class DeltagarepublikComponent implements OnInit {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
+  get MaxPublik(){
+    return this.FaktaFrmGrp.get("MaxPublik") as FormControl;
+  }
+  get MaxAntal(){
+    return this.FaktaFrmGrp.get("MaxAntal") as FormControl;
+  }
   get speltid(){
     return this.FaktaFrmGrp.get("Speltid") as FormControl;
+  }
+  get AlderFran(){
+    return this.FaktaFrmGrp.get("AlderFran") as FormControl;
   }
 
   onCheckboxChange(e:any, controlname:string) {

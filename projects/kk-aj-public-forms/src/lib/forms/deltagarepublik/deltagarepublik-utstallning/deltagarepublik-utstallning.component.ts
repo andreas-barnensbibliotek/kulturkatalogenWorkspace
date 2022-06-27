@@ -2,16 +2,15 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective, FormArray, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'aj-deltagarepublik-skolbio',
-  templateUrl: './deltagarepublik-skolbio.component.html',
-  styleUrls: ['./deltagarepublik-skolbio.component.scss']
+  selector: 'aj-deltagarepublik-utstallning',
+  templateUrl: './deltagarepublik-utstallning.component.html',
+  styleUrls: ['./deltagarepublik-utstallning.component.scss']
 })
-export class DeltagarepublikSkolbioComponent implements OnInit {
+export class DeltagarepublikUtstallningComponent implements OnInit {
   sliderval:any = "0"
   @Input() formGroupName!: string;
   FaktaFrmGrp!: FormGroup;
   chkTuched:boolean=false;
-  speltidTuched:boolean=false;
 
   constructor(private rootformGroup: FormGroupDirective) { }
 
@@ -19,14 +18,12 @@ export class DeltagarepublikSkolbioComponent implements OnInit {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
-  get speltid(){
-    return this.FaktaFrmGrp.get("Speltid") as FormControl;
-  }
   get AlderFran(){
     return this.FaktaFrmGrp.get("AlderFran") as FormControl;
   }
+
   onCheckboxChange(e:any, controlname:string) {
-    this.chkTuched= true;
+    this.chkTuched=true;
     const checkArray: FormArray = this.FaktaFrmGrp.get(controlname) as FormArray;
 
     if (e.target.checked) {
@@ -41,11 +38,6 @@ export class DeltagarepublikSkolbioComponent implements OnInit {
         i++;
       });
     }
-  }
-
-  changeSpeltid(e:any, value:string){
-    this.speltidTuched= true;
-    this.speltid.setValue(value);
   }
 
   showinfo:Array<boolean> = new Array;

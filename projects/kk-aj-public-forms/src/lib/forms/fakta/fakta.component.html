@@ -7,17 +7,20 @@
           <label for="kk_aj_search_utovareEpost">Antal medverkande <a (click)="showHideinfo(1)" class="info" rel="arr_antalmedverkande_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[1]" class="arr_kk_aj_search_utovareEpost_infotext infotext">Fyll i antal medverkande på arrangemanget.</div>
           <input formControlName="AntalMedverkande" id="arr_antalmedverkande"  class="form-control" type="text" tabindex="1"/>
-          <small class="text-danger kk_aj_search_utovareEpost_text-danger">Vänligen fyll i antal medverkande i siffror</small><br/>
+          <small class="text-danger kk_aj_search_utovareEpost_text-danger"
+          *ngIf="AntalMedverkande?.invalid && AntalMedverkande.touched">Vänligen fyll i antal medverkande i siffror</small><br/>
 
           <label for="arr_medverkande">Medverkande <a (click)="showHideinfo(2)" class="info" rel="arr_medverkande_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[2]" class="arr_medverkande_infotext infotext">Fyll i namn på medverkande enligt exempel Sara Persson, Kalle Nilsson, etc</div>
           <input formControlName="Medverkande" id="arr_medverkande" class="form-control" type="text" tabindex="2"/>
-          <small class="text-danger arr_medverkande_error">Vänligen fyll i namn på medverkande</small><br/>
+          <small class="text-danger arr_medverkande_error"
+          *ngIf="Medverkande?.invalid && Medverkande.touched">Vänligen fyll i namn på medverkande</small><br/>
 
           <label for="arr_utstallningsperiod" >Utställningsperiod <a (click)="showHideinfo(3)" class="info" rel="arr_utstallningsperiod_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[3]" class="arr_utstallningsperiod_infotext infotext">Ange antal veckor som utställningen pågår </div>
           <input formControlName="Period" id="arr_utstallningsperiod" class="form-control" type="text" tabindex="3"/>
-          <small class="text-danger arr_utstallningsperiod_error">Vänligen fyll antal veckor som utställningen pågår</small><br/>
+          <small class="text-danger arr_utstallningsperiod_error"
+          *ngIf="Period?.invalid && Period.touched">Vänligen fyll antal veckor som utställningen pågår</small><br/>
 
           <label for="arr_Premiardatum">Uruppförande/Premiär <a (click)="showHideinfo(4)" class="info" rel="arr_Premiardatum_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[4]" class="arr_Premiardatum_infotext infotext">Ange när föreställningen hade premiär.</div>
@@ -28,7 +31,8 @@
               <button class="btn btn-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
             </div>
           </div>
-          <small class="text-danger arr_Premiardatum_error">Vänligen fyll i när föreställningen hade premiär.</small><br/>
+          <small class="text-danger arr_Premiardatum_error"
+          *ngIf="PremiarDatum?.invalid && PremiarDatum.touched">Vänligen fyll i när föreställningen hade premiär.</small><br/>
 
           <label for="arr_Bokningsbar" >Bokningsbar till och med. <a (click)="showHideinfo(5)" class="info" rel="arr_Bokningsbar_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[5]" class="arr_Bokningsbar_infotext infotext">Ange sista bokningsdatum.</div>
@@ -39,7 +43,8 @@
               <button class="btn btn-secondary" (click)="d2.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
             </div>
           </div>
-          <small class="text-danger arr_Bokningsbar_error">Vänligen fyll i sista bokningsdatum.</small><br/>
+          <small class="text-danger arr_Bokningsbar_error"
+          *ngIf="BokningsbarTom?.invalid && BokningsbarTom.touched">Vänligen fyll i sista bokningsdatum.</small><br/>
 
           <label for="arr_laromedel">Lärarhandledning (ej obligatorisk) <a (click)="showHideinfo(6)" class="info" rel="arr_laromedel_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
           <div *ngIf="showinfo[6]" class="arr_laromedel_infotext infotext">Om lärarhandledning finns skriv in länken till den här.</div>
@@ -49,7 +54,7 @@
             </div>
             <input formControlName="Lararhandledning" id="arr_laromedel" type="text" class="form-control fix-rounded-right" >
             <div class="invalid-feedback">
-              Please choose a username.
+              Välj fil!
             </div>
           </div>
 

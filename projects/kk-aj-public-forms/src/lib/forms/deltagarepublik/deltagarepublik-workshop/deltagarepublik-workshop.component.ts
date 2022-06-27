@@ -9,6 +9,7 @@ import { FormGroup, FormGroupDirective, FormArray, FormControl } from '@angular/
 export class DeltagarepublikWorkshopComponent implements OnInit {
   sliderval:any = "0";
   showinfo:Array<boolean> = new Array;
+  chkTuched:boolean=false;
 
   @Input() formGroupName!: string;
   FaktaFrmGrp!: FormGroup;
@@ -19,11 +20,14 @@ export class DeltagarepublikWorkshopComponent implements OnInit {
     this.FaktaFrmGrp = this.rootformGroup.control.get(this.formGroupName) as FormGroup
   }
 
-  get speltid(){
-    return this.FaktaFrmGrp.get("Speltid") as FormControl;
+  get MaxAntal(){
+    return this.FaktaFrmGrp.get("MaxAntal") as FormControl;
   }
-
+  get AlderFran(){
+    return this.FaktaFrmGrp.get("AlderFran") as FormControl;
+  }
   onCheckboxChange(e:any, controlname:string) {
+    this.chkTuched=true;
     const checkArray: FormArray = this.FaktaFrmGrp.get(controlname) as FormArray;
 
     if (e.target.checked) {
@@ -40,9 +44,9 @@ export class DeltagarepublikWorkshopComponent implements OnInit {
     }
   }
 
-  changeSpeltid(e:any, value:string){
-    this.speltid.setValue(value);
-  }
+  // changeSpeltid(e:any, value:string){
+  //   this.speltid.setValue(value);
+  // }
 
   initshowhideVal(antalShowInfo:number):void{
     for (let i:number = 0; i == antalShowInfo; i++) {

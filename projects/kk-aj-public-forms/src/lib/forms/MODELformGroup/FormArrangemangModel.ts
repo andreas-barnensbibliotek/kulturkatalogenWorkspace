@@ -16,10 +16,10 @@ export class FormArrangemangModel {
     Konstform3: [''],
     MainImage: this.fb.group({
       MediaID: [''],
-      MediaUrl: [''],
+      MediaUrl: ['',Validators.required],
       MediaFilename: [''],
       MediaSize: [''],
-      MediaAlt: [''],
+      MediaAlt: ['',Validators.required],
       MediaFoto: [''],
       MediaTyp: [''],
       MediaVald: [''],

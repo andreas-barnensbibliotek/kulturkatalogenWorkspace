@@ -1,51 +1,6 @@
 <ng-container [formGroup]="arrangemangFrmGrp">
-  {{arrangemangFrmGrp.value | json}}
-<div class="col-12 col-lg-8">
+  <!-- {{arrangemangFrmGrp.value | json}} -->
 
-  <div class="form-group mt-5">
-    <fieldset>
-      <legend>Välj huvudsaklig konstform</legend>
-      <div class="cc-selector">
-        <div class="col-12">
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="1" [checked]="chkKF[1]" id="val_arkitektur" title="Arkitektur" tooltip="Arkitektur" tabindex/>
-        <label class="kf_val1-cc kf_val1" for="val_arkitektur"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="2" [checked]="chkKF[2]" id="val_dans" tabindex />
-        <label class="kf_val2-cc kf_val2" for="val_dans"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="3" [checked]="chkKF[3]" id="val_film"  tabindex/>
-        <label class="kf_val3-cc kf_val3" for="val_film"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="4" [checked]="chkKF[4]" id="val_konst" tabindex />
-        <label class="kf_val4-cc kf_val4" for="val_konst"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="5" [checked]="chkKF[5]" id="val_litteratur" tabindex />
-        <label class="kf_val5-cc kf_val5" for="val_litteratur"></label>
-
-      <!-- </div>
-      <div class="col-12"> -->
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="6" [checked]="chkKF[6]" id="val_musik" title="Musik" tooltip="Musik" tabindex/>
-        <label class="kf_val6-cc kf_val6" for="val_musik"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="7" [checked]="chkKF[7]" id="val_naturochkultruarv" tabindex />
-        <label class="kf_val7-cc kf_val7" for="val_naturochkultruarv"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="8" [checked]="chkKF[8]" id="val_nycirkus" tabindex />
-        <label class="kf_val8-cc kf_val8" for="val_nycirkus"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="9" [checked]="chkKF[9]" id="val_slojd" tabindex />
-        <label class="kf_val9-cc kf_val9" for="val_slojd"></label>
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="10" [checked]="chkKF[10]" id="val_teater" tabindex />
-        <label class="kf_val10-cc kf_val10" for="val_teater"></label>
-      <!-- </div>
-      <div class="col-12"> -->
-        <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="11" id="val_teknik" title="Teknik" tooltip="Teknik" tabindex/>
-        <label class="kf_val11-cc kf_val11" for="val_teknik"></label>
-        <input type="radio" (change)="onCheckboxChange($event,'Konstform')" value="12" id="val_annascenkonst" tabindex />
-        <label class="kf_val12-cc kf_val12" for="val_annascenkonst"></label>
-        <!-- Om val av radioknappar istället för checkboxar använd denna
-          <input type="radio" formControlName="Konstform" value="12" id="val_annascenkonst" />
-          <label class="kf_val12-cc kf_val12" for="val_annascenkonst"></label>
-        -->
-      </div>
-      </div>
-    </fieldset>
-      <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small>
-  </div>
-</div>
 
 <div class="col-12 col-lg-8">
   <!-- <div>  start kk_aj_form_utovareuppgifterEDIT                     -->
@@ -94,7 +49,7 @@
     </div>
 
     <div class="form-group mt-3">
-      <label for="formPresentationsbild">Presentation<a  (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+      <label for="formPresentationsbild">Presentation <a (click)="showHideinfo(3)" class="info" rel="formPresentationsbild_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
       <div *ngIf="showinfo[3]" class="formPresentationsbild_infotext infotext">Här skriver du presentationen till arrangemang.</div>
       <editor  tabindex formControlName="Innehall"
       [class.is-AJinvalid]="Innehall?.invalid && Innehall?.touched"
@@ -121,5 +76,77 @@
  <small class="text-danger"
           *ngIf="MainImage?.invalid && MainImage?.touched">Vänligen ladda upp en bild för arrangemanget</small>
 </div>
+<div class="col-12 col-lg-8">
 
+  <div class="form-group mt-5">
+
+    <fieldset>
+      <legend>Välj ytterligare konstform (ej obligatorisk) <a (click)="showHideinfo(4)" class="info" rel="arr_beskr_underubrik_info"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></legend>
+        <div *ngIf="showinfo[4]" class="arr_beskr_underubrik_infotext infotext" >Välj ytterligare konstform om ditt arrangemang har fler</div>
+        <div class="col-12">
+
+
+          <div class="form-check form-check-inline">
+            <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="1" [checked]="chkKF[1]" id="val_arkitektur" title="Arkitektur" tooltip="Arkitektur" tabindex/>
+            <label class="form-check-label" for="val_arkitektur">Arkitektur</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="2" [checked]="chkKF[2]" id="val_dans" tabindex />
+            <label class="form-check-label" for="val_dans">Dans</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="3" [checked]="chkKF[3]" id="val_film"  tabindex/>
+            <label class="form-check-label" for="val_film">Film och media</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="4" [checked]="chkKF[4]" id="val_konst" tabindex />
+            <label class="form-check-label" for="val_konst">Konst, form och design</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="5" [checked]="chkKF[5]" id="val_litteratur" tabindex />
+            <label class="form-check-label" for="val_litteratur">Litteratur, berättande och skrivande</label>
+          </div>
+
+      <!-- </div>
+      <div class="col-12"> -->
+        <div class="form-check form-check-inline">
+          <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="6" [checked]="chkKF[6]" id="val_musik" title="Musik" tooltip="Musik" tabindex/>
+          <label class="form-check-label" for="val_musik">Musik</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="7" [checked]="chkKF[7]" id="val_naturochkultruarv" tabindex />
+          <label class="form-check-label" for="val_naturochkultruarv">Natur och Kulturarv</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="8" [checked]="chkKF[8]" id="val_nycirkus" tabindex />
+          <label class="form-check-label" for="val_nycirkus">Nycirkus/cirkus</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="9" [checked]="chkKF[9]" id="val_slojd" tabindex />
+          <label class="form-check-label" for="val_slojd">Slöjd</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="10" [checked]="chkKF[10]" id="val_teater" tabindex />
+          <label class="form-check-label" for="val_teater">Teater</label>
+        </div>
+      <!-- </div>
+      <div class="col-12"> -->
+        <div class="form-check form-check-inline">
+          <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="11" id="val_teknik" title="Teknik" tooltip="Teknik" tabindex/>
+          <label class="form-check-label" for="val_teknik">Teknik och multimedia</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" (change)="onCheckboxChange($event,'Konstform')" value="12" id="val_annascenkonst" tabindex />
+          <label class="form-check-label" for="val_annascenkonst">Annan scenkonst</label>
+        </div>
+        <!-- Om val av radioknappar istället för checkboxar använd denna
+          <input type="radio" formControlName="Konstform" value="12" id="val_annascenkonst" />
+          <label class="kf_val12-cc kf_val12" for="val_annascenkonst"></label>
+        -->
+      </div>
+
+    </fieldset>
+      <!-- <small class="error arr_radioValArrtyp_error">Vänligen välj typ av arrangemang</small> -->
+  </div>
+</div>
 </ng-container>

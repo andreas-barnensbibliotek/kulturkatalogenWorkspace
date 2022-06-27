@@ -5,4 +5,14 @@ $base-bgcolor: #fff;
   color: #000;
 }
 
-
+.nav-tabs {
+  .nav-link {
+    color: #eee;
+    &:hover{
+      color:#111;
+    }
+  }
+}
+.nav-tabs .nav-link{
+  color: #eee;
+}
